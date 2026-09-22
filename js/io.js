@@ -1,5 +1,7 @@
 /* Getting cards in and out: delimited text, file downloads and share links. */
 
+import { normalize } from './text.js';
+
 const QUOTE = '"';
 
 export function download(filename, text, mime = 'application/json') {
@@ -14,8 +16,7 @@ export function download(filename, text, mime = 'application/json') {
 }
 
 export function slugify(name) {
-  return String(name).normalize('NFD').replace(/[̀-ͯ]/g, '')
-    .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 48) || 'quizzer';
+  return normalize(name).replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 48) || 'quizzer';
 }
 
 const DELIMITERS = ['\t', ';', ','];
@@ -94,8 +95,7 @@ const HEADER_DEFS = new Set(['definition', 'back', 'verso', 'answer', 'reponse',
   'definitie', 'antwoord', 'vertaling', 'betekenis', 'achterkant']);
 
 function looksLikeHeader(cells) {
-  const norm = (value) => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
-  return HEADER_TERMS.has(norm(cells[0])) && HEADER_DEFS.has(norm(cells[1]));
+  return HEADER_TERMS.has(normalize(cells[0] || '')) && HEADER_DEFS.has(normalize(cells[1] || ''));
 }
 
 /* Spreadsheets do not always write UTF-8. A byte order mark announces UTF-16,
