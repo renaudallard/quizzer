@@ -11,6 +11,8 @@ const ACTIVITY_DAYS = 400;
 const SESSION_MODES = ['quiz', 'write', 'match', 'review'];
 const DAY_KEY = /^\d{4}-\d{2}-\d{2}$/;
 
+export const GOAL_RANGE = { min: 5, max: 200 };
+
 export const DEFAULT_SETTINGS = {
   locale: null,
   theme: 'system',
@@ -72,7 +74,7 @@ function normalizeSettings(raw, base = DEFAULT_SETTINGS) {
       if (raw[key] !== undefined && raw[key] !== null) settings[key] = raw[key];
     }
   }
-  settings.goal = Math.min(Math.max(Math.round(num(settings.goal, base.goal)), 5), 200);
+  settings.goal = Math.min(Math.max(Math.round(num(settings.goal, base.goal)), GOAL_RANGE.min), GOAL_RANGE.max);
   return settings;
 }
 
@@ -203,10 +205,12 @@ export function getSettings() {
   return state.settings;
 }
 
+/* Goes through the same rules as a loaded state, so the goal is rounded and
+   kept in range whichever page sets it. Returns the value actually kept. */
 export function setSetting(key, value) {
-  state.settings[key] = value;
+  state.settings = normalizeSettings({ [key]: value }, state.settings);
   save();
-  return value;
+  return state.settings[key];
 }
 
 export function getSets() {

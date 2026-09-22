@@ -42,12 +42,13 @@ export function settingsView(focus) {
   themeSelect.addEventListener('change', () => setTheme(themeSelect.value));
 
   const goal = el('input', {
-    type: 'number', class: 'input', min: '5', max: '200', step: '5',
+    type: 'number', class: 'input', step: '1',
+    min: String(store.GOAL_RANGE.min), max: String(store.GOAL_RANGE.max),
     value: String(settings.goal),
     onchange: () => {
-      const value = Math.min(200, Math.max(5, Number(goal.value) || 20));
-      goal.value = String(value);
-      store.setSetting('goal', value);
+      /* The store rounds and bounds it, and keeps the old goal for an empty field. */
+      const typed = goal.value.trim();
+      goal.value = String(store.setSetting('goal', typed ? Number(typed) : NaN));
       toast(t('settings.saved'));
     },
   });

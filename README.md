@@ -54,9 +54,10 @@ box 0 is "à apprendre", boxes 1 and 2 "en cours", boxes 3 and 4
 ### Daily goal
 
 The home page counts today's answers against a daily goal, 20 by default.
-Clicking the tile opens the settings with the goal field ready to edit; any
-value from 5 to 200 is accepted. Once the goal is reached the tile stops at
-the goal and its caption gives the real count.
+Clicking the tile opens the settings with the goal field ready to edit. Any
+whole number from 5 to 200 is accepted; other values are rounded or brought
+into that range, and emptying the field keeps the current goal. Once the goal
+is reached the tile stops at the goal and its caption gives the real count.
 
 ### Grading written answers
 
