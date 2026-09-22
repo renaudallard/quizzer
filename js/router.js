@@ -45,10 +45,16 @@ export function onAfterRender(fn) {
   return () => afterRender.delete(fn);
 }
 
-export function render() {
+/* Takes down what the current view attached outside its own subtree. The
+   test page calls it too, since it builds views without routing to them. */
+export function teardown() {
   for (const fn of cleanups) fn();
   cleanups = [];
   resetTooltip();
+}
+
+export function render() {
+  teardown();
 
   const path = currentPath();
   let view = null;

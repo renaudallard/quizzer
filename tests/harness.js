@@ -8,6 +8,7 @@ import * as io from '../js/io.js';
 import * as text from '../js/text.js';
 import * as i18n from '../js/i18n/index.js';
 import { initTheme } from '../js/theme.js';
+import { teardown } from '../js/router.js';
 
 import { homeView } from '../js/views/home.js';
 import { setView } from '../js/views/set.js';
@@ -21,7 +22,7 @@ import { quizView } from '../js/modes/quiz.js';
 import { writeView } from '../js/modes/write.js';
 import { matchView } from '../js/modes/match.js';
 
-const KEY = 'quizzer.v1';
+const KEY = store.STORAGE_KEY;
 const results = document.getElementById('results');
 const summary = document.getElementById('summary');
 const main = document.getElementById('main');
@@ -397,8 +398,13 @@ try {
   row('FAIL', 'exécution interrompue', String(error));
   failed++;
 } finally {
+  /* The views were built without the router, so their document key handlers
+     are still live: take them down before the learner's data goes back, and
+     reload the store so nothing left in memory can write test data over it. */
+  teardown();
   if (saved === null) localStorage.removeItem(KEY);
   else localStorage.setItem(KEY, saved);
+  store.load();
   main.replaceChildren();
 }
 

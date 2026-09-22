@@ -4,7 +4,7 @@
 import { uid, dayKey, lastDayKeys, addDays } from './util.js';
 import { schedule, isDue, MAX_BOX } from './srs.js';
 
-const KEY = 'quizzer.v1';
+export const STORAGE_KEY = 'quizzer.v1';
 const SALVAGE_KEY = 'quizzer.v1.unreadable';
 const MAX_SESSIONS = 200;
 const ACTIVITY_DAYS = 400;
@@ -149,7 +149,7 @@ export function load() {
   setUnsaved(false);
   let raw = null;
   try {
-    raw = localStorage.getItem(KEY);
+    raw = localStorage.getItem(STORAGE_KEY);
   } catch {
     /* Storage is blocked: nothing will be kept, and the page should say so. */
     state = emptyState();
@@ -185,7 +185,7 @@ export function save() {
   let ok = false;
   if (!locked) {
     try {
-      localStorage.setItem(KEY, JSON.stringify(state));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       ok = true;
     } catch {
       ok = false;
@@ -407,7 +407,7 @@ export function resetAll() {
   locked = false;
   setUnsaved(false);
   try {
-    localStorage.removeItem(KEY);
+    localStorage.removeItem(STORAGE_KEY);
     localStorage.removeItem(SALVAGE_KEY);
   } catch {
     /* nothing to clean */
@@ -417,7 +417,7 @@ export function resetAll() {
 
 export function storageBytes() {
   try {
-    return new Blob([localStorage.getItem(KEY) || '', localStorage.getItem(SALVAGE_KEY) || '']).size;
+    return new Blob([localStorage.getItem(STORAGE_KEY) || '', localStorage.getItem(SALVAGE_KEY) || '']).size;
   } catch {
     return 0;
   }
