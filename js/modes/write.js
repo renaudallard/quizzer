@@ -31,6 +31,7 @@ export function writeView(id) {
       position: 0,
       cleared: 0,
       mistakes: 0,
+      slipped: new Set(),
       hinted: false,
       pending: null,
       total: set.cards.length,
@@ -71,6 +72,7 @@ export function writeView(id) {
       run.cleared += 1;
     } else {
       run.mistakes += 1;
+      run.slipped.add(card.id);
       run.queue.push(card);
     }
     run.pending = null;
@@ -79,13 +81,16 @@ export function writeView(id) {
     paint();
   }
 
+  /* Every card is cleared by the end of a round, so the score is how many
+     were right the first time, as in review. */
   function finish() {
-    const { total, mistakes, cleared, startedAt } = run;
+    const { total, mistakes, slipped, startedAt } = run;
+    const firstTry = total - slipped.size;
     shell.setProgress(total, total);
-    saveSession(set.id, { mode: 'write', total, correct: cleared, ms: Date.now() - startedAt });
+    saveSession(set.id, { mode: 'write', total, correct: firstTry, ms: Date.now() - startedAt });
     run = null;
     mount(stage, summaryPanel({
-      score: total + '/' + total,
+      score: firstTry + '/' + total,
       scoreLabel: t('write.doneBody', { total, mistakes }),
       title: t('write.doneTitle'),
       actions: [

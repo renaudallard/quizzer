@@ -32,7 +32,7 @@ compile and nothing to configure.
 | **Flashcards** | Flip through the cards, shuffle them, reverse them, mark the hard ones | no |
 | **Révision espacée** | Only the cards that are due, graded by you as "à revoir" or "je savais" | yes |
 | **Quiz** | Multiple choice, true or false and written answers, in either direction | yes |
-| **Écrire** | Type every answer; a card you miss returns later in the round | yes |
+| **Écrire** | Type every answer; a card you miss returns later in the round, and the score counts the cards right the first time | yes |
 | **Associer** | Pair six terms with their definitions against the clock | best time only |
 
 Flashcards deliberately change nothing: browsing a set is not self-testing, so
