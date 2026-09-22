@@ -47,6 +47,10 @@ right answer given before the card is due counts in the statistics but leaves
 the schedule alone, so a few quizzes in one sitting cannot push a card to the
 35 day box.
 
+When nothing is due, "Réviser quand même" goes through up to twenty cards,
+those that come due soonest. A card that is not due yet shows when it will
+be, and a right answer leaves that date alone.
+
 The four mastery levels shown in the interface fold those boxes together:
 box 0 is "à apprendre", boxes 1 and 2 "en cours", boxes 3 and 4
 "presque acquis", box 5 "maîtrisé".

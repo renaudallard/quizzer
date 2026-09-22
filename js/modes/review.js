@@ -5,7 +5,7 @@
 import { el, icon, mount } from '../dom.js';
 import { t, tn, formatRelativeDays } from '../i18n/index.js';
 import * as store from '../store.js';
-import { dueCards, nextDueInDays } from '../srs.js';
+import { dueCards, isDue, nextDueInDays } from '../srs.js';
 import { shuffle } from '../util.js';
 import { studyShell, flipCard, summaryPanel, saveSession, bindKeys } from '../study.js';
 import { notFoundPanel } from '../views/shared.js';
@@ -122,7 +122,7 @@ export function reviewView(id) {
       el('div', { class: 'study-nav' }, actions),
       el('p', { class: 'flashcard-foot', style: { textAlign: 'center', marginTop: '14px' } },
         tn('review.remaining', remaining),
-        entry.seen ? ' · ' + t('review.nextDue', { when: formatRelativeDays(nextDueInDays(entry)) }) : ''));
+        isDue(entry) ? '' : ' · ' + t('review.nextDue', { when: formatRelativeDays(nextDueInDays(entry)) })));
   }
 
   bindKeys((event) => {
