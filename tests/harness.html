@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quizzer: banc d'essai</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .result { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86rem; }
+  .result div { padding: 3px 0; border-bottom: 1px solid var(--line); }
+  .tag { display: inline-block; min-width: 46px; font-weight: 700; }
+  .tag-pass { color: var(--good-ink); }
+  .tag-fail { color: var(--critical-ink); }
+  .detail { color: var(--ink-muted); }
+  #stage { position: absolute; left: -10000px; width: 1000px; }
+</style>
+</head>
+<body>
+<div class="container container-narrow stack">
+  <h1>Banc d'essai</h1>
+  <p class="lede">Exerce le stockage, la planification, la correction et les treize vues, dans chaque langue de l’interface.</p>
+  <p class="field-hint">Vos données sont mises de côté au démarrage et remises en place à la fin.</p>
+  <div id="summary" class="panel"><p>Exécution en cours…</p></div>
+  <div class="panel result" id="results"></div>
+</div>
+
+<!-- The views expect the chrome that index.html provides. -->
+<header class="topbar" hidden><div class="topbar-inner"><nav class="topnav">
+  <a href="#/" data-nav="/">home</a></nav>
+  <select id="locale-select"></select><button id="theme-toggle"></button></div></header>
+<div id="stage"><div id="main" tabindex="-1"></div></div>
+<div id="toast"></div>
+
+<script type="module" src="./harness.js"></script>
+</body>
+</html>

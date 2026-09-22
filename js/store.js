@@ -1,0 +1,367 @@
+/* The whole application state lives under one localStorage key and is written
+   back on every change. The data is small, so there is nothing to optimise. */
+
+import { uid, dayKey, lastDayKeys, addDays } from './util.js';
+import { schedule, isDue, MAX_BOX } from './srs.js';
+
+const KEY = 'quizzer.v1';
+const SALVAGE_KEY = 'quizzer.v1.unreadable';
+const MAX_SESSIONS = 200;
+const ACTIVITY_DAYS = 400;
+const SESSION_MODES = ['quiz', 'write', 'match', 'review'];
+const DAY_KEY = /^\d{4}-\d{2}-\d{2}$/;
+
+export const DEFAULT_SETTINGS = {
+  locale: null,
+  theme: 'system',
+  accents: true,
+  typos: true,
+  speech: true,
+  goal: 20,
+};
+
+function emptyState() {
+  return { version: 1, settings: { ...DEFAULT_SETTINGS }, sets: [], activity: {}, sessions: [] };
+}
+
+function str(value, fallback = '') {
+  return typeof value === 'string' ? value : fallback;
+}
+
+function num(value, fallback = 0) {
+  return Number.isFinite(value) ? value : fallback;
+}
+
+export function normalizeCard(raw) {
+  return {
+    id: str(raw && raw.id) || uid(),
+    term: str(raw && raw.term).trim(),
+    def: str(raw && raw.def).trim(),
+    hint: str(raw && raw.hint).trim(),
+    star: Boolean(raw && raw.star),
+    box: Math.min(Math.max(Math.round(num(raw && raw.box)), 0), MAX_BOX),
+    due: Math.max(0, Math.round(num(raw && raw.due))),
+    seen: Math.max(0, Math.round(num(raw && raw.seen))),
+    correct: Math.max(0, Math.round(num(raw && raw.correct))),
+    lapses: Math.max(0, Math.round(num(raw && raw.lapses))),
+  };
+}
+
+export function normalizeSet(raw) {
+  const now = Date.now();
+  const cards = Array.isArray(raw && raw.cards) ? raw.cards.map(normalizeCard) : [];
+  return {
+    id: str(raw && raw.id) || uid(),
+    title: str(raw && raw.title).trim() || 'Sans titre',
+    description: str(raw && raw.description).trim(),
+    termLang: str(raw && raw.termLang),
+    defLang: str(raw && raw.defLang),
+    bestMatchMs: raw && Number.isFinite(raw.bestMatchMs) ? raw.bestMatchMs : null,
+    created: num(raw && raw.created, now),
+    updated: num(raw && raw.updated, now),
+    cards: cards.filter((card) => card.term || card.def),
+  };
+}
+
+/* Known keys only, laid over base. A null value means "never chosen" and
+   leaves the base value alone, and so does a goal that is not a number. */
+function normalizeSettings(raw, base = DEFAULT_SETTINGS) {
+  const settings = { ...base };
+  if (raw && typeof raw === 'object') {
+    for (const key of Object.keys(DEFAULT_SETTINGS)) {
+      if (raw[key] !== undefined && raw[key] !== null) settings[key] = raw[key];
+    }
+  }
+  settings.goal = Math.min(Math.max(Math.round(num(settings.goal, base.goal)), 5), 200);
+  return settings;
+}
+
+/* Every field is checked: the stats page formats these values, and a date it
+   cannot read would stop it rendering. */
+function normalizeSession(raw) {
+  if (!raw || typeof raw !== 'object') return null;
+  if (typeof raw.id !== 'string' || typeof raw.setId !== 'string') return null;
+  if (!SESSION_MODES.includes(raw.mode)) return null;
+  if (typeof raw.at !== 'number' || Number.isNaN(new Date(raw.at).getTime())) return null;
+  const count = (value) => Math.max(0, Math.round(num(value)));
+  return {
+    id: raw.id, setId: raw.setId, at: raw.at, mode: raw.mode,
+    total: count(raw.total), correct: count(raw.correct), ms: count(raw.ms),
+  };
+}
+
+function normalizeActivity(raw) {
+  const activity = {};
+  if (!raw || typeof raw !== 'object') return activity;
+  for (const [key, value] of Object.entries(raw)) {
+    if (DAY_KEY.test(key) && Number.isFinite(value) && value > 0) activity[key] = Math.round(value);
+  }
+  return activity;
+}
+
+function normalizeState(raw) {
+  const base = emptyState();
+  if (!raw || typeof raw !== 'object') return base;
+  return {
+    version: 1,
+    settings: normalizeSettings(raw.settings),
+    sets: Array.isArray(raw.sets) ? raw.sets.map(normalizeSet) : [],
+    activity: normalizeActivity(raw.activity),
+    sessions: Array.isArray(raw.sessions)
+      ? raw.sessions.map(normalizeSession).filter(Boolean).slice(-MAX_SESSIONS)
+      : [],
+  };
+}
+
+let state = emptyState();
+
+export function load() {
+  let raw = null;
+  try {
+    raw = localStorage.getItem(KEY);
+  } catch {
+    state = emptyState();
+    return state;
+  }
+  if (!raw) {
+    state = emptyState();
+    return state;
+  }
+  try {
+    state = normalizeState(JSON.parse(raw));
+  } catch {
+    /* Keep the unreadable payload aside rather than overwrite it blindly. */
+    try { localStorage.setItem(SALVAGE_KEY, raw); } catch { /* storage full */ }
+    state = emptyState();
+  }
+  return state;
+}
+
+export function save() {
+  try {
+    localStorage.setItem(KEY, JSON.stringify(state));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function getState() {
+  return state;
+}
+
+export function getSettings() {
+  return state.settings;
+}
+
+export function setSetting(key, value) {
+  state.settings[key] = value;
+  save();
+  return value;
+}
+
+export function getSets() {
+  return state.sets;
+}
+
+export function getSet(id) {
+  return state.sets.find((set) => set.id === id) || null;
+}
+
+export function createSet(data) {
+  const set = normalizeSet({ ...data, id: uid(), created: Date.now(), updated: Date.now() });
+  state.sets.unshift(set);
+  save();
+  return set;
+}
+
+export function updateSet(id, patch) {
+  const set = getSet(id);
+  if (!set) return null;
+  Object.assign(set, patch, { id: set.id, updated: Date.now() });
+  save();
+  return set;
+}
+
+export function deleteSet(id) {
+  const index = state.sets.findIndex((set) => set.id === id);
+  if (index < 0) return false;
+  state.sets.splice(index, 1);
+  state.sessions = state.sessions.filter((entry) => entry.setId !== id);
+  save();
+  return true;
+}
+
+export function getCard(setId, cardId) {
+  const set = getSet(setId);
+  return set ? set.cards.find((card) => card.id === cardId) || null : null;
+}
+
+export function toggleStar(setId, cardId) {
+  const card = getCard(setId, cardId);
+  if (!card) return false;
+  card.star = !card.star;
+  save();
+  return card.star;
+}
+
+/* One graded answer: moves the card between boxes, keeps its counters and adds
+   a tick to today's activity. */
+export function recordAnswer(setId, cardId, correct) {
+  const set = getSet(setId);
+  const card = set && set.cards.find((entry) => entry.id === cardId);
+  if (!card) return null;
+
+  const next = schedule(card.box, correct);
+  card.box = next.box;
+  card.due = next.due;
+  card.seen += 1;
+  if (correct) card.correct += 1;
+  else card.lapses += 1;
+
+  const key = dayKey();
+  state.activity[key] = (state.activity[key] || 0) + 1;
+  pruneActivity();
+
+  set.updated = Date.now();
+  save();
+  return card;
+}
+
+function pruneActivity() {
+  const keys = Object.keys(state.activity);
+  if (keys.length <= ACTIVITY_DAYS) return;
+  const keep = new Set(lastDayKeys(ACTIVITY_DAYS));
+  for (const key of keys) if (!keep.has(key)) delete state.activity[key];
+}
+
+export function recordSession(setId, entry) {
+  state.sessions.push({ id: uid(), setId, at: Date.now(), ...entry });
+  if (state.sessions.length > MAX_SESSIONS) state.sessions = state.sessions.slice(-MAX_SESSIONS);
+  save();
+}
+
+export function getSessions(setId) {
+  return state.sessions.filter((entry) => entry.setId === setId).slice().reverse();
+}
+
+export function recordBestMatch(setId, ms) {
+  const set = getSet(setId);
+  if (!set) return false;
+  if (set.bestMatchMs === null || ms < set.bestMatchMs) {
+    set.bestMatchMs = ms;
+    save();
+    return true;
+  }
+  return false;
+}
+
+export function activityFor(days) {
+  return lastDayKeys(days).map((key) => ({ key, count: state.activity[key] || 0 }));
+}
+
+/* Consecutive days with at least one answer, counted back from today. A day
+   that has only just begun does not break a streak earned yesterday. */
+export function streak() {
+  const today = dayKey();
+  let cursor = state.activity[today] ? Date.now() : addDays(Date.now(), -1);
+  let count = 0;
+  while (state.activity[dayKey(new Date(cursor))]) {
+    count += 1;
+    cursor = addDays(cursor, -1);
+  }
+  return count;
+}
+
+export function summary(now = Date.now()) {
+  let cards = 0;
+  let due = 0;
+  let mastered = 0;
+  let seen = 0;
+  let correct = 0;
+  for (const set of state.sets) {
+    for (const card of set.cards) {
+      cards += 1;
+      if (isDue(card, now)) due += 1;
+      if (card.box >= MAX_BOX) mastered += 1;
+      seen += card.seen;
+      correct += card.correct;
+    }
+  }
+  return {
+    sets: state.sets.length,
+    cards,
+    due,
+    mastered,
+    accuracy: seen ? Math.round((correct / seen) * 100) : null,
+    streak: streak(),
+    today: state.activity[dayKey()] || 0,
+  };
+}
+
+/* A full backup: the sets with each card's progress, the session history,
+   the daily activity and the settings. */
+export function exportAll() {
+  return JSON.stringify({
+    app: 'quizzer', version: 1, exported: Date.now(),
+    sets: state.sets, sessions: state.sessions, activity: state.activity, settings: state.settings,
+  }, null, 2);
+}
+
+/* Merges an export back in, so importing the same file twice changes nothing.
+   A set already known by id is replaced and new ones go on top in file order.
+   Sessions are matched by id and only kept for sets that exist. Each day keeps
+   the higher of the two counts, since the same answers may be counted on both
+   sides. Settings found in the file win. */
+export function importPayload(payload) {
+  const incoming = Array.isArray(payload && payload.sets) ? payload.sets
+    : Array.isArray(payload) ? payload : null;
+  if (!incoming) throw new Error('shape');
+  let count = 0;
+  const added = [];
+  for (const raw of incoming) {
+    const set = normalizeSet(raw);
+    if (!set.cards.length) continue;
+    const index = state.sets.findIndex((existing) => existing.id === set.id);
+    if (index >= 0) state.sets[index] = set;
+    else added.push(set);
+    count += 1;
+  }
+  state.sets.unshift(...added);
+
+  if (!Array.isArray(payload)) {
+    const known = new Set(state.sessions.map((entry) => entry.id));
+    const sets = new Set(state.sets.map((set) => set.id));
+    const sessions = Array.isArray(payload.sessions) ? payload.sessions.map(normalizeSession) : [];
+    for (const entry of sessions) {
+      if (!entry || known.has(entry.id) || !sets.has(entry.setId)) continue;
+      known.add(entry.id);
+      state.sessions.push(entry);
+    }
+    state.sessions.sort((a, b) => a.at - b.at);
+    state.sessions = state.sessions.slice(-MAX_SESSIONS);
+
+    for (const [key, value] of Object.entries(normalizeActivity(payload.activity))) {
+      state.activity[key] = Math.max(state.activity[key] || 0, value);
+    }
+    pruneActivity();
+
+    state.settings = normalizeSettings(payload.settings, state.settings);
+  }
+  save();
+  return count;
+}
+
+export function resetAll() {
+  state = emptyState();
+  try { localStorage.removeItem(KEY); } catch { /* nothing to clean */ }
+  return state;
+}
+
+export function storageBytes() {
+  try {
+    return new Blob([localStorage.getItem(KEY) || '']).size;
+  } catch {
+    return 0;
+  }
+}

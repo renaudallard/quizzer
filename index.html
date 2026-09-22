@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Quizzer</title>
+<meta name="description" content="Flashcards, quiz et révision espacée pour apprendre vite et retenir longtemps.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232a78d6'/><rect x='7' y='9' width='14' height='10' rx='2' fill='none' stroke='%23fff' stroke-width='2'/><rect x='11' y='14' width='14' height='10' rx='2' fill='%232a78d6' stroke='%23fff' stroke-width='2'/></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Aller au contenu</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#/" data-i18n-aria-label="nav.home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect x="6" y="8" width="15" height="11" rx="2.5"></rect>
+        <rect x="11" y="13" width="15" height="11" rx="2.5" class="brand-mark-front"></rect>
+      </svg>
+      <span class="brand-name">Quizzer</span>
+    </a>
+
+    <nav class="topnav" data-i18n-aria-label="a11y.mainNav">
+      <a href="#/" data-nav="/" data-i18n="nav.home">Accueil</a>
+      <a href="#/new" data-nav="/new" data-i18n="nav.create">Créer</a>
+      <a href="#/transfer" data-nav="/transfer" data-i18n="nav.transfer">Importer</a>
+    </nav>
+
+    <div class="topbar-tools">
+      <label class="field-inline">
+        <span class="sr-only" data-i18n="settings.language">Langue</span>
+        <select id="locale-select" class="select-compact"></select>
+      </label>
+      <button id="theme-toggle" type="button" class="icon-btn"></button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="main" tabindex="-1"></main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p data-i18n="footer.storage">Vos données restent dans ce navigateur. Rien n’est envoyé sur un serveur.</p>
+    <p><a href="#/settings" data-i18n="nav.settings">Paramètres</a> &middot; <a href="#/shortcuts" data-i18n="nav.shortcuts">Raccourcis clavier</a></p>
+  </div>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<noscript>
+  <p class="noscript" data-i18n="a11y.noscript">Quizzer a besoin de JavaScript pour fonctionner.</p>
+</noscript>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

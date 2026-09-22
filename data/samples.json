@@ -1,0 +1,481 @@
+{
+  "app": "quizzer",
+  "version": 1,
+  "sets": [
+    {
+      "id": "sample-es-base",
+      "title": "Espagnol: les 30 mots essentiels",
+      "description": "De quoi tenir une première conversation.",
+      "termLang": "es",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "hola",
+          "def": "bonjour"
+        },
+        {
+          "term": "gracias",
+          "def": "merci"
+        },
+        {
+          "term": "por favor",
+          "def": "s'il vous plaît"
+        },
+        {
+          "term": "adiós",
+          "def": "au revoir"
+        },
+        {
+          "term": "sí",
+          "def": "oui"
+        },
+        {
+          "term": "no",
+          "def": "non"
+        },
+        {
+          "term": "buenos días",
+          "def": "bonjour",
+          "hint": "le matin"
+        },
+        {
+          "term": "buenas noches",
+          "def": "bonne nuit"
+        },
+        {
+          "term": "¿cómo estás?",
+          "def": "comment vas-tu ?"
+        },
+        {
+          "term": "lo siento",
+          "def": "je suis désolé"
+        },
+        {
+          "term": "de nada",
+          "def": "de rien"
+        },
+        {
+          "term": "el agua",
+          "def": "l'eau"
+        },
+        {
+          "term": "el pan",
+          "def": "le pain"
+        },
+        {
+          "term": "la casa",
+          "def": "la maison"
+        },
+        {
+          "term": "el perro",
+          "def": "le chien"
+        },
+        {
+          "term": "el gato",
+          "def": "le chat"
+        },
+        {
+          "term": "el libro",
+          "def": "le livre"
+        },
+        {
+          "term": "la ciudad",
+          "def": "la ville"
+        },
+        {
+          "term": "el trabajo",
+          "def": "le travail"
+        },
+        {
+          "term": "el tiempo",
+          "def": "le temps"
+        },
+        {
+          "term": "hoy",
+          "def": "aujourd'hui"
+        },
+        {
+          "term": "mañana",
+          "def": "demain"
+        },
+        {
+          "term": "ayer",
+          "def": "hier"
+        },
+        {
+          "term": "siempre",
+          "def": "toujours"
+        },
+        {
+          "term": "nunca",
+          "def": "jamais"
+        },
+        {
+          "term": "grande",
+          "def": "grand"
+        },
+        {
+          "term": "pequeño",
+          "def": "petit"
+        },
+        {
+          "term": "rápido",
+          "def": "rapide"
+        },
+        {
+          "term": "caro",
+          "def": "cher"
+        },
+        {
+          "term": "fácil",
+          "def": "facile"
+        }
+      ]
+    },
+    {
+      "id": "sample-capitales-europe",
+      "title": "Capitales d'Europe",
+      "description": "26 pays, 26 capitales.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "France",
+          "def": "Paris"
+        },
+        {
+          "term": "Allemagne",
+          "def": "Berlin"
+        },
+        {
+          "term": "Espagne",
+          "def": "Madrid"
+        },
+        {
+          "term": "Italie",
+          "def": "Rome"
+        },
+        {
+          "term": "Portugal",
+          "def": "Lisbonne"
+        },
+        {
+          "term": "Belgique",
+          "def": "Bruxelles"
+        },
+        {
+          "term": "Pays-Bas",
+          "def": "Amsterdam",
+          "hint": "siège du gouvernement à La Haye"
+        },
+        {
+          "term": "Suisse",
+          "def": "Berne",
+          "hint": "ville fédérale"
+        },
+        {
+          "term": "Autriche",
+          "def": "Vienne"
+        },
+        {
+          "term": "Pologne",
+          "def": "Varsovie"
+        },
+        {
+          "term": "Suède",
+          "def": "Stockholm"
+        },
+        {
+          "term": "Norvège",
+          "def": "Oslo"
+        },
+        {
+          "term": "Danemark",
+          "def": "Copenhague"
+        },
+        {
+          "term": "Finlande",
+          "def": "Helsinki"
+        },
+        {
+          "term": "Irlande",
+          "def": "Dublin"
+        },
+        {
+          "term": "Grèce",
+          "def": "Athènes"
+        },
+        {
+          "term": "Hongrie",
+          "def": "Budapest"
+        },
+        {
+          "term": "Tchéquie",
+          "def": "Prague"
+        },
+        {
+          "term": "Croatie",
+          "def": "Zagreb"
+        },
+        {
+          "term": "Roumanie",
+          "def": "Bucarest"
+        },
+        {
+          "term": "Bulgarie",
+          "def": "Sofia"
+        },
+        {
+          "term": "Slovaquie",
+          "def": "Bratislava"
+        },
+        {
+          "term": "Slovénie",
+          "def": "Ljubljana"
+        },
+        {
+          "term": "Estonie",
+          "def": "Tallinn"
+        },
+        {
+          "term": "Lettonie",
+          "def": "Riga"
+        },
+        {
+          "term": "Lituanie",
+          "def": "Vilnius"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-irreguliers",
+      "title": "Verbes irréguliers anglais",
+      "description": "Infinitif, prétérit, participe passé.",
+      "termLang": "en",
+      "defLang": "en",
+      "cards": [
+        {
+          "term": "be (être)",
+          "def": "was, been"
+        },
+        {
+          "term": "begin (commencer)",
+          "def": "began, begun"
+        },
+        {
+          "term": "break (casser)",
+          "def": "broke, broken"
+        },
+        {
+          "term": "bring (apporter)",
+          "def": "brought, brought"
+        },
+        {
+          "term": "buy (acheter)",
+          "def": "bought, bought"
+        },
+        {
+          "term": "choose (choisir)",
+          "def": "chose, chosen"
+        },
+        {
+          "term": "come (venir)",
+          "def": "came, come"
+        },
+        {
+          "term": "do (faire)",
+          "def": "did, done"
+        },
+        {
+          "term": "drink (boire)",
+          "def": "drank, drunk"
+        },
+        {
+          "term": "drive (conduire)",
+          "def": "drove, driven"
+        },
+        {
+          "term": "eat (manger)",
+          "def": "ate, eaten"
+        },
+        {
+          "term": "fall (tomber)",
+          "def": "fell, fallen"
+        },
+        {
+          "term": "feel (ressentir)",
+          "def": "felt, felt"
+        },
+        {
+          "term": "find (trouver)",
+          "def": "found, found"
+        },
+        {
+          "term": "get (obtenir)",
+          "def": "got, got"
+        },
+        {
+          "term": "give (donner)",
+          "def": "gave, given"
+        },
+        {
+          "term": "go (aller)",
+          "def": "went, gone"
+        },
+        {
+          "term": "know (savoir)",
+          "def": "knew, known"
+        },
+        {
+          "term": "leave (partir)",
+          "def": "left, left"
+        },
+        {
+          "term": "make (fabriquer)",
+          "def": "made, made"
+        },
+        {
+          "term": "put (poser)",
+          "def": "put, put"
+        },
+        {
+          "term": "read (lire)",
+          "def": "read, read"
+        },
+        {
+          "term": "see (voir)",
+          "def": "saw, seen"
+        },
+        {
+          "term": "speak (parler)",
+          "def": "spoke, spoken"
+        },
+        {
+          "term": "take (prendre)",
+          "def": "took, taken"
+        },
+        {
+          "term": "teach (enseigner)",
+          "def": "taught, taught"
+        },
+        {
+          "term": "think (penser)",
+          "def": "thought, thought"
+        },
+        {
+          "term": "write (écrire)",
+          "def": "wrote, written"
+        }
+      ]
+    },
+    {
+      "id": "sample-symboles-chimiques",
+      "title": "Symboles chimiques",
+      "description": "Les 25 éléments que l'on croise le plus souvent.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "Hydrogène",
+          "def": "H"
+        },
+        {
+          "term": "Hélium",
+          "def": "He"
+        },
+        {
+          "term": "Carbone",
+          "def": "C"
+        },
+        {
+          "term": "Azote",
+          "def": "N"
+        },
+        {
+          "term": "Oxygène",
+          "def": "O"
+        },
+        {
+          "term": "Sodium",
+          "def": "Na"
+        },
+        {
+          "term": "Magnésium",
+          "def": "Mg"
+        },
+        {
+          "term": "Aluminium",
+          "def": "Al"
+        },
+        {
+          "term": "Silicium",
+          "def": "Si"
+        },
+        {
+          "term": "Phosphore",
+          "def": "P"
+        },
+        {
+          "term": "Soufre",
+          "def": "S"
+        },
+        {
+          "term": "Chlore",
+          "def": "Cl"
+        },
+        {
+          "term": "Potassium",
+          "def": "K"
+        },
+        {
+          "term": "Calcium",
+          "def": "Ca"
+        },
+        {
+          "term": "Fer",
+          "def": "Fe"
+        },
+        {
+          "term": "Cuivre",
+          "def": "Cu"
+        },
+        {
+          "term": "Zinc",
+          "def": "Zn"
+        },
+        {
+          "term": "Argent",
+          "def": "Ag"
+        },
+        {
+          "term": "Étain",
+          "def": "Sn"
+        },
+        {
+          "term": "Or",
+          "def": "Au"
+        },
+        {
+          "term": "Mercure",
+          "def": "Hg"
+        },
+        {
+          "term": "Plomb",
+          "def": "Pb"
+        },
+        {
+          "term": "Nickel",
+          "def": "Ni"
+        },
+        {
+          "term": "Cobalt",
+          "def": "Co"
+        },
+        {
+          "term": "Uranium",
+          "def": "U"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+/* Flashcards: browse a set and flip each card. Nothing is graded here, so the
+   spaced repetition schedule is left untouched. */
+
+import { el, icon, toast, mount } from '../dom.js';
+import { t } from '../i18n/index.js';
+import * as store from '../store.js';
+import { shuffle } from '../util.js';
+import { studyShell, flipCard, speakButton, summaryPanel, bindKeys, speak } from '../study.js';
+import { notFoundPanel } from '../views/shared.js';
+
+export function flashcardsView(id) {
+  const set = store.getSet(id);
+  if (!set) return notFoundPanel(t('set.notFound'));
+
+  const state = { index: 0, reversed: false, shuffled: false, starredOnly: false };
+  let order = set.cards.slice();
+
+  const shell = studyShell({ set, modeKey: 'mode.flashcards' });
+  const card = flipCard();
+  const stage = el('div');
+  const starButton = el('button', { type: 'button', class: 'btn toggle-btn' }, icon('star'));
+
+  const toggle = (label, glyph, key) => {
+    const button = el('button', {
+      type: 'button', class: 'btn toggle-btn', 'aria-pressed': 'false',
+      onclick: () => {
+        state[key] = !state[key];
+        button.setAttribute('aria-pressed', String(state[key]));
+        rebuild();
+      },
+    }, glyph ? icon(glyph) : null, label);
+    return button;
+  };
+
+  const shuffleButton = toggle(t('common.shuffle'), 'shuffle', 'shuffled');
+  const reverseButton = toggle(t('flashcards.reverse'), 'restart', 'reversed');
+  const starredButton = toggle(t('flashcards.starredOnly'), 'star', 'starredOnly');
+
+  function current() {
+    return order[state.index] || null;
+  }
+
+  function rebuild() {
+    let cards = set.cards;
+    if (state.starredOnly) {
+      const starred = cards.filter((entry) => entry.star);
+      if (!starred.length) {
+        state.starredOnly = false;
+        starredButton.setAttribute('aria-pressed', 'false');
+        toast(t('flashcards.noStarred'));
+      } else {
+        cards = starred;
+      }
+    }
+    order = state.shuffled ? shuffle(cards) : cards.slice();
+    state.index = 0;
+    paint();
+  }
+
+  function move(delta) {
+    const next = state.index + delta;
+    if (next < 0 || next > order.length) return;
+    state.index = next;
+    paint();
+  }
+
+  function paint() {
+    if (state.index >= order.length) {
+      shell.setProgress(order.length, order.length);
+      mount(stage, summaryPanel({
+        title: t('flashcards.doneTitle'),
+        body: t('flashcards.doneBody', { n: order.length }),
+        actions: [
+          el('button', { type: 'button', class: 'btn btn-primary', onclick: () => { state.index = 0; paint(); } },
+            icon('restart'), t('common.restart')),
+          el('a', { class: 'btn', href: '#/set/' + set.id }, t('common.back')),
+        ],
+      }));
+      return;
+    }
+
+    const entry = current();
+    const termSide = { label: t('common.term'), text: entry.term, lang: set.termLang, hint: entry.hint };
+    const defSide = { label: t('common.definition'), text: entry.def, lang: set.defLang };
+    const front = state.reversed ? defSide : termSide;
+    const back = state.reversed ? termSide : defSide;
+
+    card.setFaces(
+      { ...front, extras: speakButton(front.text, front.lang) },
+      { ...back, extras: speakButton(back.text, back.lang) });
+    card.flip(false);
+
+    starButton.setAttribute('aria-pressed', String(Boolean(entry.star)));
+    starButton.setAttribute('aria-label', entry.star ? t('flashcards.unstar') : t('flashcards.star'));
+
+    shell.setProgress(state.index + 1, order.length);
+    mount(stage,
+      card.root,
+      el('div', { class: 'study-nav' },
+        el('button', {
+          type: 'button', class: 'btn', disabled: state.index === 0, onclick: () => move(-1),
+        }, icon('left'), t('common.previous')),
+        el('span', { class: 'count' }, t('progress.position', { current: state.index + 1, total: order.length })),
+        el('button', { type: 'button', class: 'btn', onclick: () => move(1) }, t('common.next'), icon('right'))),
+      el('p', { class: 'flashcard-foot', style: { textAlign: 'center', marginTop: '14px' } }, t('flashcards.flipHint')));
+  }
+
+  starButton.addEventListener('click', () => {
+    const entry = current();
+    if (!entry) return;
+    store.toggleStar(set.id, entry.id);
+    paint();
+  });
+
+  bindKeys((event) => {
+    if (event.key === 'ArrowRight') { event.preventDefault(); move(1); }
+    else if (event.key === 'ArrowLeft') { event.preventDefault(); move(-1); }
+    else if (event.key === ' ' || event.key === 'Enter') { event.preventDefault(); card.flip(); }
+    else if (event.key === 's' || event.key === 'S') starButton.click();
+    else if (event.key === 'a' || event.key === 'A') {
+      const entry = current();
+      if (entry) speak(state.reversed ? entry.def : entry.term, state.reversed ? set.defLang : set.termLang);
+    }
+  });
+
+  rebuild();
+
+  shell.body.appendChild(el('div', { class: 'study-toolbar' },
+    shuffleButton, reverseButton, starredButton, starButton));
+  shell.body.appendChild(stage);
+  return shell.root;
+}
