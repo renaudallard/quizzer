@@ -166,7 +166,8 @@ export function editorView(id) {
       defLang: draft.defLang,
       cards,
     };
-    const saved = existing ? store.updateSet(existing.id, payload) : store.createSet(payload);
+    /* The set may have been deleted in another tab meanwhile: keep the draft. */
+    const saved = (existing && store.updateSet(existing.id, payload)) || store.createSet(payload);
     toast(t('editor.saved'));
     navigate('set/' + saved.id);
   }

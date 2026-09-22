@@ -34,6 +34,10 @@ export function onThemeChange(fn) {
   return () => listeners.delete(fn);
 }
 
+/* Applies the saved theme without saving it again, as on start up or when
+   another tab has changed it. */
 export function initTheme() {
-  apply(getTheme());
+  const theme = getTheme();
+  apply(theme);
+  for (const fn of listeners) fn(theme);
 }

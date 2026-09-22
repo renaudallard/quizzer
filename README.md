@@ -134,6 +134,8 @@ it, so the page is safe to open on a browser that already holds real data.
 Everything lives under a single `localStorage` key, `quizzer.v1`, on the
 machine that runs the browser. Nothing is sent anywhere. Clearing the site
 data clears the sets, so save a backup from time to time if the work matters.
+Tabs of the same browser stay in step: what one saves, the others pick up at
+once, so an older tab never writes stale data back.
 
 When the browser refuses to save, because its storage is full or blocked, a
 notice stays at the top of every page until saving works again, and closing

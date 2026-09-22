@@ -2,7 +2,7 @@
    the page over to the router. */
 
 import { el, icon, mount } from './dom.js';
-import { t, setLocale, applyStatic, onLocaleChange, LOCALES, DEFAULT_LOCALE, isSupported } from './i18n/index.js';
+import { t, setLocale, getLocale, applyStatic, onLocaleChange, LOCALES, DEFAULT_LOCALE, isSupported } from './i18n/index.js';
 import * as store from './store.js';
 import * as router from './router.js';
 import { initTheme, getTheme, cycleTheme, onThemeChange } from './theme.js';
@@ -82,6 +82,21 @@ function setupSaveAlert() {
   });
 }
 
+/* Another tab has written the store. Taking its data now means a save from
+   this tab cannot put an older copy back. The page is rebuilt to show it,
+   unless it holds a draft or a round, whose own saves go by id. */
+function followOtherTabs() {
+  window.addEventListener('storage', (event) => {
+    if (event.key !== null && event.key !== store.STORAGE_KEY) return;
+    store.load();
+    initTheme();
+    const saved = store.getSettings().locale;
+    const before = getLocale();
+    setLocale(saved && isSupported(saved) ? saved : DEFAULT_LOCALE);
+    if (getLocale() === before && !router.isBusy()) router.render();
+  });
+}
+
 function highlightNav(path) {
   const root = '/' + path.split('/')[0];
   for (const link of document.querySelectorAll('.topnav a')) {
@@ -122,6 +137,7 @@ function main() {
   setupTheme();
   setRoutes();
   router.onAfterRender(highlightNav);
+  followOtherTabs();
   /* A page holding a draft or a round keeps its language until the learner
      moves on; the top bar and everything built from then on switch at once. */
   onLocaleChange(() => { if (!router.isBusy()) router.render(); });
