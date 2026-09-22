@@ -7,7 +7,7 @@ import * as store from '../store.js';
 import { dueCards, masteryPct } from '../srs.js';
 import { statTile, meter, activityChart, figure } from '../chart.js';
 import { truncate } from '../text.js';
-import { render } from '../router.js';
+import { render, currentPath } from '../router.js';
 
 function dayLabel(key) {
   return formatDayShort(new Date(key + 'T00:00:00'));
@@ -27,7 +27,9 @@ async function loadSamples(button) {
     }
     const count = store.importPayload({ sets: fresh });
     toast(tn('samples.loaded', count));
-    render();
+    /* The download may finish after the learner has moved on; only the home
+       page is rebuilt, never whatever they are now doing. */
+    if (currentPath() === '') render();
   } catch {
     toast(t('samples.failed'));
   } finally {
