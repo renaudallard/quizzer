@@ -81,24 +81,44 @@ export function tn(key, count, vars) {
   return interpolate(value, { n: formatNumber(count), ...vars });
 }
 
+/* Building an Intl formatter costs far more than using one, and a page
+   formats dozens of numbers and dates, so each kind is built once per
+   language and kept. */
+const formatters = new Map();
+
+function formatter(kind, make) {
+  const key = current + ' ' + kind;
+  let made = formatters.get(key);
+  if (!made) {
+    made = make(current);
+    formatters.set(key, made);
+  }
+  return made;
+}
+
 export function formatNumber(value) {
-  return new Intl.NumberFormat(current).format(value);
+  return formatter('number', (locale) => new Intl.NumberFormat(locale)).format(value);
 }
 
 export function formatPercent(value) {
-  return new Intl.NumberFormat(current, { style: 'percent', maximumFractionDigits: 0 }).format(value / 100);
+  return formatter('percent', (locale) => new Intl.NumberFormat(locale, {
+    style: 'percent', maximumFractionDigits: 0,
+  })).format(value / 100);
 }
 
 export function formatDate(ts, style = 'medium') {
-  return new Intl.DateTimeFormat(current, { dateStyle: style }).format(new Date(ts));
+  return formatter('date ' + style, (locale) => new Intl.DateTimeFormat(locale, { dateStyle: style }))
+    .format(new Date(ts));
 }
 
 export function formatDayShort(ts) {
-  return new Intl.DateTimeFormat(current, { day: 'numeric', month: 'short' }).format(new Date(ts));
+  return formatter('day', (locale) => new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short' }))
+    .format(new Date(ts));
 }
 
 export function formatRelativeDays(days) {
-  return new Intl.RelativeTimeFormat(current, { numeric: 'auto' }).format(days, 'day');
+  return formatter('relative', (locale) => new Intl.RelativeTimeFormat(locale, { numeric: 'auto' }))
+    .format(days, 'day');
 }
 
 const ATTRS = {
