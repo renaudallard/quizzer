@@ -111,13 +111,14 @@ export function writeView(id) {
     const remaining = run.queue.length - run.position;
     shell.setProgress(run.cleared, run.cleared + remaining);
 
+    const line = el('div', { class: 'question-prompt' },
+      cardText(card.term, set.termLang),
+      speakButton(card.term, set.termLang),
+      card.hint ? el('span', { class: 'hint' }, card.hint) : null,
+      run.hinted ? el('span', { class: 'hint' }, maskAnswer(card.def)) : null);
     const prompt = el('div', { class: 'question' },
       el('p', { class: 'question-kind' }, t('write.prompt')),
-      el('div', { class: 'question-prompt' },
-        cardText(card.term, set.termLang),
-        speakButton(card.term, set.termLang),
-        card.hint ? el('span', { class: 'hint' }, card.hint) : null,
-        run.hinted ? el('span', { class: 'hint' }, maskAnswer(card.def)) : null));
+      line);
 
     let body;
     let feedback = null;
@@ -139,13 +140,20 @@ export function writeView(id) {
         submitLabel: t('quiz.check'),
         onSubmit: submit,
       });
+      /* The hint is added in place, so what has been typed so far stays. */
+      const hint = el('button', {
+        type: 'button', class: 'btn toggle-btn', disabled: run.hinted,
+        onclick: () => {
+          run.hinted = true;
+          line.appendChild(el('span', { class: 'hint' }, maskAnswer(card.def)));
+          hint.disabled = true;
+          field.focus();
+        },
+      }, icon('eye'), t('write.hint'));
       body = el('div', {},
         field.root,
         el('div', { class: 'study-toolbar', style: { marginTop: '12px' } },
-          el('button', {
-            type: 'button', class: 'btn toggle-btn', disabled: run.hinted,
-            onclick: () => { run.hinted = true; paint(); },
-          }, icon('eye'), t('write.hint')),
+          hint,
           el('button', { type: 'button', class: 'btn toggle-btn', onclick: skip }, t('write.skip'))));
     }
 
