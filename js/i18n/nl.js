@@ -177,6 +177,7 @@ export default {
   "quiz.wrong": "Fout",
   "quiz.almost": "Bijna",
   "quiz.expected": "Verwacht antwoord: {answer}",
+  "quiz.spelling": "Juiste spelling: {answer}",
   "quiz.accentNote": "Accenten tellen hier mee.",
   "quiz.override": "Ik had het goed",
   "quiz.resultTitle": "Resultaat",

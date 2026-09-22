@@ -65,9 +65,10 @@ meaning, such as `#`, `/` or `%`, are kept, and an answer made only of
 punctuation, such as `?`, is compared exactly as typed. Two tolerances are on
 by default and can be turned off in the settings:
 
-- **Accents.** `ecole` is accepted for `école`, and letters with a stroke
-  such as ø or ł count as accented. With the tolerance off the answer is
-  graded "presque" and the interface says accents count.
+- **Accents.** `ecole` is accepted for `école`, and the verdict then shows
+  the exact spelling. Letters with a stroke such as ø or ł count as
+  accented. With the tolerance off the answer is graded "presque" and the
+  interface says accents count.
 - **Typos.** One wrong letter up to eight letters, two beyond that, gives
   "presque" rather than "raté". Under five letters nothing is forgiven.
   The length that counts is the expected answer's, not what was typed.

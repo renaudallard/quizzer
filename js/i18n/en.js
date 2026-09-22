@@ -177,6 +177,7 @@ export default {
   "quiz.wrong": "Missed",
   "quiz.almost": "Almost",
   "quiz.expected": "Expected answer: {answer}",
+  "quiz.spelling": "Exact spelling: {answer}",
   "quiz.accentNote": "Accents count here.",
   "quiz.override": "I had it",
   "quiz.resultTitle": "Result",

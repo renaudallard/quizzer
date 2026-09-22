@@ -133,13 +133,16 @@ const BANNERS = {
   wrong: { class: 'banner-bad', glyph: 'close', title: 'quiz.wrong' },
 };
 
+/* An answer accepted despite missing accents still shows its exact spelling,
+   which is what the accent flag from grade() is for. */
 function feedbackBanner(verdict, { expected, accent, lang } = {}) {
   const spec = BANNERS[verdict] || BANNERS.wrong;
+  const answerKey = verdict === 'correct' ? 'quiz.spelling' : 'quiz.expected';
   return el('div', { class: 'banner ' + spec.class, role: 'status', 'aria-live': 'polite' },
     icon(spec.glyph),
     el('div', { class: 'banner-body' },
       el('strong', { class: 'banner-title' }, t(spec.title)),
-      expected ? interpolateNode('quiz.expected', 'answer', cardText(expected, lang)) : null,
+      expected ? interpolateNode(answerKey, 'answer', cardText(expected, lang)) : null,
       accent && verdict !== 'correct' ? el('small', {}, ' ', t('quiz.accentNote')) : null));
 }
 
@@ -158,13 +161,14 @@ export function typedAnswer(value) {
    returned for a typed answer. */
 export function answerFeedback({ correct, result, expected, lang, note, onOverride, onContinue }) {
   const verdict = correct ? (result && result.verdict === 'almost' ? 'almost' : 'correct') : 'wrong';
+  const accent = Boolean(result && result.accent);
   const next = el('button', { type: 'button', class: 'btn btn-primary btn-lg', onclick: onContinue },
     t('common.continue'), icon('right'));
   queueMicrotask(() => next.focus());
   return el('div', {},
     feedbackBanner(verdict, {
-      expected: verdict === 'correct' ? null : expected,
-      accent: Boolean(result && result.accent),
+      expected: verdict === 'correct' && !accent ? null : expected,
+      accent,
       lang,
     }),
     note ? el('p', { class: 'field-hint', style: { marginTop: '8px' } }, note) : null,
