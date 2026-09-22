@@ -19,7 +19,9 @@ export function reviewView(id) {
 
   const shell = studyShell({ set, modeKey: 'mode.review' });
   const stage = el('div');
-  const card = flipCard();
+  /* Turning the card by hand, click or key, reveals the answer the same way
+     the button does, so the grades always come with it. */
+  const card = flipCard({ onFlip: (flipped) => { if (flipped && run && !run.revealed) reveal(); } });
   shell.body.appendChild(stage);
 
   /* Null until a session starts, so the key handler knows to stay out of it. */
