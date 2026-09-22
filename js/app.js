@@ -122,7 +122,9 @@ function main() {
   setupTheme();
   setRoutes();
   router.onAfterRender(highlightNav);
-  onLocaleChange(() => router.render());
+  /* A page holding a draft or a round keeps its language until the learner
+     moves on; the top bar and everything built from then on switch at once. */
+  onLocaleChange(() => { if (!router.isBusy()) router.render(); });
   router.start(document.getElementById('main'));
 }
 

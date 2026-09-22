@@ -12,6 +12,7 @@ import {
   saveSession, bindKeys, speakButton, cardText,
 } from '../study.js';
 import { notFoundPanel } from '../views/shared.js';
+import { setBusy } from '../router.js';
 
 export function writeView(id) {
   const set = store.getSet(id);
@@ -22,6 +23,7 @@ export function writeView(id) {
   shell.body.appendChild(stage);
 
   let run = null;
+  setBusy(() => Boolean(run && (run.position > 0 || run.pending)));
 
   function begin() {
     run = {

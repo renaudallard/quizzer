@@ -6,7 +6,7 @@ import { t, tn, setLocale } from '../i18n/index.js';
 import * as store from '../store.js';
 import { getTheme, setTheme } from '../theme.js';
 import { download, parseDelimited, readText, shareUrl, copyText, decodeShare } from '../io.js';
-import { navigate } from '../router.js';
+import { navigate, setBusy } from '../router.js';
 import { notFoundPanel } from './shared.js';
 
 const LONG_LINK = 8000;
@@ -60,6 +60,7 @@ function pastePanel() {
   const text = el('textarea', {
     class: 'textarea', placeholder: t('transfer.csvPlaceholder'), 'aria-label': t('transfer.csvTitle'),
   });
+  setBusy(() => Boolean(text.value.trim() || name.value.trim()));
   const file = el('input', {
     type: 'file', accept: '.csv,.tsv,.txt,text/csv,text/tab-separated-values,text/plain',
     class: 'sr-only', id: 'csv-file',

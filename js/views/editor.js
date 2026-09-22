@@ -6,7 +6,7 @@ import { t, tn, getLocale } from '../i18n/index.js';
 import * as store from '../store.js';
 import { uid } from '../util.js';
 import { parseDelimited } from '../io.js';
-import { navigate, onCleanup } from '../router.js';
+import { navigate, onCleanup, setBusy } from '../router.js';
 import { notFoundPanel } from './shared.js';
 
 const LANG_CODES = [
@@ -49,6 +49,7 @@ export function editorView(id) {
   const guard = (event) => { if (dirty) { event.preventDefault(); event.returnValue = ''; } };
   window.addEventListener('beforeunload', guard);
   onCleanup(() => window.removeEventListener('beforeunload', guard));
+  setBusy(() => dirty);
 
   const list = el('div', { class: 'card-list' });
 

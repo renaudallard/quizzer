@@ -216,6 +216,9 @@ Spanish.
 - Leaving the editor through the top bar without saving loses the draft. The
   save button is always visible in the sticky bar, and closing the tab warns.
 - Read aloud depends on the voices the browser and system provide.
+- Switching language while a draft or a round is in progress leaves that page
+  as it is until you move on, so nothing is lost; the top bar and everything
+  shown afterwards switch at once.
 
 ## License
 

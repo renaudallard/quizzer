@@ -40,6 +40,20 @@ export function onCleanup(fn) {
   cleanups.push(fn);
 }
 
+/* A view holding work that rebuilding it would throw away, such as a draft
+   or a round in progress, says so here. Rebuilds the learner did not ask
+   for, like a language change, then leave the page alone. */
+let busy = null;
+
+export function setBusy(fn) {
+  busy = fn;
+  onCleanup(() => { if (busy === fn) busy = null; });
+}
+
+export function isBusy() {
+  return Boolean(busy && busy());
+}
+
 export function onAfterRender(fn) {
   afterRender.add(fn);
   return () => afterRender.delete(fn);
