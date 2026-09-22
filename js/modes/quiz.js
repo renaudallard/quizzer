@@ -8,7 +8,7 @@ import * as store from '../store.js';
 import { shuffle, sample, pct } from '../util.js';
 import { grade, normalize } from '../text.js';
 import {
-  studyShell, answerField, feedbackBanner, summaryPanel,
+  studyShell, answerField, answerFeedback, typedAnswer, summaryPanel,
   saveSession, bindKeys, speakButton, cardText,
 } from '../study.js';
 import { notFoundPanel } from '../views/shared.js';
@@ -241,13 +241,7 @@ export function quizView(id) {
   }
 
   function writtenBody(question) {
-    if (run.pending) {
-      return el('div', { class: 'answer-form' },
-        el('input', {
-          type: 'text', class: 'input', readonly: true,
-          value: run.pending.detail.typed || '', 'aria-label': t('write.answerPlaceholder'),
-        }));
-    }
+    if (run.pending) return typedAnswer(run.pending.detail.typed || '');
     const settings = store.getSettings();
     const field = answerField({
       placeholder: t('write.answerPlaceholder'),
@@ -273,31 +267,18 @@ export function quizView(id) {
         : writtenBody(question);
 
     const pending = run.pending;
-    let feedback = null;
-    if (pending) {
-      const verdict = pending.correct
-        ? (pending.detail.verdict && pending.detail.verdict.verdict === 'almost' ? 'almost' : 'correct')
-        : 'wrong';
-      feedback = el('div', {},
-        feedbackBanner(verdict, {
-          expected: verdict === 'correct' ? null : question.answer,
-          accent: Boolean(pending.detail.verdict && pending.detail.verdict.accent),
+    const feedback = pending
+      ? answerFeedback({
+          correct: pending.correct,
+          result: pending.detail.verdict,
+          expected: question.answer,
           lang: question.answerLang,
-        }),
-        el('div', { class: 'study-nav', style: { marginTop: '18px' } },
-          !pending.correct && question.kind === 'written'
-            ? el('button', { type: 'button', class: 'btn', onclick: override }, icon('check'), t('quiz.override'))
-            : null,
-          el('button', { type: 'button', class: 'btn btn-primary btn-lg', onclick: advance },
-            t('common.continue'), icon('right'))));
-    }
+          onOverride: question.kind === 'written' ? override : null,
+          onContinue: advance,
+        })
+      : null;
 
     mount(stage, promptPanel(question), body, feedback);
-
-    if (pending) {
-      const next = stage.querySelector('.study-nav .btn-primary');
-      if (next) next.focus();
-    }
   }
 
   bindKeys((event) => {
@@ -306,14 +287,11 @@ export function quizView(id) {
       if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); advance(); }
       return;
     }
-    const question = run.questions[run.index];
     const slot = Number(event.key);
     if (!Number.isInteger(slot) || slot < 1) return;
-    if (question.kind === 'choice' && slot <= question.options.length) {
-      stage.querySelectorAll('.option')[slot - 1].click();
-    } else if (question.kind === 'truefalse' && slot <= 2) {
-      stage.querySelectorAll('.option')[slot - 1].click();
-    }
+    /* Written questions have no options, so the lookup finds nothing there. */
+    const option = stage.querySelectorAll('.option')[slot - 1];
+    if (option) option.click();
   });
 
   showSetup();

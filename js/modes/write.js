@@ -8,7 +8,7 @@ import * as store from '../store.js';
 import { shuffle } from '../util.js';
 import { grade, maskAnswer } from '../text.js';
 import {
-  studyShell, answerField, feedbackBanner, summaryPanel,
+  studyShell, answerField, answerFeedback, typedAnswer, summaryPanel,
   saveSession, bindKeys, speakButton, cardText,
 } from '../study.js';
 import { notFoundPanel } from '../views/shared.js';
@@ -112,27 +112,16 @@ export function writeView(id) {
     let feedback = null;
 
     if (run.pending) {
-      const verdict = run.pending.correct
-        ? (run.pending.verdict.verdict === 'almost' ? 'almost' : 'correct')
-        : 'wrong';
-      body = el('div', { class: 'answer-form' },
-        el('input', {
-          type: 'text', class: 'input', readonly: true,
-          value: run.pending.typed, 'aria-label': t('write.answerPlaceholder'),
-        }));
-      feedback = el('div', {},
-        feedbackBanner(verdict, {
-          expected: verdict === 'correct' ? null : card.def,
-          accent: run.pending.verdict.accent,
-          lang: set.defLang,
-        }),
-        !run.pending.correct ? el('p', { class: 'field-hint', style: { marginTop: '8px' } }, t('write.requeued')) : null,
-        el('div', { class: 'study-nav', style: { marginTop: '18px' } },
-          !run.pending.correct
-            ? el('button', { type: 'button', class: 'btn', onclick: override }, icon('check'), t('quiz.override'))
-            : null,
-          el('button', { type: 'button', class: 'btn btn-primary btn-lg', onclick: advance },
-            t('common.continue'), icon('right'))));
+      body = typedAnswer(run.pending.typed);
+      feedback = answerFeedback({
+        correct: run.pending.correct,
+        result: run.pending.verdict,
+        expected: card.def,
+        lang: set.defLang,
+        note: run.pending.correct ? null : t('write.requeued'),
+        onOverride: override,
+        onContinue: advance,
+      });
     } else {
       const field = answerField({
         placeholder: t('write.answerPlaceholder'),
@@ -152,11 +141,6 @@ export function writeView(id) {
     mount(stage, prompt, body, feedback,
       el('p', { class: 'flashcard-foot', style: { textAlign: 'center', marginTop: '14px' } },
         tn('write.remaining', remaining)));
-
-    if (run.pending) {
-      const next = stage.querySelector('.study-nav .btn-primary');
-      if (next) next.focus();
-    }
   }
 
   bindKeys((event) => {

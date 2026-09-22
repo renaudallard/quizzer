@@ -133,7 +133,7 @@ const BANNERS = {
   wrong: { class: 'banner-bad', glyph: 'close', title: 'quiz.wrong' },
 };
 
-export function feedbackBanner(verdict, { expected, accent, lang } = {}) {
+function feedbackBanner(verdict, { expected, accent, lang } = {}) {
   const spec = BANNERS[verdict] || BANNERS.wrong;
   return el('div', { class: 'banner ' + spec.class, role: 'status', 'aria-live': 'polite' },
     icon(spec.glyph),
@@ -141,6 +141,38 @@ export function feedbackBanner(verdict, { expected, accent, lang } = {}) {
       el('strong', { class: 'banner-title' }, t(spec.title)),
       expected ? interpolateNode('quiz.expected', 'answer', cardText(expected, lang)) : null,
       accent && verdict !== 'correct' ? el('small', {}, ' ', t('quiz.accentNote')) : null));
+}
+
+/* The typed answer, kept on screen read only once it has been graded. */
+export function typedAnswer(value) {
+  return el('div', { class: 'answer-form' },
+    el('input', {
+      type: 'text', class: 'input', readonly: true,
+      value, 'aria-label': t('write.answerPlaceholder'),
+    }));
+}
+
+/* What follows an answer in quiz and write: the verdict, the expected answer
+   when it was missed, an optional note, the "I had it" claim when one is
+   offered, and Continue, which takes the focus. result is what grade()
+   returned for a typed answer. */
+export function answerFeedback({ correct, result, expected, lang, note, onOverride, onContinue }) {
+  const verdict = correct ? (result && result.verdict === 'almost' ? 'almost' : 'correct') : 'wrong';
+  const next = el('button', { type: 'button', class: 'btn btn-primary btn-lg', onclick: onContinue },
+    t('common.continue'), icon('right'));
+  queueMicrotask(() => next.focus());
+  return el('div', {},
+    feedbackBanner(verdict, {
+      expected: verdict === 'correct' ? null : expected,
+      accent: Boolean(result && result.accent),
+      lang,
+    }),
+    note ? el('p', { class: 'field-hint', style: { marginTop: '8px' } }, note) : null,
+    el('div', { class: 'study-nav', style: { marginTop: '18px' } },
+      onOverride && !correct
+        ? el('button', { type: 'button', class: 'btn', onclick: onOverride }, icon('check'), t('quiz.override'))
+        : null,
+      next));
 }
 
 export function summaryPanel({ score, scoreLabel, title, body, actions, missed }) {
