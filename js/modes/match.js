@@ -5,6 +5,7 @@ import { el, icon, mount, toast } from '../dom.js';
 import { t, tn } from '../i18n/index.js';
 import * as store from '../store.js';
 import { shuffle, sample, formatDuration } from '../util.js';
+import { normalize } from '../text.js';
 import { studyShell, summaryPanel, saveSession, cardText } from '../study.js';
 import { onCleanup, setBusy } from '../router.js';
 import { notFoundPanel, messagePanel } from '../views/shared.js';
@@ -48,10 +49,13 @@ export function matchView(id) {
 
   function begin() {
     const pairs = sample(set.cards, Math.min(PAIRS_PER_ROUND, set.cards.length));
-    const tiles = shuffle(pairs.flatMap((card) => ([
-      { key: card.id + ':term', cardId: card.id, side: 'term', text: card.term, lang: set.termLang },
-      { key: card.id + ':def', cardId: card.id, side: 'def', text: card.def, lang: set.defLang },
-    ])));
+    const tiles = shuffle(pairs.flatMap((card) => {
+      const meaning = { term: normalize(card.term), def: normalize(card.def) };
+      return [
+        { key: card.id + ':term', side: 'term', text: card.term, lang: set.termLang, ...meaning },
+        { key: card.id + ':def', side: 'def', text: card.def, lang: set.defLang, ...meaning },
+      ];
+    }));
     run = { pairs, tiles, matched: new Set(), picked: null, locked: false, startedAt: 0, endedAt: 0 };
     timerLabel.textContent = '0:00';
     paint();
@@ -78,7 +82,11 @@ export function matchView(id) {
     }
 
     const first = run.picked;
-    const paired = first.tile.cardId === tile.cardId && first.tile.side !== tile.side;
+    /* Tiles pair on what they say, not on the card they came from: two cards
+       that both mean "bonjour" put two identical tiles on the board, and
+       either one is right. */
+    const paired = first.tile.side !== tile.side
+      && (first.tile.term === tile.term || first.tile.def === tile.def);
     run.picked = null;
 
     if (paired) {

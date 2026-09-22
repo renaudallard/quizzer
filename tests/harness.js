@@ -243,8 +243,8 @@ async function run() {
     let pairs = 0;
     for (const tile of tiles) {
       const answer = answerOf.get(tile.textContent);
-      const partner = answer && tiles.find((other) => other.textContent === answer);
-      if (!partner) continue;
+      const partner = answer && tiles.find((other) => other.textContent === answer && !other.disabled);
+      if (!partner || tile.disabled) continue;
       tile.click();
       partner.click();
       if (tile.dataset.state === 'hit') pairs++;
