@@ -261,9 +261,14 @@ export function recordAnswer(setId, cardId, correct) {
   const card = set && set.cards.find((entry) => entry.id === cardId);
   if (!card) return null;
 
-  const next = schedule(card.box, correct);
-  card.box = next.box;
-  card.due = next.due;
+  /* Only a card that is due climbs: getting it right again before then is
+     practice, which must not push it to a longer interval. A miss always
+     counts, since forgetting is news whenever it happens. */
+  if (!correct || isDue(card)) {
+    const next = schedule(card.box, correct);
+    card.box = next.box;
+    card.due = next.due;
+  }
   card.seen += 1;
   if (correct) card.correct += 1;
   else card.lapses += 1;

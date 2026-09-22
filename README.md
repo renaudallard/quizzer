@@ -41,8 +41,11 @@ it would be dishonest to let it move cards up the ladder.
 ### Spaced repetition
 
 Six Leitner boxes with intervals of 0, 1, 3, 7, 16 and 35 days. A correct
-answer moves a card up one box, a miss sends it back to box 0 and therefore
-back into today's queue. New cards are always due.
+answer on a card that is due moves it up one box, a miss sends it back to
+box 0 and therefore back into today's queue. New cards are always due. A
+right answer given before the card is due counts in the statistics but leaves
+the schedule alone, so a few quizzes in one sitting cannot push a card to the
+35 day box.
 
 The four mastery levels shown in the interface fold those boxes together:
 box 0 is "à apprendre", boxes 1 and 2 "en cours", boxes 3 and 4

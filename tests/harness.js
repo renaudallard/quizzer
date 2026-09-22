@@ -112,6 +112,8 @@ async function run() {
     store.recordAnswer(set.id, card.id, true);
     assert(card.box === 1, 'boîte ' + card.box);
     assert(!srs.isDue(card), 'ne doit plus être due après une réussite');
+    store.recordAnswer(set.id, card.id, true);
+    assert(card.box === 1, 'une réussite avant l’échéance ne doit pas la faire monter');
     store.recordAnswer(set.id, card.id, false);
     assert(card.box === 0 && srs.isDue(card), 'un échec doit la ramener aujourd’hui');
     return 'vues=' + card.seen + ' oublis=' + card.lapses;
