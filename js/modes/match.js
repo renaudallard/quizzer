@@ -16,7 +16,9 @@ const MISS_FLASH_MS = 550;
 export function matchView(id) {
   const set = store.getSet(id);
   if (!set) return notFoundPanel(t('set.notFound'));
-  if (set.cards.length < 4) return messagePanel(t('mode.match'), t('match.tooFew'), '#/set/' + set.id);
+  if (set.cards.length < 4) {
+    return messagePanel(t('mode.match'), t('match.tooFew'), { href: '#/set/' + set.id, label: t('common.back') });
+  }
 
   const shell = studyShell({ set, modeKey: 'mode.match' });
   const stage = el('div');

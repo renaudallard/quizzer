@@ -34,13 +34,15 @@ export function shareControls(getSet, { label, primary = false }) {
   return { button, field, notice };
 }
 
-export function messagePanel(title, message, backHref = '#/') {
+/* The way out defaults to the home page; a caller sending the learner
+   elsewhere names that place too, so the button says where it goes. */
+export function messagePanel(title, message, back = { href: '#/', label: t('error.goHome') }) {
   return el('div', { class: 'container container-narrow' },
     el('div', { class: 'empty' },
       el('h2', {}, title),
       el('p', {}, message),
       el('div', { class: 'empty-actions' },
-        el('a', { class: 'btn btn-primary', href: backHref }, t('error.goHome')))));
+        el('a', { class: 'btn btn-primary', href: back.href }, back.label))));
 }
 
 export function notFoundPanel(message) {
