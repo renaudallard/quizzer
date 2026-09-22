@@ -1,7 +1,7 @@
 /* Leitner boxes. A card climbs one box per success and falls back to the first
    box on a miss, so the cards you keep forgetting keep coming back. */
 
-import { startOfDay, addDays } from './util.js';
+import { startOfDay, addDays, DAY_MS } from './util.js';
 
 export const INTERVALS_DAYS = [0, 1, 3, 7, 16, 35];
 export const MAX_BOX = INTERVALS_DAYS.length - 1;
@@ -20,12 +20,13 @@ export function dueCards(cards, now = Date.now()) {
 }
 
 /* Four reading levels for the interface, folded from the six boxes so the
-   mastery chart stays legible. */
+   mastery chart stays legible: box 0, boxes 1 and 2, boxes 3 and 4, box 5.
+   tierOf() is where that folding lives. */
 export const TIERS = [
-  { key: 'stats.tier.new', boxes: [0] },
-  { key: 'stats.tier.learning', boxes: [1, 2] },
-  { key: 'stats.tier.familiar', boxes: [3, 4] },
-  { key: 'stats.tier.mastered', boxes: [5] },
+  { key: 'stats.tier.new' },
+  { key: 'stats.tier.learning' },
+  { key: 'stats.tier.familiar' },
+  { key: 'stats.tier.mastered' },
 ];
 
 export function tierOf(card) {
@@ -37,7 +38,7 @@ export function tierOf(card) {
 }
 
 export function tierCounts(cards) {
-  const counts = [0, 0, 0, 0];
+  const counts = TIERS.map(() => 0);
   for (const card of cards) counts[tierOf(card)]++;
   return counts;
 }
@@ -50,6 +51,6 @@ export function masteryPct(cards) {
 }
 
 export function nextDueInDays(card, now = Date.now()) {
-  const days = Math.round(((card.due || 0) - startOfDay(now)) / 86400000);
+  const days = Math.round(((card.due || 0) - startOfDay(now)) / DAY_MS);
   return Math.max(0, days);
 }

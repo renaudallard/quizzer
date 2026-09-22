@@ -62,11 +62,3 @@ export function pct(part, total) {
   if (!total) return 0;
   return Math.round((part / total) * 100);
 }
-
-export function debounce(fn, wait) {
-  let timer = 0;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => fn(...args), wait);
-  };
-}

@@ -60,10 +60,3 @@ export function cardRow(card, { termLang, defLang } = {}, tools) {
 export function notFoundPanel(message) {
   return messagePanel(t('error.notFoundTitle'), message);
 }
-
-export function sectionTitle(title, sub) {
-  return el('div', { class: 'panel-head' },
-    el('div', {},
-      el('h2', {}, title),
-      sub ? el('p', { class: 'chart-sub', style: { margin: '0' } }, sub) : null));
-}

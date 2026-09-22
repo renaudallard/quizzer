@@ -13,7 +13,7 @@ export function cardText(text, lang) {
 
 /* Drops a node into a translated sentence where its placeholder sits, so the
    answer keeps its own lang attribute and the translator keeps the wording. */
-export function interpolateNode(key, name, node) {
+function interpolateNode(key, name, node) {
   const [before, after] = t(key, { [name]: '\u0000' }).split('\u0000');
   return el('span', {}, before, node, after || null);
 }
@@ -45,7 +45,7 @@ export function studyShell({ set, modeKey }) {
     counter.textContent = total ? t('progress.position', { current: done, total }) : '';
   }
 
-  return { root, body, setProgress, counter };
+  return { root, body, setProgress };
 }
 
 export function speakButton(text, lang) {
@@ -139,7 +139,7 @@ export function answerField({ placeholder, submitLabel, onSubmit, autoFocus = tr
   }, input, el('button', { type: 'submit', class: 'btn btn-primary' }, submitLabel));
 
   if (autoFocus) queueMicrotask(() => input.focus());
-  return { root: form, input, focus: () => input.focus(), value: () => input.value };
+  return { root: form, focus: () => input.focus() };
 }
 
 const BANNERS = {

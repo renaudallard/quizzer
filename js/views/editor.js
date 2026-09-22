@@ -4,7 +4,6 @@
 import { el, icon, toast, mount } from '../dom.js';
 import { t, tn, getLocale } from '../i18n/index.js';
 import * as store from '../store.js';
-import { uid } from '../util.js';
 import { parseDelimited } from '../io.js';
 import { navigate, onCleanup, setBusy } from '../router.js';
 import { notFoundPanel } from './shared.js';
@@ -15,7 +14,7 @@ const LANG_CODES = [
 ];
 
 function blankCard() {
-  return { id: uid(), term: '', def: '', hint: '', star: false, box: 0, due: 0, seen: 0, correct: 0, lapses: 0 };
+  return store.normalizeCard({});
 }
 
 function languageSelect(value, onChange) {

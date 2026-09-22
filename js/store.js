@@ -1,7 +1,7 @@
 /* The whole application state lives under one localStorage key and is written
    back on every change. The data is small, so there is nothing to optimise. */
 
-import { uid, dayKey, lastDayKeys, addDays } from './util.js';
+import { uid, dayKey, lastDayKeys, addDays, clamp } from './util.js';
 import { schedule, isDue, MAX_BOX } from './srs.js';
 
 export const STORAGE_KEY = 'quizzer.v1';
@@ -41,7 +41,7 @@ export function normalizeCard(raw) {
     def: str(raw && raw.def).trim(),
     hint: str(raw && raw.hint).trim(),
     star: Boolean(raw && raw.star),
-    box: Math.min(Math.max(Math.round(num(raw && raw.box)), 0), MAX_BOX),
+    box: clamp(Math.round(num(raw && raw.box)), 0, MAX_BOX),
     due: Math.max(0, Math.round(num(raw && raw.due))),
     seen: Math.max(0, Math.round(num(raw && raw.seen))),
     correct: Math.max(0, Math.round(num(raw && raw.correct))),
@@ -74,7 +74,7 @@ function normalizeSettings(raw, base = DEFAULT_SETTINGS) {
       if (raw[key] !== undefined && raw[key] !== null) settings[key] = raw[key];
     }
   }
-  settings.goal = Math.min(Math.max(Math.round(num(settings.goal, base.goal)), GOAL_RANGE.min), GOAL_RANGE.max);
+  settings.goal = clamp(Math.round(num(settings.goal, base.goal)), GOAL_RANGE.min, GOAL_RANGE.max);
   return settings;
 }
 
@@ -195,10 +195,6 @@ export function save() {
   }
   setUnsaved(!ok);
   return ok;
-}
-
-export function getState() {
-  return state;
 }
 
 export function getSettings() {

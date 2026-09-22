@@ -3,6 +3,7 @@
    scaling surprises. */
 
 import { el, clear } from './dom.js';
+import { clamp } from './util.js';
 import { t, formatNumber, formatPercent } from './i18n/index.js';
 
 let tooltip = null;
@@ -20,7 +21,7 @@ function showTip(text, x, y) {
   node.textContent = text;
   node.dataset.show = '1';
   const box = node.getBoundingClientRect();
-  const left = Math.min(Math.max(8, x - box.width / 2), window.innerWidth - box.width - 8);
+  const left = clamp(x - box.width / 2, 8, window.innerWidth - box.width - 8);
   const top = Math.max(8, y - box.height - 10);
   node.style.left = left + 'px';
   node.style.top = top + 'px';
@@ -54,7 +55,7 @@ export function statTile({ label, value, sub, href, title }) {
 }
 
 export function meter(percent) {
-  const value = Math.min(100, Math.max(0, percent));
+  const value = clamp(percent, 0, 100);
   return el('div', {
     class: 'meter', role: 'progressbar',
     'aria-valuenow': String(value), 'aria-valuemin': '0', 'aria-valuemax': '100',

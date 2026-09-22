@@ -16,7 +16,6 @@ function applyProps(node, props) {
   for (const [key, value] of Object.entries(props)) {
     if (value === null || value === undefined || value === false) continue;
     if (key === 'class') node.setAttribute('class', value);
-    else if (key === 'text') node.textContent = value;
     else if (key === 'dataset') Object.assign(node.dataset, value);
     else if (key === 'style') Object.assign(node.style, value);
     else if (key.startsWith('on')) node.addEventListener(key.slice(2), value);
@@ -39,12 +38,6 @@ export function svg(tag, props, ...children) {
   return node;
 }
 
-export function frag(...children) {
-  const f = document.createDocumentFragment();
-  append(f, children);
-  return f;
-}
-
 export function clear(node) {
   while (node.firstChild) node.removeChild(node.firstChild);
   return node;
@@ -59,7 +52,6 @@ export function mount(node, ...children) {
 /* Feather style outlines on a 24 unit grid. */
 const ICONS = {
   plus: 'M12 5v14M5 12h14',
-  search: 'M11 18a7 7 0 100-14 7 7 0 000 14zM20.5 20.5l-4.2-4.2',
   upload: 'M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 9l5-5 5 5M12 4v12',
   download: 'M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3',
   share: 'M4 12v7a2 2 0 002 2h12a2 2 0 002-2v-7M16 6l-4-4-4 4M12 2v13',
@@ -84,11 +76,8 @@ const ICONS = {
   quiz: 'M9 6h12M9 12h12M9 18h12M3.5 6l1.2 1.2L7 5M3.5 12l1.2 1.2L7 11M3.5 18l1.2 1.2L7 17',
   keyboard: 'M2 6h20v12H2zM6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h12',
   grid: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
-  sliders: 'M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6',
   alert: 'M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L14.7 3.9a2 2 0 00-3.4 0z',
   book: 'M4 19.5A2.5 2.5 0 016.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z',
-  clock: 'M12 22a10 10 0 100-20 10 10 0 000 20zM12 6v6l4 2',
-  flame: 'M12 23c4 0 7-2.7 7-6.5 0-4.5-4-6.5-4-10.5 0 0-3 2-3 5 0-1.5-1-3-2.5-4C9 10 5 11.5 5 16.5 5 20.3 8 23 12 23z',
   eye: 'M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8zM12 15a3 3 0 100-6 3 3 0 000 6z',
   up: 'M18 15l-6-6-6 6',
   down: 'M6 9l6 6 6-6',
