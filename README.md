@@ -147,10 +147,13 @@ If the stored JSON is ever unreadable, it is moved aside to
   settings in the file are applied at once. Importing the same backup twice
   changes nothing. Sessions whose set is missing, and entries that are not
   valid, are skipped. Older exports that only hold sets still import.
-- **CSV** is quote aware on both sides, so a definition may contain a comma. A
-  header row is recognised and skipped, in French, English or Dutch.
+- **CSV** is quote aware on both sides, so a definition may contain a comma,
+  a semicolon or a line break. A header row is recognised and skipped, in
+  French, English or Dutch.
 - **Pasted text** accepts tab, semicolon or comma as the separator, detected
-  from the first usable line. Lines starting with `#` are ignored.
+  from the first line that holds data, with quoted fields taken into account.
+  A line whose first character is `#` is a comment and is ignored; quote a
+  term that starts with `#` to keep it. The CSV export does this by itself.
 - **CSV files** open into the same box as pasted text, so the lines can be
   checked before the set is created. The file name becomes the title unless one
   was typed. A file that is not UTF-8 is read as Windows-1252, the encoding

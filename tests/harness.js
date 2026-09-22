@@ -151,6 +151,10 @@ async function run() {
     for (const header of ['terme;définition', 'term;definition', 'begrip;betekenis']) {
       assert(io.parseDelimited(header + '\nhond;chien').length === 1, 'en-tête pris pour une carte: ' + header);
     }
+    assert(io.parseDelimited('chat,"cat; kitty"\nchien,dog').length === 2, 'séparateur entre guillemets');
+    assert(io.parseDelimited('  # notes; x\nhola\tbonjour').length === 1, 'commentaire en retrait');
+    const hashed = { cards: [{ term: '#include', def: 'directive', hint: '' }] };
+    assert(io.parseDelimited(io.toCSV(hashed))[0]?.term === '#include', 'terme commençant par #');
     return 'ok';
   });
 

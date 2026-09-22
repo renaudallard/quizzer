@@ -18,16 +18,45 @@ export function slugify(name) {
     .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 48) || 'quizzer';
 }
 
+const DELIMITERS = ['\t', ';', ','];
+
+/* The separator is the first of tab, semicolon and comma found on the first
+   line that holds data. Quotes are read the way the parser reads them, a
+   quote opening a field after any of the three, so a quoted comma or
+   semicolon cannot mislead it, and comment lines are skipped the same way. */
 function detectDelimiter(text) {
-  const line = text.split(/\r?\n/).find((row) => row.trim() && !row.startsWith('#')) || '';
-  for (const candidate of ['\t', ';', ',']) {
-    if (line.includes(candidate)) return candidate;
+  let i = 0;
+  while (i < text.length) {
+    const found = new Set();
+    let quoted = false;
+    let fieldStart = true;
+    let data = false;
+    let comment = false;
+    for (; i < text.length; i++) {
+      const char = text[i];
+      if (quoted) {
+        if (char === QUOTE) {
+          if (text[i + 1] === QUOTE) i++;
+          else quoted = false;
+        }
+        continue;
+      }
+      if (char === '\n') { i++; break; }
+      if (comment || char === ' ' || char === '\r') continue;
+      if (!data && char === '#') { comment = true; continue; }
+      data = true;
+      if (DELIMITERS.includes(char)) { found.add(char); fieldStart = true; continue; }
+      if (char === QUOTE && fieldStart) quoted = true;
+      fieldStart = false;
+    }
+    if (data) return DELIMITERS.find((candidate) => found.has(candidate)) || '\t';
   }
   return '\t';
 }
 
 /* Quote aware reader, so a definition may legitimately hold the delimiter as
-   long as the field is quoted the way spreadsheets write it. */
+   long as the field is quoted the way spreadsheets write it. A line whose
+   first character, spaces aside, is an unquoted "#" is a comment. */
 function parseRows(text, delimiter) {
   const rows = [];
   let row = [];
@@ -43,7 +72,12 @@ function parseRows(text, delimiter) {
       } else field += char;
       continue;
     }
-    if (char === QUOTE && field === '') { quoted = true; continue; }
+    if (char === QUOTE && !field.trim()) { field = ''; quoted = true; continue; }
+    if (char === '#' && !row.length && !field.trim()) {
+      while (i < text.length && text[i] !== '\n') i++;
+      field = '';
+      continue;
+    }
     if (char === delimiter) { row.push(field); field = ''; continue; }
     if (char === '\n') { row.push(field); rows.push(row); row = []; field = ''; continue; }
     if (char === '\r') continue;
@@ -76,8 +110,7 @@ export async function readText(file) {
 }
 
 export function parseDelimited(text) {
-  const delimiter = detectDelimiter(text);
-  const rows = parseRows(text, delimiter).filter((cells) => !cells[0].trim().startsWith('#'));
+  const rows = parseRows(text, detectDelimiter(text));
   if (rows.length && looksLikeHeader(rows[0])) rows.shift();
   return rows
     .map((cells) => ({
@@ -88,9 +121,11 @@ export function parseDelimited(text) {
     .filter((card) => card.term && card.def);
 }
 
+/* Quoted when it holds a separator or a line break, or when it starts with
+   "#", which would otherwise read back as a comment. */
 function csvField(value) {
   const text = String(value ?? '');
-  return /["\n\r,]/.test(text) ? QUOTE + text.replace(/"/g, '""') + QUOTE : text;
+  return /["\n\r,;\t]|^\s*#/.test(text) ? QUOTE + text.replace(/"/g, '""') + QUOTE : text;
 }
 
 export function toCSV(set) {
