@@ -128,6 +128,7 @@ export default {
   "editor.bulkAdded.other": "{n} cards added.",
   "editor.needName": "Give this set a title.",
   "editor.needCard": "Add at least one complete card.",
+  "editor.incomplete": "Card {n} is missing its term or its definition. Fill it in or delete it before saving.",
   "editor.saved": "Set saved.",
   "editor.discard": "Discard the changes in progress?",
   "editor.removeCard": "Delete this card",

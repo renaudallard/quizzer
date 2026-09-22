@@ -66,7 +66,7 @@ export function editorView(id) {
       oninput: () => { card.term = term.value; markDirty(); },
     });
     const def = el('input', {
-      type: 'text', class: 'input', value: card.def,
+      type: 'text', class: 'input', value: card.def, dataset: { role: 'def' },
       placeholder: t('editor.defPlaceholder'), 'aria-label': t('common.definition'),
       lang: draft.defLang || null,
       oninput: () => { card.def = def.value; markDirty(); },
@@ -151,6 +151,23 @@ export function editorView(id) {
     if (!draft.title) {
       toast(t('editor.needName'));
       title.focus();
+      return;
+    }
+    /* Untouched blank rows are left out, but a card with one side missing, or
+       an existing card that was emptied, would be dropped with its progress:
+       say which one instead of saving without it. */
+    const stored = new Set(existing ? existing.cards.map((card) => card.id) : []);
+    const incomplete = draft.cards.findIndex((card) => {
+      const term = card.term.trim();
+      const def = card.def.trim();
+      if (term && def) return false;
+      return Boolean(term || def || card.hint.trim() || stored.has(card.id));
+    });
+    if (incomplete >= 0) {
+      toast(t('editor.incomplete', { n: incomplete + 1 }));
+      const row = list.querySelectorAll('.editor-row')[incomplete];
+      const side = draft.cards[incomplete].term.trim() ? 'def' : 'term';
+      if (row) row.querySelector('input[data-role="' + side + '"]').focus();
       return;
     }
     const cards = draft.cards.filter((card) => card.term.trim() && card.def.trim());

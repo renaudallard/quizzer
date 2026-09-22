@@ -59,6 +59,13 @@ whole number from 5 to 200 is accepted; other values are rounded or brought
 into that range, and emptying the field keeps the current goal. Once the goal
 is reached the tile stops at the goal and its caption gives the real count.
 
+### Editing sets
+
+Blank rows are left out when a set is saved. A card with only one side filled
+in, or an existing card that has been emptied, stops the save with a message
+naming it, so no card and none of its progress disappears by accident; the
+bin button next to a card is the way to delete it.
+
 ### Grading written answers
 
 Answers are compared after case folding and punctuation stripping, French

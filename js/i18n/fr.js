@@ -128,6 +128,7 @@ export default {
   "editor.bulkAdded.other": "{n} cartes ajoutées.",
   "editor.needName": "Donnez un titre à ce jeu.",
   "editor.needCard": "Ajoutez au moins une carte complète.",
+  "editor.incomplete": "La carte {n} n’a pas de terme ou pas de définition. Complétez-la ou supprimez-la avant d’enregistrer.",
   "editor.saved": "Jeu enregistré.",
   "editor.discard": "Abandonner les modifications en cours ?",
   "editor.removeCard": "Supprimer cette carte",

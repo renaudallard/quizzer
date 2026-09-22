@@ -128,6 +128,7 @@ export default {
   "editor.bulkAdded.other": "{n} kaarten toegevoegd.",
   "editor.needName": "Geef deze set een titel.",
   "editor.needCard": "Voeg minstens één volledige kaart toe.",
+  "editor.incomplete": "Kaart {n} mist een term of een definitie. Vul ze aan of verwijder ze voordat je opslaat.",
   "editor.saved": "Set opgeslagen.",
   "editor.discard": "De huidige wijzigingen verwerpen?",
   "editor.removeCard": "Deze kaart verwijderen",
