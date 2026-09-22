@@ -217,7 +217,8 @@ instead, change the one line in `setupLocale` in `js/app.js` that picks
 ## Accessibility and theming
 
 Light and dark are separate token sets, not an automatic inversion, and both
-follow the OS unless the top bar toggle overrides it. Charts carry a table
+follow the OS unless the top bar toggle overrides it. Every text colour meets
+the WCAG AA ratio of 4.5:1 against the surfaces it sits on, in both themes. Charts carry a table
 view alongside the picture, tooltips reach the keyboard as well as the
 pointer, and the mastery ramp was checked for lightness ordering, step
 separation and contrast against both surfaces. Animations step aside under
