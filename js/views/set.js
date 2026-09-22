@@ -27,7 +27,7 @@ function modeCard(set, mode) {
     el('span', { class: 'mode-icon' }, icon(mode.glyph)),
     el('span', {},
       el('strong', {}, t(mode.key)),
-      el('small', {}, available ? t(mode.key + '.desc') : t('set.needCards', { n: mode.min }))));
+      el('small', {}, available ? t(mode.key + '.desc') : tn('set.needCards', mode.min))));
 }
 
 export function setView(id) {

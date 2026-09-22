@@ -2,7 +2,7 @@
    spaced repetition schedule is left untouched. */
 
 import { el, icon, toast, mount } from '../dom.js';
-import { t } from '../i18n/index.js';
+import { t, tn } from '../i18n/index.js';
 import * as store from '../store.js';
 import { shuffle } from '../util.js';
 import { studyShell, flipCard, summaryPanel, bindKeys, speak } from '../study.js';
@@ -75,7 +75,7 @@ export function flashcardsView(id) {
       shell.setProgress(order.length, order.length);
       mount(stage, summaryPanel({
         title: t('flashcards.doneTitle'),
-        body: t('flashcards.doneBody', { n: order.length }),
+        body: tn('flashcards.doneBody', order.length),
         actions: [
           el('button', { type: 'button', class: 'btn btn-primary', onclick: () => { state.index = 0; paint(); } },
             icon('restart'), t('common.restart')),

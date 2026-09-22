@@ -197,7 +197,7 @@ export function quizView(id) {
 
     mount(stage, summaryPanel({
       score: formatPercent(pct(correct, total)),
-      scoreLabel: t('quiz.resultBody', { correct, total }),
+      scoreLabel: tn('quiz.resultBody', correct, { total }),
       title: t('quiz.resultTitle'),
       actions: [
         again.length

@@ -84,7 +84,8 @@ export default {
   "set.share": "Partager",
   "set.deleteConfirm": "Supprimer « {name} » et toute sa progression ?",
   "set.deleted": "Jeu supprimé.",
-  "set.needCards": "Ajoutez au moins {n} cartes pour ce mode.",
+  "set.needCards.one": "Ajoutez au moins {n} carte pour ce mode.",
+  "set.needCards.other": "Ajoutez au moins {n} cartes pour ce mode.",
   "set.dueNow.one": "{n} carte à réviser",
   "set.dueNow.other": "{n} cartes à réviser",
   "set.upToDate": "Révisions à jour",
@@ -141,7 +142,8 @@ export default {
   "flashcards.unstar": "Ne plus marquer comme difficile",
   "flashcards.noStarred": "Aucune carte marquée comme difficile.",
   "flashcards.doneTitle": "Jeu parcouru",
-  "flashcards.doneBody": "Vous avez vu les {n} cartes.",
+  "flashcards.doneBody.one": "Vous avez vu {n} carte.",
+  "flashcards.doneBody.other": "Vous avez vu les {n} cartes.",
 
   /* Révision espacée */
   "review.emptyTitle": "Rien à réviser aujourd’hui",
@@ -152,7 +154,8 @@ export default {
   "review.good": "Je savais",
   "review.nextDue": "Prochaine révision {when}",
   "review.doneTitle": "Révision terminée",
-  "review.doneBody": "{good} cartes sur {total} étaient acquises.",
+  "review.doneBody.one": "{n} carte sur {total} était acquise.",
+  "review.doneBody.other": "{n} cartes sur {total} étaient acquises.",
   "review.remaining.one": "{n} carte restante",
   "review.remaining.other": "{n} cartes restantes",
 
@@ -183,7 +186,8 @@ export default {
   "quiz.accentNote": "Les accents comptent ici.",
   "quiz.override": "Je l’avais",
   "quiz.resultTitle": "Résultat",
-  "quiz.resultBody": "{correct} bonnes réponses sur {total}.",
+  "quiz.resultBody.one": "{n} bonne réponse sur {total}.",
+  "quiz.resultBody.other": "{n} bonnes réponses sur {total}.",
   "quiz.missed": "À retravailler",
   "quiz.retryMissed": "Rejouer les erreurs",
 
@@ -196,7 +200,11 @@ export default {
   "write.remaining.one": "{n} carte à valider",
   "write.remaining.other": "{n} cartes à valider",
   "write.doneTitle": "Série terminée",
-  "write.doneBody": "{total} cartes validées, {mistakes} erreurs en chemin.",
+  "write.doneBody": "{cleared}, {mistakes}.",
+  "write.doneCleared.one": "{n} carte validée",
+  "write.doneCleared.other": "{n} cartes validées",
+  "write.doneMistakes.one": "{n} erreur en chemin",
+  "write.doneMistakes.other": "{n} erreurs en chemin",
 
   /* Associer */
   "match.intro": "Reliez chaque terme à sa définition. Le chronomètre démarre au premier clic.",
@@ -210,7 +218,8 @@ export default {
   /* Statistiques */
   "stats.title": "Statistiques",
   "stats.masteryTitle": "Niveau de maîtrise",
-  "stats.masterySub": "Répartition des {n} cartes du jeu",
+  "stats.masterySub.one": "Répartition de {n} carte du jeu",
+  "stats.masterySub.other": "Répartition des {n} cartes du jeu",
   "stats.tier.new": "À apprendre",
   "stats.tier.learning": "En cours",
   "stats.tier.familiar": "Presque acquis",

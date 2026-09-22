@@ -84,7 +84,8 @@ export default {
   "set.share": "Share",
   "set.deleteConfirm": "Delete “{name}” and all of its progress?",
   "set.deleted": "Set deleted.",
-  "set.needCards": "Add at least {n} cards to use this mode.",
+  "set.needCards.one": "Add at least {n} card to use this mode.",
+  "set.needCards.other": "Add at least {n} cards to use this mode.",
   "set.dueNow.one": "{n} card to review",
   "set.dueNow.other": "{n} cards to review",
   "set.upToDate": "Reviews up to date",
@@ -141,7 +142,8 @@ export default {
   "flashcards.unstar": "Stop marking as hard",
   "flashcards.noStarred": "No card is marked as hard.",
   "flashcards.doneTitle": "Set finished",
-  "flashcards.doneBody": "You went through all {n} cards.",
+  "flashcards.doneBody.one": "You went through {n} card.",
+  "flashcards.doneBody.other": "You went through all {n} cards.",
 
   /* Spaced review */
   "review.emptyTitle": "Nothing due today",
@@ -152,7 +154,8 @@ export default {
   "review.good": "I knew it",
   "review.nextDue": "Next review {when}",
   "review.doneTitle": "Review finished",
-  "review.doneBody": "{good} cards out of {total} were solid.",
+  "review.doneBody.one": "{n} card out of {total} was solid.",
+  "review.doneBody.other": "{n} cards out of {total} were solid.",
   "review.remaining.one": "{n} card left",
   "review.remaining.other": "{n} cards left",
 
@@ -183,7 +186,8 @@ export default {
   "quiz.accentNote": "Accents count here.",
   "quiz.override": "I had it",
   "quiz.resultTitle": "Result",
-  "quiz.resultBody": "{correct} right out of {total}.",
+  "quiz.resultBody.one": "{n} right out of {total}.",
+  "quiz.resultBody.other": "{n} right out of {total}.",
   "quiz.missed": "Worth another look",
   "quiz.retryMissed": "Replay the misses",
 
@@ -196,7 +200,11 @@ export default {
   "write.remaining.one": "{n} card to clear",
   "write.remaining.other": "{n} cards to clear",
   "write.doneTitle": "Round finished",
-  "write.doneBody": "{total} cards cleared, {mistakes} mistakes along the way.",
+  "write.doneBody": "{cleared}, {mistakes}.",
+  "write.doneCleared.one": "{n} card cleared",
+  "write.doneCleared.other": "{n} cards cleared",
+  "write.doneMistakes.one": "{n} mistake along the way",
+  "write.doneMistakes.other": "{n} mistakes along the way",
 
   /* Match */
   "match.intro": "Pair every term with its definition. The clock starts on your first click.",
@@ -210,7 +218,8 @@ export default {
   /* Statistics */
   "stats.title": "Statistics",
   "stats.masteryTitle": "Mastery level",
-  "stats.masterySub": "How the {n} cards in this set are spread",
+  "stats.masterySub.one": "How the {n} card in this set is spread",
+  "stats.masterySub.other": "How the {n} cards in this set are spread",
   "stats.tier.new": "To learn",
   "stats.tier.learning": "Learning",
   "stats.tier.familiar": "Nearly there",

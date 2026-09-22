@@ -81,7 +81,7 @@ export function reviewView(id) {
     run = null;
     mount(stage, summaryPanel({
       score: firstTry + '/' + total,
-      scoreLabel: t('review.doneBody', { good: firstTry, total }),
+      scoreLabel: tn('review.doneBody', firstTry, { total }),
       title: t('review.doneTitle'),
       actions: [
         el('a', { class: 'btn btn-primary', href: '#/set/' + set.id }, t('common.back')),

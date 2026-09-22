@@ -60,7 +60,7 @@ export function statsView(id) {
       : null);
 
   const mastery = el('section', { class: 'panel', style: { marginBottom: '20px' } },
-    figure({ title: t('stats.masteryTitle'), sub: t('stats.masterySub', { n: set.cards.length }) },
+    figure({ title: t('stats.masteryTitle'), sub: tn('stats.masterySub', set.cards.length) },
       masteryChart(counts, labels),
       tableView([t('stats.col.level'), t('stats.col.count')],
         labels.map((label, i) => [label, String(counts[i])]))));

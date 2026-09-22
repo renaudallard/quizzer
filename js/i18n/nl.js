@@ -84,7 +84,8 @@ export default {
   "set.share": "Delen",
   "set.deleteConfirm": "“{name}” en alle voortgang verwijderen?",
   "set.deleted": "Set verwijderd.",
-  "set.needCards": "Voeg minstens {n} kaarten toe om deze modus te gebruiken.",
+  "set.needCards.one": "Voeg minstens {n} kaart toe om deze modus te gebruiken.",
+  "set.needCards.other": "Voeg minstens {n} kaarten toe om deze modus te gebruiken.",
   "set.dueNow.one": "{n} kaart te herhalen",
   "set.dueNow.other": "{n} kaarten te herhalen",
   "set.upToDate": "Alles herhaald",
@@ -141,7 +142,8 @@ export default {
   "flashcards.unstar": "Niet meer als moeilijk markeren",
   "flashcards.noStarred": "Er zijn geen kaarten als moeilijk gemarkeerd.",
   "flashcards.doneTitle": "Set doorgenomen",
-  "flashcards.doneBody": "Je hebt alle {n} kaarten gezien.",
+  "flashcards.doneBody.one": "Je hebt {n} kaart gezien.",
+  "flashcards.doneBody.other": "Je hebt alle {n} kaarten gezien.",
 
   /* Gespreid herhalen */
   "review.emptyTitle": "Niets te herhalen vandaag",
@@ -152,7 +154,8 @@ export default {
   "review.good": "Ik wist het",
   "review.nextDue": "Volgende herhaling {when}",
   "review.doneTitle": "Herhaling afgerond",
-  "review.doneBody": "{good} van de {total} kaarten zaten erin.",
+  "review.doneBody.one": "{n} van de {total} kaarten zat erin.",
+  "review.doneBody.other": "{n} van de {total} kaarten zaten erin.",
   "review.remaining.one": "Nog {n} kaart",
   "review.remaining.other": "Nog {n} kaarten",
 
@@ -183,7 +186,8 @@ export default {
   "quiz.accentNote": "Accenten tellen hier mee.",
   "quiz.override": "Ik had het goed",
   "quiz.resultTitle": "Resultaat",
-  "quiz.resultBody": "{correct} van de {total} goed.",
+  "quiz.resultBody.one": "{n} van de {total} goed.",
+  "quiz.resultBody.other": "{n} van de {total} goed.",
   "quiz.missed": "Nog eens bekijken",
   "quiz.retryMissed": "Fouten opnieuw oefenen",
 
@@ -196,7 +200,11 @@ export default {
   "write.remaining.one": "Nog {n} kaart te doen",
   "write.remaining.other": "Nog {n} kaarten te doen",
   "write.doneTitle": "Ronde afgerond",
-  "write.doneBody": "{total} kaarten goed, {mistakes} fouten onderweg.",
+  "write.doneBody": "{cleared}, {mistakes}.",
+  "write.doneCleared.one": "{n} kaart goed",
+  "write.doneCleared.other": "{n} kaarten goed",
+  "write.doneMistakes.one": "{n} fout onderweg",
+  "write.doneMistakes.other": "{n} fouten onderweg",
 
   /* Koppelen */
   "match.intro": "Koppel elke term aan de bijbehorende definitie. De klok start bij je eerste klik.",
@@ -210,7 +218,8 @@ export default {
   /* Statistieken */
   "stats.title": "Statistieken",
   "stats.masteryTitle": "Beheersingsniveau",
-  "stats.masterySub": "Hoe de {n} kaarten van deze set verdeeld zijn",
+  "stats.masterySub.one": "Hoe de {n} kaart van deze set verdeeld is",
+  "stats.masterySub.other": "Hoe de {n} kaarten van deze set verdeeld zijn",
   "stats.tier.new": "Te leren",
   "stats.tier.learning": "Aan het leren",
   "stats.tier.familiar": "Bijna beheerst",

@@ -91,7 +91,10 @@ export function writeView(id) {
     run = null;
     mount(stage, summaryPanel({
       score: firstTry + '/' + total,
-      scoreLabel: t('write.doneBody', { total, mistakes }),
+      scoreLabel: t('write.doneBody', {
+        cleared: tn('write.doneCleared', total),
+        mistakes: tn('write.doneMistakes', mistakes),
+      }),
       title: t('write.doneTitle'),
       actions: [
         el('button', { type: 'button', class: 'btn btn-primary', onclick: begin }, icon('restart'), t('common.restart')),
