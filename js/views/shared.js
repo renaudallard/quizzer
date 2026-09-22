@@ -1,7 +1,38 @@
 /* Panels reused by several views. */
 
-import { el } from '../dom.js';
+import { el, icon, toast } from '../dom.js';
 import { t } from '../i18n/index.js';
+import { shareUrl, copyText } from '../io.js';
+
+/* Some messaging apps cut links around this length. */
+const LONG_LINK = 8000;
+
+/* The share button, the field that shows the link when the clipboard refuses
+   it, and the note for very long links. The link is built on click from
+   getSet(), so it carries the set as it is then. The copy result goes to the
+   toast and the length warning to the note, so neither hides the other. */
+export function shareControls(getSet, { label, primary = false }) {
+  const field = el('input', {
+    type: 'text', class: 'input', readonly: true, hidden: true, 'aria-label': t('transfer.shareTitle'),
+  });
+  const notice = el('p', { class: 'field-hint', hidden: true }, t('transfer.shareLong'));
+  const button = el('button', { type: 'button', class: primary ? 'btn btn-primary' : 'btn' }, icon('share'), label);
+  button.addEventListener('click', async () => {
+    const set = getSet();
+    if (!set) return;
+    const url = shareUrl(set);
+    notice.hidden = url.length <= LONG_LINK;
+    field.value = url;
+    if (await copyText(url)) {
+      toast(t('transfer.shareCopied'));
+    } else {
+      field.hidden = false;
+      field.select();
+      toast(t('transfer.shareFailed'));
+    }
+  });
+  return { button, field, notice };
+}
 
 export function messagePanel(title, message, backHref = '#/') {
   return el('div', { class: 'container container-narrow' },

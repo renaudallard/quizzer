@@ -5,11 +5,10 @@ import { el, icon, toast } from '../dom.js';
 import { t, tn, setLocale } from '../i18n/index.js';
 import * as store from '../store.js';
 import { getTheme, setTheme } from '../theme.js';
-import { download, parseDelimited, readText, shareUrl, copyText, decodeShare } from '../io.js';
+import { download, parseDelimited, readText, decodeShare } from '../io.js';
 import { navigate, setBusy } from '../router.js';
-import { notFoundPanel } from './shared.js';
+import { notFoundPanel, shareControls } from './shared.js';
 
-const LONG_LINK = 8000;
 
 function exportPanel() {
   const sets = store.getSets();
@@ -114,32 +113,15 @@ function sharePanel() {
 
   const picker = el('select', { class: 'select' },
     sets.map((set) => el('option', { value: set.id }, set.title)));
-  const field = el('input', { type: 'text', class: 'input', readonly: true, hidden: true });
-  const notice = el('p', { class: 'field-hint', hidden: true }, t('transfer.shareLong'));
-
-  const copy = el('button', { type: 'button', class: 'btn btn-primary' }, icon('share'), t('transfer.shareCopy'));
-  copy.addEventListener('click', async () => {
-    const set = store.getSet(picker.value);
-    if (!set) return;
-    const url = shareUrl(set);
-    notice.hidden = url.length <= LONG_LINK;
-    field.value = url;
-    if (await copyText(url)) {
-      toast(t('transfer.shareCopied'));
-    } else {
-      field.hidden = false;
-      field.select();
-      toast(t('transfer.shareFailed'));
-    }
-  });
+  const share = shareControls(() => store.getSet(picker.value), { label: t('transfer.shareCopy'), primary: true });
 
   return el('section', { class: 'panel stack' },
     el('h2', {}, t('transfer.shareTitle')),
     el('p', { class: 'field-hint' }, t('transfer.shareBody')),
     el('label', { class: 'field' }, el('span', {}, t('transfer.sharePick')), picker),
-    el('div', { class: 'row' }, copy),
-    notice,
-    field);
+    el('div', { class: 'row' }, share.button),
+    share.notice,
+    share.field);
 }
 
 export function transferView() {

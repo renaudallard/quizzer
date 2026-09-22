@@ -5,9 +5,9 @@ import { t, tn } from '../i18n/index.js';
 import * as store from '../store.js';
 import { dueCards, masteryPct } from '../srs.js';
 import { meter } from '../chart.js';
-import { download, slugify, toCSV, shareUrl, copyText } from '../io.js';
+import { download, slugify, toCSV } from '../io.js';
 import { navigate } from '../router.js';
-import { notFoundPanel } from './shared.js';
+import { notFoundPanel, shareControls } from './shared.js';
 
 const MODES = [
   { path: 'cards', key: 'mode.flashcards', glyph: 'cards', min: 1 },
@@ -40,32 +40,13 @@ function cardRow(set, card) {
       card.star ? el('span', { class: 'chip', title: t('flashcards.star') }, icon('star')) : null));
 }
 
-function shareRow(set) {
-  const url = shareUrl(set);
-  const field = el('input', { type: 'text', class: 'input', readonly: true, value: url, hidden: true });
-  const button = el('button', { type: 'button', class: 'btn' }, icon('share'), t('set.share'));
-
-  button.addEventListener('click', async () => {
-    if (await copyText(url)) {
-      toast(t('transfer.shareCopied'));
-    } else {
-      field.hidden = false;
-      field.select();
-      toast(t('transfer.shareFailed'));
-    }
-    if (url.length > 8000) toast(t('transfer.shareLong'));
-  });
-
-  return { button, field };
-}
-
 export function setView(id) {
   const set = store.getSet(id);
   if (!set) return notFoundPanel(t('set.notFound'));
 
   const due = dueCards(set.cards).length;
   const mastery = masteryPct(set.cards);
-  const share = shareRow(set);
+  const share = shareControls(() => store.getSet(set.id), { label: t('set.share') });
 
   const remove = el('button', { type: 'button', class: 'btn btn-danger' }, icon('trash'), t('common.delete'));
   remove.addEventListener('click', () => {
@@ -95,6 +76,7 @@ export function setView(id) {
         exportCsv,
         el('button', { type: 'button', class: 'btn', onclick: () => window.print() }, icon('print'), t('common.print')),
         remove),
+      share.notice,
       share.field),
 
     el('section', { class: 'mode-grid' }, MODES.map((mode) => modeCard(set, mode))),
