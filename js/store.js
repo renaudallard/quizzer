@@ -115,7 +115,17 @@ function normalizeState(raw) {
 
 let state = emptyState();
 
+/* Set when the stored payload could neither be read nor copied aside: saving
+   over it would destroy the only copy, so nothing is written this visit. */
+let locked = false;
+
+function readable(parsed) {
+  return parsed !== null && typeof parsed === 'object' && !Array.isArray(parsed)
+    && (parsed.sets === undefined || Array.isArray(parsed.sets));
+}
+
 export function load() {
+  locked = false;
   let raw = null;
   try {
     raw = localStorage.getItem(KEY);
@@ -127,17 +137,28 @@ export function load() {
     state = emptyState();
     return state;
   }
+  let parsed;
   try {
-    state = normalizeState(JSON.parse(raw));
+    parsed = JSON.parse(raw);
   } catch {
-    /* Keep the unreadable payload aside rather than overwrite it blindly. */
-    try { localStorage.setItem(SALVAGE_KEY, raw); } catch { /* storage full */ }
-    state = emptyState();
+    parsed = undefined;
   }
+  if (readable(parsed)) {
+    state = normalizeState(parsed);
+    return state;
+  }
+  /* Keep a payload we cannot read aside rather than overwrite it blindly. */
+  try {
+    localStorage.setItem(SALVAGE_KEY, raw);
+  } catch {
+    locked = true;
+  }
+  state = emptyState();
   return state;
 }
 
 export function save() {
+  if (locked) return false;
   try {
     localStorage.setItem(KEY, JSON.stringify(state));
     return true;
@@ -352,15 +373,22 @@ export function importPayload(payload) {
   return count;
 }
 
+/* Erasing everything includes the copy of any payload that was set aside. */
 export function resetAll() {
   state = emptyState();
-  try { localStorage.removeItem(KEY); } catch { /* nothing to clean */ }
+  locked = false;
+  try {
+    localStorage.removeItem(KEY);
+    localStorage.removeItem(SALVAGE_KEY);
+  } catch {
+    /* nothing to clean */
+  }
   return state;
 }
 
 export function storageBytes() {
   try {
-    return new Blob([localStorage.getItem(KEY) || '']).size;
+    return new Blob([localStorage.getItem(KEY) || '', localStorage.getItem(SALVAGE_KEY) || '']).size;
   } catch {
     return 0;
   }

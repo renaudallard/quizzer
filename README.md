@@ -135,8 +135,11 @@ Everything lives under a single `localStorage` key, `quizzer.v1`, on the
 machine that runs the browser. Nothing is sent anywhere. Clearing the site
 data clears the sets, so save a backup from time to time if the work matters.
 
-If the stored JSON is ever unreadable, it is moved aside to
+If the stored data is ever unreadable, it is copied aside to
 `quizzer.v1.unreadable` rather than overwritten, and the app starts empty.
+When the browser has no room left for that copy, nothing is saved during the
+visit, so the original is never lost. "Tout effacer" removes the copy too, and
+the storage figure in the settings counts it.
 
 ### Import and export
 
