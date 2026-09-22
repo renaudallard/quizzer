@@ -76,15 +76,19 @@ function setsSection(sets) {
     grid);
 }
 
+function samplesButton() {
+  const button = el('button', { type: 'button', class: 'btn' }, icon('book'), t('home.cta.samples'));
+  button.addEventListener('click', () => loadSamples(button));
+  return button;
+}
+
 function emptyState() {
-  const samples = el('button', { type: 'button', class: 'btn' }, icon('book'), t('home.cta.samples'));
-  samples.addEventListener('click', () => loadSamples(samples));
   return el('div', { class: 'empty' },
     el('h2', {}, t('home.empty.title')),
     el('p', {}, t('home.empty.body')),
     el('div', { class: 'empty-actions' },
       el('a', { class: 'btn btn-primary', href: '#/new' }, icon('plus'), t('home.cta.create')),
-      samples));
+      samplesButton()));
 }
 
 export function homeView() {
@@ -97,26 +101,23 @@ export function homeView() {
     .map((set) => ({ set, due: dueCards(set.cards).length }))
     .sort((a, b) => b.due - a.due)[0];
 
-  const samples = el('button', { type: 'button', class: 'btn' }, icon('book'), t('home.cta.samples'));
-  samples.addEventListener('click', () => loadSamples(samples));
-
+  /* With no set yet the empty state below carries the actions, so the hero
+     does not offer them a second time. */
   const actions = [];
   if (busiest && busiest.due) {
     actions.push(el('a', { class: 'btn btn-primary btn-lg', href: '#/set/' + busiest.set.id + '/review' },
       icon('repeat'), t('home.cta.review')));
     actions.push(el('a', { class: 'btn btn-lg', href: '#/new' }, icon('plus'), t('home.cta.create')));
-  } else {
+  } else if (sets.length) {
     actions.push(el('a', { class: 'btn btn-primary btn-lg', href: '#/new' }, icon('plus'), t('home.cta.create')));
-    actions.push(sets.length
-      ? el('a', { class: 'btn btn-lg', href: '#/transfer' }, icon('upload'), t('transfer.title'))
-      : samples);
+    actions.push(el('a', { class: 'btn btn-lg', href: '#/transfer' }, icon('upload'), t('transfer.title')));
   }
 
   const hero = el('section', { class: 'hero' },
     el('div', { class: 'hero-text' },
       el('h1', {}, t('home.title')),
       el('p', { class: 'lede' }, t('home.lede')),
-      el('div', { class: 'hero-actions' }, actions)));
+      actions.length ? el('div', { class: 'hero-actions' }, actions) : null));
 
   const tiles = el('section', { class: 'kpi-row' },
     statTile({ label: t('stat.due'), value: summary.due, sub: t('stat.dueSub') }),
