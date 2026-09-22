@@ -1,11 +1,12 @@
 /* Bootstrap: restore the saved state, settle the language and theme, then hand
    the page over to the router. */
 
-import { el, icon, mount } from './dom.js';
-import { t, setLocale, getLocale, applyStatic, onLocaleChange, LOCALES, DEFAULT_LOCALE, isSupported } from './i18n/index.js';
+import { icon, mount } from './dom.js';
+import { t, setLocale, getLocale, applyStatic, onLocaleChange } from './i18n/index.js';
 import * as store from './store.js';
 import * as router from './router.js';
 import { initTheme, getTheme, cycleTheme, onThemeChange } from './theme.js';
+import { savedLanguage, chooseLanguage, fillLanguageSelect } from './language.js';
 
 import { homeView } from './views/home.js';
 import { setView } from './views/set.js';
@@ -41,20 +42,13 @@ function setupTheme() {
 
 function setupLocale() {
   const select = document.getElementById('locale-select');
-  const saved = store.getSettings().locale;
-  /* French unless the reader has picked something else. */
-  const initial = saved && isSupported(saved) ? saved : DEFAULT_LOCALE;
-
-  mount(select, LOCALES.map((locale) => el('option', { value: locale.code }, locale.label)));
-  select.value = initial;
+  const initial = savedLanguage();
   document.documentElement.lang = initial;
   setLocale(initial);
+  fillLanguageSelect(select);
   applyStatic();
 
-  select.addEventListener('change', () => {
-    store.setSetting('locale', select.value);
-    setLocale(select.value);
-  });
+  select.addEventListener('change', () => chooseLanguage(select.value));
   onLocaleChange((code) => { select.value = code; });
 }
 
@@ -90,9 +84,8 @@ function followOtherTabs() {
     if (event.key !== null && event.key !== store.STORAGE_KEY) return;
     store.load();
     initTheme();
-    const saved = store.getSettings().locale;
     const before = getLocale();
-    setLocale(saved && isSupported(saved) ? saved : DEFAULT_LOCALE);
+    setLocale(savedLanguage());
     if (getLocale() === before && !router.isBusy()) router.render();
   });
 }

@@ -114,6 +114,7 @@ counts the card twice.
       io.js               delimited text, downloads, share links
       util.js             identifiers, shuffling, dates
       theme.js            light, dark and system
+      language.js         language choice shared by top bar and settings
       dom.js              element builder and icon set
       i18n/index.js       translation engine
       i18n/fr.js          French catalogue, the reference

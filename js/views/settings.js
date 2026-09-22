@@ -1,9 +1,10 @@
 /* Settings and the shortcut sheet. */
 
 import { el, icon, toast } from '../dom.js';
-import { t, getLocale, setLocale, LOCALES } from '../i18n/index.js';
+import { t, getLocale } from '../i18n/index.js';
 import * as store from '../store.js';
 import { THEMES, getTheme, setTheme } from '../theme.js';
+import { chooseLanguage, fillLanguageSelect } from '../language.js';
 
 function formatBytes(bytes) {
   const kilobytes = bytes / 1024;
@@ -28,13 +29,9 @@ function switchRow(key, hintKey, checked, onChange) {
 export function settingsView(focus) {
   const settings = store.getSettings();
 
-  const localeSelect = el('select', { class: 'select' },
-    LOCALES.map((locale) => el('option', { value: locale.code }, locale.label)));
-  localeSelect.value = getLocale();
-  localeSelect.addEventListener('change', () => {
-    store.setSetting('locale', localeSelect.value);
-    setLocale(localeSelect.value);
-  });
+  const localeSelect = el('select', { class: 'select' });
+  fillLanguageSelect(localeSelect);
+  localeSelect.addEventListener('change', () => chooseLanguage(localeSelect.value));
 
   const themeSelect = el('select', { class: 'select' },
     THEMES.map((theme) => el('option', { value: theme }, t('theme.' + theme))));
