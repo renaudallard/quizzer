@@ -277,10 +277,12 @@ export function recordAnswer(setId, cardId, correct) {
   return card;
 }
 
+/* Old days go, but never the ones the current streak is counted from, or a
+   streak could not grow past the kept window. */
 function pruneActivity() {
   const keys = Object.keys(state.activity);
   if (keys.length <= ACTIVITY_DAYS) return;
-  const keep = new Set(lastDayKeys(ACTIVITY_DAYS));
+  const keep = new Set(lastDayKeys(Math.max(ACTIVITY_DAYS, streak() + 1)));
   for (const key of keys) if (!keep.has(key)) delete state.activity[key];
 }
 
