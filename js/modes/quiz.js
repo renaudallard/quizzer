@@ -210,6 +210,7 @@ export function quizView(id) {
         el('a', { class: 'btn', href: '#/set/' + set.id }, t('common.back')),
       ].filter(Boolean),
       missed: again,
+      langs: set,
     }));
   }
 

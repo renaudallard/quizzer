@@ -7,7 +7,7 @@ import { dueCards, masteryPct } from '../srs.js';
 import { meter } from '../chart.js';
 import { download, slugify, toCSV } from '../io.js';
 import { navigate } from '../router.js';
-import { notFoundPanel, shareControls } from './shared.js';
+import { notFoundPanel, shareControls, cardRow } from './shared.js';
 
 const MODES = [
   { path: 'cards', key: 'mode.flashcards', glyph: 'cards', min: 1 },
@@ -28,16 +28,6 @@ function modeCard(set, mode) {
     el('span', {},
       el('strong', {}, t(mode.key)),
       el('small', {}, available ? t(mode.key + '.desc') : t('set.needCards', { n: mode.min }))));
-}
-
-function cardRow(set, card) {
-  return el('div', { class: 'card-row' },
-    el('div', { class: 'term' },
-      el('span', { lang: set.termLang || null }, card.term),
-      card.hint ? el('span', { class: 'hint' }, card.hint) : null),
-    el('div', { class: 'def', lang: set.defLang || null }, card.def),
-    el('div', { class: 'card-row-tools' },
-      card.star ? el('span', { class: 'chip', title: t('flashcards.star') }, icon('star')) : null));
 }
 
 export function setView(id) {
@@ -85,5 +75,6 @@ export function setView(id) {
       el('div', { class: 'row-between', style: { marginBottom: '12px' } },
         el('h2', {}, t('set.cardsTitle')),
         el('span', { class: 'chart-sub' }, tn('count.cards', set.cards.length))),
-      el('div', { class: 'card-list print-sheet' }, set.cards.map((card) => cardRow(set, card)))));
+      el('div', { class: 'card-list print-sheet' }, set.cards.map((card) => cardRow(card, set,
+        card.star ? el('span', { class: 'chip', title: t('flashcards.star') }, icon('star')) : null)))));
 }

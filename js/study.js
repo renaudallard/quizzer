@@ -5,6 +5,7 @@ import { el, icon, mount } from './dom.js';
 import { t, getLocale } from './i18n/index.js';
 import { getSettings, recordSession } from './store.js';
 import { onCleanup } from './router.js';
+import { cardRow } from './views/shared.js';
 
 export function cardText(text, lang) {
   return el('span', lang ? { lang } : {}, text);
@@ -193,7 +194,7 @@ export function answerFeedback({ correct, result, expected, lang, note, onOverri
       next));
 }
 
-export function summaryPanel({ score, scoreLabel, title, body, actions, missed }) {
+export function summaryPanel({ score, scoreLabel, title, body, actions, missed, langs }) {
   return el('div', { class: 'summary' },
     score !== undefined ? el('p', { class: 'summary-score' }, score) : null,
     scoreLabel ? el('p', { class: 'summary-label' }, scoreLabel) : null,
@@ -203,9 +204,7 @@ export function summaryPanel({ score, scoreLabel, title, body, actions, missed }
     missed && missed.length
       ? el('div', { class: 'panel summary-list' },
           el('h3', {}, t('quiz.missed')),
-          el('div', { class: 'card-list' }, missed.map((card) => el('div', { class: 'card-row' },
-            el('div', { class: 'term' }, card.term),
-            el('div', { class: 'def' }, card.def)))))
+          el('div', { class: 'card-list' }, missed.map((card) => cardRow(card, langs))))
       : null);
 }
 

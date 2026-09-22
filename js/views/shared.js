@@ -45,6 +45,18 @@ export function messagePanel(title, message, back = { href: '#/', label: t('erro
         el('a', { class: 'btn btn-primary', href: back.href }, back.label))));
 }
 
+/* One card as a row: the term with its hint and the definition, each marked
+   with its language when the set declares one, so read aloud and screen
+   readers pronounce them right. tools, when given, fills the last column. */
+export function cardRow(card, { termLang, defLang } = {}, tools) {
+  return el('div', { class: 'card-row' },
+    el('div', { class: 'term' },
+      el('span', { lang: termLang || null }, card.term),
+      card.hint ? el('span', { class: 'hint' }, card.hint) : null),
+    el('div', { class: 'def', lang: defLang || null }, card.def),
+    tools === undefined ? null : el('div', { class: 'card-row-tools' }, tools));
+}
+
 export function notFoundPanel(message) {
   return messagePanel(t('error.notFoundTitle'), message);
 }

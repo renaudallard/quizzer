@@ -7,7 +7,7 @@ import * as store from '../store.js';
 import { getTheme, setTheme } from '../theme.js';
 import { download, parseDelimited, readText, decodeShare } from '../io.js';
 import { navigate, setBusy } from '../router.js';
-import { notFoundPanel, shareControls } from './shared.js';
+import { notFoundPanel, shareControls, cardRow } from './shared.js';
 
 
 function exportPanel() {
@@ -155,7 +155,5 @@ export function sharedView(payload) {
     el('section', { class: 'panel' },
       el('h2', {}, t('set.cardsTitle')),
       el('div', { class: 'card-list' },
-        incoming.cards.slice(0, 12).map((card) => el('div', { class: 'card-row' },
-          el('div', { class: 'term' }, card.term),
-          el('div', { class: 'def' }, card.def))))));
+        incoming.cards.slice(0, 12).map((card) => cardRow(card, incoming)))));
 }
