@@ -7,7 +7,7 @@ import { t, tn, formatRelativeDays } from '../i18n/index.js';
 import * as store from '../store.js';
 import { dueCards, nextDueInDays } from '../srs.js';
 import { shuffle } from '../util.js';
-import { studyShell, flipCard, speakButton, summaryPanel, saveSession, bindKeys } from '../study.js';
+import { studyShell, flipCard, summaryPanel, saveSession, bindKeys } from '../study.js';
 import { notFoundPanel } from '../views/shared.js';
 import { setBusy } from '../router.js';
 
@@ -101,15 +101,9 @@ export function reviewView(id) {
     shell.setProgress(run.cleared, run.cleared + remaining);
 
     card.setFaces(
-      {
-        label: t('common.term'), text: entry.term, lang: set.termLang, hint: entry.hint,
-        extras: speakButton(entry.term, set.termLang),
-      },
-      {
-        label: t('common.definition'), text: entry.def, lang: set.defLang,
-        extras: speakButton(entry.def, set.defLang),
-      });
-    card.flip(run.revealed);
+      { label: t('common.term'), text: entry.term, lang: set.termLang, hint: entry.hint },
+      { label: t('common.definition'), text: entry.def, lang: set.defLang });
+    if (run.revealed) card.flip(true);
 
     const actions = run.revealed
       ? [

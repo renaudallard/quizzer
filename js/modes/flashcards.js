@@ -5,7 +5,7 @@ import { el, icon, toast, mount } from '../dom.js';
 import { t } from '../i18n/index.js';
 import * as store from '../store.js';
 import { shuffle } from '../util.js';
-import { studyShell, flipCard, speakButton, summaryPanel, bindKeys, speak } from '../study.js';
+import { studyShell, flipCard, summaryPanel, bindKeys, speak } from '../study.js';
 import { notFoundPanel } from '../views/shared.js';
 import { setBusy } from '../router.js';
 
@@ -92,10 +92,7 @@ export function flashcardsView(id) {
     const front = state.reversed ? defSide : termSide;
     const back = state.reversed ? termSide : defSide;
 
-    card.setFaces(
-      { ...front, extras: speakButton(front.text, front.lang) },
-      { ...back, extras: speakButton(back.text, back.lang) });
-    card.flip(false);
+    card.setFaces(front, back);
     paintStar(entry);
 
     shell.setProgress(state.index + 1, order.length);

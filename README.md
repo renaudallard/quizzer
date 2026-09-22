@@ -215,6 +215,11 @@ pointer, and the mastery ramp was checked for lightness ordering, step
 separation and contrast against both surfaces. Animations step aside under
 `prefers-reduced-motion`.
 
+The flip card is a plain button. Only the side in view is exposed to screen
+readers, so the answer is not read out before the card is turned, and turning
+it announces the side that comes into view. Read aloud sits under the card and
+speaks whichever side is showing.
+
 Term and definition text carries its own `lang` attribute when the set
 declares one, which is what makes read aloud pronounce a Spanish card in
 Spanish.

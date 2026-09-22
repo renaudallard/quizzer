@@ -68,42 +68,56 @@ export function speak(text, lang) {
   speechSynthesis.speak(utterance);
 }
 
-/* A two sided card shared by the flashcard and spaced review modes. */
+/* A two sided card shared by the flashcard and spaced review modes. The card
+   is a real button, so any keyboard or screen reader can turn it, and only
+   the side in view is exposed: the other one stays hidden from assistive
+   technology until it is turned, and the side that comes into view is
+   announced. Read aloud sits under the card, since a button cannot hold
+   another one, and speaks whichever side is showing. */
 export function flipCard({ onFlip } = {}) {
-  const front = el('div', { class: 'flashcard-face' });
-  const back = el('div', { class: 'flashcard-face flashcard-back' });
-  /* A div rather than a button: the faces carry their own buttons, and a
-     button inside a button is not valid markup. */
-  const root = el('div', {
-    class: 'flashcard', role: 'button', tabindex: '0', dataset: { flipped: '0' },
-    'aria-live': 'polite',
-    onclick: (event) => { if (!event.target.closest('button')) api.flip(); },
-    onkeydown: (event) => {
-      if (event.key !== ' ' && event.key !== 'Enter') return;
-      if (event.target.closest('button')) return;
-      event.preventDefault();
-      api.flip();
-    },
-  }, el('div', { class: 'flashcard-inner' }, front, back));
+  const front = el('span', { class: 'flashcard-face' });
+  const back = el('span', { class: 'flashcard-face flashcard-back' });
+  const card = el('button', {
+    type: 'button', class: 'flashcard', dataset: { flipped: '0' },
+    onclick: () => api.flip(),
+  }, el('span', { class: 'flashcard-inner' }, front, back));
+  const voice = el('div', { class: 'flashcard-tools' });
+  const live = el('span', { class: 'sr-only', 'aria-live': 'polite' });
+  const root = el('div', { class: 'flashcard-wrap' }, card, voice, live);
+  let specs = [null, null];
 
-  function face(node, { label, text, lang, hint, extras }) {
+  function face(node, { label, text, lang, hint }) {
     mount(node,
       el('span', { class: 'side' }, label),
       el('span', { class: 'content' }, cardText(text, lang)),
-      hint ? el('span', { class: 'hint' }, hint) : null,
-      extras || null);
+      hint ? el('span', { class: 'hint' }, hint) : null);
+  }
+
+  function show(flipped) {
+    const [shown, hidden] = flipped ? [back, front] : [front, back];
+    shown.removeAttribute('aria-hidden');
+    hidden.setAttribute('aria-hidden', 'true');
+    const spec = specs[flipped ? 1 : 0];
+    if (!spec) return;
+    mount(voice, speakButton(spec.text, spec.lang));
+    live.textContent = spec.label + ': ' + spec.text;
   }
 
   const api = {
     root,
-    get flipped() { return root.dataset.flipped === '1'; },
+    get flipped() { return card.dataset.flipped === '1'; },
+    /* A new card always starts on its front. */
     setFaces(frontSpec, backSpec) {
+      specs = [frontSpec, backSpec];
       face(front, frontSpec);
       face(back, backSpec);
+      card.dataset.flipped = '0';
+      show(false);
     },
     flip(force) {
       const next = force === undefined ? !api.flipped : Boolean(force);
-      root.dataset.flipped = next ? '1' : '0';
+      card.dataset.flipped = next ? '1' : '0';
+      show(next);
       if (onFlip) onFlip(next);
       return next;
     },
@@ -200,7 +214,7 @@ export function saveSession(setId, { mode, total, correct, ms }) {
   recordSession(setId, { mode, total, correct, ms });
 }
 
-const ACTIVATABLE = 'button, a[href], [role="button"]';
+const ACTIVATABLE = 'button, a[href]';
 
 /* Document level shortcuts for a study mode, taken back down when the route
    changes. Typing in a field is never intercepted, and Enter or Space on a
