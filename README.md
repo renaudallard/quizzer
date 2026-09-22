@@ -113,13 +113,14 @@ counts the card twice.
 
 Serve the directory and open <http://localhost:8080/tests/harness.html>. It
 exercises the store, the Leitner ladder, answer grading, the CSV and share link
-round trips, and reading CSV files in UTF-8 and in Windows-1252. It renders all
-thirteen views in every interface language, asserting that no untranslated key
-reaches the screen. It checks that each catalogue has exactly the French keys,
-with the same `{placeholders}` in every string, and that the French text built
-into `index.html` matches the French catalogue. On the home page it checks that
-the daily goal figure stops at the goal, that the goal tile opens its setting
-with the field focused, and that percentages follow the interface language. It restores a full backup into an emptied store and
+round trips, and reading CSV files in UTF-8, UTF-16 and Windows-1252. It
+renders all thirteen views in every interface language, asserting that no
+untranslated key reaches the screen. It checks that each catalogue has exactly
+the French keys, with the same `{placeholders}` in every string, and that the
+French text built into `index.html` matches the French catalogue. On the home
+page it checks that the daily goal figure stops at the goal, that the goal tile
+opens its setting with the field focused, and that percentages follow the
+interface language. It restores a full backup into an emptied store and
 compares every part, imports it a second time to show that nothing doubles,
 and feeds in a damaged backup that must change nothing. It also plays a full
 quiz, a full write round, a match round, a review session and a flashcard pass
@@ -156,8 +157,9 @@ If the stored JSON is ever unreadable, it is moved aside to
   term that starts with `#` to keep it. The CSV export does this by itself.
 - **CSV files** open into the same box as pasted text, so the lines can be
   checked before the set is created. The file name becomes the title unless one
-  was typed. A file that is not UTF-8 is read as Windows-1252, the encoding
-  Excel on Windows still uses for CSV.
+  was typed. UTF-16 files with a byte order mark, such as Excel's "Unicode
+  Text" export, are read as such, and a file that is not UTF-8 is read as
+  Windows-1252, the encoding Excel on Windows still uses for CSV.
 - **Share links** carry the cards in the URL fragment, base64url encoded, so
   the recipient needs no account and the link never reaches a server.
   Progress is deliberately left behind. Very long sets make very long links.

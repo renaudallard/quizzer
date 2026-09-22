@@ -158,12 +158,18 @@ async function run() {
     return 'ok';
   });
 
-  const utf8 = await io.readText(new Blob(['﻿terme;définition\nécole;school\n']));
+  const utf8 = await io.readText(new Blob(['\ufeffterme;définition\nécole;school\n']));
   const legacy = await io.readText(new Blob([Uint8Array.from('café;coffee', (char) => char.charCodeAt(0))]));
+  /* UTF-16 little endian with its byte order mark; every character here fits
+     in the low byte. */
+  const wideBytes = [0xff, 0xfe];
+  for (const char of 'café;coffee') wideBytes.push(char.charCodeAt(0), 0);
+  const wide = await io.readText(new Blob([new Uint8Array(wideBytes)]));
   check('lecture des fichiers CSV', () => {
     assert(utf8 === 'terme;définition\nécole;school\n', 'UTF-8: ' + JSON.stringify(utf8));
     assert(legacy === 'café;coffee', 'Windows-1252: ' + JSON.stringify(legacy));
-    return 'UTF-8 et Windows-1252';
+    assert(wide === 'café;coffee', 'UTF-16: ' + JSON.stringify(wide));
+    return 'UTF-8, UTF-16 et Windows-1252';
   });
 
   const reference = i18n.CATALOGS[i18n.DEFAULT_LOCALE];
