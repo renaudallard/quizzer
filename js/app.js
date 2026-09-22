@@ -58,6 +58,16 @@ function setupLocale() {
   onLocaleChange((code) => { select.value = code; });
 }
 
+/* Following the skip link would change the hash, which the router reads as
+   a route, so the link moves the focus itself. */
+function setupSkipLink() {
+  const main = document.getElementById('main');
+  document.querySelector('.skip-link').addEventListener('click', (event) => {
+    event.preventDefault();
+    main.focus();
+  });
+}
+
 /* While changes cannot be written the alert stays up, and leaving the page
    asks first, since whatever is only in memory would be lost. */
 function setupSaveAlert() {
@@ -108,6 +118,7 @@ function main() {
   store.load();
   setupLocale();
   setupSaveAlert();
+  setupSkipLink();
   setupTheme();
   setRoutes();
   router.onAfterRender(highlightNav);
