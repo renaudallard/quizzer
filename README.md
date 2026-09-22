@@ -57,14 +57,19 @@ the goal and its caption gives the real count.
 
 ### Grading written answers
 
-Answers are compared after case folding, whitespace collapsing and punctuation
-stripping. Two tolerances are on by default and can be turned off in the
-settings:
+Answers are compared after case folding and punctuation stripping, French
+quotes, dashes and hyphens included, with spaces ignored: `leau` matches
+`l'eau` and `pays bas` matches `Pays-Bas`. The ligatures œ, æ and ß always
+match oe, ae and ss, so `coeur` is right for `cœur`. Symbols that carry
+meaning, such as `#`, `/` or `%`, are kept, and an answer made only of
+punctuation, such as `?`, is compared exactly as typed. Two tolerances are on
+by default and can be turned off in the settings:
 
-- **Accents.** `ecole` is accepted for `école`. With the tolerance off the
-  answer is graded "presque" and the interface says accents count.
-- **Typos.** One wrong letter up to eight characters, two beyond that, gives
-  "presque" rather than "raté". Under five characters nothing is forgiven.
+- **Accents.** `ecole` is accepted for `école`, and letters with a stroke
+  such as ø or ł count as accented. With the tolerance off the answer is
+  graded "presque" and the interface says accents count.
+- **Typos.** One wrong letter up to eight letters, two beyond that, gives
+  "presque" rather than "raté". Under five letters nothing is forgiven.
   The length that counts is the expected answer's, not what was typed.
 
 A definition may list alternatives with ` / ` or `;`, and a parenthesised

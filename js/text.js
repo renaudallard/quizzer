@@ -1,15 +1,27 @@
 /* Answer comparison. Learners should not lose a point over a missing accent or
    a slipped key, so grading has three outcomes: correct, almost, wrong. */
 
-const PUNCT = /[.,;:!?"'‘’“”()[\]{}¿¡]/g;
+/* Punctuation that carries no meaning in an answer, French quotes, dashes and
+   hyphens included. Symbols such as # / % & keep their meaning. */
+const PUNCT = /[.,;:!?"'‘’‚‛“”„‟«»‹›()[\]{}¿¡…·‐‑‒–—―-]/g;
 const DIACRITICS = /[̀-ͯ]/g;
+/* Ligatures are spelling, not accents: "coeur" is how "cœur" is typed. */
+const LIGATURES = { 'œ': 'oe', 'æ': 'ae', 'ß': 'ss' };
+/* Letters that NFD does not split into a base and a mark. */
+const STROKES = { 'ø': 'o', 'ł': 'l', 'đ': 'd', 'ı': 'i' };
 
 export function normalize(text, stripAccents = true) {
   let out = String(text).normalize('NFC').toLowerCase().trim();
-  out = out.replace(/[‘’]/g, "'").replace(/[“”]/g, '"');
-  if (stripAccents) out = out.normalize('NFD').replace(DIACRITICS, '');
+  out = out.replace(/[œæß]/g, (char) => LIGATURES[char]);
+  if (stripAccents) out = out.normalize('NFD').replace(DIACRITICS, '').replace(/[øłđı]/g, (char) => STROKES[char]);
   out = out.replace(PUNCT, ' ').replace(/\s+/g, ' ').trim();
   return out;
+}
+
+/* Spaces are ignored when grading, so a dropped apostrophe or hyphen is not a
+   mistake: "leau" matches "l'eau" and "pays bas" matches "Pays-Bas". */
+function compact(text) {
+  return text.replace(/ /g, '');
 }
 
 /* Splits on the separators that sit outside brackets: a semicolon, or a slash
@@ -77,18 +89,22 @@ function typoBudget(length) {
    its diacritics, so the interface can point that out without failing anyone. */
 export function grade(input, expected, options = {}) {
   const { accents = true, typos = true } = options;
-  const variants = acceptedAnswers(expected);
-  const given = normalize(input, false);
-  const givenLoose = normalize(input, true);
-
-  if (!given) return { verdict: 'wrong', accent: false };
+  const typed = String(input).trim();
+  if (!typed) return { verdict: 'wrong', accent: false };
+  const given = compact(normalize(typed, false));
+  const givenLoose = compact(normalize(typed, true));
 
   let accentOnly = false;
   let near = false;
 
-  for (const variant of variants) {
-    const strict = normalize(variant, false);
-    const loose = normalize(variant, true);
+  for (const variant of acceptedAnswers(expected)) {
+    const strict = compact(normalize(variant, false));
+    const loose = compact(normalize(variant, true));
+    /* An answer made only of punctuation, such as "?", is compared as typed. */
+    if (!strict) {
+      if (typed === variant.trim()) return { verdict: 'correct', accent: false };
+      continue;
+    }
     if (given === strict) return { verdict: 'correct', accent: false };
     if (givenLoose === loose) {
       if (accents) return { verdict: 'correct', accent: true };

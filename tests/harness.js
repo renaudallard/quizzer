@@ -128,6 +128,11 @@ async function run() {
     assert(text.grade('km/h', 'km/h').verdict === 'correct', 'réponse entière avec une barre');
     assert(text.grade('h', 'km/h').verdict === 'wrong', 'morceau de réponse');
     assert(text.grade('collègue', 'collègue (m/f)').verdict === 'correct', 'précision entre parenthèses');
+    assert(text.grade('coeur', 'cœur').verdict === 'correct', 'ligature');
+    assert(text.grade('leau', 'l’eau').verdict === 'correct', 'apostrophe omise');
+    assert(text.grade('bonjour', '« bonjour »').verdict === 'correct', 'guillemets');
+    assert(text.grade('?', '?').verdict === 'correct', 'ponctuation seule');
+    assert(text.grade('C', 'C#').verdict === 'wrong', 'symbole qui compte');
     return 'ok';
   });
 
