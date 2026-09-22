@@ -3,7 +3,7 @@
    scaling surprises. */
 
 import { el, clear } from './dom.js';
-import { t, formatNumber } from './i18n/index.js';
+import { t, formatNumber, formatPercent } from './i18n/index.js';
 
 let tooltip = null;
 
@@ -87,7 +87,7 @@ export function masteryChart(counts, labels) {
         class: 'mastery-seg',
         style: { width: share + '%', background: 'var(--viz-tier-' + (i + 1) + ')' },
       });
-      attachTip(segment, labels[i] + ': ' + formatNumber(count) + ' (' + Math.round(share) + ' %)');
+      attachTip(segment, labels[i] + ': ' + formatNumber(count) + ' (' + formatPercent(share) + ')');
       bar.appendChild(segment);
     });
   }
