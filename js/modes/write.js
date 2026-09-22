@@ -6,7 +6,7 @@ import { el, icon, mount } from '../dom.js';
 import { t, tn } from '../i18n/index.js';
 import * as store from '../store.js';
 import { shuffle } from '../util.js';
-import { grade, maskAnswer } from '../text.js';
+import { gradeAny, maskAnswer, normalize } from '../text.js';
 import {
   studyShell, answerField, answerFeedback, typedAnswer, summaryPanel,
   saveSession, bindKeys, speakButton, cardText,
@@ -42,7 +42,11 @@ export function writeView(id) {
   function submit(value) {
     if (!run || run.pending) return;
     const card = run.queue[run.position];
-    const verdict = grade(value, card.def, store.getSettings());
+    /* Another card with the same term has a definition that is just as right. */
+    const term = normalize(card.term);
+    const accepted = set.cards.filter((other) => other.id === card.id || normalize(other.term) === term)
+      .map((other) => other.def);
+    const verdict = gradeAny(value, accepted, store.getSettings());
     run.pending = { verdict, typed: value, correct: verdict.verdict !== 'wrong' };
     paint();
   }

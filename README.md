@@ -83,6 +83,10 @@ precision is optional: `voiture / auto (familier)` accepts `voiture`, `auto`,
 when a space sits next to it, so `km/h`, `24/7` or `collègue (m/f)` are
 answers in their own right and must be typed whole.
 
+When several cards share a prompt, such as `hola` and `buenos días` which both
+mean `bonjour`, each of their answers is right: the quiz never offers one as a
+wrong option, and a typed answer may be any of them.
+
 A wrong answer can still be claimed with the "Je l'avais" button. Nothing is
 written to the store until you move to the next card, so the override never
 counts the card twice.

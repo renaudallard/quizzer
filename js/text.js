@@ -121,6 +121,20 @@ export function grade(input, expected, options = {}) {
   return { verdict: 'wrong', accent: false };
 }
 
+const RANK = { correct: 2, almost: 1, wrong: 0 };
+
+/* Grades against several answers that are all right, such as the terms of
+   two cards that both mean "bonjour", and keeps the best verdict. */
+export function gradeAny(input, answers, options = {}) {
+  let best = null;
+  for (const expected of answers) {
+    const result = grade(input, expected, options);
+    if (!best || RANK[result.verdict] > RANK[best.verdict]) best = result;
+    if (best.verdict === 'correct' && !best.accent) break;
+  }
+  return best || { verdict: 'wrong', accent: false };
+}
+
 /* Progressive hint: keeps the first letter of every word and the punctuation. */
 export function maskAnswer(text) {
   return String(text).replace(/\p{L}[\p{L}\p{M}'-]*/gu, (word) => {

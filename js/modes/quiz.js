@@ -6,7 +6,7 @@ import { el, icon, mount } from '../dom.js';
 import { t, tn, formatPercent } from '../i18n/index.js';
 import * as store from '../store.js';
 import { shuffle, sample, pct } from '../util.js';
-import { grade, normalize } from '../text.js';
+import { gradeAny, normalize } from '../text.js';
 import {
   studyShell, answerField, answerFeedback, typedAnswer, summaryPanel,
   saveSession, bindKeys, speakButton, cardText,
@@ -27,39 +27,62 @@ const DIRECTIONS = [
   { id: 'mixed', label: 'quiz.dirMixed' },
 ];
 
-function distractors(pool, card, forward, answer) {
-  const target = normalize(answer);
-  const seen = new Set([target]);
-  const out = [];
-  for (const other of pool) {
-    if (other.id === card.id) continue;
-    const text = forward ? other.def : other.term;
-    const key = normalize(text);
-    if (!text || seen.has(key)) continue;
-    seen.add(key);
-    out.push(text);
-  }
-  return out;
+/* Both sides of every card, normalised once per build rather than once per
+   card for every question. */
+function indexCards(cards) {
+  return cards.map((card) => ({ card, term: normalize(card.term), def: normalize(card.def) }));
+}
+
+/* A prompt can belong to several cards, such as two words that both mean
+   "bonjour": the answer of each of them is right, so none of them may be
+   offered as a wrong option, and a typed answer may be any of them. */
+function sidesOf(entry, forward) {
+  return forward
+    ? { prompt: entry.term, key: entry.def, text: entry.card.def }
+    : { prompt: entry.def, key: entry.term, text: entry.card.term };
 }
 
 function buildQuestions(set, source, config) {
+  const index = indexCards(set.cards);
+  const byId = new Map(index.map((entry) => [entry.card.id, entry]));
+
   return shuffle(source).slice(0, config.count).map((card) => {
     const kind = config.types[Math.floor(Math.random() * config.types.length)];
     const forward = config.direction === 'mixed'
       ? Math.random() < 0.5
       : config.direction === 'forward';
+    const own = sidesOf(byId.get(card.id) || indexCards([card])[0], forward);
 
     const question = {
       card,
       kind,
       prompt: forward ? card.term : card.def,
-      answer: forward ? card.def : card.term,
+      answer: own.text,
+      accepted: [own.text],
       promptLang: forward ? set.termLang : set.defLang,
       answerLang: forward ? set.defLang : set.termLang,
       hint: card.hint,
     };
 
-    const others = distractors(set.cards, card, forward, question.answer);
+    const taken = new Set([own.key]);
+    const others = [];
+    for (const entry of index) {
+      if (entry.card.id === card.id) continue;
+      const sides = sidesOf(entry, forward);
+      if (sides.prompt === own.prompt) {
+        question.accepted.push(sides.text);
+        taken.add(sides.key);
+      }
+    }
+    if (kind !== 'written') {
+      for (const entry of index) {
+        const sides = sidesOf(entry, forward);
+        if (!sides.key || taken.has(sides.key)) continue;
+        taken.add(sides.key);
+        others.push(sides.text);
+      }
+    }
+
     if (kind === 'choice') {
       question.options = shuffle([question.answer, ...sample(others, 3)]);
     } else if (kind === 'truefalse') {
@@ -249,7 +272,7 @@ export function quizView(id) {
       placeholder: t('write.answerPlaceholder'),
       submitLabel: t('quiz.check'),
       onSubmit: (value) => {
-        const verdict = grade(value, question.answer, settings);
+        const verdict = gradeAny(value, question.accepted, settings);
         answer(verdict.verdict !== 'wrong', { typed: value, verdict });
       },
     });
