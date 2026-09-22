@@ -12,6 +12,7 @@ export default {
   "nav.settings": "Settings",
   "nav.shortcuts": "Keyboard shortcuts",
   "footer.storage": "Your data stays in this browser. Nothing is sent to a server.",
+  "storage.failed": "Your changes are not being saved: this browser’s storage is full or blocked. Save a backup before closing the page.",
 
   "theme.toggle": "Theme: {mode}",
   "theme.system": "system",

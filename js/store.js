@@ -119,6 +119,26 @@ let state = emptyState();
    over it would destroy the only copy, so nothing is written this visit. */
 let locked = false;
 
+/* True while changes cannot be written, so the page can say so instead of
+   reporting success while nothing persists. */
+let unsavedChanges = false;
+const unsavedWatchers = new Set();
+
+function setUnsaved(value) {
+  if (unsavedChanges === value) return;
+  unsavedChanges = value;
+  for (const fn of unsavedWatchers) fn(value);
+}
+
+export function unsaved() {
+  return unsavedChanges;
+}
+
+export function onUnsavedChange(fn) {
+  unsavedWatchers.add(fn);
+  return () => unsavedWatchers.delete(fn);
+}
+
 function readable(parsed) {
   return parsed !== null && typeof parsed === 'object' && !Array.isArray(parsed)
     && (parsed.sets === undefined || Array.isArray(parsed.sets));
@@ -126,11 +146,14 @@ function readable(parsed) {
 
 export function load() {
   locked = false;
+  setUnsaved(false);
   let raw = null;
   try {
     raw = localStorage.getItem(KEY);
   } catch {
+    /* Storage is blocked: nothing will be kept, and the page should say so. */
     state = emptyState();
+    setUnsaved(true);
     return state;
   }
   if (!raw) {
@@ -152,19 +175,24 @@ export function load() {
     localStorage.setItem(SALVAGE_KEY, raw);
   } catch {
     locked = true;
+    setUnsaved(true);
   }
   state = emptyState();
   return state;
 }
 
 export function save() {
-  if (locked) return false;
-  try {
-    localStorage.setItem(KEY, JSON.stringify(state));
-    return true;
-  } catch {
-    return false;
+  let ok = false;
+  if (!locked) {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(state));
+      ok = true;
+    } catch {
+      ok = false;
+    }
   }
+  setUnsaved(!ok);
+  return ok;
 }
 
 export function getState() {
@@ -377,6 +405,7 @@ export function importPayload(payload) {
 export function resetAll() {
   state = emptyState();
   locked = false;
+  setUnsaved(false);
   try {
     localStorage.removeItem(KEY);
     localStorage.removeItem(SALVAGE_KEY);

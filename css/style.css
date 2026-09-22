@@ -191,6 +191,13 @@ a:hover { color: var(--accent-hover); }
 .topbar-tools { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
 .field-inline { display: inline-flex; align-items: center; }
 
+/* Shown while changes cannot be saved. */
+.save-alert {
+  margin: 0; padding: 10px 16px; text-align: center; font-weight: 600; font-size: 0.92rem;
+  color: var(--critical-ink); border-bottom: 1px solid var(--critical);
+  background: color-mix(in srgb, var(--critical) 10%, var(--surface));
+}
+
 /* Layout */
 
 .main { flex: 1 0 auto; outline: none; }

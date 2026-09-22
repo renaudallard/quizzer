@@ -58,6 +58,20 @@ function setupLocale() {
   onLocaleChange((code) => { select.value = code; });
 }
 
+/* While changes cannot be written the alert stays up, and leaving the page
+   asks first, since whatever is only in memory would be lost. */
+function setupSaveAlert() {
+  const alert = document.getElementById('save-alert');
+  const show = (failing) => { alert.hidden = !failing; };
+  show(store.unsaved());
+  store.onUnsavedChange(show);
+  window.addEventListener('beforeunload', (event) => {
+    if (!store.unsaved()) return;
+    event.preventDefault();
+    event.returnValue = '';
+  });
+}
+
 function highlightNav(path) {
   const root = '/' + path.split('/')[0];
   for (const link of document.querySelectorAll('.topnav a')) {
@@ -93,6 +107,7 @@ function setRoutes() {
 function main() {
   store.load();
   setupLocale();
+  setupSaveAlert();
   setupTheme();
   setRoutes();
   router.onAfterRender(highlightNav);

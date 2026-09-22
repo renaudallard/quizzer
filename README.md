@@ -135,6 +135,10 @@ Everything lives under a single `localStorage` key, `quizzer.v1`, on the
 machine that runs the browser. Nothing is sent anywhere. Clearing the site
 data clears the sets, so save a backup from time to time if the work matters.
 
+When the browser refuses to save, because its storage is full or blocked, a
+notice stays at the top of every page until saving works again, and closing
+the tab asks first. A backup can still be downloaded in the meantime.
+
 If the stored data is ever unreadable, it is copied aside to
 `quizzer.v1.unreadable` rather than overwritten, and the app starts empty.
 When the browser has no room left for that copy, nothing is saved during the

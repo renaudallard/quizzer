@@ -12,6 +12,7 @@ export default {
   "nav.settings": "Instellingen",
   "nav.shortcuts": "Sneltoetsen",
   "footer.storage": "Je gegevens blijven in deze browser. Er wordt niets naar een server gestuurd.",
+  "storage.failed": "Je wijzigingen worden niet opgeslagen: de opslag van deze browser is vol of geblokkeerd. Maak een back-up voordat je de pagina sluit.",
 
   "theme.toggle": "Thema: {mode}",
   "theme.system": "systeem",

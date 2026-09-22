@@ -12,6 +12,7 @@ export default {
   "nav.settings": "Paramètres",
   "nav.shortcuts": "Raccourcis clavier",
   "footer.storage": "Vos données restent dans ce navigateur. Rien n’est envoyé sur un serveur.",
+  "storage.failed": "Vos changements ne sont pas enregistrés: le stockage de ce navigateur est plein ou bloqué. Faites une sauvegarde avant de fermer la page.",
 
   "theme.toggle": "Thème: {mode}",
   "theme.system": "système",
