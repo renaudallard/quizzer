@@ -67,6 +67,10 @@ export function flashcardsView(id) {
   }
 
   function paint() {
+    /* Rebuilding the buttons drops the focus, so a keyboard user who pressed
+       Suivant gets it back on the new Suivant rather than on the page, where
+       the next Enter would turn the card instead. */
+    const step = stage.contains(document.activeElement) ? document.activeElement.dataset.step : null;
     if (state.index >= order.length) {
       shell.setProgress(order.length, order.length);
       mount(stage, summaryPanel({
@@ -78,6 +82,7 @@ export function flashcardsView(id) {
           el('a', { class: 'btn', href: '#/set/' + set.id }, t('common.back')),
         ],
       }));
+      if (step) stage.querySelector('.summary .btn-primary').focus();
       return;
     }
 
@@ -91,27 +96,38 @@ export function flashcardsView(id) {
       { ...front, extras: speakButton(front.text, front.lang) },
       { ...back, extras: speakButton(back.text, back.lang) });
     card.flip(false);
-
-    starButton.setAttribute('aria-pressed', String(Boolean(entry.star)));
-    starButton.setAttribute('aria-label', entry.star ? t('flashcards.unstar') : t('flashcards.star'));
+    paintStar(entry);
 
     shell.setProgress(state.index + 1, order.length);
     mount(stage,
       card.root,
       el('div', { class: 'study-nav' },
         el('button', {
-          type: 'button', class: 'btn', disabled: state.index === 0, onclick: () => move(-1),
+          type: 'button', class: 'btn', dataset: { step: 'previous' },
+          disabled: state.index === 0, onclick: () => move(-1),
         }, icon('left'), t('common.previous')),
-        el('span', { class: 'count' }, t('progress.position', { current: state.index + 1, total: order.length })),
-        el('button', { type: 'button', class: 'btn', onclick: () => move(1) }, t('common.next'), icon('right'))),
+        el('button', {
+          type: 'button', class: 'btn', dataset: { step: 'next' }, onclick: () => move(1),
+        }, t('common.next'), icon('right'))),
       el('p', { class: 'flashcard-foot', style: { textAlign: 'center', marginTop: '14px' } }, t('flashcards.flipHint')));
+    if (step) {
+      const again = stage.querySelector('[data-step="' + step + '"]:not([disabled])')
+        || stage.querySelector('[data-step]:not([disabled])');
+      if (again) again.focus();
+    }
   }
 
+  function paintStar(entry) {
+    starButton.setAttribute('aria-pressed', String(Boolean(entry.star)));
+    starButton.setAttribute('aria-label', entry.star ? t('flashcards.unstar') : t('flashcards.star'));
+  }
+
+  /* Starring leaves the card as it is, turned or not. */
   starButton.addEventListener('click', () => {
     const entry = current();
     if (!entry) return;
     store.toggleStar(set.id, entry.id);
-    paint();
+    paintStar(entry);
   });
 
   bindKeys((event) => {
