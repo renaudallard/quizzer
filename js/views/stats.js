@@ -2,7 +2,7 @@
    much work went in lately, and which cards keep slipping. */
 
 import { el, icon } from '../dom.js';
-import { t, tn, formatDate, formatDayShort, formatRelativeDays, formatPercent } from '../i18n/index.js';
+import { t, tn, formatDate, formatDayKey, formatRelativeDays, formatPercent } from '../i18n/index.js';
 import * as store from '../store.js';
 import { tierCounts, TIERS, masteryPct, dueCards, nextDueInDays, tierOf } from '../srs.js';
 import { statTile, masteryChart, activityChart, figure, tableView } from '../chart.js';
@@ -23,7 +23,7 @@ function sessionActivity(setId) {
   return lastDayKeys(ACTIVITY_DAYS).map((key) => ({
     key,
     count: byDay.get(key) || 0,
-    label: formatDayShort(new Date(key + 'T00:00:00')),
+    label: formatDayKey(key),
   }));
 }
 

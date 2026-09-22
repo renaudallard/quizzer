@@ -116,6 +116,11 @@ export function formatDayShort(ts) {
     .format(new Date(ts));
 }
 
+/* A stored YYYY-MM-DD day, read as local midnight, as a short date. */
+export function formatDayKey(key) {
+  return formatDayShort(new Date(key + 'T00:00:00'));
+}
+
 export function formatRelativeDays(days) {
   return formatter('relative', (locale) => new Intl.RelativeTimeFormat(locale, { numeric: 'auto' }))
     .format(days, 'day');

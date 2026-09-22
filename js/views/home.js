@@ -2,16 +2,12 @@
    themselves. */
 
 import { el, icon, toast, mount } from '../dom.js';
-import { t, tn, formatDayShort, formatPercent } from '../i18n/index.js';
+import { t, tn, formatDayKey, formatPercent } from '../i18n/index.js';
 import * as store from '../store.js';
 import { dueCards, masteryPct } from '../srs.js';
 import { statTile, meter, activityChart, figure } from '../chart.js';
 import { truncate } from '../text.js';
 import { render, currentPath } from '../router.js';
-
-function dayLabel(key) {
-  return formatDayShort(new Date(key + 'T00:00:00'));
-}
 
 async function loadSamples(button) {
   button.disabled = true;
@@ -138,7 +134,7 @@ export function homeView() {
       title: t('stat.goalEdit'),
     }));
 
-  const points = store.activityFor(14).map((entry) => ({ ...entry, label: dayLabel(entry.key) }));
+  const points = store.activityFor(14).map((entry) => ({ ...entry, label: formatDayKey(entry.key) }));
   const activity = el('section', { class: 'panel', style: { marginBottom: '26px' } },
     figure({ title: t('home.activity.title'), sub: t('home.activity.sub') },
       activityChart(points, { label: (vars) => tn('count.cards', vars.n) })));
