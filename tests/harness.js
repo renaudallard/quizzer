@@ -179,17 +179,21 @@ async function run() {
   const keys = Object.keys(reference);
   for (const { code: locale } of i18n.LOCALES) {
     for (const [name, view] of Object.entries(VIEWS)) {
+      /* A key found in no catalogue reaches the screen raw, and a variable
+         the call forgot stays as {name}: both fail here. */
       check(`vue ${name} [${locale}]`, () => {
         i18n.setLocale(locale);
+        i18n.missingKeys.clear();
         const arg = name === 'shared' ? io.encodeShare(set) : name === 'editor' ? null : set.id;
         const node = view(arg);
         assert(node instanceof Element, 'pas un élément');
         assert(node.textContent.trim(), 'rendu vide');
+        assert(!i18n.missingKeys.size, 'clés absentes des catalogues: ' + [...i18n.missingKeys].join(', '));
         const attrs = [...node.querySelectorAll('[placeholder],[aria-label],[title]')]
           .map((n) => [n.getAttribute('placeholder'), n.getAttribute('aria-label'), n.getAttribute('title')].join(' '))
           .join(' ');
-        const raw = keys.filter((key) => (node.textContent + attrs).includes(key));
-        assert(!raw.length, 'clés non traduites: ' + raw.join(', '));
+        const left = (node.textContent + attrs).match(/\{\w+\}/g);
+        assert(!left, 'variables non remplacées: ' + (left || []).join(', '));
         main.replaceChildren(node);
         return 'ok';
       });
@@ -389,7 +393,12 @@ async function run() {
     const nodes = [...shell.querySelectorAll('[data-i18n]')];
     const stale = nodes.filter((node) => node.textContent.trim() !== reference[node.dataset.i18n]);
     assert(!stale.length, 'textes différents: ' + stale.map((node) => node.dataset.i18n).join(', '));
-    return nodes.length + ' textes';
+    const names = ['data-i18n-aria-label', 'data-i18n-title', 'data-i18n-placeholder'];
+    const keyed = [...shell.querySelectorAll(names.map((name) => '[' + name + ']').join(','))]
+      .flatMap((node) => names.map((name) => node.getAttribute(name)).filter(Boolean));
+    const unknown = keyed.filter((key) => !Object.hasOwn(reference, key));
+    assert(!unknown.length, 'clés inconnues: ' + unknown.join(', '));
+    return nodes.length + ' textes, ' + keyed.length + ' attributs';
   });
 }
 

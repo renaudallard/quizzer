@@ -44,11 +44,15 @@ export function onLocaleChange(fn) {
   return () => listeners.delete(fn);
 }
 
+/* Keys asked for but found in no catalogue. Such a key reaches the screen
+   raw, so the test page reads this set to catch a typo or a missing string. */
+export const missingKeys = new Set();
+
 function lookup(key) {
-  const value = CATALOGS[current][key];
+  const value = CATALOGS[current][key] ?? CATALOGS[DEFAULT_LOCALE][key];
   if (value !== undefined) return value;
-  const fallback = CATALOGS[DEFAULT_LOCALE][key];
-  return fallback !== undefined ? fallback : key;
+  missingKeys.add(key);
+  return key;
 }
 
 function interpolate(template, vars) {
@@ -66,11 +70,14 @@ export function t(key, vars) {
    language rules, so French keeps zero in the singular form. */
 export function tn(key, count, vars) {
   const form = plurals.select(count);
-  const value = CATALOGS[current][key + '.' + form]
+  let value = CATALOGS[current][key + '.' + form]
     ?? CATALOGS[current][key + '.other']
     ?? CATALOGS[DEFAULT_LOCALE][key + '.' + form]
-    ?? CATALOGS[DEFAULT_LOCALE][key + '.other']
-    ?? key;
+    ?? CATALOGS[DEFAULT_LOCALE][key + '.other'];
+  if (value === undefined) {
+    missingKeys.add(key);
+    value = key;
+  }
   return interpolate(value, { n: formatNumber(count), ...vars });
 }
 

@@ -129,10 +129,11 @@ counts the card twice.
 Serve the directory and open <http://localhost:8080/tests/harness.html>. It
 exercises the store, the Leitner ladder, answer grading, the CSV and share link
 round trips, and reading CSV files in UTF-8, UTF-16 and Windows-1252. It
-renders all thirteen views in every interface language, asserting that no
-untranslated key reaches the screen. It checks that each catalogue has exactly
-the French keys, with the same `{placeholders}` in every string, and that the
-French text built into `index.html` matches the French catalogue. On the home
+renders all thirteen views in every interface language, failing on any key
+that no catalogue holds and on any `{placeholder}` left unfilled. It checks
+that each catalogue has exactly the French keys, with the same
+`{placeholders}` in every string, and that the French text built into
+`index.html` matches the French catalogue and its attribute keys exist. On the home
 page it checks that the daily goal figure stops at the goal, that the goal tile
 opens its setting with the field focused, and that percentages follow the
 interface language. It restores a full backup into an emptied store and
