@@ -67,9 +67,11 @@ settings:
   "presque" rather than "raté". Under five characters nothing is forgiven.
   The length that counts is the expected answer's, not what was typed.
 
-A definition may list alternatives with `/` or `;`, and a parenthesised
-precision is optional: `voiture / auto (familier)` accepts `voiture`, `auto`
-and `auto familier`.
+A definition may list alternatives with ` / ` or `;`, and a parenthesised
+precision is optional: `voiture / auto (familier)` accepts `voiture`, `auto`,
+`auto familier` and the whole definition. A slash only separates alternatives
+when a space sits next to it, so `km/h`, `24/7` or `collègue (m/f)` are
+answers in their own right and must be typed whole.
 
 A wrong answer can still be claimed with the "Je l'avais" button. Nothing is
 written to the store until you move to the next card, so the override never

@@ -125,6 +125,9 @@ async function run() {
     assert(text.grade('Romes', 'Rome').verdict === 'wrong', 'mot court rallongé');
     assert(text.grade('Pari', 'Paris').verdict === 'almost', 'lettre oubliée');
     assert(text.grade('ordinatr', 'ordinateur').verdict === 'almost', 'deux fautes sur un mot long');
+    assert(text.grade('km/h', 'km/h').verdict === 'correct', 'réponse entière avec une barre');
+    assert(text.grade('h', 'km/h').verdict === 'wrong', 'morceau de réponse');
+    assert(text.grade('collègue', 'collègue (m/f)').verdict === 'correct', 'précision entre parenthèses');
     return 'ok';
   });
 

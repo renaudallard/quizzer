@@ -12,18 +12,41 @@ export function normalize(text, stripAccents = true) {
   return out;
 }
 
-/* A definition may list alternatives with a slash or semicolon, and may put an
-   optional precision in brackets: "voiture / auto (familier)". */
+/* Splits on the separators that sit outside brackets: a semicolon, or a slash
+   with a space beside it. A bare slash belongs to the answer, as in "km/h",
+   "24/7" or "collègue (m/f)". */
+function splitAlternatives(text) {
+  const parts = [];
+  let depth = 0;
+  let start = 0;
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    if (char === '(') depth++;
+    else if (char === ')') depth = Math.max(0, depth - 1);
+    else if (depth === 0 && (char === ';'
+      || (char === '/' && (/\s/.test(text[i - 1] || '') || /\s/.test(text[i + 1] || ''))))) {
+      parts.push(text.slice(start, i));
+      start = i + 1;
+    }
+  }
+  parts.push(text.slice(start));
+  return parts;
+}
+
+/* A definition may list alternatives with " / " or ";", and may put an
+   optional precision in brackets: "voiture / auto (familier)". The whole
+   definition is always accepted as well. */
 export function acceptedAnswers(definition) {
+  const whole = String(definition).trim();
   const variants = new Set();
-  for (const part of String(definition).split(/[/;]/)) {
+  for (const part of [whole, ...splitAlternatives(whole)]) {
     const trimmed = part.trim();
     if (!trimmed) continue;
     variants.add(trimmed);
     const withoutBrackets = trimmed.replace(/\([^)]*\)/g, ' ').replace(/\s+/g, ' ').trim();
     if (withoutBrackets) variants.add(withoutBrackets);
   }
-  if (variants.size === 0) variants.add(String(definition).trim());
+  if (variants.size === 0) variants.add(whole);
   return [...variants];
 }
 
