@@ -122,6 +122,9 @@ async function run() {
     assert(text.grade('chat', 'école').verdict === 'wrong', 'réponse fausse');
     assert(text.grade('ecole', 'école', { accents: false }).verdict === 'almost', 'accents stricts');
     assert(text.grade('auto', 'voiture / auto').verdict === 'correct', 'variante');
+    assert(text.grade('Romes', 'Rome').verdict === 'wrong', 'mot court rallongé');
+    assert(text.grade('Pari', 'Paris').verdict === 'almost', 'lettre oubliée');
+    assert(text.grade('ordinatr', 'ordinateur').verdict === 'almost', 'deux fautes sur un mot long');
     return 'ok';
   });
 

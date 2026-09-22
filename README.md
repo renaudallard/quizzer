@@ -65,6 +65,7 @@ settings:
   answer is graded "presque" and the interface says accents count.
 - **Typos.** One wrong letter up to eight characters, two beyond that, gives
   "presque" rather than "raté". Under five characters nothing is forgiven.
+  The length that counts is the expected answer's, not what was typed.
 
 A definition may list alternatives with `/` or `;`, and a parenthesised
 precision is optional: `voiture / auto (familier)` accepts `voiture`, `auto`

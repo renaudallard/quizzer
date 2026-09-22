@@ -61,7 +61,7 @@ export function grade(input, expected, options = {}) {
   if (!given) return { verdict: 'wrong', accent: false };
 
   let accentOnly = false;
-  let best = Infinity;
+  let near = false;
 
   for (const variant of variants) {
     const strict = normalize(variant, false);
@@ -72,13 +72,13 @@ export function grade(input, expected, options = {}) {
       accentOnly = true;
       continue;
     }
-    best = Math.min(best, levenshtein(givenLoose, loose));
+    /* The allowance follows the expected answer, so padding a short answer
+       cannot buy a typo and a long answer keeps its slack. */
+    if (typos && levenshtein(givenLoose, loose) <= typoBudget(loose.length)) near = true;
   }
 
   if (accentOnly) return { verdict: 'almost', accent: true };
-  if (typos && best <= typoBudget(Math.max(givenLoose.length, 1))) {
-    return { verdict: 'almost', accent: false };
-  }
+  if (near) return { verdict: 'almost', accent: false };
   return { verdict: 'wrong', accent: false };
 }
 
