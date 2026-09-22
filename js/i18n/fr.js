@@ -268,7 +268,7 @@ export default {
   "transfer.shareCopy": "Copier le lien de partage",
   "transfer.shareCopied": "Lien copié.",
   "transfer.shareFailed": "Copie impossible. Le lien est affiché ci-dessous.",
-  "transfer.shareLong": "Ce jeu est volumineux: certains messageries coupent les liens très longs.",
+  "transfer.shareLong": "Ce jeu est volumineux: certaines messageries coupent les liens très longs.",
   "transfer.sharePick": "Jeu à partager",
   "transfer.sharedTitle": "Jeu partagé",
   "transfer.sharedBody": "« {name} » contient {cards}. Voulez-vous l’ajouter à vos jeux ?",
