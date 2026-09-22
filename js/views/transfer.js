@@ -7,6 +7,7 @@ import * as store from '../store.js';
 import { getTheme, setTheme } from '../theme.js';
 import { download, parseDelimited, readText, decodeShare } from '../io.js';
 import { navigate, setBusy } from '../router.js';
+import { dayKey } from '../util.js';
 import { notFoundPanel, shareControls, cardRow } from './shared.js';
 
 
@@ -15,7 +16,8 @@ function exportPanel() {
   const button = el('button', {
     type: 'button', class: 'btn btn-primary',
     disabled: sets.length === 0,
-    onclick: () => download('quizzer-' + new Date().toISOString().slice(0, 10) + '.json', store.exportAll()),
+    /* The local day, like the activity and the streak, not the UTC one. */
+    onclick: () => download('quizzer-' + dayKey() + '.json', store.exportAll()),
   }, icon('download'), t('transfer.exportAll'));
 
   return el('section', { class: 'panel stack' },
