@@ -117,7 +117,7 @@ export function statsView(id) {
   return el('div', { class: 'container' },
     el('div', { class: 'study-head', style: { marginBottom: '18px' } },
       el('a', { class: 'icon-btn', href: '#/set/' + set.id, 'aria-label': t('common.back') }, icon('back')),
-      el('h1', {}, t('stats.title'))),
+      el('h1', {}, t('mode.stats'))),
     el('p', { class: 'chart-sub' }, set.title),
     tiles, mastery, activity, hardestPanel, sessionPanel);
 }

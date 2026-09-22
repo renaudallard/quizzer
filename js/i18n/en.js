@@ -216,7 +216,6 @@ export default {
   "match.tooFew": "You need at least 4 cards to play.",
 
   /* Statistics */
-  "stats.title": "Statistics",
   "stats.masteryTitle": "Mastery level",
   "stats.masterySub.one": "How the {n} card in this set is spread",
   "stats.masterySub.other": "How the {n} cards in this set are spread",

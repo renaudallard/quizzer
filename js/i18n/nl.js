@@ -216,7 +216,6 @@ export default {
   "match.tooFew": "Je hebt minstens 4 kaarten nodig om te spelen.",
 
   /* Statistieken */
-  "stats.title": "Statistieken",
   "stats.masteryTitle": "Beheersingsniveau",
   "stats.masterySub.one": "Hoe de {n} kaart van deze set verdeeld is",
   "stats.masterySub.other": "Hoe de {n} kaarten van deze set verdeeld zijn",
