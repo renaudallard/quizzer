@@ -126,6 +126,11 @@ export function flipCard({ onFlip } = {}) {
       if (onFlip) onFlip(next);
       return next;
     },
+    /* Reads out the side in view, like the button under the card. */
+    speak() {
+      const spec = specs[api.flipped ? 1 : 0];
+      if (spec) speak(spec.text, spec.lang);
+    },
   };
   return api;
 }

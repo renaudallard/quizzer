@@ -5,7 +5,7 @@ import { el, icon, toast, mount } from '../dom.js';
 import { t, tn } from '../i18n/index.js';
 import * as store from '../store.js';
 import { shuffle } from '../util.js';
-import { studyShell, flipCard, summaryPanel, bindKeys, speak } from '../study.js';
+import { studyShell, flipCard, summaryPanel, bindKeys } from '../study.js';
 import { notFoundPanel } from '../views/shared.js';
 
 /* Focus reached from the keyboard, not the focus a mouse click leaves on a
@@ -149,10 +149,7 @@ export function flashcardsView(id) {
     else if (event.key === 'ArrowLeft') { event.preventDefault(); move(-1); }
     else if (event.key === ' ' || event.key === 'Enter') { event.preventDefault(); card.flip(); }
     else if (event.key === 's' || event.key === 'S') starButton.click();
-    else if (event.key === 'a' || event.key === 'A') {
-      const entry = current();
-      if (entry) speak(state.reversed ? entry.def : entry.term, state.reversed ? set.defLang : set.termLang);
-    }
+    else if ((event.key === 'a' || event.key === 'A') && current()) card.speak();
   });
 
   rebuild();

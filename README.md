@@ -219,7 +219,7 @@ the storage figure in the settings counts it.
 | `1` to `4` | quiz | pick an answer |
 | `Enter` | quiz, write | check, then continue |
 | `S` | cards | mark as hard |
-| `A` | cards | read aloud |
+| `A` | cards | read aloud the side in view |
 
 ## Adding a language
 
