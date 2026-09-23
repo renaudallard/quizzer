@@ -251,7 +251,7 @@ speaks whichever side is showing.
 
 Term and definition text carries its own `lang` attribute when the set
 declares one, which is what makes read aloud pronounce a Spanish card in
-Spanish.
+Spanish. The announcement of a turned card carries it too.
 
 ## Known limits
 

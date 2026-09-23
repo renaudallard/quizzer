@@ -105,7 +105,7 @@ export function flipCard({ onFlip } = {}) {
     const spec = specs[flipped ? 1 : 0];
     if (!spec) return;
     mount(voice, speakButton(spec.text, spec.lang));
-    live.textContent = spec.label + ': ' + spec.text;
+    mount(live, spec.label + ': ', cardText(spec.text, spec.lang));
   }
 
   const api = {
