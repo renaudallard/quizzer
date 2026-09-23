@@ -68,7 +68,8 @@ is reached the tile stops at the goal and its caption gives the real count.
 Blank rows are left out when a set is saved. A card with only one side filled
 in, or an existing card that has been emptied, stops the save with a message
 naming it, so no card and none of its progress disappears by accident; the
-bin button next to a card is the way to delete it.
+bin button next to a card is the way to delete it. Adding lines in bulk
+clears away the blank rows nobody used, and nothing else.
 
 ### Grading written answers
 

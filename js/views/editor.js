@@ -45,6 +45,11 @@ export function editorView(id) {
   let dirty = false;
   const markDirty = () => { dirty = true; };
 
+  /* A row nobody used: a blank starter row, never a stored card, which would
+     take its progress with it. Only such rows are dropped without a word. */
+  const stored = new Set(existing ? existing.cards.map((card) => card.id) : []);
+  const unused = (card) => !stored.has(card.id) && !card.term.trim() && !card.def.trim() && !card.hint.trim();
+
   const guard = (event) => { if (dirty) { event.preventDefault(); event.returnValue = ''; } };
   window.addEventListener('beforeunload', guard);
   onCleanup(() => window.removeEventListener('beforeunload', guard));
@@ -127,7 +132,7 @@ export function editorView(id) {
       return;
     }
     for (const entry of parsed) draft.cards.push({ ...blankCard(), ...entry });
-    draft.cards = draft.cards.filter((card) => card.term || card.def);
+    draft.cards = draft.cards.filter((card) => !unused(card));
     bulkText.value = '';
     markDirty();
     paint();
@@ -152,16 +157,10 @@ export function editorView(id) {
       title.focus();
       return;
     }
-    /* Untouched blank rows are left out, but a card with one side missing, or
-       an existing card that was emptied, would be dropped with its progress:
+    /* Unused rows are left out, but a card with one side missing, or an
+       existing card that was emptied, would be dropped with its progress:
        say which one instead of saving without it. */
-    const stored = new Set(existing ? existing.cards.map((card) => card.id) : []);
-    const incomplete = draft.cards.findIndex((card) => {
-      const term = card.term.trim();
-      const def = card.def.trim();
-      if (term && def) return false;
-      return Boolean(term || def || card.hint.trim() || stored.has(card.id));
-    });
+    const incomplete = draft.cards.findIndex((card) => !unused(card) && !(card.term.trim() && card.def.trim()));
     if (incomplete >= 0) {
       toast(t('editor.incomplete', { n: incomplete + 1 }));
       const row = list.querySelectorAll('.editor-row')[incomplete];
