@@ -224,10 +224,12 @@ export function createSet(data) {
   return set;
 }
 
+/* Goes through the same rules as a new or loaded set, so the text is trimmed
+   and every card keeps its full shape. */
 export function updateSet(id, patch) {
   const set = getSet(id);
   if (!set) return null;
-  Object.assign(set, patch, { id: set.id, updated: Date.now() });
+  Object.assign(set, normalizeSet({ ...set, ...patch, id: set.id, updated: Date.now() }));
   save();
   return set;
 }
