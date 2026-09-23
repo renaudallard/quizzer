@@ -77,9 +77,9 @@ is reached the tile stops at the goal and its caption gives the real count.
 
 ### Sample sets
 
-"Charger les exemples" adds the sets that ship with the site: Spanish basics,
-European capitals, English irregular verbs, chemical symbols, and three
-courses for French speakers, in Dutch, English and Italian. Each course has
+"Charger les exemples" offers the sets that ship with the site, in groups:
+three courses for French speakers, in Dutch, English and Italian, Spanish
+basics, mathematics, chemical symbols and European capitals. Each course has
 twenty-six sets and about 900 words and phrases, on the same plan. Sets 1 to
 12 lay the basics, from first words and numbers to everyday verbs, adjectives
 and the small words that hold sentences together. Sets 13 to 26 go further:
@@ -115,6 +115,15 @@ dictionaries did not confirm. Cards that share a French answer, such as dank
 je and dank u for merci, carry a hint that tells them apart, and where a word
 has two usual French renderings both are accepted, as with de jas for le
 manteau or la veste.
+
+Mathématiques has eight sets: the multiplication tables from 2 to 9, squares
+and cubes, powers of 2 and of 10, algebra identities and the rules for
+powers, the trigonometric values of the notable angles, geometry formulas
+for perimeters, areas and volumes, and the derivatives of powers with the
+rules for sums, products and quotients. The numbers, identities, values and
+derivatives were checked by computing them, and every answer was typed as a
+plain keyboard would, x^2, sqrt and pi included, to be sure the grading
+takes it.
 
 The button is on the empty home page and above your sets once you have some.
 It opens the list of samples by group, each course and each subject with its

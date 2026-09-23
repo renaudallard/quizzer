@@ -23,6 +23,11 @@
       "description": "Les 30 mots essentiels."
     },
     {
+      "id": "maths",
+      "title": "Mathématiques",
+      "description": "Tables, carrés et puissances, calcul littéral, valeurs trigonométriques, formules de géométrie et dérivées."
+    },
+    {
       "id": "sci",
       "title": "Sciences",
       "description": "Les symboles chimiques courants."
@@ -34,137 +39,6 @@
     }
   ],
   "sets": [
-    {
-      "id": "sample-es-base",
-      "group": "es",
-      "title": "Espagnol: les 30 mots essentiels",
-      "description": "De quoi tenir une première conversation.",
-      "termLang": "es",
-      "defLang": "fr",
-      "cards": [
-        {
-          "term": "hola",
-          "def": "bonjour"
-        },
-        {
-          "term": "gracias",
-          "def": "merci"
-        },
-        {
-          "term": "por favor",
-          "def": "s'il vous plaît"
-        },
-        {
-          "term": "adiós",
-          "def": "au revoir"
-        },
-        {
-          "term": "sí",
-          "def": "oui"
-        },
-        {
-          "term": "no",
-          "def": "non"
-        },
-        {
-          "term": "buenos días",
-          "def": "bonjour",
-          "hint": "le matin"
-        },
-        {
-          "term": "buenas noches",
-          "def": "bonne nuit"
-        },
-        {
-          "term": "¿cómo estás?",
-          "def": "comment vas-tu ?"
-        },
-        {
-          "term": "lo siento",
-          "def": "je suis désolé"
-        },
-        {
-          "term": "de nada",
-          "def": "de rien"
-        },
-        {
-          "term": "el agua",
-          "def": "l'eau"
-        },
-        {
-          "term": "el pan",
-          "def": "le pain"
-        },
-        {
-          "term": "la casa",
-          "def": "la maison"
-        },
-        {
-          "term": "el perro",
-          "def": "le chien"
-        },
-        {
-          "term": "el gato",
-          "def": "le chat"
-        },
-        {
-          "term": "el libro",
-          "def": "le livre"
-        },
-        {
-          "term": "la ciudad",
-          "def": "la ville"
-        },
-        {
-          "term": "el trabajo",
-          "def": "le travail"
-        },
-        {
-          "term": "el tiempo",
-          "def": "le temps"
-        },
-        {
-          "term": "hoy",
-          "def": "aujourd'hui"
-        },
-        {
-          "term": "mañana",
-          "def": "demain"
-        },
-        {
-          "term": "ayer",
-          "def": "hier"
-        },
-        {
-          "term": "siempre",
-          "def": "toujours"
-        },
-        {
-          "term": "nunca",
-          "def": "jamais"
-        },
-        {
-          "term": "grande",
-          "def": "grand"
-        },
-        {
-          "term": "pequeño",
-          "def": "petit"
-        },
-        {
-          "term": "rápido",
-          "def": "rapide"
-        },
-        {
-          "term": "caro",
-          "def": "cher"
-        },
-        {
-          "term": "fácil",
-          "def": "facile"
-        }
-      ]
-    },
     {
       "id": "sample-nl-01",
       "group": "nl",
@@ -8076,6 +7950,128 @@
       ]
     },
     {
+      "id": "sample-en-irreguliers",
+      "group": "en",
+      "title": "Verbes irréguliers anglais",
+      "description": "Infinitif, prétérit, participe passé.",
+      "termLang": "en",
+      "defLang": "en",
+      "cards": [
+        {
+          "term": "be (être)",
+          "def": "was, been"
+        },
+        {
+          "term": "begin (commencer)",
+          "def": "began, begun"
+        },
+        {
+          "term": "break (casser)",
+          "def": "broke, broken"
+        },
+        {
+          "term": "bring (apporter)",
+          "def": "brought, brought"
+        },
+        {
+          "term": "buy (acheter)",
+          "def": "bought, bought"
+        },
+        {
+          "term": "choose (choisir)",
+          "def": "chose, chosen"
+        },
+        {
+          "term": "come (venir)",
+          "def": "came, come"
+        },
+        {
+          "term": "do (faire)",
+          "def": "did, done"
+        },
+        {
+          "term": "drink (boire)",
+          "def": "drank, drunk"
+        },
+        {
+          "term": "drive (conduire)",
+          "def": "drove, driven"
+        },
+        {
+          "term": "eat (manger)",
+          "def": "ate, eaten"
+        },
+        {
+          "term": "fall (tomber)",
+          "def": "fell, fallen"
+        },
+        {
+          "term": "feel (ressentir)",
+          "def": "felt, felt"
+        },
+        {
+          "term": "find (trouver)",
+          "def": "found, found"
+        },
+        {
+          "term": "get (obtenir)",
+          "def": "got, got"
+        },
+        {
+          "term": "give (donner)",
+          "def": "gave, given"
+        },
+        {
+          "term": "go (aller)",
+          "def": "went, gone"
+        },
+        {
+          "term": "know (savoir)",
+          "def": "knew, known"
+        },
+        {
+          "term": "leave (partir)",
+          "def": "left, left"
+        },
+        {
+          "term": "make (fabriquer)",
+          "def": "made, made"
+        },
+        {
+          "term": "put (poser)",
+          "def": "put, put"
+        },
+        {
+          "term": "read (lire)",
+          "def": "read, read"
+        },
+        {
+          "term": "see (voir)",
+          "def": "saw, seen"
+        },
+        {
+          "term": "speak (parler)",
+          "def": "spoke, spoken"
+        },
+        {
+          "term": "take (prendre)",
+          "def": "took, taken"
+        },
+        {
+          "term": "teach (enseigner)",
+          "def": "taught, taught"
+        },
+        {
+          "term": "think (penser)",
+          "def": "thought, thought"
+        },
+        {
+          "term": "write (écrire)",
+          "def": "wrote, written"
+        }
+      ]
+    },
+    {
       "id": "sample-it-01",
       "group": "it",
       "title": "Italien 1: premiers mots",
@@ -12094,6 +12090,1117 @@
       ]
     },
     {
+      "id": "sample-es-base",
+      "group": "es",
+      "title": "Espagnol: les 30 mots essentiels",
+      "description": "De quoi tenir une première conversation.",
+      "termLang": "es",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "hola",
+          "def": "bonjour"
+        },
+        {
+          "term": "gracias",
+          "def": "merci"
+        },
+        {
+          "term": "por favor",
+          "def": "s'il vous plaît"
+        },
+        {
+          "term": "adiós",
+          "def": "au revoir"
+        },
+        {
+          "term": "sí",
+          "def": "oui"
+        },
+        {
+          "term": "no",
+          "def": "non"
+        },
+        {
+          "term": "buenos días",
+          "def": "bonjour",
+          "hint": "le matin"
+        },
+        {
+          "term": "buenas noches",
+          "def": "bonne nuit"
+        },
+        {
+          "term": "¿cómo estás?",
+          "def": "comment vas-tu ?"
+        },
+        {
+          "term": "lo siento",
+          "def": "je suis désolé"
+        },
+        {
+          "term": "de nada",
+          "def": "de rien"
+        },
+        {
+          "term": "el agua",
+          "def": "l'eau"
+        },
+        {
+          "term": "el pan",
+          "def": "le pain"
+        },
+        {
+          "term": "la casa",
+          "def": "la maison"
+        },
+        {
+          "term": "el perro",
+          "def": "le chien"
+        },
+        {
+          "term": "el gato",
+          "def": "le chat"
+        },
+        {
+          "term": "el libro",
+          "def": "le livre"
+        },
+        {
+          "term": "la ciudad",
+          "def": "la ville"
+        },
+        {
+          "term": "el trabajo",
+          "def": "le travail"
+        },
+        {
+          "term": "el tiempo",
+          "def": "le temps"
+        },
+        {
+          "term": "hoy",
+          "def": "aujourd'hui"
+        },
+        {
+          "term": "mañana",
+          "def": "demain"
+        },
+        {
+          "term": "ayer",
+          "def": "hier"
+        },
+        {
+          "term": "siempre",
+          "def": "toujours"
+        },
+        {
+          "term": "nunca",
+          "def": "jamais"
+        },
+        {
+          "term": "grande",
+          "def": "grand"
+        },
+        {
+          "term": "pequeño",
+          "def": "petit"
+        },
+        {
+          "term": "rápido",
+          "def": "rapide"
+        },
+        {
+          "term": "caro",
+          "def": "cher"
+        },
+        {
+          "term": "fácil",
+          "def": "facile"
+        }
+      ]
+    },
+    {
+      "id": "sample-maths-tables-2-5",
+      "group": "maths",
+      "title": "Tables de multiplication de 2 à 5",
+      "description": "Les tables de 2, 3, 4 et 5, de ×2 à ×10.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "2 × 2",
+          "def": "4"
+        },
+        {
+          "term": "2 × 3",
+          "def": "6"
+        },
+        {
+          "term": "2 × 4",
+          "def": "8"
+        },
+        {
+          "term": "2 × 5",
+          "def": "10"
+        },
+        {
+          "term": "2 × 6",
+          "def": "12"
+        },
+        {
+          "term": "2 × 7",
+          "def": "14"
+        },
+        {
+          "term": "2 × 8",
+          "def": "16"
+        },
+        {
+          "term": "2 × 9",
+          "def": "18"
+        },
+        {
+          "term": "2 × 10",
+          "def": "20"
+        },
+        {
+          "term": "3 × 2",
+          "def": "6"
+        },
+        {
+          "term": "3 × 3",
+          "def": "9"
+        },
+        {
+          "term": "3 × 4",
+          "def": "12"
+        },
+        {
+          "term": "3 × 5",
+          "def": "15"
+        },
+        {
+          "term": "3 × 6",
+          "def": "18"
+        },
+        {
+          "term": "3 × 7",
+          "def": "21"
+        },
+        {
+          "term": "3 × 8",
+          "def": "24"
+        },
+        {
+          "term": "3 × 9",
+          "def": "27"
+        },
+        {
+          "term": "3 × 10",
+          "def": "30"
+        },
+        {
+          "term": "4 × 2",
+          "def": "8"
+        },
+        {
+          "term": "4 × 3",
+          "def": "12"
+        },
+        {
+          "term": "4 × 4",
+          "def": "16"
+        },
+        {
+          "term": "4 × 5",
+          "def": "20"
+        },
+        {
+          "term": "4 × 6",
+          "def": "24"
+        },
+        {
+          "term": "4 × 7",
+          "def": "28"
+        },
+        {
+          "term": "4 × 8",
+          "def": "32"
+        },
+        {
+          "term": "4 × 9",
+          "def": "36"
+        },
+        {
+          "term": "4 × 10",
+          "def": "40"
+        },
+        {
+          "term": "5 × 2",
+          "def": "10"
+        },
+        {
+          "term": "5 × 3",
+          "def": "15"
+        },
+        {
+          "term": "5 × 4",
+          "def": "20"
+        },
+        {
+          "term": "5 × 5",
+          "def": "25"
+        },
+        {
+          "term": "5 × 6",
+          "def": "30"
+        },
+        {
+          "term": "5 × 7",
+          "def": "35"
+        },
+        {
+          "term": "5 × 8",
+          "def": "40"
+        },
+        {
+          "term": "5 × 9",
+          "def": "45"
+        },
+        {
+          "term": "5 × 10",
+          "def": "50"
+        }
+      ]
+    },
+    {
+      "id": "sample-maths-tables-6-9",
+      "group": "maths",
+      "title": "Tables de multiplication de 6 à 9",
+      "description": "Les tables de 6, 7, 8 et 9, de ×2 à ×10.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "6 × 2",
+          "def": "12"
+        },
+        {
+          "term": "6 × 3",
+          "def": "18"
+        },
+        {
+          "term": "6 × 4",
+          "def": "24"
+        },
+        {
+          "term": "6 × 5",
+          "def": "30"
+        },
+        {
+          "term": "6 × 6",
+          "def": "36"
+        },
+        {
+          "term": "6 × 7",
+          "def": "42"
+        },
+        {
+          "term": "6 × 8",
+          "def": "48"
+        },
+        {
+          "term": "6 × 9",
+          "def": "54"
+        },
+        {
+          "term": "6 × 10",
+          "def": "60"
+        },
+        {
+          "term": "7 × 2",
+          "def": "14"
+        },
+        {
+          "term": "7 × 3",
+          "def": "21"
+        },
+        {
+          "term": "7 × 4",
+          "def": "28"
+        },
+        {
+          "term": "7 × 5",
+          "def": "35"
+        },
+        {
+          "term": "7 × 6",
+          "def": "42"
+        },
+        {
+          "term": "7 × 7",
+          "def": "49"
+        },
+        {
+          "term": "7 × 8",
+          "def": "56"
+        },
+        {
+          "term": "7 × 9",
+          "def": "63"
+        },
+        {
+          "term": "7 × 10",
+          "def": "70"
+        },
+        {
+          "term": "8 × 2",
+          "def": "16"
+        },
+        {
+          "term": "8 × 3",
+          "def": "24"
+        },
+        {
+          "term": "8 × 4",
+          "def": "32"
+        },
+        {
+          "term": "8 × 5",
+          "def": "40"
+        },
+        {
+          "term": "8 × 6",
+          "def": "48"
+        },
+        {
+          "term": "8 × 7",
+          "def": "56"
+        },
+        {
+          "term": "8 × 8",
+          "def": "64"
+        },
+        {
+          "term": "8 × 9",
+          "def": "72"
+        },
+        {
+          "term": "8 × 10",
+          "def": "80"
+        },
+        {
+          "term": "9 × 2",
+          "def": "18"
+        },
+        {
+          "term": "9 × 3",
+          "def": "27"
+        },
+        {
+          "term": "9 × 4",
+          "def": "36"
+        },
+        {
+          "term": "9 × 5",
+          "def": "45"
+        },
+        {
+          "term": "9 × 6",
+          "def": "54"
+        },
+        {
+          "term": "9 × 7",
+          "def": "63"
+        },
+        {
+          "term": "9 × 8",
+          "def": "72"
+        },
+        {
+          "term": "9 × 9",
+          "def": "81"
+        },
+        {
+          "term": "9 × 10",
+          "def": "90"
+        }
+      ]
+    },
+    {
+      "id": "sample-maths-carres-cubes",
+      "group": "maths",
+      "title": "Carrés et cubes",
+      "description": "Les carrés de 2 à 20 et les cubes de 2 à 10.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "2²",
+          "def": "4"
+        },
+        {
+          "term": "3²",
+          "def": "9"
+        },
+        {
+          "term": "4²",
+          "def": "16"
+        },
+        {
+          "term": "5²",
+          "def": "25"
+        },
+        {
+          "term": "6²",
+          "def": "36"
+        },
+        {
+          "term": "7²",
+          "def": "49"
+        },
+        {
+          "term": "8²",
+          "def": "64"
+        },
+        {
+          "term": "9²",
+          "def": "81"
+        },
+        {
+          "term": "10²",
+          "def": "100"
+        },
+        {
+          "term": "11²",
+          "def": "121"
+        },
+        {
+          "term": "12²",
+          "def": "144"
+        },
+        {
+          "term": "13²",
+          "def": "169"
+        },
+        {
+          "term": "14²",
+          "def": "196"
+        },
+        {
+          "term": "15²",
+          "def": "225"
+        },
+        {
+          "term": "16²",
+          "def": "256"
+        },
+        {
+          "term": "17²",
+          "def": "289"
+        },
+        {
+          "term": "18²",
+          "def": "324"
+        },
+        {
+          "term": "19²",
+          "def": "361"
+        },
+        {
+          "term": "20²",
+          "def": "400"
+        },
+        {
+          "term": "2³",
+          "def": "8"
+        },
+        {
+          "term": "3³",
+          "def": "27"
+        },
+        {
+          "term": "4³",
+          "def": "64"
+        },
+        {
+          "term": "5³",
+          "def": "125"
+        },
+        {
+          "term": "6³",
+          "def": "216"
+        },
+        {
+          "term": "7³",
+          "def": "343"
+        },
+        {
+          "term": "8³",
+          "def": "512"
+        },
+        {
+          "term": "9³",
+          "def": "729"
+        },
+        {
+          "term": "10³",
+          "def": "1 000"
+        }
+      ]
+    },
+    {
+      "id": "sample-maths-puissances",
+      "group": "maths",
+      "title": "Puissances de 2 et de 10",
+      "description": "De 2⁻² à 2¹², et les puissances de 10 les plus courantes.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "2⁻²",
+          "def": "0,25"
+        },
+        {
+          "term": "2⁻¹",
+          "def": "0,5"
+        },
+        {
+          "term": "2⁰",
+          "def": "1"
+        },
+        {
+          "term": "2¹",
+          "def": "2"
+        },
+        {
+          "term": "2²",
+          "def": "4"
+        },
+        {
+          "term": "2³",
+          "def": "8"
+        },
+        {
+          "term": "2⁴",
+          "def": "16"
+        },
+        {
+          "term": "2⁵",
+          "def": "32"
+        },
+        {
+          "term": "2⁶",
+          "def": "64"
+        },
+        {
+          "term": "2⁷",
+          "def": "128"
+        },
+        {
+          "term": "2⁸",
+          "def": "256"
+        },
+        {
+          "term": "2⁹",
+          "def": "512"
+        },
+        {
+          "term": "2¹⁰",
+          "def": "1 024"
+        },
+        {
+          "term": "2¹¹",
+          "def": "2 048"
+        },
+        {
+          "term": "2¹²",
+          "def": "4 096"
+        },
+        {
+          "term": "10⁻³",
+          "def": "0,001"
+        },
+        {
+          "term": "10⁻²",
+          "def": "0,01"
+        },
+        {
+          "term": "10⁻¹",
+          "def": "0,1"
+        },
+        {
+          "term": "10²",
+          "def": "100"
+        },
+        {
+          "term": "10³",
+          "def": "1 000"
+        },
+        {
+          "term": "10⁴",
+          "def": "10 000"
+        },
+        {
+          "term": "10⁵",
+          "def": "100 000"
+        },
+        {
+          "term": "10⁶",
+          "def": "1 000 000"
+        },
+        {
+          "term": "10⁹",
+          "def": "1 000 000 000"
+        }
+      ]
+    },
+    {
+      "id": "sample-maths-calcul-litteral",
+      "group": "maths",
+      "title": "Calcul littéral et puissances",
+      "description": "Identités remarquables, développements et règles de calcul sur les puissances.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "(a + b)²",
+          "def": "a² + 2ab + b²"
+        },
+        {
+          "term": "(a − b)²",
+          "def": "a² − 2ab + b²"
+        },
+        {
+          "term": "(a + b)(a − b)",
+          "def": "a² − b²"
+        },
+        {
+          "term": "(a + b)³",
+          "def": "a³ + 3a²b + 3ab² + b³"
+        },
+        {
+          "term": "(a − b)³",
+          "def": "a³ − 3a²b + 3ab² − b³"
+        },
+        {
+          "term": "k(a + b)",
+          "def": "ka + kb"
+        },
+        {
+          "term": "(a + b)(c + d)",
+          "def": "ac + ad + bc + bd"
+        },
+        {
+          "term": "x + x",
+          "def": "2 × x"
+        },
+        {
+          "term": "x × x",
+          "def": "x²"
+        },
+        {
+          "term": "3x + 5x",
+          "def": "8 × x"
+        },
+        {
+          "term": "2x × 3x",
+          "def": "6x²"
+        },
+        {
+          "term": "(−a)²",
+          "def": "a²"
+        },
+        {
+          "term": "a² × a³",
+          "def": "a⁵"
+        },
+        {
+          "term": "(a²)³",
+          "def": "a⁶"
+        },
+        {
+          "term": "a⁵ ÷ a²",
+          "def": "a³"
+        },
+        {
+          "term": "a⁰",
+          "def": "1",
+          "hint": "a ≠ 0"
+        },
+        {
+          "term": "a⁻¹",
+          "def": "1/a"
+        },
+        {
+          "term": "a⁻ⁿ",
+          "def": "1/aⁿ"
+        },
+        {
+          "term": "√a × √b",
+          "def": "√(ab)",
+          "hint": "a et b positifs"
+        },
+        {
+          "term": "√(a²)",
+          "def": "|a|"
+        }
+      ]
+    },
+    {
+      "id": "sample-maths-trigonometrie",
+      "group": "maths",
+      "title": "Valeurs trigonométriques",
+      "description": "Cosinus, sinus et tangente des angles remarquables, et les angles en radians.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "cos 0",
+          "def": "1"
+        },
+        {
+          "term": "sin 0",
+          "def": "0"
+        },
+        {
+          "term": "cos(π/6)",
+          "def": "√3/2"
+        },
+        {
+          "term": "sin(π/6)",
+          "def": "½"
+        },
+        {
+          "term": "tan(π/6)",
+          "def": "√3/3"
+        },
+        {
+          "term": "cos(π/4)",
+          "def": "√2/2"
+        },
+        {
+          "term": "sin(π/4)",
+          "def": "√2/2"
+        },
+        {
+          "term": "tan(π/4)",
+          "def": "1"
+        },
+        {
+          "term": "cos(π/3)",
+          "def": "½"
+        },
+        {
+          "term": "sin(π/3)",
+          "def": "√3/2"
+        },
+        {
+          "term": "tan(π/3)",
+          "def": "√3"
+        },
+        {
+          "term": "cos(π/2)",
+          "def": "0"
+        },
+        {
+          "term": "sin(π/2)",
+          "def": "1"
+        },
+        {
+          "term": "cos(π)",
+          "def": "−1"
+        },
+        {
+          "term": "sin(π)",
+          "def": "0"
+        },
+        {
+          "term": "cos²x + sin²x",
+          "def": "1"
+        },
+        {
+          "term": "30° en radians",
+          "def": "π/6"
+        },
+        {
+          "term": "45° en radians",
+          "def": "π/4"
+        },
+        {
+          "term": "60° en radians",
+          "def": "π/3"
+        },
+        {
+          "term": "90° en radians",
+          "def": "π/2"
+        },
+        {
+          "term": "180° en radians",
+          "def": "π"
+        },
+        {
+          "term": "360° en radians",
+          "def": "2π"
+        }
+      ]
+    },
+    {
+      "id": "sample-maths-geometrie",
+      "group": "maths",
+      "title": "Formules de géométrie",
+      "description": "Périmètres, aires et volumes des figures et solides usuels.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "périmètre du carré de côté c",
+          "def": "4 × c"
+        },
+        {
+          "term": "aire du carré de côté c",
+          "def": "c²"
+        },
+        {
+          "term": "périmètre du rectangle de longueur L et de largeur l",
+          "def": "2 × (L + l)"
+        },
+        {
+          "term": "aire du rectangle de longueur L et de largeur l",
+          "def": "L × l"
+        },
+        {
+          "term": "aire du triangle de base b et de hauteur h",
+          "def": "b × h / 2"
+        },
+        {
+          "term": "aire du parallélogramme de base b et de hauteur h",
+          "def": "b × h"
+        },
+        {
+          "term": "aire du trapèze de bases B et b et de hauteur h",
+          "def": "(B + b) × h / 2"
+        },
+        {
+          "term": "aire du losange de diagonales D et d",
+          "def": "D × d / 2"
+        },
+        {
+          "term": "périmètre du cercle de rayon r",
+          "def": "2 × π × r"
+        },
+        {
+          "term": "aire du disque de rayon r",
+          "def": "π × r²"
+        },
+        {
+          "term": "volume du cube d’arête a",
+          "def": "a³"
+        },
+        {
+          "term": "volume du pavé droit de longueur L, largeur l et hauteur h",
+          "def": "L × l × h"
+        },
+        {
+          "term": "volume du cylindre de rayon r et de hauteur h",
+          "def": "π × r² × h"
+        },
+        {
+          "term": "volume du cône de rayon r et de hauteur h",
+          "def": "π × r² × h / 3"
+        },
+        {
+          "term": "volume de la pyramide d’aire de base B et de hauteur h",
+          "def": "B × h / 3"
+        },
+        {
+          "term": "volume de la boule de rayon r",
+          "def": "4/3 × π × r³"
+        },
+        {
+          "term": "aire de la sphère de rayon r",
+          "def": "4 × π × r²"
+        },
+        {
+          "term": "théorème de Pythagore, hypoténuse c",
+          "def": "a² + b² = c²"
+        }
+      ]
+    },
+    {
+      "id": "sample-maths-derivees",
+      "group": "maths",
+      "title": "Dérivées: puissances et règles de calcul",
+      "description": "Les dérivées des fonctions puissances et les règles pour les sommes, produits et quotients.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "dérivée d’une constante k",
+          "def": "0"
+        },
+        {
+          "term": "dérivée de x",
+          "def": "1"
+        },
+        {
+          "term": "dérivée de x²",
+          "def": "2 × x"
+        },
+        {
+          "term": "dérivée de x³",
+          "def": "3x²"
+        },
+        {
+          "term": "dérivée de 1/x",
+          "def": "−1/x²"
+        },
+        {
+          "term": "dérivée de √x",
+          "def": "1/(2√x)"
+        },
+        {
+          "term": "dérivée de ln(x)",
+          "def": "1/x"
+        },
+        {
+          "term": "dérivée de u + v",
+          "def": "u' + v'"
+        },
+        {
+          "term": "dérivée de k × u, k constante",
+          "def": "k × u'"
+        },
+        {
+          "term": "dérivée de u × v",
+          "def": "u'v + uv'"
+        },
+        {
+          "term": "dérivée de u/v",
+          "def": "(u'v − uv')/v²"
+        },
+        {
+          "term": "dérivée de 1/v",
+          "def": "−v'/v²"
+        },
+        {
+          "term": "dérivée de u²",
+          "def": "2 × u × u'"
+        }
+      ]
+    },
+    {
+      "id": "sample-symboles-chimiques",
+      "group": "sci",
+      "title": "Symboles chimiques",
+      "description": "Les 25 éléments que l'on croise le plus souvent.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "Hydrogène",
+          "def": "H"
+        },
+        {
+          "term": "Hélium",
+          "def": "He"
+        },
+        {
+          "term": "Carbone",
+          "def": "C"
+        },
+        {
+          "term": "Azote",
+          "def": "N"
+        },
+        {
+          "term": "Oxygène",
+          "def": "O"
+        },
+        {
+          "term": "Sodium",
+          "def": "Na"
+        },
+        {
+          "term": "Magnésium",
+          "def": "Mg"
+        },
+        {
+          "term": "Aluminium",
+          "def": "Al"
+        },
+        {
+          "term": "Silicium",
+          "def": "Si"
+        },
+        {
+          "term": "Phosphore",
+          "def": "P"
+        },
+        {
+          "term": "Soufre",
+          "def": "S"
+        },
+        {
+          "term": "Chlore",
+          "def": "Cl"
+        },
+        {
+          "term": "Potassium",
+          "def": "K"
+        },
+        {
+          "term": "Calcium",
+          "def": "Ca"
+        },
+        {
+          "term": "Fer",
+          "def": "Fe"
+        },
+        {
+          "term": "Cuivre",
+          "def": "Cu"
+        },
+        {
+          "term": "Zinc",
+          "def": "Zn"
+        },
+        {
+          "term": "Argent",
+          "def": "Ag"
+        },
+        {
+          "term": "Étain",
+          "def": "Sn"
+        },
+        {
+          "term": "Or",
+          "def": "Au"
+        },
+        {
+          "term": "Mercure",
+          "def": "Hg"
+        },
+        {
+          "term": "Plomb",
+          "def": "Pb"
+        },
+        {
+          "term": "Nickel",
+          "def": "Ni"
+        },
+        {
+          "term": "Cobalt",
+          "def": "Co"
+        },
+        {
+          "term": "Uranium",
+          "def": "U"
+        }
+      ]
+    },
+    {
       "id": "sample-capitales-europe",
       "group": "geo",
       "title": "Capitales d'Europe",
@@ -12206,238 +13313,6 @@
         {
           "term": "Lituanie",
           "def": "Vilnius"
-        }
-      ]
-    },
-    {
-      "id": "sample-en-irreguliers",
-      "group": "en",
-      "title": "Verbes irréguliers anglais",
-      "description": "Infinitif, prétérit, participe passé.",
-      "termLang": "en",
-      "defLang": "en",
-      "cards": [
-        {
-          "term": "be (être)",
-          "def": "was, been"
-        },
-        {
-          "term": "begin (commencer)",
-          "def": "began, begun"
-        },
-        {
-          "term": "break (casser)",
-          "def": "broke, broken"
-        },
-        {
-          "term": "bring (apporter)",
-          "def": "brought, brought"
-        },
-        {
-          "term": "buy (acheter)",
-          "def": "bought, bought"
-        },
-        {
-          "term": "choose (choisir)",
-          "def": "chose, chosen"
-        },
-        {
-          "term": "come (venir)",
-          "def": "came, come"
-        },
-        {
-          "term": "do (faire)",
-          "def": "did, done"
-        },
-        {
-          "term": "drink (boire)",
-          "def": "drank, drunk"
-        },
-        {
-          "term": "drive (conduire)",
-          "def": "drove, driven"
-        },
-        {
-          "term": "eat (manger)",
-          "def": "ate, eaten"
-        },
-        {
-          "term": "fall (tomber)",
-          "def": "fell, fallen"
-        },
-        {
-          "term": "feel (ressentir)",
-          "def": "felt, felt"
-        },
-        {
-          "term": "find (trouver)",
-          "def": "found, found"
-        },
-        {
-          "term": "get (obtenir)",
-          "def": "got, got"
-        },
-        {
-          "term": "give (donner)",
-          "def": "gave, given"
-        },
-        {
-          "term": "go (aller)",
-          "def": "went, gone"
-        },
-        {
-          "term": "know (savoir)",
-          "def": "knew, known"
-        },
-        {
-          "term": "leave (partir)",
-          "def": "left, left"
-        },
-        {
-          "term": "make (fabriquer)",
-          "def": "made, made"
-        },
-        {
-          "term": "put (poser)",
-          "def": "put, put"
-        },
-        {
-          "term": "read (lire)",
-          "def": "read, read"
-        },
-        {
-          "term": "see (voir)",
-          "def": "saw, seen"
-        },
-        {
-          "term": "speak (parler)",
-          "def": "spoke, spoken"
-        },
-        {
-          "term": "take (prendre)",
-          "def": "took, taken"
-        },
-        {
-          "term": "teach (enseigner)",
-          "def": "taught, taught"
-        },
-        {
-          "term": "think (penser)",
-          "def": "thought, thought"
-        },
-        {
-          "term": "write (écrire)",
-          "def": "wrote, written"
-        }
-      ]
-    },
-    {
-      "id": "sample-symboles-chimiques",
-      "group": "sci",
-      "title": "Symboles chimiques",
-      "description": "Les 25 éléments que l'on croise le plus souvent.",
-      "termLang": "fr",
-      "defLang": "fr",
-      "cards": [
-        {
-          "term": "Hydrogène",
-          "def": "H"
-        },
-        {
-          "term": "Hélium",
-          "def": "He"
-        },
-        {
-          "term": "Carbone",
-          "def": "C"
-        },
-        {
-          "term": "Azote",
-          "def": "N"
-        },
-        {
-          "term": "Oxygène",
-          "def": "O"
-        },
-        {
-          "term": "Sodium",
-          "def": "Na"
-        },
-        {
-          "term": "Magnésium",
-          "def": "Mg"
-        },
-        {
-          "term": "Aluminium",
-          "def": "Al"
-        },
-        {
-          "term": "Silicium",
-          "def": "Si"
-        },
-        {
-          "term": "Phosphore",
-          "def": "P"
-        },
-        {
-          "term": "Soufre",
-          "def": "S"
-        },
-        {
-          "term": "Chlore",
-          "def": "Cl"
-        },
-        {
-          "term": "Potassium",
-          "def": "K"
-        },
-        {
-          "term": "Calcium",
-          "def": "Ca"
-        },
-        {
-          "term": "Fer",
-          "def": "Fe"
-        },
-        {
-          "term": "Cuivre",
-          "def": "Cu"
-        },
-        {
-          "term": "Zinc",
-          "def": "Zn"
-        },
-        {
-          "term": "Argent",
-          "def": "Ag"
-        },
-        {
-          "term": "Étain",
-          "def": "Sn"
-        },
-        {
-          "term": "Or",
-          "def": "Au"
-        },
-        {
-          "term": "Mercure",
-          "def": "Hg"
-        },
-        {
-          "term": "Plomb",
-          "def": "Pb"
-        },
-        {
-          "term": "Nickel",
-          "def": "Ni"
-        },
-        {
-          "term": "Cobalt",
-          "def": "Co"
-        },
-        {
-          "term": "Uranium",
-          "def": "U"
         }
       ]
     }
