@@ -90,7 +90,7 @@ async function run() {
   const samples = await (await fetch('../data/samples.json')).json();
   check('charge les jeux d’exemple', () => {
     const count = store.importPayload(samples);
-    assert(count === 4, 'attendu 4, obtenu ' + count);
+    assert(count === samples.sets.length, 'attendu ' + samples.sets.length + ', obtenu ' + count);
     return count + ' jeux';
   });
 
@@ -103,7 +103,7 @@ async function run() {
   check('aller retour avec le stockage', () => {
     store.save();
     store.load();
-    assert(store.getSets().length === 4, 'jeux perdus');
+    assert(store.getSets().length === samples.sets.length, 'jeux perdus');
     assert(store.getSet('sample-es-base').cards.length === 30, 'cartes perdues');
     return 'ok';
   });

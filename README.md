@@ -63,6 +63,17 @@ whole number from 5 to 200 is accepted; other values are rounded or brought
 into that range, and emptying the field keeps the current goal. Once the goal
 is reached the tile stops at the goal and its caption gives the real count.
 
+### Sample sets
+
+"Charger les exemples" adds the sets that ship with the site: Spanish basics,
+European capitals, English irregular verbs, chemical symbols, and a Dutch
+course for French speakers in twelve sets, from first words and numbers to
+everyday verbs, adjectives and the small words that hold sentences together.
+The course holds about 430 words and phrases. Every noun comes with its
+article, de or het, since it has to be learned with the word, and read aloud
+speaks the Dutch side in Dutch. Cards that share a French answer, such as dank
+je and dank u for merci, carry a hint that tells them apart.
+
 ### Editing sets
 
 Blank rows are left out when a set is saved. A card with only one side filled
@@ -119,7 +130,7 @@ counts the card twice.
 
     index.html            page shell, written in French with data-i18n hooks
     css/style.css         design tokens, components, print sheet
-    data/samples.json     four sample sets, loaded on demand
+    data/samples.json     sample sets, loaded on demand
     js/
       app.js              bootstrap, route table, top bar wiring
       router.js           hash router with per route cleanup

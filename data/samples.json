@@ -133,6 +133,1843 @@
       ]
     },
     {
+      "id": "sample-nl-01",
+      "title": "Néerlandais 1: premiers mots",
+      "description": "Saluer, remercier, s'excuser et faire connaissance.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "hallo",
+          "def": "bonjour"
+        },
+        {
+          "term": "hoi",
+          "def": "salut",
+          "hint": "en arrivant"
+        },
+        {
+          "term": "doei",
+          "def": "salut",
+          "hint": "en partant"
+        },
+        {
+          "term": "goedemorgen",
+          "def": "bonjour",
+          "hint": "le matin"
+        },
+        {
+          "term": "goedemiddag",
+          "def": "bonjour",
+          "hint": "l'après-midi"
+        },
+        {
+          "term": "goedenavond",
+          "def": "bonsoir"
+        },
+        {
+          "term": "goedenacht",
+          "def": "bonne nuit"
+        },
+        {
+          "term": "tot ziens",
+          "def": "au revoir"
+        },
+        {
+          "term": "tot straks",
+          "def": "à tout à l'heure"
+        },
+        {
+          "term": "tot morgen",
+          "def": "à demain"
+        },
+        {
+          "term": "welkom",
+          "def": "bienvenue"
+        },
+        {
+          "term": "dank je",
+          "def": "merci",
+          "hint": "familier"
+        },
+        {
+          "term": "dank u",
+          "def": "merci",
+          "hint": "poli"
+        },
+        {
+          "term": "alsjeblieft",
+          "def": "s'il te plaît"
+        },
+        {
+          "term": "alstublieft",
+          "def": "s'il vous plaît"
+        },
+        {
+          "term": "graag gedaan",
+          "def": "de rien"
+        },
+        {
+          "term": "sorry",
+          "def": "pardon"
+        },
+        {
+          "term": "het spijt me",
+          "def": "je suis désolé"
+        },
+        {
+          "term": "ja",
+          "def": "oui"
+        },
+        {
+          "term": "nee",
+          "def": "non"
+        },
+        {
+          "term": "misschien",
+          "def": "peut-être"
+        },
+        {
+          "term": "hoe gaat het?",
+          "def": "comment ça va ?"
+        },
+        {
+          "term": "goed, dank je",
+          "def": "bien, merci"
+        },
+        {
+          "term": "hoe heet je?",
+          "def": "comment tu t'appelles ?"
+        },
+        {
+          "term": "ik heet",
+          "def": "je m'appelle"
+        },
+        {
+          "term": "waar kom je vandaan?",
+          "def": "d'où viens-tu ?"
+        },
+        {
+          "term": "ik kom uit België",
+          "def": "je viens de Belgique"
+        },
+        {
+          "term": "aangenaam",
+          "def": "enchanté"
+        },
+        {
+          "term": "ik begrijp het niet",
+          "def": "je ne comprends pas"
+        },
+        {
+          "term": "spreekt u Frans?",
+          "def": "parlez-vous français ?"
+        },
+        {
+          "term": "een beetje",
+          "def": "un peu"
+        },
+        {
+          "term": "proost",
+          "def": "santé",
+          "hint": "en trinquant"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-02",
+      "title": "Néerlandais 2: les nombres",
+      "description": "De zéro à un million, et les premiers ordinaux.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "nul",
+          "def": "0"
+        },
+        {
+          "term": "één",
+          "def": "1"
+        },
+        {
+          "term": "twee",
+          "def": "2"
+        },
+        {
+          "term": "drie",
+          "def": "3"
+        },
+        {
+          "term": "vier",
+          "def": "4"
+        },
+        {
+          "term": "vijf",
+          "def": "5"
+        },
+        {
+          "term": "zes",
+          "def": "6"
+        },
+        {
+          "term": "zeven",
+          "def": "7"
+        },
+        {
+          "term": "acht",
+          "def": "8"
+        },
+        {
+          "term": "negen",
+          "def": "9"
+        },
+        {
+          "term": "tien",
+          "def": "10"
+        },
+        {
+          "term": "elf",
+          "def": "11"
+        },
+        {
+          "term": "twaalf",
+          "def": "12"
+        },
+        {
+          "term": "dertien",
+          "def": "13"
+        },
+        {
+          "term": "veertien",
+          "def": "14"
+        },
+        {
+          "term": "vijftien",
+          "def": "15"
+        },
+        {
+          "term": "zestien",
+          "def": "16"
+        },
+        {
+          "term": "zeventien",
+          "def": "17"
+        },
+        {
+          "term": "achttien",
+          "def": "18"
+        },
+        {
+          "term": "negentien",
+          "def": "19"
+        },
+        {
+          "term": "twintig",
+          "def": "20"
+        },
+        {
+          "term": "eenentwintig",
+          "def": "21"
+        },
+        {
+          "term": "dertig",
+          "def": "30"
+        },
+        {
+          "term": "veertig",
+          "def": "40"
+        },
+        {
+          "term": "vijftig",
+          "def": "50"
+        },
+        {
+          "term": "zestig",
+          "def": "60"
+        },
+        {
+          "term": "zeventig",
+          "def": "70"
+        },
+        {
+          "term": "tachtig",
+          "def": "80"
+        },
+        {
+          "term": "negentig",
+          "def": "90"
+        },
+        {
+          "term": "honderd",
+          "def": "100"
+        },
+        {
+          "term": "duizend",
+          "def": "1 000"
+        },
+        {
+          "term": "een miljoen",
+          "def": "1 000 000"
+        },
+        {
+          "term": "eerste",
+          "def": "premier"
+        },
+        {
+          "term": "tweede",
+          "def": "deuxième"
+        },
+        {
+          "term": "derde",
+          "def": "troisième"
+        },
+        {
+          "term": "de helft",
+          "def": "la moitié"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-03",
+      "title": "Néerlandais 3: le temps et le calendrier",
+      "description": "Les jours, les mois, les saisons et les moments de la journée.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "maandag",
+          "def": "lundi"
+        },
+        {
+          "term": "dinsdag",
+          "def": "mardi"
+        },
+        {
+          "term": "woensdag",
+          "def": "mercredi"
+        },
+        {
+          "term": "donderdag",
+          "def": "jeudi"
+        },
+        {
+          "term": "vrijdag",
+          "def": "vendredi"
+        },
+        {
+          "term": "zaterdag",
+          "def": "samedi"
+        },
+        {
+          "term": "zondag",
+          "def": "dimanche"
+        },
+        {
+          "term": "januari",
+          "def": "janvier"
+        },
+        {
+          "term": "februari",
+          "def": "février"
+        },
+        {
+          "term": "maart",
+          "def": "mars"
+        },
+        {
+          "term": "april",
+          "def": "avril"
+        },
+        {
+          "term": "mei",
+          "def": "mai"
+        },
+        {
+          "term": "juni",
+          "def": "juin"
+        },
+        {
+          "term": "juli",
+          "def": "juillet"
+        },
+        {
+          "term": "augustus",
+          "def": "août"
+        },
+        {
+          "term": "september",
+          "def": "septembre"
+        },
+        {
+          "term": "oktober",
+          "def": "octobre"
+        },
+        {
+          "term": "november",
+          "def": "novembre"
+        },
+        {
+          "term": "december",
+          "def": "décembre"
+        },
+        {
+          "term": "de lente",
+          "def": "le printemps"
+        },
+        {
+          "term": "de zomer",
+          "def": "l'été"
+        },
+        {
+          "term": "de herfst",
+          "def": "l'automne"
+        },
+        {
+          "term": "de winter",
+          "def": "l'hiver"
+        },
+        {
+          "term": "de ochtend",
+          "def": "le matin"
+        },
+        {
+          "term": "de middag",
+          "def": "l'après-midi"
+        },
+        {
+          "term": "de avond",
+          "def": "le soir"
+        },
+        {
+          "term": "de nacht",
+          "def": "la nuit"
+        },
+        {
+          "term": "de dag",
+          "def": "le jour"
+        },
+        {
+          "term": "de week",
+          "def": "la semaine"
+        },
+        {
+          "term": "de maand",
+          "def": "le mois"
+        },
+        {
+          "term": "het jaar",
+          "def": "l'année"
+        },
+        {
+          "term": "het uur",
+          "def": "l'heure"
+        },
+        {
+          "term": "de minuut",
+          "def": "la minute"
+        },
+        {
+          "term": "vandaag",
+          "def": "aujourd'hui"
+        },
+        {
+          "term": "morgen",
+          "def": "demain"
+        },
+        {
+          "term": "gisteren",
+          "def": "hier"
+        },
+        {
+          "term": "het weekend",
+          "def": "le week-end"
+        },
+        {
+          "term": "hoe laat is het?",
+          "def": "quelle heure est-il ?"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-04",
+      "title": "Néerlandais 4: la famille et les gens",
+      "description": "La famille, les proches et les gens autour de soi.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "de familie",
+          "def": "la famille",
+          "hint": "au sens large"
+        },
+        {
+          "term": "het gezin",
+          "def": "la famille",
+          "hint": "parents et enfants"
+        },
+        {
+          "term": "de vader",
+          "def": "le père"
+        },
+        {
+          "term": "de moeder",
+          "def": "la mère"
+        },
+        {
+          "term": "de ouders",
+          "def": "les parents"
+        },
+        {
+          "term": "de zoon",
+          "def": "le fils"
+        },
+        {
+          "term": "de dochter",
+          "def": "la fille",
+          "hint": "de ses parents"
+        },
+        {
+          "term": "de broer",
+          "def": "le frère"
+        },
+        {
+          "term": "de zus",
+          "def": "la sœur"
+        },
+        {
+          "term": "het kind",
+          "def": "l'enfant"
+        },
+        {
+          "term": "de kinderen",
+          "def": "les enfants"
+        },
+        {
+          "term": "de baby",
+          "def": "le bébé"
+        },
+        {
+          "term": "de opa",
+          "def": "le grand-père"
+        },
+        {
+          "term": "de oma",
+          "def": "la grand-mère"
+        },
+        {
+          "term": "de oom",
+          "def": "l'oncle"
+        },
+        {
+          "term": "de tante",
+          "def": "la tante"
+        },
+        {
+          "term": "de neef",
+          "def": "le cousin / le neveu"
+        },
+        {
+          "term": "de nicht",
+          "def": "la cousine / la nièce"
+        },
+        {
+          "term": "de man",
+          "def": "l'homme / le mari"
+        },
+        {
+          "term": "de vrouw",
+          "def": "la femme"
+        },
+        {
+          "term": "de jongen",
+          "def": "le garçon"
+        },
+        {
+          "term": "het meisje",
+          "def": "la fille",
+          "hint": "une enfant"
+        },
+        {
+          "term": "de vriend",
+          "def": "l'ami"
+        },
+        {
+          "term": "de vriendin",
+          "def": "l'amie"
+        },
+        {
+          "term": "de buurman",
+          "def": "le voisin"
+        },
+        {
+          "term": "de buurvrouw",
+          "def": "la voisine"
+        },
+        {
+          "term": "de mensen",
+          "def": "les gens"
+        },
+        {
+          "term": "de collega",
+          "def": "le collègue"
+        },
+        {
+          "term": "getrouwd",
+          "def": "marié"
+        },
+        {
+          "term": "de naam",
+          "def": "le nom"
+        },
+        {
+          "term": "de leeftijd",
+          "def": "l'âge"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-05",
+      "title": "Néerlandais 5: manger et boire",
+      "description": "Les repas, les aliments, les boissons et le couvert.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "het eten",
+          "def": "la nourriture"
+        },
+        {
+          "term": "het ontbijt",
+          "def": "le petit-déjeuner"
+        },
+        {
+          "term": "de lunch",
+          "def": "le déjeuner"
+        },
+        {
+          "term": "het avondeten",
+          "def": "le dîner"
+        },
+        {
+          "term": "het water",
+          "def": "l'eau"
+        },
+        {
+          "term": "de koffie",
+          "def": "le café"
+        },
+        {
+          "term": "de thee",
+          "def": "le thé"
+        },
+        {
+          "term": "de melk",
+          "def": "le lait"
+        },
+        {
+          "term": "het bier",
+          "def": "la bière"
+        },
+        {
+          "term": "de wijn",
+          "def": "le vin"
+        },
+        {
+          "term": "het sap",
+          "def": "le jus"
+        },
+        {
+          "term": "het brood",
+          "def": "le pain"
+        },
+        {
+          "term": "de boter",
+          "def": "le beurre"
+        },
+        {
+          "term": "de kaas",
+          "def": "le fromage"
+        },
+        {
+          "term": "het ei",
+          "def": "l'œuf"
+        },
+        {
+          "term": "het vlees",
+          "def": "la viande"
+        },
+        {
+          "term": "de vis",
+          "def": "le poisson"
+        },
+        {
+          "term": "de kip",
+          "def": "le poulet"
+        },
+        {
+          "term": "de groente",
+          "def": "le légume"
+        },
+        {
+          "term": "de aardappel",
+          "def": "la pomme de terre"
+        },
+        {
+          "term": "de tomaat",
+          "def": "la tomate"
+        },
+        {
+          "term": "het fruit",
+          "def": "les fruits"
+        },
+        {
+          "term": "de appel",
+          "def": "la pomme"
+        },
+        {
+          "term": "de banaan",
+          "def": "la banane"
+        },
+        {
+          "term": "de sinaasappel",
+          "def": "l'orange"
+        },
+        {
+          "term": "de aardbei",
+          "def": "la fraise"
+        },
+        {
+          "term": "de rijst",
+          "def": "le riz"
+        },
+        {
+          "term": "de soep",
+          "def": "la soupe"
+        },
+        {
+          "term": "de suiker",
+          "def": "le sucre"
+        },
+        {
+          "term": "het zout",
+          "def": "le sel"
+        },
+        {
+          "term": "de frieten",
+          "def": "les frites"
+        },
+        {
+          "term": "het glas",
+          "def": "le verre"
+        },
+        {
+          "term": "het bord",
+          "def": "l'assiette"
+        },
+        {
+          "term": "de vork",
+          "def": "la fourchette"
+        },
+        {
+          "term": "het mes",
+          "def": "le couteau"
+        },
+        {
+          "term": "de lepel",
+          "def": "la cuillère"
+        },
+        {
+          "term": "ik heb honger",
+          "def": "j'ai faim"
+        },
+        {
+          "term": "ik heb dorst",
+          "def": "j'ai soif"
+        },
+        {
+          "term": "de rekening, alstublieft",
+          "def": "l'addition, s'il vous plaît"
+        },
+        {
+          "term": "eet smakelijk",
+          "def": "bon appétit"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-06",
+      "title": "Néerlandais 6: la maison",
+      "description": "Les pièces, les meubles et les objets de la maison.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "het huis",
+          "def": "la maison"
+        },
+        {
+          "term": "het appartement",
+          "def": "l'appartement"
+        },
+        {
+          "term": "de kamer",
+          "def": "la pièce"
+        },
+        {
+          "term": "de slaapkamer",
+          "def": "la chambre"
+        },
+        {
+          "term": "de keuken",
+          "def": "la cuisine"
+        },
+        {
+          "term": "de badkamer",
+          "def": "la salle de bains"
+        },
+        {
+          "term": "de woonkamer",
+          "def": "le salon"
+        },
+        {
+          "term": "het toilet",
+          "def": "les toilettes"
+        },
+        {
+          "term": "de tuin",
+          "def": "le jardin"
+        },
+        {
+          "term": "de deur",
+          "def": "la porte"
+        },
+        {
+          "term": "het raam",
+          "def": "la fenêtre"
+        },
+        {
+          "term": "de muur",
+          "def": "le mur"
+        },
+        {
+          "term": "de vloer",
+          "def": "le sol"
+        },
+        {
+          "term": "het dak",
+          "def": "le toit"
+        },
+        {
+          "term": "de trap",
+          "def": "l'escalier"
+        },
+        {
+          "term": "de sleutel",
+          "def": "la clé"
+        },
+        {
+          "term": "de tafel",
+          "def": "la table"
+        },
+        {
+          "term": "de stoel",
+          "def": "la chaise"
+        },
+        {
+          "term": "de bank",
+          "def": "le canapé",
+          "hint": "au salon"
+        },
+        {
+          "term": "het bed",
+          "def": "le lit"
+        },
+        {
+          "term": "de kast",
+          "def": "l'armoire"
+        },
+        {
+          "term": "de lamp",
+          "def": "la lampe"
+        },
+        {
+          "term": "de spiegel",
+          "def": "le miroir"
+        },
+        {
+          "term": "het bad",
+          "def": "le bain"
+        },
+        {
+          "term": "de douche",
+          "def": "la douche"
+        },
+        {
+          "term": "de koelkast",
+          "def": "le frigo"
+        },
+        {
+          "term": "de oven",
+          "def": "le four"
+        },
+        {
+          "term": "de wasmachine",
+          "def": "la machine à laver"
+        },
+        {
+          "term": "de televisie",
+          "def": "la télévision"
+        },
+        {
+          "term": "de computer",
+          "def": "l'ordinateur"
+        },
+        {
+          "term": "de telefoon",
+          "def": "le téléphone"
+        },
+        {
+          "term": "het boek",
+          "def": "le livre"
+        },
+        {
+          "term": "de hond",
+          "def": "le chien"
+        },
+        {
+          "term": "de kat",
+          "def": "le chat"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-07",
+      "title": "Néerlandais 7: le corps et la santé",
+      "description": "Le corps, et de quoi dire que l'on ne va pas bien.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "het lichaam",
+          "def": "le corps"
+        },
+        {
+          "term": "het hoofd",
+          "def": "la tête"
+        },
+        {
+          "term": "het haar",
+          "def": "les cheveux"
+        },
+        {
+          "term": "het gezicht",
+          "def": "le visage"
+        },
+        {
+          "term": "het oog",
+          "def": "l'œil"
+        },
+        {
+          "term": "het oor",
+          "def": "l'oreille"
+        },
+        {
+          "term": "de neus",
+          "def": "le nez"
+        },
+        {
+          "term": "de mond",
+          "def": "la bouche"
+        },
+        {
+          "term": "de tand",
+          "def": "la dent"
+        },
+        {
+          "term": "de nek",
+          "def": "le cou"
+        },
+        {
+          "term": "de schouder",
+          "def": "l'épaule"
+        },
+        {
+          "term": "de arm",
+          "def": "le bras"
+        },
+        {
+          "term": "de hand",
+          "def": "la main"
+        },
+        {
+          "term": "de vinger",
+          "def": "le doigt"
+        },
+        {
+          "term": "de buik",
+          "def": "le ventre"
+        },
+        {
+          "term": "de rug",
+          "def": "le dos"
+        },
+        {
+          "term": "het been",
+          "def": "la jambe"
+        },
+        {
+          "term": "de knie",
+          "def": "le genou"
+        },
+        {
+          "term": "de voet",
+          "def": "le pied"
+        },
+        {
+          "term": "het hart",
+          "def": "le cœur"
+        },
+        {
+          "term": "de huid",
+          "def": "la peau"
+        },
+        {
+          "term": "de dokter",
+          "def": "le médecin"
+        },
+        {
+          "term": "het ziekenhuis",
+          "def": "l'hôpital"
+        },
+        {
+          "term": "de apotheek",
+          "def": "la pharmacie"
+        },
+        {
+          "term": "het medicijn",
+          "def": "le médicament"
+        },
+        {
+          "term": "ziek",
+          "def": "malade"
+        },
+        {
+          "term": "gezond",
+          "def": "en bonne santé"
+        },
+        {
+          "term": "de pijn",
+          "def": "la douleur"
+        },
+        {
+          "term": "ik heb hoofdpijn",
+          "def": "j'ai mal à la tête"
+        },
+        {
+          "term": "ik ben moe",
+          "def": "je suis fatigué"
+        },
+        {
+          "term": "de koorts",
+          "def": "la fièvre"
+        },
+        {
+          "term": "de verkoudheid",
+          "def": "le rhume"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-08",
+      "title": "Néerlandais 8: vêtements et couleurs",
+      "description": "Les vêtements, les accessoires et les couleurs.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "de kleren",
+          "def": "les vêtements"
+        },
+        {
+          "term": "de broek",
+          "def": "le pantalon"
+        },
+        {
+          "term": "het overhemd",
+          "def": "la chemise"
+        },
+        {
+          "term": "de trui",
+          "def": "le pull"
+        },
+        {
+          "term": "de jas",
+          "def": "le manteau"
+        },
+        {
+          "term": "de rok",
+          "def": "la jupe"
+        },
+        {
+          "term": "de jurk",
+          "def": "la robe"
+        },
+        {
+          "term": "het T-shirt",
+          "def": "le t-shirt"
+        },
+        {
+          "term": "de schoenen",
+          "def": "les chaussures"
+        },
+        {
+          "term": "de sokken",
+          "def": "les chaussettes"
+        },
+        {
+          "term": "de hoed",
+          "def": "le chapeau"
+        },
+        {
+          "term": "de pet",
+          "def": "la casquette"
+        },
+        {
+          "term": "de sjaal",
+          "def": "l'écharpe"
+        },
+        {
+          "term": "de handschoenen",
+          "def": "les gants"
+        },
+        {
+          "term": "de riem",
+          "def": "la ceinture"
+        },
+        {
+          "term": "de tas",
+          "def": "le sac"
+        },
+        {
+          "term": "de bril",
+          "def": "les lunettes"
+        },
+        {
+          "term": "het horloge",
+          "def": "la montre"
+        },
+        {
+          "term": "de kleur",
+          "def": "la couleur"
+        },
+        {
+          "term": "rood",
+          "def": "rouge"
+        },
+        {
+          "term": "blauw",
+          "def": "bleu"
+        },
+        {
+          "term": "groen",
+          "def": "vert"
+        },
+        {
+          "term": "geel",
+          "def": "jaune"
+        },
+        {
+          "term": "zwart",
+          "def": "noir"
+        },
+        {
+          "term": "wit",
+          "def": "blanc"
+        },
+        {
+          "term": "grijs",
+          "def": "gris"
+        },
+        {
+          "term": "bruin",
+          "def": "brun / marron"
+        },
+        {
+          "term": "roze",
+          "def": "rose"
+        },
+        {
+          "term": "oranje",
+          "def": "orange"
+        },
+        {
+          "term": "paars",
+          "def": "violet"
+        },
+        {
+          "term": "lichtblauw",
+          "def": "bleu clair"
+        },
+        {
+          "term": "donkerblauw",
+          "def": "bleu foncé"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-09",
+      "title": "Néerlandais 9: la ville et les transports",
+      "description": "Se déplacer, s'orienter et trouver les lieux utiles.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "de stad",
+          "def": "la ville"
+        },
+        {
+          "term": "het dorp",
+          "def": "le village"
+        },
+        {
+          "term": "de straat",
+          "def": "la rue"
+        },
+        {
+          "term": "het plein",
+          "def": "la place"
+        },
+        {
+          "term": "de winkel",
+          "def": "le magasin"
+        },
+        {
+          "term": "de supermarkt",
+          "def": "le supermarché"
+        },
+        {
+          "term": "de markt",
+          "def": "le marché"
+        },
+        {
+          "term": "de bakker",
+          "def": "le boulanger"
+        },
+        {
+          "term": "de bank",
+          "def": "la banque",
+          "hint": "pour l'argent"
+        },
+        {
+          "term": "het postkantoor",
+          "def": "la poste"
+        },
+        {
+          "term": "het station",
+          "def": "la gare"
+        },
+        {
+          "term": "de school",
+          "def": "l'école"
+        },
+        {
+          "term": "de kerk",
+          "def": "l'église"
+        },
+        {
+          "term": "het museum",
+          "def": "le musée"
+        },
+        {
+          "term": "het restaurant",
+          "def": "le restaurant"
+        },
+        {
+          "term": "het hotel",
+          "def": "l'hôtel"
+        },
+        {
+          "term": "de auto",
+          "def": "la voiture"
+        },
+        {
+          "term": "de fiets",
+          "def": "le vélo"
+        },
+        {
+          "term": "de bus",
+          "def": "le bus"
+        },
+        {
+          "term": "de trein",
+          "def": "le train"
+        },
+        {
+          "term": "de tram",
+          "def": "le tram"
+        },
+        {
+          "term": "de metro",
+          "def": "le métro"
+        },
+        {
+          "term": "het vliegtuig",
+          "def": "l'avion"
+        },
+        {
+          "term": "de boot",
+          "def": "le bateau"
+        },
+        {
+          "term": "het kaartje",
+          "def": "le ticket"
+        },
+        {
+          "term": "links",
+          "def": "à gauche"
+        },
+        {
+          "term": "rechts",
+          "def": "à droite"
+        },
+        {
+          "term": "rechtdoor",
+          "def": "tout droit"
+        },
+        {
+          "term": "waar is het station?",
+          "def": "où est la gare ?"
+        },
+        {
+          "term": "ver",
+          "def": "loin"
+        },
+        {
+          "term": "dichtbij",
+          "def": "près"
+        },
+        {
+          "term": "de kaart",
+          "def": "la carte"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-10",
+      "title": "Néerlandais 10: les verbes courants",
+      "description": "Quarante verbes du quotidien, à l'infinitif.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "zijn",
+          "def": "être"
+        },
+        {
+          "term": "hebben",
+          "def": "avoir"
+        },
+        {
+          "term": "gaan",
+          "def": "aller"
+        },
+        {
+          "term": "komen",
+          "def": "venir"
+        },
+        {
+          "term": "doen",
+          "def": "faire",
+          "hint": "une action"
+        },
+        {
+          "term": "maken",
+          "def": "faire",
+          "hint": "fabriquer"
+        },
+        {
+          "term": "kunnen",
+          "def": "pouvoir"
+        },
+        {
+          "term": "moeten",
+          "def": "devoir"
+        },
+        {
+          "term": "willen",
+          "def": "vouloir"
+        },
+        {
+          "term": "mogen",
+          "def": "avoir le droit"
+        },
+        {
+          "term": "zeggen",
+          "def": "dire"
+        },
+        {
+          "term": "spreken",
+          "def": "parler",
+          "hint": "une langue"
+        },
+        {
+          "term": "praten",
+          "def": "parler",
+          "hint": "bavarder"
+        },
+        {
+          "term": "vragen",
+          "def": "demander"
+        },
+        {
+          "term": "weten",
+          "def": "savoir"
+        },
+        {
+          "term": "kennen",
+          "def": "connaître"
+        },
+        {
+          "term": "denken",
+          "def": "penser"
+        },
+        {
+          "term": "begrijpen",
+          "def": "comprendre"
+        },
+        {
+          "term": "leren",
+          "def": "apprendre"
+        },
+        {
+          "term": "lezen",
+          "def": "lire"
+        },
+        {
+          "term": "schrijven",
+          "def": "écrire"
+        },
+        {
+          "term": "zien",
+          "def": "voir"
+        },
+        {
+          "term": "kijken",
+          "def": "regarder"
+        },
+        {
+          "term": "horen",
+          "def": "entendre"
+        },
+        {
+          "term": "luisteren",
+          "def": "écouter"
+        },
+        {
+          "term": "eten",
+          "def": "manger"
+        },
+        {
+          "term": "drinken",
+          "def": "boire"
+        },
+        {
+          "term": "slapen",
+          "def": "dormir"
+        },
+        {
+          "term": "werken",
+          "def": "travailler"
+        },
+        {
+          "term": "wonen",
+          "def": "habiter"
+        },
+        {
+          "term": "kopen",
+          "def": "acheter"
+        },
+        {
+          "term": "betalen",
+          "def": "payer"
+        },
+        {
+          "term": "geven",
+          "def": "donner"
+        },
+        {
+          "term": "nemen",
+          "def": "prendre"
+        },
+        {
+          "term": "zoeken",
+          "def": "chercher"
+        },
+        {
+          "term": "vinden",
+          "def": "trouver"
+        },
+        {
+          "term": "wachten",
+          "def": "attendre"
+        },
+        {
+          "term": "beginnen",
+          "def": "commencer"
+        },
+        {
+          "term": "helpen",
+          "def": "aider"
+        },
+        {
+          "term": "houden van",
+          "def": "aimer"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-11",
+      "title": "Néerlandais 11: les adjectifs",
+      "description": "Quarante adjectifs, souvent par paires de contraires.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "groot",
+          "def": "grand"
+        },
+        {
+          "term": "klein",
+          "def": "petit"
+        },
+        {
+          "term": "lang",
+          "def": "long"
+        },
+        {
+          "term": "kort",
+          "def": "court"
+        },
+        {
+          "term": "oud",
+          "def": "vieux"
+        },
+        {
+          "term": "nieuw",
+          "def": "nouveau"
+        },
+        {
+          "term": "jong",
+          "def": "jeune"
+        },
+        {
+          "term": "goed",
+          "def": "bon / bien"
+        },
+        {
+          "term": "slecht",
+          "def": "mauvais"
+        },
+        {
+          "term": "mooi",
+          "def": "beau"
+        },
+        {
+          "term": "lelijk",
+          "def": "laid"
+        },
+        {
+          "term": "warm",
+          "def": "chaud"
+        },
+        {
+          "term": "koud",
+          "def": "froid"
+        },
+        {
+          "term": "snel",
+          "def": "rapide"
+        },
+        {
+          "term": "langzaam",
+          "def": "lent"
+        },
+        {
+          "term": "duur",
+          "def": "cher"
+        },
+        {
+          "term": "goedkoop",
+          "def": "bon marché"
+        },
+        {
+          "term": "makkelijk",
+          "def": "facile"
+        },
+        {
+          "term": "moeilijk",
+          "def": "difficile"
+        },
+        {
+          "term": "blij",
+          "def": "content"
+        },
+        {
+          "term": "verdrietig",
+          "def": "triste"
+        },
+        {
+          "term": "druk",
+          "def": "occupé"
+        },
+        {
+          "term": "rustig",
+          "def": "calme"
+        },
+        {
+          "term": "vol",
+          "def": "plein"
+        },
+        {
+          "term": "leeg",
+          "def": "vide"
+        },
+        {
+          "term": "open",
+          "def": "ouvert"
+        },
+        {
+          "term": "dicht",
+          "def": "fermé"
+        },
+        {
+          "term": "licht",
+          "def": "léger",
+          "hint": "le poids"
+        },
+        {
+          "term": "zwaar",
+          "def": "lourd"
+        },
+        {
+          "term": "lekker",
+          "def": "délicieux"
+        },
+        {
+          "term": "hoog",
+          "def": "haut"
+        },
+        {
+          "term": "laag",
+          "def": "bas"
+        },
+        {
+          "term": "dik",
+          "def": "gros"
+        },
+        {
+          "term": "dun",
+          "def": "mince"
+        },
+        {
+          "term": "sterk",
+          "def": "fort"
+        },
+        {
+          "term": "zwak",
+          "def": "faible"
+        },
+        {
+          "term": "rijk",
+          "def": "riche"
+        },
+        {
+          "term": "arm",
+          "def": "pauvre"
+        },
+        {
+          "term": "aardig",
+          "def": "gentil"
+        },
+        {
+          "term": "boos",
+          "def": "fâché"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-12",
+      "title": "Néerlandais 12: les petits mots",
+      "description": "Questions, pronoms, liaisons et petits mots de tous les jours.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "wie?",
+          "def": "qui ?"
+        },
+        {
+          "term": "wat?",
+          "def": "quoi ?"
+        },
+        {
+          "term": "waar?",
+          "def": "où ?"
+        },
+        {
+          "term": "wanneer?",
+          "def": "quand ?"
+        },
+        {
+          "term": "waarom?",
+          "def": "pourquoi ?"
+        },
+        {
+          "term": "hoe?",
+          "def": "comment ?"
+        },
+        {
+          "term": "hoeveel?",
+          "def": "combien ?"
+        },
+        {
+          "term": "ik",
+          "def": "je"
+        },
+        {
+          "term": "jij",
+          "def": "tu"
+        },
+        {
+          "term": "u",
+          "def": "vous",
+          "hint": "poli"
+        },
+        {
+          "term": "hij",
+          "def": "il"
+        },
+        {
+          "term": "zij",
+          "def": "elle",
+          "hint": "aussi « ils, elles »"
+        },
+        {
+          "term": "wij",
+          "def": "nous"
+        },
+        {
+          "term": "jullie",
+          "def": "vous",
+          "hint": "à plusieurs"
+        },
+        {
+          "term": "en",
+          "def": "et"
+        },
+        {
+          "term": "of",
+          "def": "ou"
+        },
+        {
+          "term": "maar",
+          "def": "mais"
+        },
+        {
+          "term": "omdat",
+          "def": "parce que"
+        },
+        {
+          "term": "met",
+          "def": "avec"
+        },
+        {
+          "term": "zonder",
+          "def": "sans"
+        },
+        {
+          "term": "voor",
+          "def": "pour / devant / avant"
+        },
+        {
+          "term": "na",
+          "def": "après"
+        },
+        {
+          "term": "in",
+          "def": "dans"
+        },
+        {
+          "term": "op",
+          "def": "sur"
+        },
+        {
+          "term": "onder",
+          "def": "sous"
+        },
+        {
+          "term": "naast",
+          "def": "à côté de"
+        },
+        {
+          "term": "tussen",
+          "def": "entre"
+        },
+        {
+          "term": "hier",
+          "def": "ici"
+        },
+        {
+          "term": "daar",
+          "def": "là / là-bas"
+        },
+        {
+          "term": "nu",
+          "def": "maintenant"
+        },
+        {
+          "term": "altijd",
+          "def": "toujours"
+        },
+        {
+          "term": "nooit",
+          "def": "jamais"
+        },
+        {
+          "term": "soms",
+          "def": "parfois"
+        },
+        {
+          "term": "vaak",
+          "def": "souvent"
+        },
+        {
+          "term": "ook",
+          "def": "aussi"
+        },
+        {
+          "term": "heel",
+          "def": "très"
+        },
+        {
+          "term": "veel",
+          "def": "beaucoup"
+        },
+        {
+          "term": "weinig",
+          "def": "peu"
+        },
+        {
+          "term": "niet",
+          "def": "ne pas"
+        },
+        {
+          "term": "geen",
+          "def": "pas de"
+        }
+      ]
+    },
+    {
       "id": "sample-capitales-europe",
       "title": "Capitales d'Europe",
       "description": "26 pays, 26 capitales.",
