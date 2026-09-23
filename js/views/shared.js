@@ -10,20 +10,24 @@ import { cardImage } from '../images.js';
 const LONG_LINK = 8000;
 
 /* The share button, the field that shows the link when the clipboard refuses
-   it, and the note for very long links. The link is built on click from
-   getSet(), so it carries the set as it is then. The copy result goes to the
-   toast and the length warning to the note, so neither hides the other. */
+   it, and the notes for very long links and for pictures, which a link
+   cannot carry. The link is built on click from getSet(), so it carries the
+   set as it is then. The copy result goes to the toast and the warnings to
+   the notes, so neither hides the other. */
 export function shareControls(getSet, { label, primary = false }) {
   const field = el('input', {
     type: 'text', class: 'input', readonly: true, hidden: true, 'aria-label': t('transfer.shareTitle'),
   });
-  const notice = el('p', { class: 'field-hint', hidden: true }, t('transfer.shareLong'));
+  const long = el('p', { class: 'field-hint', hidden: true }, t('transfer.shareLong'));
+  const pictures = el('p', { class: 'field-hint', hidden: true }, t('transfer.shareNoImages'));
+  const notice = el('div', {}, long, pictures);
   const button = el('button', { type: 'button', class: primary ? 'btn btn-primary' : 'btn' }, icon('share'), label);
   button.addEventListener('click', async () => {
     const set = getSet();
     if (!set) return;
     const url = shareUrl(set);
-    notice.hidden = url.length <= LONG_LINK;
+    long.hidden = url.length <= LONG_LINK;
+    pictures.hidden = !set.cards.some((card) => card.termImage || card.defImage);
     field.value = url;
     if (await copyText(url)) {
       toast(t('transfer.shareCopied'));

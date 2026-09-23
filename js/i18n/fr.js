@@ -280,6 +280,7 @@ export default {
   "transfer.shareCopied": "Lien copié.",
   "transfer.shareFailed": "Copie impossible. Le lien est affiché ci-dessous.",
   "transfer.shareLong": "Ce jeu est volumineux: certaines messageries coupent les liens très longs.",
+  "transfer.shareNoImages": "Le lien ne transmet que le texte: les images restent ici, et les cartes qui n’ont qu’une image d’un côté n’en font pas partie.",
   "transfer.sharePick": "Jeu à partager",
   "transfer.sharedTitle": "Jeu partagé",
   "transfer.sharedBody": "« {name} » contient {cards}. Voulez-vous l’ajouter à vos jeux ?",
@@ -287,6 +288,7 @@ export default {
   "transfer.sharedInvalid": "Ce lien de partage est invalide ou incomplet.",
   "transfer.sharedAdded": "Jeu ajouté.",
   "transfer.exportSetCsv": "Exporter en CSV",
+  "transfer.csvNoImages": "Le CSV ne contient que le texte: les images n’y sont pas, ni les cartes qui n’ont qu’une image d’un côté.",
 
   /* Paramètres */
   "settings.title": "Paramètres",

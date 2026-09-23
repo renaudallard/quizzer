@@ -280,6 +280,7 @@ export default {
   "transfer.shareCopied": "Link copied.",
   "transfer.shareFailed": "Could not copy. The link is shown below.",
   "transfer.shareLong": "This set is large: some messaging apps cut very long links.",
+  "transfer.shareNoImages": "The link carries text only: pictures stay here, and cards that are only a picture on one side are left out.",
   "transfer.sharePick": "Set to share",
   "transfer.sharedTitle": "Shared set",
   "transfer.sharedBody": "“{name}” holds {cards}. Add it to your sets?",
@@ -287,6 +288,7 @@ export default {
   "transfer.sharedInvalid": "That share link is invalid or incomplete.",
   "transfer.sharedAdded": "Set added.",
   "transfer.exportSetCsv": "Export as CSV",
+  "transfer.csvNoImages": "The CSV holds text only: pictures are left out, and so are cards that are only a picture on one side.",
 
   /* Settings */
   "settings.title": "Settings",

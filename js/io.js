@@ -143,9 +143,15 @@ function csvField(value) {
   return /["\n\r,;\t]|^\s*#/.test(text) ? QUOTE + text.replace(/"/g, '""') + QUOTE : text;
 }
 
+/* Share links and CSV carry text only, so a card that is a picture alone on
+   one side cannot travel that way. */
+function textCards(cards) {
+  return cards.filter((card) => card.term && card.def);
+}
+
 export function toCSV(set) {
   const lines = [['term', 'definition', 'hint'].join(',')];
-  for (const card of set.cards) {
+  for (const card of textCards(set.cards)) {
     lines.push([card.term, card.def, card.hint].map(csvField).join(','));
   }
   return lines.join('\n') + '\n';
@@ -167,7 +173,7 @@ export function encodeShare(set) {
     d: set.description || undefined,
     tl: set.termLang || undefined,
     dl: set.defLang || undefined,
-    c: set.cards.map((card) => (card.hint ? [card.term, card.def, card.hint] : [card.term, card.def])),
+    c: textCards(set.cards).map((card) => (card.hint ? [card.term, card.def, card.hint] : [card.term, card.def])),
   };
   return base64urlEncode(JSON.stringify(compact));
 }
@@ -177,7 +183,7 @@ export function decodeShare(payload) {
     const data = JSON.parse(base64urlDecode(payload));
     if (!data || typeof data.t !== 'string' || !Array.isArray(data.c)) return null;
     const cards = data.c
-      .filter((entry) => Array.isArray(entry) && entry.length >= 2)
+      .filter((entry) => Array.isArray(entry) && entry.length >= 2 && String(entry[0]).trim() && String(entry[1]).trim())
       .map((entry) => ({ term: String(entry[0]), def: String(entry[1]), hint: entry[2] ? String(entry[2]) : '' }));
     if (!cards.length) return null;
     return {

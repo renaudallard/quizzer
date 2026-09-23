@@ -280,6 +280,7 @@ export default {
   "transfer.shareCopied": "Link gekopieerd.",
   "transfer.shareFailed": "Kopiëren is niet gelukt. De link staat hieronder.",
   "transfer.shareLong": "Deze set is groot: sommige berichtenapps knippen zeer lange links af.",
+  "transfer.shareNoImages": "De link bevat alleen tekst: afbeeldingen blijven hier, en kaarten met aan één kant alleen een afbeelding vallen weg.",
   "transfer.sharePick": "Te delen set",
   "transfer.sharedTitle": "Gedeelde set",
   "transfer.sharedBody": "“{name}” bevat {cards}. Toevoegen aan je sets?",
@@ -287,6 +288,7 @@ export default {
   "transfer.sharedInvalid": "Deze deellink is ongeldig of onvolledig.",
   "transfer.sharedAdded": "Set toegevoegd.",
   "transfer.exportSetCsv": "Exporteren als CSV",
+  "transfer.csvNoImages": "De CSV bevat alleen tekst: afbeeldingen vallen weg, net als kaarten met aan één kant alleen een afbeelding.",
 
   /* Instellingen */
   "settings.title": "Instellingen",

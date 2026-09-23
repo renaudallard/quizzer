@@ -267,7 +267,8 @@ the storage figure in the settings counts it.
   that only hold sets still import.
 - **CSV** is quote aware on both sides, so a definition may contain a comma,
   a semicolon or a line break. A header row is recognised and skipped, in
-  French, English or Dutch.
+  French, English or Dutch. It holds text only: pictures stay behind, a card
+  that is a picture alone on one side is left out, and the export says so.
 - **Pasted text** accepts tab, semicolon or comma as the separator: the one
   found on the most lines that hold data wins, tab first, then semicolon, then
   comma on a tie, and quoted fields are taken into account.
@@ -281,7 +282,9 @@ the storage figure in the settings counts it.
   Windows-1252, the encoding Excel on Windows still uses for CSV.
 - **Share links** carry the cards in the URL fragment, base64url encoded, so
   the recipient needs no account and the link never reaches a server.
-  Progress is deliberately left behind. Very long sets make very long links.
+  Progress is deliberately left behind, and so are pictures: a link carries
+  text, leaves out the cards that are a picture alone on one side, and says
+  so when it is made. Very long sets make very long links.
 
 ## Keyboard
 

@@ -1,6 +1,6 @@
 /* One set: how far along it is, the five ways to study it, and its cards. */
 
-import { el, icon } from '../dom.js';
+import { el, icon, toast } from '../dom.js';
 import { t, tn, formatPercent } from '../i18n/index.js';
 import * as store from '../store.js';
 import { dueCards, masteryPct } from '../srs.js';
@@ -49,6 +49,7 @@ export function setView(id) {
   const exportCsv = el('button', { type: 'button', class: 'btn' }, icon('download'), t('transfer.exportSetCsv'));
   exportCsv.addEventListener('click', () => {
     download(slugify(set.title) + '.csv', toCSV(set), 'text/csv');
+    if (set.cards.some((card) => card.termImage || card.defImage)) toast(t('transfer.csvNoImages'));
   });
 
   return el('div', { class: 'container' },
