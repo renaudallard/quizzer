@@ -79,7 +79,7 @@ is reached the tile stops at the goal and its caption gives the real count.
 
 "Charger les exemples" offers the sets that ship with the site, in groups:
 three courses for French speakers, in Dutch, English and Italian, Spanish
-basics, mathematics, sciences and European capitals. Each course has
+basics, mathematics, sciences, history and geography. Each course has
 twenty-six sets and about 900 words and phrases, on the same plan. Sets 1 to
 12 lay the basics, from first words and numbers to everyday verbs, adjectives
 and the small words that hold sentences together. Sets 13 to 26 go further:
@@ -131,6 +131,21 @@ solar system, and the bones and organs of the human body. Bones renamed in
 1998 accept both names, such as fibula and péroné. The prefixes, units and
 chemical formulas were checked against Wikipedia and Wikidata, the anatomy
 and the solar system against the French Wikipedia articles.
+
+Histoire gives the year of thirty-nine events of French history, from Alésia
+to the euro, and eighteen of Belgian history, from the 1830 revolution to
+King Philippe, one event a year so that no answer is shared. Every date was
+checked against its French Wikipedia article.
+
+Géographie adds to the European capitals the rest of Europe and the capitals
+of every other member of the United Nations, by region, the 101 French
+départements by number, the ten Belgian provinces and their chefs-lieux,
+thirty currencies and thirty-nine nationality adjectives. Where a country has
+two usual capitals both are accepted, as Sucre and La Paz for Bolivia, and
+Equatorial Guinea's hint recalls that Malabo was the capital until 2026. The
+capitals, départements and provinces follow the French Wikipedia lists and
+articles, the currencies each country's article, and the adjectives the
+French Wiktionary.
 
 The button is on the empty home page and above your sets once you have some.
 It opens the list of samples by group, each course and each subject with its

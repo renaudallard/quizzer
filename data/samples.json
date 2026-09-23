@@ -33,9 +33,14 @@
       "description": "Préfixes et unités du Système international, formules de physique et de chimie, symboles chimiques, système solaire, os et organes du corps humain."
     },
     {
+      "id": "hist",
+      "title": "Histoire",
+      "description": "Les grandes dates de l’histoire de France et de Belgique."
+    },
+    {
       "id": "geo",
       "title": "Géographie",
-      "description": "Les capitales d’Europe."
+      "description": "Les capitales du monde par continent, les départements français, les provinces de Belgique, les monnaies et les nationalités."
     }
   ],
   "sets": [
@@ -13747,6 +13752,254 @@
       ]
     },
     {
+      "id": "sample-hist-france",
+      "group": "hist",
+      "title": "Dates de l’histoire de France",
+      "description": "Trente-neuf dates, d’Alésia à l’euro.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "bataille d’Alésia, Vercingétorix se rend à César",
+          "def": "52 av. J.-C."
+        },
+        {
+          "term": "Charlemagne couronné empereur à Rome",
+          "def": "800"
+        },
+        {
+          "term": "Hugues Capet élu roi des Francs",
+          "def": "987"
+        },
+        {
+          "term": "bataille de Bouvines",
+          "def": "1214"
+        },
+        {
+          "term": "début de la guerre de Cent Ans",
+          "def": "1337"
+        },
+        {
+          "term": "Jeanne d’Arc délivre Orléans",
+          "def": "1429"
+        },
+        {
+          "term": "fin de la guerre de Cent Ans, bataille de Castillon",
+          "def": "1453"
+        },
+        {
+          "term": "bataille de Marignan",
+          "def": "1515"
+        },
+        {
+          "term": "ordonnance de Villers-Cotterêts, le français langue des actes officiels",
+          "def": "1539"
+        },
+        {
+          "term": "massacre de la Saint-Barthélemy",
+          "def": "1572"
+        },
+        {
+          "term": "édit de Nantes",
+          "def": "1598"
+        },
+        {
+          "term": "assassinat d’Henri IV",
+          "def": "1610"
+        },
+        {
+          "term": "début du règne de Louis XIV",
+          "def": "1643"
+        },
+        {
+          "term": "révocation de l’édit de Nantes",
+          "def": "1685"
+        },
+        {
+          "term": "prise de la Bastille",
+          "def": "1789"
+        },
+        {
+          "term": "proclamation de la République",
+          "def": "1792"
+        },
+        {
+          "term": "exécution de Louis XVI",
+          "def": "1793"
+        },
+        {
+          "term": "coup d’État du 18 Brumaire, Bonaparte prend le pouvoir",
+          "def": "1799"
+        },
+        {
+          "term": "sacre de Napoléon Ier",
+          "def": "1804"
+        },
+        {
+          "term": "bataille de Waterloo",
+          "def": "1815"
+        },
+        {
+          "term": "Trois Glorieuses, la révolution de Juillet",
+          "def": "1830"
+        },
+        {
+          "term": "abolition de l’esclavage dans les colonies françaises",
+          "def": "1848"
+        },
+        {
+          "term": "proclamation de la IIIe République",
+          "def": "1870"
+        },
+        {
+          "term": "lois Jules Ferry, école laïque et obligatoire",
+          "def": "1882"
+        },
+        {
+          "term": "loi de séparation des Églises et de l’État",
+          "def": "1905"
+        },
+        {
+          "term": "début de la Première Guerre mondiale",
+          "def": "1914"
+        },
+        {
+          "term": "bataille de Verdun",
+          "def": "1916"
+        },
+        {
+          "term": "armistice du 11 novembre",
+          "def": "1918"
+        },
+        {
+          "term": "Front populaire, premiers congés payés",
+          "def": "1936"
+        },
+        {
+          "term": "début de la Seconde Guerre mondiale",
+          "def": "1939"
+        },
+        {
+          "term": "appel du 18 Juin du général de Gaulle",
+          "def": "1940"
+        },
+        {
+          "term": "débarquement en Normandie",
+          "def": "1944"
+        },
+        {
+          "term": "capitulation de l’Allemagne, fin de la guerre en Europe",
+          "def": "1945"
+        },
+        {
+          "term": "naissance de la Ve République",
+          "def": "1958"
+        },
+        {
+          "term": "indépendance de l’Algérie",
+          "def": "1962"
+        },
+        {
+          "term": "Mai 68",
+          "def": "1968"
+        },
+        {
+          "term": "abolition de la peine de mort",
+          "def": "1981"
+        },
+        {
+          "term": "traité de Maastricht",
+          "def": "1992"
+        },
+        {
+          "term": "l’euro en pièces et en billets",
+          "def": "2002"
+        }
+      ]
+    },
+    {
+      "id": "sample-hist-belgique",
+      "group": "hist",
+      "title": "Dates de l’histoire de Belgique",
+      "description": "De la révolution de 1830 au roi Philippe.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "révolution belge et proclamation de l’indépendance",
+          "def": "1830"
+        },
+        {
+          "term": "Léopold Ier prête serment, premier roi des Belges",
+          "def": "1831"
+        },
+        {
+          "term": "traité de Londres, les Pays-Bas reconnaissent la Belgique",
+          "def": "1839"
+        },
+        {
+          "term": "Léopold II devient souverain de l’État indépendant du Congo",
+          "def": "1885"
+        },
+        {
+          "term": "suffrage universel masculin tempéré par le vote plural",
+          "def": "1893"
+        },
+        {
+          "term": "le Congo devient une colonie belge",
+          "def": "1908"
+        },
+        {
+          "term": "l’Allemagne envahit la Belgique neutre",
+          "def": "1914"
+        },
+        {
+          "term": "campagne des 18 jours, capitulation de l’armée belge",
+          "def": "1940"
+        },
+        {
+          "term": "libération de Bruxelles",
+          "def": "1944"
+        },
+        {
+          "term": "droit de vote des femmes aux élections législatives",
+          "def": "1948"
+        },
+        {
+          "term": "la Belgique cofonde l’OTAN",
+          "def": "1949"
+        },
+        {
+          "term": "abdication de Léopold III, Baudouin roi",
+          "def": "1951"
+        },
+        {
+          "term": "traité de Rome, la Belgique cofonde la Communauté économique européenne",
+          "def": "1957"
+        },
+        {
+          "term": "Exposition universelle de Bruxelles et l’Atomium",
+          "def": "1958"
+        },
+        {
+          "term": "indépendance du Congo",
+          "def": "1960"
+        },
+        {
+          "term": "première réforme de l’État",
+          "def": "1970"
+        },
+        {
+          "term": "la Belgique devient un État fédéral",
+          "def": "1993"
+        },
+        {
+          "term": "Philippe devient roi des Belges",
+          "def": "2013"
+        }
+      ]
+    },
+    {
       "id": "sample-capitales-europe",
       "group": "geo",
       "title": "Capitales d'Europe",
@@ -13859,6 +14112,1520 @@
         {
           "term": "Lituanie",
           "def": "Vilnius"
+        }
+      ]
+    },
+    {
+      "id": "sample-geo-capitales-europe-2",
+      "group": "geo",
+      "title": "Capitales d’Europe: les autres pays",
+      "description": "Le reste de l’Europe, du Royaume-Uni à la Russie et des micro-États aux Balkans.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "Royaume-Uni",
+          "def": "Londres"
+        },
+        {
+          "term": "Islande",
+          "def": "Reykjavik"
+        },
+        {
+          "term": "Luxembourg",
+          "def": "Luxembourg"
+        },
+        {
+          "term": "Malte",
+          "def": "La Valette"
+        },
+        {
+          "term": "Chypre",
+          "def": "Nicosie"
+        },
+        {
+          "term": "Monaco",
+          "def": "Monaco"
+        },
+        {
+          "term": "Andorre",
+          "def": "Andorre-la-Vieille"
+        },
+        {
+          "term": "Liechtenstein",
+          "def": "Vaduz"
+        },
+        {
+          "term": "Saint-Marin",
+          "def": "Saint-Marin"
+        },
+        {
+          "term": "Vatican",
+          "def": "Vatican"
+        },
+        {
+          "term": "Albanie",
+          "def": "Tirana"
+        },
+        {
+          "term": "Serbie",
+          "def": "Belgrade"
+        },
+        {
+          "term": "Monténégro",
+          "def": "Podgorica"
+        },
+        {
+          "term": "Bosnie-Herzégovine",
+          "def": "Sarajevo"
+        },
+        {
+          "term": "Macédoine du Nord",
+          "def": "Skopje"
+        },
+        {
+          "term": "Moldavie",
+          "def": "Chisinau"
+        },
+        {
+          "term": "Ukraine",
+          "def": "Kiev / Kyiv"
+        },
+        {
+          "term": "Biélorussie",
+          "def": "Minsk"
+        },
+        {
+          "term": "Russie",
+          "def": "Moscou"
+        }
+      ]
+    },
+    {
+      "id": "sample-geo-capitales-afrique-nord-ouest",
+      "group": "geo",
+      "title": "Capitales d’Afrique du Nord et de l’Ouest",
+      "description": "Du Maroc à l’Égypte et du Sénégal au Nigeria.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "Maroc",
+          "def": "Rabat"
+        },
+        {
+          "term": "Algérie",
+          "def": "Alger"
+        },
+        {
+          "term": "Tunisie",
+          "def": "Tunis"
+        },
+        {
+          "term": "Libye",
+          "def": "Tripoli"
+        },
+        {
+          "term": "Égypte",
+          "def": "Le Caire"
+        },
+        {
+          "term": "Soudan",
+          "def": "Khartoum"
+        },
+        {
+          "term": "Mauritanie",
+          "def": "Nouakchott"
+        },
+        {
+          "term": "Sénégal",
+          "def": "Dakar"
+        },
+        {
+          "term": "Gambie",
+          "def": "Banjul"
+        },
+        {
+          "term": "Cap-Vert",
+          "def": "Praia"
+        },
+        {
+          "term": "Guinée-Bissau",
+          "def": "Bissau"
+        },
+        {
+          "term": "Guinée",
+          "def": "Conakry"
+        },
+        {
+          "term": "Sierra Leone",
+          "def": "Freetown"
+        },
+        {
+          "term": "Liberia",
+          "def": "Monrovia"
+        },
+        {
+          "term": "Côte d’Ivoire",
+          "def": "Yamoussoukro"
+        },
+        {
+          "term": "Mali",
+          "def": "Bamako"
+        },
+        {
+          "term": "Burkina Faso",
+          "def": "Ouagadougou"
+        },
+        {
+          "term": "Ghana",
+          "def": "Accra"
+        },
+        {
+          "term": "Togo",
+          "def": "Lomé"
+        },
+        {
+          "term": "Bénin",
+          "def": "Porto-Novo / Cotonou"
+        },
+        {
+          "term": "Niger",
+          "def": "Niamey"
+        },
+        {
+          "term": "Nigeria",
+          "def": "Abuja"
+        }
+      ]
+    },
+    {
+      "id": "sample-geo-capitales-afrique-centre-est-sud",
+      "group": "geo",
+      "title": "Capitales d’Afrique centrale, de l’Est et australe",
+      "description": "Du Tchad à l’Afrique du Sud, îles de l’océan Indien comprises.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "Tchad",
+          "def": "N’Djaména"
+        },
+        {
+          "term": "Cameroun",
+          "def": "Yaoundé"
+        },
+        {
+          "term": "République centrafricaine",
+          "def": "Bangui"
+        },
+        {
+          "term": "Guinée équatoriale",
+          "def": "Ciudad de la Paz",
+          "hint": "Malabo jusqu’en 2026"
+        },
+        {
+          "term": "Gabon",
+          "def": "Libreville"
+        },
+        {
+          "term": "Sao Tomé-et-Principe",
+          "def": "São Tomé"
+        },
+        {
+          "term": "République du Congo",
+          "def": "Brazzaville"
+        },
+        {
+          "term": "République démocratique du Congo",
+          "def": "Kinshasa"
+        },
+        {
+          "term": "Soudan du Sud",
+          "def": "Djouba"
+        },
+        {
+          "term": "Éthiopie",
+          "def": "Addis-Abeba"
+        },
+        {
+          "term": "Érythrée",
+          "def": "Asmara"
+        },
+        {
+          "term": "Djibouti",
+          "def": "Djibouti"
+        },
+        {
+          "term": "Somalie",
+          "def": "Mogadiscio"
+        },
+        {
+          "term": "Kenya",
+          "def": "Nairobi"
+        },
+        {
+          "term": "Ouganda",
+          "def": "Kampala"
+        },
+        {
+          "term": "Rwanda",
+          "def": "Kigali"
+        },
+        {
+          "term": "Burundi",
+          "def": "Gitega / Bujumbura"
+        },
+        {
+          "term": "Tanzanie",
+          "def": "Dodoma / Dar es Salam"
+        },
+        {
+          "term": "Seychelles",
+          "def": "Victoria"
+        },
+        {
+          "term": "Comores",
+          "def": "Moroni"
+        },
+        {
+          "term": "Madagascar",
+          "def": "Antananarivo"
+        },
+        {
+          "term": "Maurice",
+          "def": "Port-Louis"
+        },
+        {
+          "term": "Angola",
+          "def": "Luanda"
+        },
+        {
+          "term": "Zambie",
+          "def": "Lusaka"
+        },
+        {
+          "term": "Malawi",
+          "def": "Lilongwe"
+        },
+        {
+          "term": "Mozambique",
+          "def": "Maputo"
+        },
+        {
+          "term": "Zimbabwe",
+          "def": "Harare"
+        },
+        {
+          "term": "Namibie",
+          "def": "Windhoek"
+        },
+        {
+          "term": "Botswana",
+          "def": "Gaborone"
+        },
+        {
+          "term": "Afrique du Sud",
+          "def": "Pretoria / Le Cap / Bloemfontein"
+        },
+        {
+          "term": "Lesotho",
+          "def": "Maseru"
+        },
+        {
+          "term": "Eswatini",
+          "def": "Mbabane"
+        }
+      ]
+    },
+    {
+      "id": "sample-geo-capitales-ameriques",
+      "group": "geo",
+      "title": "Capitales des Amériques",
+      "description": "Du Canada à l’Argentine, Caraïbes comprises.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "Canada",
+          "def": "Ottawa"
+        },
+        {
+          "term": "États-Unis",
+          "def": "Washington"
+        },
+        {
+          "term": "Mexique",
+          "def": "Mexico"
+        },
+        {
+          "term": "Guatemala",
+          "def": "Guatemala"
+        },
+        {
+          "term": "Belize",
+          "def": "Belmopan"
+        },
+        {
+          "term": "Honduras",
+          "def": "Tegucigalpa"
+        },
+        {
+          "term": "Salvador",
+          "def": "San Salvador"
+        },
+        {
+          "term": "Nicaragua",
+          "def": "Managua"
+        },
+        {
+          "term": "Costa Rica",
+          "def": "San José"
+        },
+        {
+          "term": "Panama",
+          "def": "Panama"
+        },
+        {
+          "term": "Cuba",
+          "def": "La Havane"
+        },
+        {
+          "term": "Jamaïque",
+          "def": "Kingston"
+        },
+        {
+          "term": "Haïti",
+          "def": "Port-au-Prince"
+        },
+        {
+          "term": "République dominicaine",
+          "def": "Saint-Domingue"
+        },
+        {
+          "term": "Bahamas",
+          "def": "Nassau"
+        },
+        {
+          "term": "Saint-Christophe-et-Niévès",
+          "def": "Basseterre"
+        },
+        {
+          "term": "Antigua-et-Barbuda",
+          "def": "Saint John’s"
+        },
+        {
+          "term": "Dominique",
+          "def": "Roseau"
+        },
+        {
+          "term": "Sainte-Lucie",
+          "def": "Castries"
+        },
+        {
+          "term": "Saint-Vincent-et-les-Grenadines",
+          "def": "Kingstown"
+        },
+        {
+          "term": "Barbade",
+          "def": "Bridgetown"
+        },
+        {
+          "term": "Grenade",
+          "def": "Saint-Georges"
+        },
+        {
+          "term": "Trinité-et-Tobago",
+          "def": "Port-d’Espagne"
+        },
+        {
+          "term": "Colombie",
+          "def": "Bogota"
+        },
+        {
+          "term": "Venezuela",
+          "def": "Caracas"
+        },
+        {
+          "term": "Guyana",
+          "def": "Georgetown"
+        },
+        {
+          "term": "Suriname",
+          "def": "Paramaribo"
+        },
+        {
+          "term": "Équateur",
+          "def": "Quito"
+        },
+        {
+          "term": "Pérou",
+          "def": "Lima"
+        },
+        {
+          "term": "Brésil",
+          "def": "Brasilia"
+        },
+        {
+          "term": "Bolivie",
+          "def": "Sucre / La Paz"
+        },
+        {
+          "term": "Paraguay",
+          "def": "Asuncion"
+        },
+        {
+          "term": "Chili",
+          "def": "Santiago"
+        },
+        {
+          "term": "Argentine",
+          "def": "Buenos Aires"
+        },
+        {
+          "term": "Uruguay",
+          "def": "Montevideo"
+        }
+      ]
+    },
+    {
+      "id": "sample-geo-capitales-asie-ouest-centre",
+      "group": "geo",
+      "title": "Capitales du Moyen-Orient et d’Asie centrale",
+      "description": "De la Turquie à l’Afghanistan.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "Turquie",
+          "def": "Ankara"
+        },
+        {
+          "term": "Géorgie",
+          "def": "Tbilissi"
+        },
+        {
+          "term": "Arménie",
+          "def": "Erevan"
+        },
+        {
+          "term": "Azerbaïdjan",
+          "def": "Bakou"
+        },
+        {
+          "term": "Syrie",
+          "def": "Damas"
+        },
+        {
+          "term": "Liban",
+          "def": "Beyrouth"
+        },
+        {
+          "term": "Israël",
+          "def": "Jérusalem",
+          "hint": "statut non reconnu par la plupart des pays"
+        },
+        {
+          "term": "Jordanie",
+          "def": "Amman"
+        },
+        {
+          "term": "Irak",
+          "def": "Bagdad"
+        },
+        {
+          "term": "Iran",
+          "def": "Téhéran"
+        },
+        {
+          "term": "Arabie saoudite",
+          "def": "Riyad"
+        },
+        {
+          "term": "Koweït",
+          "def": "Koweït"
+        },
+        {
+          "term": "Bahreïn",
+          "def": "Manama"
+        },
+        {
+          "term": "Qatar",
+          "def": "Doha"
+        },
+        {
+          "term": "Émirats arabes unis",
+          "def": "Abou Dabi"
+        },
+        {
+          "term": "Oman",
+          "def": "Mascate"
+        },
+        {
+          "term": "Yémen",
+          "def": "Sanaa"
+        },
+        {
+          "term": "Kazakhstan",
+          "def": "Astana"
+        },
+        {
+          "term": "Ouzbékistan",
+          "def": "Tachkent"
+        },
+        {
+          "term": "Turkménistan",
+          "def": "Achgabat"
+        },
+        {
+          "term": "Kirghizistan",
+          "def": "Bichkek"
+        },
+        {
+          "term": "Tadjikistan",
+          "def": "Douchanbé"
+        },
+        {
+          "term": "Afghanistan",
+          "def": "Kaboul"
+        }
+      ]
+    },
+    {
+      "id": "sample-geo-capitales-asie-sud-est",
+      "group": "geo",
+      "title": "Capitales d’Asie du Sud et de l’Est",
+      "description": "Du Pakistan au Japon et à l’Indonésie.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "Pakistan",
+          "def": "Islamabad"
+        },
+        {
+          "term": "Inde",
+          "def": "New Delhi"
+        },
+        {
+          "term": "Népal",
+          "def": "Katmandou"
+        },
+        {
+          "term": "Bhoutan",
+          "def": "Thimphou"
+        },
+        {
+          "term": "Bangladesh",
+          "def": "Dacca / Dhaka"
+        },
+        {
+          "term": "Sri Lanka",
+          "def": "Sri Jayawardenapura Kotte / Colombo"
+        },
+        {
+          "term": "Maldives",
+          "def": "Malé"
+        },
+        {
+          "term": "Chine",
+          "def": "Pékin"
+        },
+        {
+          "term": "Mongolie",
+          "def": "Oulan-Bator"
+        },
+        {
+          "term": "Corée du Nord",
+          "def": "Pyongyang"
+        },
+        {
+          "term": "Corée du Sud",
+          "def": "Séoul"
+        },
+        {
+          "term": "Japon",
+          "def": "Tokyo"
+        },
+        {
+          "term": "Birmanie",
+          "def": "Naypyidaw"
+        },
+        {
+          "term": "Thaïlande",
+          "def": "Bangkok"
+        },
+        {
+          "term": "Laos",
+          "def": "Vientiane"
+        },
+        {
+          "term": "Cambodge",
+          "def": "Phnom Penh"
+        },
+        {
+          "term": "Viêt Nam",
+          "def": "Hanoï"
+        },
+        {
+          "term": "Malaisie",
+          "def": "Kuala Lumpur"
+        },
+        {
+          "term": "Singapour",
+          "def": "Singapour"
+        },
+        {
+          "term": "Brunei",
+          "def": "Bandar Seri Begawan"
+        },
+        {
+          "term": "Indonésie",
+          "def": "Jakarta"
+        },
+        {
+          "term": "Philippines",
+          "def": "Manille"
+        },
+        {
+          "term": "Timor oriental",
+          "def": "Dili"
+        }
+      ]
+    },
+    {
+      "id": "sample-geo-capitales-oceanie",
+      "group": "geo",
+      "title": "Capitales d’Océanie",
+      "description": "L’Australie, la Nouvelle-Zélande et les États du Pacifique.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "Australie",
+          "def": "Canberra"
+        },
+        {
+          "term": "Nouvelle-Zélande",
+          "def": "Wellington"
+        },
+        {
+          "term": "Papouasie-Nouvelle-Guinée",
+          "def": "Port Moresby"
+        },
+        {
+          "term": "Fidji",
+          "def": "Suva"
+        },
+        {
+          "term": "Îles Salomon",
+          "def": "Honiara"
+        },
+        {
+          "term": "Vanuatu",
+          "def": "Port-Vila"
+        },
+        {
+          "term": "Samoa",
+          "def": "Apia"
+        },
+        {
+          "term": "Tonga",
+          "def": "Nuku’alofa"
+        },
+        {
+          "term": "Tuvalu",
+          "def": "Funafuti"
+        },
+        {
+          "term": "Kiribati",
+          "def": "Tarawa-Sud"
+        },
+        {
+          "term": "Nauru",
+          "def": "Yaren"
+        },
+        {
+          "term": "Îles Marshall",
+          "def": "Majuro"
+        },
+        {
+          "term": "Micronésie",
+          "def": "Palikir"
+        },
+        {
+          "term": "Palaos",
+          "def": "Ngerulmud / Melekeok"
+        }
+      ]
+    },
+    {
+      "id": "sample-geo-departements-1",
+      "group": "geo",
+      "title": "Départements français (1)",
+      "description": "Le numéro et son département, de l’Ain au Maine-et-Loire.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "01",
+          "def": "Ain"
+        },
+        {
+          "term": "02",
+          "def": "Aisne"
+        },
+        {
+          "term": "03",
+          "def": "Allier"
+        },
+        {
+          "term": "04",
+          "def": "Alpes-de-Haute-Provence"
+        },
+        {
+          "term": "05",
+          "def": "Hautes-Alpes"
+        },
+        {
+          "term": "06",
+          "def": "Alpes-Maritimes"
+        },
+        {
+          "term": "07",
+          "def": "Ardèche"
+        },
+        {
+          "term": "08",
+          "def": "Ardennes"
+        },
+        {
+          "term": "09",
+          "def": "Ariège"
+        },
+        {
+          "term": "10",
+          "def": "Aube"
+        },
+        {
+          "term": "11",
+          "def": "Aude"
+        },
+        {
+          "term": "12",
+          "def": "Aveyron"
+        },
+        {
+          "term": "13",
+          "def": "Bouches-du-Rhône"
+        },
+        {
+          "term": "14",
+          "def": "Calvados"
+        },
+        {
+          "term": "15",
+          "def": "Cantal"
+        },
+        {
+          "term": "16",
+          "def": "Charente"
+        },
+        {
+          "term": "17",
+          "def": "Charente-Maritime"
+        },
+        {
+          "term": "18",
+          "def": "Cher"
+        },
+        {
+          "term": "19",
+          "def": "Corrèze"
+        },
+        {
+          "term": "2A",
+          "def": "Corse-du-Sud"
+        },
+        {
+          "term": "2B",
+          "def": "Haute-Corse"
+        },
+        {
+          "term": "21",
+          "def": "Côte-d’Or"
+        },
+        {
+          "term": "22",
+          "def": "Côtes-d’Armor"
+        },
+        {
+          "term": "23",
+          "def": "Creuse"
+        },
+        {
+          "term": "24",
+          "def": "Dordogne"
+        },
+        {
+          "term": "25",
+          "def": "Doubs"
+        },
+        {
+          "term": "26",
+          "def": "Drôme"
+        },
+        {
+          "term": "27",
+          "def": "Eure"
+        },
+        {
+          "term": "28",
+          "def": "Eure-et-Loir"
+        },
+        {
+          "term": "29",
+          "def": "Finistère"
+        },
+        {
+          "term": "30",
+          "def": "Gard"
+        },
+        {
+          "term": "31",
+          "def": "Haute-Garonne"
+        },
+        {
+          "term": "32",
+          "def": "Gers"
+        },
+        {
+          "term": "33",
+          "def": "Gironde"
+        },
+        {
+          "term": "34",
+          "def": "Hérault"
+        },
+        {
+          "term": "35",
+          "def": "Ille-et-Vilaine"
+        },
+        {
+          "term": "36",
+          "def": "Indre"
+        },
+        {
+          "term": "37",
+          "def": "Indre-et-Loire"
+        },
+        {
+          "term": "38",
+          "def": "Isère"
+        },
+        {
+          "term": "39",
+          "def": "Jura"
+        },
+        {
+          "term": "40",
+          "def": "Landes"
+        },
+        {
+          "term": "41",
+          "def": "Loir-et-Cher"
+        },
+        {
+          "term": "42",
+          "def": "Loire"
+        },
+        {
+          "term": "43",
+          "def": "Haute-Loire"
+        },
+        {
+          "term": "44",
+          "def": "Loire-Atlantique"
+        },
+        {
+          "term": "45",
+          "def": "Loiret"
+        },
+        {
+          "term": "46",
+          "def": "Lot"
+        },
+        {
+          "term": "47",
+          "def": "Lot-et-Garonne"
+        },
+        {
+          "term": "48",
+          "def": "Lozère"
+        },
+        {
+          "term": "49",
+          "def": "Maine-et-Loire"
+        }
+      ]
+    },
+    {
+      "id": "sample-geo-departements-2",
+      "group": "geo",
+      "title": "Départements français (2)",
+      "description": "Le numéro et son département, de la Manche à l’outre-mer.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "50",
+          "def": "Manche"
+        },
+        {
+          "term": "51",
+          "def": "Marne"
+        },
+        {
+          "term": "52",
+          "def": "Haute-Marne"
+        },
+        {
+          "term": "53",
+          "def": "Mayenne"
+        },
+        {
+          "term": "54",
+          "def": "Meurthe-et-Moselle"
+        },
+        {
+          "term": "55",
+          "def": "Meuse"
+        },
+        {
+          "term": "56",
+          "def": "Morbihan"
+        },
+        {
+          "term": "57",
+          "def": "Moselle"
+        },
+        {
+          "term": "58",
+          "def": "Nièvre"
+        },
+        {
+          "term": "59",
+          "def": "Nord"
+        },
+        {
+          "term": "60",
+          "def": "Oise"
+        },
+        {
+          "term": "61",
+          "def": "Orne"
+        },
+        {
+          "term": "62",
+          "def": "Pas-de-Calais"
+        },
+        {
+          "term": "63",
+          "def": "Puy-de-Dôme"
+        },
+        {
+          "term": "64",
+          "def": "Pyrénées-Atlantiques"
+        },
+        {
+          "term": "65",
+          "def": "Hautes-Pyrénées"
+        },
+        {
+          "term": "66",
+          "def": "Pyrénées-Orientales"
+        },
+        {
+          "term": "67",
+          "def": "Bas-Rhin"
+        },
+        {
+          "term": "68",
+          "def": "Haut-Rhin"
+        },
+        {
+          "term": "69",
+          "def": "Rhône"
+        },
+        {
+          "term": "70",
+          "def": "Haute-Saône"
+        },
+        {
+          "term": "71",
+          "def": "Saône-et-Loire"
+        },
+        {
+          "term": "72",
+          "def": "Sarthe"
+        },
+        {
+          "term": "73",
+          "def": "Savoie"
+        },
+        {
+          "term": "74",
+          "def": "Haute-Savoie"
+        },
+        {
+          "term": "75",
+          "def": "Paris"
+        },
+        {
+          "term": "76",
+          "def": "Seine-Maritime"
+        },
+        {
+          "term": "77",
+          "def": "Seine-et-Marne"
+        },
+        {
+          "term": "78",
+          "def": "Yvelines"
+        },
+        {
+          "term": "79",
+          "def": "Deux-Sèvres"
+        },
+        {
+          "term": "80",
+          "def": "Somme"
+        },
+        {
+          "term": "81",
+          "def": "Tarn"
+        },
+        {
+          "term": "82",
+          "def": "Tarn-et-Garonne"
+        },
+        {
+          "term": "83",
+          "def": "Var"
+        },
+        {
+          "term": "84",
+          "def": "Vaucluse"
+        },
+        {
+          "term": "85",
+          "def": "Vendée"
+        },
+        {
+          "term": "86",
+          "def": "Vienne"
+        },
+        {
+          "term": "87",
+          "def": "Haute-Vienne"
+        },
+        {
+          "term": "88",
+          "def": "Vosges"
+        },
+        {
+          "term": "89",
+          "def": "Yonne"
+        },
+        {
+          "term": "90",
+          "def": "Territoire de Belfort"
+        },
+        {
+          "term": "91",
+          "def": "Essonne"
+        },
+        {
+          "term": "92",
+          "def": "Hauts-de-Seine"
+        },
+        {
+          "term": "93",
+          "def": "Seine-Saint-Denis"
+        },
+        {
+          "term": "94",
+          "def": "Val-de-Marne"
+        },
+        {
+          "term": "95",
+          "def": "Val-d’Oise"
+        },
+        {
+          "term": "971",
+          "def": "Guadeloupe"
+        },
+        {
+          "term": "972",
+          "def": "Martinique"
+        },
+        {
+          "term": "973",
+          "def": "Guyane"
+        },
+        {
+          "term": "974",
+          "def": "La Réunion"
+        },
+        {
+          "term": "976",
+          "def": "Mayotte"
+        }
+      ]
+    },
+    {
+      "id": "sample-geo-provinces-belgique",
+      "group": "geo",
+      "title": "Provinces de Belgique",
+      "description": "Les dix provinces et leur chef-lieu.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "province d’Anvers",
+          "def": "Anvers"
+        },
+        {
+          "term": "province du Brabant flamand",
+          "def": "Louvain"
+        },
+        {
+          "term": "province du Brabant wallon",
+          "def": "Wavre"
+        },
+        {
+          "term": "province de Flandre-Occidentale",
+          "def": "Bruges"
+        },
+        {
+          "term": "province de Flandre-Orientale",
+          "def": "Gand"
+        },
+        {
+          "term": "province de Hainaut",
+          "def": "Mons"
+        },
+        {
+          "term": "province de Liège",
+          "def": "Liège"
+        },
+        {
+          "term": "province de Limbourg",
+          "def": "Hasselt"
+        },
+        {
+          "term": "province de Luxembourg",
+          "def": "Arlon"
+        },
+        {
+          "term": "province de Namur",
+          "def": "Namur"
+        }
+      ]
+    },
+    {
+      "id": "sample-geo-monnaies",
+      "group": "geo",
+      "title": "Monnaies du monde",
+      "description": "Le pays et sa monnaie.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "États-Unis",
+          "def": "dollar (américain)"
+        },
+        {
+          "term": "Canada",
+          "def": "dollar (canadien)"
+        },
+        {
+          "term": "Australie",
+          "def": "dollar (australien)"
+        },
+        {
+          "term": "Royaume-Uni",
+          "def": "livre (sterling)"
+        },
+        {
+          "term": "Égypte",
+          "def": "livre (égyptienne)"
+        },
+        {
+          "term": "Turquie",
+          "def": "livre (turque)"
+        },
+        {
+          "term": "Suisse",
+          "def": "franc (suisse)"
+        },
+        {
+          "term": "Japon",
+          "def": "yen"
+        },
+        {
+          "term": "Chine",
+          "def": "yuan / renminbi"
+        },
+        {
+          "term": "Corée du Sud",
+          "def": "won (sud-coréen)"
+        },
+        {
+          "term": "Inde",
+          "def": "roupie (indienne)"
+        },
+        {
+          "term": "Indonésie",
+          "def": "roupie (indonésienne)"
+        },
+        {
+          "term": "Russie",
+          "def": "rouble"
+        },
+        {
+          "term": "Brésil",
+          "def": "réal"
+        },
+        {
+          "term": "Mexique",
+          "def": "peso (mexicain)"
+        },
+        {
+          "term": "Argentine",
+          "def": "peso (argentin)"
+        },
+        {
+          "term": "Suède",
+          "def": "couronne (suédoise)"
+        },
+        {
+          "term": "Norvège",
+          "def": "couronne (norvégienne)"
+        },
+        {
+          "term": "Danemark",
+          "def": "couronne (danoise)"
+        },
+        {
+          "term": "Tchéquie",
+          "def": "couronne (tchèque)"
+        },
+        {
+          "term": "Pologne",
+          "def": "złoty"
+        },
+        {
+          "term": "Hongrie",
+          "def": "forint"
+        },
+        {
+          "term": "Israël",
+          "def": "shekel"
+        },
+        {
+          "term": "Maroc",
+          "def": "dirham (marocain)"
+        },
+        {
+          "term": "Arabie saoudite",
+          "def": "riyal"
+        },
+        {
+          "term": "Thaïlande",
+          "def": "baht"
+        },
+        {
+          "term": "Viêt Nam",
+          "def": "dông"
+        },
+        {
+          "term": "Afrique du Sud",
+          "def": "rand"
+        },
+        {
+          "term": "Nigeria",
+          "def": "naira"
+        },
+        {
+          "term": "France, Belgique, Allemagne, Italie…",
+          "def": "euro"
+        }
+      ]
+    },
+    {
+      "id": "sample-geo-nationalites",
+      "group": "geo",
+      "title": "Pays et nationalités",
+      "description": "Le pays et l’adjectif de ses habitants, pièges compris.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "Allemagne",
+          "def": "allemand"
+        },
+        {
+          "term": "Belgique",
+          "def": "belge"
+        },
+        {
+          "term": "Pays-Bas",
+          "def": "néerlandais"
+        },
+        {
+          "term": "Luxembourg",
+          "def": "luxembourgeois"
+        },
+        {
+          "term": "Suisse",
+          "def": "suisse"
+        },
+        {
+          "term": "Autriche",
+          "def": "autrichien"
+        },
+        {
+          "term": "Espagne",
+          "def": "espagnol"
+        },
+        {
+          "term": "Portugal",
+          "def": "portugais"
+        },
+        {
+          "term": "Italie",
+          "def": "italien"
+        },
+        {
+          "term": "Grèce",
+          "def": "grec"
+        },
+        {
+          "term": "Royaume-Uni",
+          "def": "britannique"
+        },
+        {
+          "term": "Irlande",
+          "def": "irlandais"
+        },
+        {
+          "term": "Danemark",
+          "def": "danois"
+        },
+        {
+          "term": "Suède",
+          "def": "suédois"
+        },
+        {
+          "term": "Norvège",
+          "def": "norvégien"
+        },
+        {
+          "term": "Finlande",
+          "def": "finlandais"
+        },
+        {
+          "term": "Pologne",
+          "def": "polonais"
+        },
+        {
+          "term": "Hongrie",
+          "def": "hongrois"
+        },
+        {
+          "term": "Russie",
+          "def": "russe"
+        },
+        {
+          "term": "Turquie",
+          "def": "turc"
+        },
+        {
+          "term": "Chypre",
+          "def": "chypriote"
+        },
+        {
+          "term": "Monaco",
+          "def": "monégasque"
+        },
+        {
+          "term": "Madagascar",
+          "def": "malgache"
+        },
+        {
+          "term": "Maroc",
+          "def": "marocain"
+        },
+        {
+          "term": "Algérie",
+          "def": "algérien"
+        },
+        {
+          "term": "Tunisie",
+          "def": "tunisien"
+        },
+        {
+          "term": "Sénégal",
+          "def": "sénégalais"
+        },
+        {
+          "term": "Côte d’Ivoire",
+          "def": "ivoirien"
+        },
+        {
+          "term": "Égypte",
+          "def": "égyptien"
+        },
+        {
+          "term": "Chine",
+          "def": "chinois"
+        },
+        {
+          "term": "Japon",
+          "def": "japonais"
+        },
+        {
+          "term": "Inde",
+          "def": "indien"
+        },
+        {
+          "term": "Viêt Nam",
+          "def": "vietnamien"
+        },
+        {
+          "term": "États-Unis",
+          "def": "américain / états-unien"
+        },
+        {
+          "term": "Canada",
+          "def": "canadien"
+        },
+        {
+          "term": "Mexique",
+          "def": "mexicain"
+        },
+        {
+          "term": "Brésil",
+          "def": "brésilien"
+        },
+        {
+          "term": "Argentine",
+          "def": "argentin"
+        },
+        {
+          "term": "Nouvelle-Zélande",
+          "def": "néo-zélandais"
         }
       ]
     }
