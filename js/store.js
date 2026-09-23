@@ -5,7 +5,7 @@ import { uid, dayKey, lastDayKeys, addDays, clamp } from './util.js';
 import { schedule, isDue, MAX_BOX } from './srs.js';
 
 export const STORAGE_KEY = 'quizzer.v1';
-const SALVAGE_KEY = 'quizzer.v1.unreadable';
+export const SALVAGE_KEY = 'quizzer.v1.unreadable';
 const MAX_SESSIONS = 200;
 const ACTIVITY_DAYS = 400;
 const SESSION_MODES = ['quiz', 'write', 'match', 'review'];

@@ -22,7 +22,9 @@ import { quizView } from '../js/modes/quiz.js';
 import { writeView } from '../js/modes/write.js';
 import { matchView } from '../js/modes/match.js';
 
-const KEY = store.STORAGE_KEY;
+/* Both keys the app writes, its state and the copy of a payload it could not
+   read, are set aside for the run. */
+const KEYS = [store.STORAGE_KEY, store.SALVAGE_KEY];
 const results = document.getElementById('results');
 const summary = document.getElementById('summary');
 const main = document.getElementById('main');
@@ -82,7 +84,7 @@ const VIEWS = {
 async function run() {
   i18n.setLocale('fr');
   initTheme();
-  localStorage.removeItem(KEY);
+  for (const key of KEYS) localStorage.removeItem(key);
   store.load();
 
   const samples = await (await fetch('../data/samples.json')).json();
@@ -406,7 +408,15 @@ async function run() {
   });
 }
 
-const saved = localStorage.getItem(KEY);
+const saved = KEYS.map((key) => localStorage.getItem(key));
+function restore() {
+  KEYS.forEach((key, i) => {
+    if (saved[i] === null) localStorage.removeItem(key);
+    else localStorage.setItem(key, saved[i]);
+  });
+}
+/* Closing the page before the run ends still puts the data back. */
+window.addEventListener('pagehide', restore);
 try {
   await run();
 } catch (error) {
@@ -417,8 +427,8 @@ try {
      are still live: take them down before the learner's data goes back, and
      reload the store so nothing left in memory can write test data over it. */
   teardown();
-  if (saved === null) localStorage.removeItem(KEY);
-  else localStorage.setItem(KEY, saved);
+  restore();
+  window.removeEventListener('pagehide', restore);
   store.load();
   main.replaceChildren();
 }

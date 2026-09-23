@@ -159,8 +159,10 @@ and feeds in a damaged backup that must change nothing. It also plays a full
 quiz, a full write round, a match round, a review session and a flashcard pass
 to their summary screens.
 
-Your own sets are read out of `localStorage` before the run and put back after
-it, so the page is safe to open on a browser that already holds real data.
+Your own data, including any unreadable copy set aside, is read out of
+`localStorage` before the run and put back after it, or as the page closes if
+the run is cut short, so the page is safe to open on a browser that already
+holds real data.
 
 ## Data and privacy
 
