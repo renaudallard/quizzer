@@ -12,7 +12,6 @@ import {
   saveSession, bindKeys, speakButton, cardText,
 } from '../study.js';
 import { notFoundPanel } from '../views/shared.js';
-import { setBusy } from '../router.js';
 
 const COUNTS = [5, 10, 20, 50];
 const TYPES = [
@@ -108,7 +107,6 @@ export function quizView(id) {
     direction: 'forward',
   };
   let run = null;
-  setBusy(() => run !== null);
 
   function showSetup() {
     shell.setProgress(0, 0);

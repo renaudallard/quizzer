@@ -7,7 +7,6 @@ import * as store from '../store.js';
 import { shuffle } from '../util.js';
 import { studyShell, flipCard, summaryPanel, bindKeys, speak } from '../study.js';
 import { notFoundPanel } from '../views/shared.js';
-import { setBusy } from '../router.js';
 
 export function flashcardsView(id) {
   const set = store.getSet(id);
@@ -15,7 +14,6 @@ export function flashcardsView(id) {
 
   const state = { index: 0, reversed: false, shuffled: false, starredOnly: false };
   let order = set.cards.slice();
-  setBusy(() => state.index > 0 && state.index < order.length);
 
   const shell = studyShell({ set, modeKey: 'mode.flashcards' });
   const card = flipCard();

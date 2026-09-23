@@ -9,7 +9,6 @@ import { dueCards, isDue, nextDueInDays } from '../srs.js';
 import { shuffle } from '../util.js';
 import { studyShell, flipCard, summaryPanel, saveSession, bindKeys } from '../study.js';
 import { notFoundPanel } from '../views/shared.js';
-import { setBusy } from '../router.js';
 
 const CATCH_UP = 20;
 
@@ -26,7 +25,6 @@ export function reviewView(id) {
 
   /* Null until a session starts, so the key handler knows to stay out of it. */
   let run = null;
-  setBusy(() => Boolean(run && (run.position > 0 || run.revealed)));
 
   function showEmpty() {
     shell.setProgress(0, 0);

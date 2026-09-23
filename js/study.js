@@ -4,7 +4,7 @@
 import { el, icon, mount } from './dom.js';
 import { t, getLocale } from './i18n/index.js';
 import { getSettings, recordSession } from './store.js';
-import { onCleanup } from './router.js';
+import { onCleanup, setBusy } from './router.js';
 import { cardRow } from './views/shared.js';
 
 export function cardText(text, lang) {
@@ -18,8 +18,12 @@ function interpolateNode(key, name, node) {
   return el('span', {}, before, node, after || null);
 }
 
-/* The page frame shared by every mode: back arrow, title, counter, progress. */
+/* The page frame shared by every mode: back arrow, title, counter, progress.
+   A study page always holds something the learner would miss, a round, its
+   result or the choices made so far, so rebuilds nobody asked for, after a
+   language change or a save in another tab, leave it alone. */
 export function studyShell({ set, modeKey }) {
+  setBusy(() => true);
   const counter = el('p', { class: 'count' });
   const fill = el('div', { class: 'progress-fill', style: { width: '0%' } });
   const bar = el('div', {

@@ -6,7 +6,7 @@ import { t, tn } from '../i18n/index.js';
 import * as store from '../store.js';
 import { shuffle, sample, formatDuration } from '../util.js';
 import { studyShell, summaryPanel, saveSession, cardText } from '../study.js';
-import { onCleanup, setBusy } from '../router.js';
+import { onCleanup } from '../router.js';
 import { notFoundPanel, messagePanel } from '../views/shared.js';
 
 const PAIRS_PER_ROUND = 6;
@@ -26,7 +26,6 @@ export function matchView(id) {
 
   let run = null;
   let ticker = 0;
-  setBusy(() => Boolean(run && run.startedAt));
   let flashTimer = 0;
 
   onCleanup(() => {
