@@ -9,19 +9,27 @@ const DIACRITICS = /[̀-ͯ]/g;
 const LIGATURES = { 'œ': 'oe', 'æ': 'ae', 'ß': 'ss' };
 /* Letters that NFD does not split into a base and a mark. */
 const STROKES = { 'ø': 'o', 'ł': 'l', 'đ': 'd', 'ı': 'i' };
+/* A hyphen or dash that opens a number is a minus sign. It becomes U+2212,
+   which the punctuation strip leaves alone, so "5" is not taken for "-5". */
+const SIGN = /(^|[^\p{L}\d])[-–](?=\d)/gu;
+/* A space followed by three digits only groups them, as in "1 000", so it
+   goes before the punctuation strip turns a point, comma or colon into one. */
+const DIGIT_GROUP = /(\d)\s+(?=\d{3}(?!\d))/g;
 
 export function normalize(text, stripAccents = true) {
   let out = String(text).normalize('NFC').toLowerCase().trim();
   out = out.replace(/[œæß]/g, (char) => LIGATURES[char]);
   if (stripAccents) out = out.normalize('NFD').replace(DIACRITICS, '').replace(/[øłđı]/g, (char) => STROKES[char]);
-  out = out.replace(PUNCT, ' ').replace(/\s+/g, ' ').trim();
+  out = out.replace(SIGN, '$1−').replace(DIGIT_GROUP, '$1').replace(PUNCT, ' ').replace(/\s+/g, ' ').trim();
   return out;
 }
 
 /* Spaces are ignored when grading, so a dropped apostrophe or hyphen is not a
-   mistake: "leau" matches "l'eau" and "pays bas" matches "Pays-Bas". */
+   mistake: "leau" matches "l'eau" and "pays bas" matches "Pays-Bas". A space
+   left between two digits stands for the point, comma or colon that kept
+   them apart, so it stays: "3,14" never reads as "314". */
 function compact(text) {
-  return text.replace(/ /g, '');
+  return text.replace(/(\d) (?=\d)| /g, (match, digit) => (digit ? match : ''));
 }
 
 /* Splits on the separators that sit outside brackets: a semicolon, or a slash

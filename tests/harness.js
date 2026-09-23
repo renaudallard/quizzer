@@ -136,6 +136,10 @@ async function run() {
     assert(text.grade('bonjour', '« bonjour »').verdict === 'correct', 'guillemets');
     assert(text.grade('?', '?').verdict === 'correct', 'ponctuation seule');
     assert(text.grade('C', 'C#').verdict === 'wrong', 'symbole qui compte');
+    assert(text.grade('314', '3,14').verdict === 'wrong', 'virgule décimale oubliée');
+    assert(text.grade('3.14', '3,14').verdict === 'correct', 'point pour virgule');
+    assert(text.grade('1000', '1 000').verdict === 'correct', 'espace des milliers');
+    assert(text.grade('5', '-5').verdict === 'wrong', 'signe moins oublié');
     return 'ok';
   });
 

@@ -77,8 +77,15 @@ quotes, dashes and hyphens included, with spaces ignored: `leau` matches
 `l'eau` and `pays bas` matches `Pays-Bas`. The ligatures œ, æ and ß always
 match oe, ae and ss, so `coeur` is right for `cœur`. Symbols that carry
 meaning, such as `#`, `/` or `%`, are kept, and an answer made only of
-punctuation, such as `?`, is compared exactly as typed. Two tolerances are on
-by default and can be turned off in the settings:
+punctuation, such as `?`, is compared exactly as typed.
+
+Numbers keep their meaning. A point, comma or colon between digits still
+separates them, so `314` is wrong for `3,14` while `3.14` and `3 14` are
+right; a space before a group of three digits only groups them, so `1000`
+matches `1 000`; and a minus sign in front of a number counts, so `5` is
+wrong for `-5`.
+
+Two tolerances are on by default and can be turned off in the settings:
 
 - **Accents.** `ecole` is accepted for `école`, and the verdict then shows
   the exact spelling. Letters with a stroke such as ø or ł count as
