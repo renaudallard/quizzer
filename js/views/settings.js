@@ -116,6 +116,7 @@ export function shortcutsView() {
   const shortcuts = [
     ['shortcuts.flip', [space, enter]],
     ['shortcuts.nav', ['←', '→']],
+    ['shortcuts.sort', ['←', '→']],
     ['shortcuts.answer', ['1', '2', '3', '4']],
     ['shortcuts.submit', [enter]],
     ['shortcuts.speak', ['A']],

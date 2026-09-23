@@ -1,4 +1,5 @@
-/* Flashcards: browse a set and flip each card. Nothing is graded here, so the
+/* Flashcards: browse a set and flip each card, or sort each one as known or
+   still to learn and go over the second pile. None of it is a test, so the
    spaced repetition schedule is left untouched. */
 
 import { el, icon, toast, mount } from '../dom.js';
@@ -23,8 +24,12 @@ export function flashcardsView(id) {
   const set = store.getSet(id);
   if (!set) return notFoundPanel(t('set.notFound'));
 
-  const state = { index: 0, reversed: false, shuffled: false, starredOnly: false };
+  const state = { index: 0, reversed: false, shuffled: false, starredOnly: false, sorting: false };
   let order = set.cards.slice();
+  /* Where each card of the pass went while sorting, by id, and the cards the
+     pass is limited to after "go over the second pile", or null for all. */
+  let sorted = new Map();
+  let focus = null;
 
   const shell = studyShell({ set, modeKey: 'mode.flashcards' });
   const card = flipCard();
@@ -46,6 +51,7 @@ export function flashcardsView(id) {
   const shuffleButton = toggle(t('common.shuffle'), 'shuffle', 'shuffled');
   const reverseButton = toggle(t('flashcards.reverse'), 'restart', 'reversed');
   const starredButton = toggle(t('flashcards.starredOnly'), 'star', 'starredOnly');
+  const sortButton = toggle(t('flashcards.sort'), 'check', 'sorting');
 
   function current() {
     return order[state.index] || null;
@@ -58,8 +64,11 @@ export function flashcardsView(id) {
     return Boolean(live ? live.star : entry.star);
   }
 
+  /* The second pile is a sorting matter: turning sorting off brings the
+     whole set back. */
   function rebuild() {
-    let cards = set.cards;
+    if (!state.sorting) focus = null;
+    let cards = focus ? set.cards.filter((card) => focus.has(card.id)) : set.cards;
     if (state.starredOnly) {
       const starred = cards.filter(hasStar);
       if (!starred.length) {
@@ -72,6 +81,7 @@ export function flashcardsView(id) {
     }
     order = state.shuffled ? shuffle(cards) : cards.slice();
     state.index = 0;
+    sorted = new Map();
     paint();
   }
 
@@ -79,7 +89,42 @@ export function flashcardsView(id) {
     const next = state.index + delta;
     if (next < 0 || next > order.length) return;
     state.index = next;
+    /* Going back while sorting takes back the sort of the card returned to. */
+    if (delta < 0 && current()) sorted.delete(current().id);
     paint();
+  }
+
+  function sort(known) {
+    const entry = current();
+    if (!entry) return;
+    sorted.set(entry.id, known);
+    move(1);
+  }
+
+  /* The end of a sorted pass: what was known, and the other pile to go over. */
+  function sortedSummary() {
+    const learning = order.filter((entry) => sorted.get(entry.id) === false);
+    const known = order.length - learning.length;
+    return summaryPanel({
+      score: known + '/' + order.length,
+      scoreLabel: tn('flashcards.sortedBody', learning.length),
+      title: t('flashcards.doneTitle'),
+      actions: [
+        learning.length
+          ? el('button', {
+              type: 'button', class: 'btn btn-primary',
+              onclick: () => { focus = new Set(learning.map((entry) => entry.id)); rebuild(); },
+            }, icon('restart'), tn('flashcards.studyLearning', learning.length))
+          : null,
+        el('button', {
+          type: 'button', class: learning.length ? 'btn' : 'btn btn-primary',
+          onclick: () => { focus = null; rebuild(); },
+        }, icon('restart'), t('common.restart')),
+        el('a', { class: 'btn', href: '#/set/' + set.id }, t('common.back')),
+      ].filter(Boolean),
+      missed: learning,
+      langs: set,
+    });
   }
 
   function paint() {
@@ -91,7 +136,7 @@ export function flashcardsView(id) {
     const step = stage.contains(active) && keyboardFocus(active) ? active.dataset.step : null;
     if (state.index >= order.length) {
       shell.setProgress(order.length, order.length);
-      mount(stage, summaryPanel({
+      mount(stage, state.sorting ? sortedSummary() : summaryPanel({
         title: t('flashcards.doneTitle'),
         body: tn('flashcards.doneBody', order.length),
         actions: [
@@ -121,10 +166,20 @@ export function flashcardsView(id) {
           type: 'button', class: 'btn', dataset: { step: 'previous' },
           disabled: state.index === 0, onclick: () => move(-1),
         }, icon('left'), t('common.previous')),
-        el('button', {
-          type: 'button', class: 'btn', dataset: { step: 'next' }, onclick: () => move(1),
-        }, t('common.next'), icon('right'))),
-      el('p', { class: 'flashcard-foot', style: { textAlign: 'center', marginTop: '14px' } }, t('flashcards.flipHint')));
+        state.sorting
+          ? [
+              el('button', {
+                type: 'button', class: 'btn', dataset: { step: 'learning' }, onclick: () => sort(false),
+              }, icon('restart'), t('flashcards.learning')),
+              el('button', {
+                type: 'button', class: 'btn btn-primary', dataset: { step: 'know' }, onclick: () => sort(true),
+              }, icon('check'), t('flashcards.know')),
+            ]
+          : el('button', {
+              type: 'button', class: 'btn', dataset: { step: 'next' }, onclick: () => move(1),
+            }, t('common.next'), icon('right'))),
+      el('p', { class: 'flashcard-foot', style: { textAlign: 'center', marginTop: '14px' } },
+        t(state.sorting ? 'flashcards.sortHint' : 'flashcards.flipHint')));
     if (step) {
       const again = stage.querySelector('[data-step="' + step + '"]:not([disabled])')
         || stage.querySelector('[data-step]:not([disabled])');
@@ -144,9 +199,11 @@ export function flashcardsView(id) {
     paintStar(store.toggleStar(set.id, entry.id));
   });
 
+  /* While sorting, the arrows sort the card as a swipe would: left still to
+     learn, right known. */
   bindKeys((event) => {
-    if (event.key === 'ArrowRight') { event.preventDefault(); move(1); }
-    else if (event.key === 'ArrowLeft') { event.preventDefault(); move(-1); }
+    if (event.key === 'ArrowRight') { event.preventDefault(); if (state.sorting) sort(true); else move(1); }
+    else if (event.key === 'ArrowLeft') { event.preventDefault(); if (state.sorting) sort(false); else move(-1); }
     else if (event.key === ' ' || event.key === 'Enter') { event.preventDefault(); card.flip(); }
     else if (event.key === 's' || event.key === 'S') starButton.click();
     else if ((event.key === 'a' || event.key === 'A') && current()) card.speak();
@@ -155,7 +212,7 @@ export function flashcardsView(id) {
   rebuild();
 
   shell.body.appendChild(el('div', { class: 'study-toolbar' },
-    shuffleButton, reverseButton, starredButton, starButton));
+    shuffleButton, reverseButton, starredButton, sortButton, starButton));
   shell.body.appendChild(stage);
   return shell.root;
 }

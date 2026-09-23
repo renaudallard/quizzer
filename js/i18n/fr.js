@@ -157,6 +157,14 @@ export default {
   "flashcards.doneTitle": "Jeu parcouru",
   "flashcards.doneBody.one": "Vous avez vu {n} carte.",
   "flashcards.doneBody.other": "Vous avez vu les {n} cartes.",
+  "flashcards.sort": "Trier",
+  "flashcards.know": "Je sais",
+  "flashcards.learning": "À revoir",
+  "flashcards.sortHint": "Retournez la carte, puis dites si vous la saviez. Les flèches trient aussi: ← à revoir, → je sais.",
+  "flashcards.sortedBody.one": "{n} carte à revoir.",
+  "flashcards.sortedBody.other": "{n} cartes à revoir.",
+  "flashcards.studyLearning.one": "Reprendre la carte à revoir",
+  "flashcards.studyLearning.other": "Reprendre les {n} cartes à revoir",
 
   /* Révision espacée */
   "review.emptyTitle": "Rien à réviser aujourd’hui",
@@ -325,6 +333,7 @@ export default {
   "shortcuts.lede": "Les mains sur le clavier, l’apprentissage va plus vite.",
   "shortcuts.flip": "Retourner la carte",
   "shortcuts.nav": "Carte précédente ou suivante",
+  "shortcuts.sort": "Trier la carte: à revoir ou je sais",
   "shortcuts.answer": "Choisir la réponse 1 à 4",
   "shortcuts.submit": "Valider ou passer à la suite",
   "shortcuts.speak": "Écouter la carte",

@@ -347,6 +347,29 @@ async function run() {
     return steps + ' cartes';
   });
 
+  check('le tri des flashcards laisse le calendrier tel quel', () => {
+    const cards = store.getSet(set.id).cards;
+    const before = cards.map((card) => [card.box, card.due, card.seen].join()).join();
+    main.replaceChildren(flashcardsView(set.id));
+    [...main.querySelectorAll('.study-toolbar button')]
+      .find((button) => button.textContent === i18n.t('flashcards.sort')).click();
+    let steps = 0;
+    while (!main.querySelector('.summary') && steps++ < 80) {
+      /* Précédent, À revoir, Je sais: every third card is still to learn. */
+      const buttons = [...main.querySelectorAll('.study-nav button')];
+      buttons[steps % 3 ? 2 : 1].click();
+    }
+    assert(main.querySelector('.summary'), 'pas de résumé');
+    const score = main.querySelector('.summary-score').textContent;
+    assert(score === '20/30', 'score: ' + score);
+    assert(main.querySelectorAll('.summary-list .card-row').length === 10, 'liste à revoir');
+    main.querySelector('.summary .btn-primary').click();
+    const counter = main.querySelector('.study-head .count').textContent;
+    assert(counter === i18n.t('progress.position', { current: 1, total: 10 }), 'reprise: ' + counter);
+    assert(cards.map((card) => [card.box, card.due, card.seen].join()).join() === before, 'calendrier modifié');
+    return steps + ' cartes triées';
+  });
+
   check('les statistiques tracent leurs graphiques', () => {
     const node = statsView(set.id);
     assert(node.querySelector('.mastery-bar'), 'barre de maîtrise absente');

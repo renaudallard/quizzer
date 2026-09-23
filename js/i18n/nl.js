@@ -157,6 +157,14 @@ export default {
   "flashcards.doneTitle": "Set doorgenomen",
   "flashcards.doneBody.one": "Je hebt {n} kaart gezien.",
   "flashcards.doneBody.other": "Je hebt alle {n} kaarten gezien.",
+  "flashcards.sort": "Sorteren",
+  "flashcards.know": "Ik weet het",
+  "flashcards.learning": "Nog niet",
+  "flashcards.sortHint": "Draai de kaart om en zeg dan of je het wist. De pijltjes sorteren ook: ← nog niet, → ik weet het.",
+  "flashcards.sortedBody.one": "Nog {n} kaart te leren.",
+  "flashcards.sortedBody.other": "Nog {n} kaarten te leren.",
+  "flashcards.studyLearning.one": "Oefen de kaart die er nog niet in zit",
+  "flashcards.studyLearning.other": "Oefen de {n} kaarten die er nog niet in zitten",
 
   /* Gespreid herhalen */
   "review.emptyTitle": "Niets te herhalen vandaag",
@@ -325,6 +333,7 @@ export default {
   "shortcuts.lede": "Handen op het toetsenbord, dan leer je sneller.",
   "shortcuts.flip": "Kaart omdraaien",
   "shortcuts.nav": "Vorige of volgende kaart",
+  "shortcuts.sort": "Kaart sorteren: nog niet of ik weet het",
   "shortcuts.answer": "Antwoord 1 tot en met 4 kiezen",
   "shortcuts.submit": "Controleren of verdergaan",
   "shortcuts.speak": "Kaart beluisteren",

@@ -29,15 +29,19 @@ compile and nothing to configure.
 
 | Mode | What it is | Feeds the schedule |
 |------|------------|--------------------|
-| **Flashcards** | Flip through the cards, shuffle them, reverse them, mark the hard ones | no |
+| **Flashcards** | Flip through the cards, shuffle them, reverse them, mark the hard ones, or sort them into "je sais" and "à revoir" and go over the second pile | no |
 | **Apprendre** | Every card is first picked out in multiple choice, then typed from memory; the cards you know least come first, seven at a time, a miss sends a card back to multiple choice, and the score counts the cards never missed | yes |
 | **Révision espacée** | Only the cards that are due, graded by you as "à revoir" or "je savais" | yes |
 | **Quiz** | Multiple choice, true or false and written answers, in either direction | yes |
 | **Écrire** | Type every answer; a card you miss returns later in the round, and the score counts the cards right the first time | yes |
 | **Associer** | Pair six terms with their definitions against the clock | best time only |
 
-Flashcards deliberately change nothing: browsing a set is not self-testing, so
-it would be dishonest to let it move cards up the ladder.
+Flashcards deliberately change nothing, sorting included: browsing a set is
+not self-testing, so it would be dishonest to let it move cards up the ladder,
+and grading yourself for the schedule is what Révision espacée is for. The
+piles last for the pass. At its end the score counts the cards you knew, the
+others are listed, and one button goes through just those; turning sorting
+off brings the whole set back.
 
 ### Spaced repetition
 
@@ -246,8 +250,9 @@ opens its setting with the field focused, and that percentages follow the
 interface language. It restores a full backup into an emptied store and
 compares every part, imports it a second time to show that nothing doubles,
 and feeds in a damaged backup that must change nothing. It also plays a full
-quiz, a learn round, a full write round, a match round, a review session and a
-flashcard pass to their summary screens.
+quiz, a learn round, a full write round, a match round, a review session, a
+flashcard pass and a sorted one to their summary screens, the sorted pass
+leaving the schedule alone.
 
 Your own data, including any unreadable copy set aside, is read out of
 `localStorage` before the run and put back after it, or as the page closes if
@@ -315,7 +320,7 @@ the storage figure in the settings counts it.
 | Key | Where | What |
 |-----|-------|------|
 | `Space` / `Enter` | cards, review | flip or reveal |
-| `←` `→` | cards | previous, next |
+| `←` `→` | cards | previous, next; while sorting, à revoir and je sais |
 | `1` `2` | review | à revoir, je savais |
 | `1` to `4` | quiz, learn | pick an answer |
 | `Enter` | quiz, learn, write | check, then continue |

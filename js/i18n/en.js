@@ -157,6 +157,14 @@ export default {
   "flashcards.doneTitle": "Set finished",
   "flashcards.doneBody.one": "You went through {n} card.",
   "flashcards.doneBody.other": "You went through all {n} cards.",
+  "flashcards.sort": "Sort",
+  "flashcards.know": "I know it",
+  "flashcards.learning": "Still learning",
+  "flashcards.sortHint": "Flip the card, then say whether you knew it. The arrows sort too: ← still learning, → I know it.",
+  "flashcards.sortedBody.one": "{n} card still to learn.",
+  "flashcards.sortedBody.other": "{n} cards still to learn.",
+  "flashcards.studyLearning.one": "Study the card still to learn",
+  "flashcards.studyLearning.other": "Study the {n} cards still to learn",
 
   /* Spaced review */
   "review.emptyTitle": "Nothing due today",
@@ -325,6 +333,7 @@ export default {
   "shortcuts.lede": "Hands on the keyboard, learning goes faster.",
   "shortcuts.flip": "Flip the card",
   "shortcuts.nav": "Previous or next card",
+  "shortcuts.sort": "Sort the card: still learning or I know it",
   "shortcuts.answer": "Pick answer 1 to 4",
   "shortcuts.submit": "Check or move on",
   "shortcuts.speak": "Hear the card",
