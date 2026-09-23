@@ -24,6 +24,13 @@ export function normalize(text, stripAccents = true) {
   return out;
 }
 
+/* Two texts are the same prompt or the same answer when they differ only by
+   case or punctuation. Accents count, since "ou" and "où" are different
+   words, and text made only of punctuation is compared as written. */
+export function textKey(text) {
+  return normalize(text, false) || String(text).trim();
+}
+
 /* Spaces are ignored when grading, so a dropped apostrophe or hyphen is not a
    mistake: "leau" matches "l'eau" and "pays bas" matches "Pays-Bas". A space
    left between two digits stands for the point, comma or colon that kept

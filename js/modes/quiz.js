@@ -6,7 +6,7 @@ import { el, icon, mount } from '../dom.js';
 import { t, tn, formatPercent } from '../i18n/index.js';
 import * as store from '../store.js';
 import { shuffle, sample, pct } from '../util.js';
-import { gradeAny, normalize } from '../text.js';
+import { gradeAny, textKey } from '../text.js';
 import {
   studyShell, answerField, answerFeedback, typedAnswer, summaryPanel,
   saveSession, bindKeys, speakButton, cardText,
@@ -30,7 +30,7 @@ const DIRECTIONS = [
 /* Both sides of every card, normalised once per build rather than once per
    card for every question. */
 function indexCards(cards) {
-  return cards.map((card) => ({ card, term: normalize(card.term), def: normalize(card.def) }));
+  return cards.map((card) => ({ card, term: textKey(card.term), def: textKey(card.def) }));
 }
 
 /* A prompt can belong to several cards, such as two words that both mean
@@ -231,7 +231,7 @@ export function quizView(id) {
   function choiceBody(question) {
     const pending = run.pending;
     const buttons = question.options.map((option, i) => {
-      const isAnswer = normalize(option) === normalize(question.answer);
+      const isAnswer = textKey(option) === textKey(question.answer);
       let state = null;
       if (pending) {
         if (isAnswer) state = 'correct';
