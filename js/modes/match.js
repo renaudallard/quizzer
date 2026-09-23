@@ -5,7 +5,7 @@ import { el, icon, mount, toast } from '../dom.js';
 import { t, tn } from '../i18n/index.js';
 import * as store from '../store.js';
 import { shuffle, sample, formatDuration } from '../util.js';
-import { studyShell, summaryPanel, saveSession, cardText } from '../study.js';
+import { studyShell, summaryPanel, saveSession, cardSide } from '../study.js';
 import { onCleanup } from '../router.js';
 import { notFoundPanel, messagePanel } from '../views/shared.js';
 
@@ -50,8 +50,8 @@ export function matchView(id) {
   function begin() {
     const pairs = sample(set.cards, Math.min(PAIRS_PER_ROUND, set.cards.length));
     const tiles = shuffle(pairs.flatMap((card) => [
-      { key: card.id + ':term', side: 'term', text: card.term, lang: set.termLang },
-      { key: card.id + ':def', side: 'def', text: card.def, lang: set.defLang },
+      { key: card.id + ':term', side: 'term', text: card.term, image: card.termImage, lang: set.termLang },
+      { key: card.id + ':def', side: 'def', text: card.def, image: card.defImage, lang: set.defLang },
     ]));
     run = {
       pairs, tiles, left: pairs.slice(), matched: new Set(),
@@ -83,13 +83,14 @@ export function matchView(id) {
 
     const first = run.picked;
     run.picked = null;
-    /* Tiles pair on what they say, not on the card they came from: two cards
-       that both mean "bonjour" put two identical tiles on the board, and
-       either one is right. The pair is taken off the cards still to match,
-       so whatever is left on the board can always be paired. */
+    /* Tiles pair on what they show, not on the card they came from: two
+       cards that both mean "bonjour" put two identical tiles on the board,
+       and either one is right. The pair is taken off the cards still to
+       match, so whatever is left on the board can always be paired. */
     const [term, def] = first.tile.side === 'term' ? [first.tile, tile] : [tile, first.tile];
-    const index = term.side === def.side ? -1
-      : run.left.findIndex((card) => card.term === term.text && card.def === def.text);
+    const index = term.side === def.side ? -1 : run.left.findIndex((card) => (
+      card.term === term.text && card.termImage === term.image
+      && card.def === def.text && card.defImage === def.image));
 
     if (index >= 0) {
       run.left.splice(index, 1);
@@ -141,7 +142,7 @@ export function matchView(id) {
     const grid = el('div', { class: 'match-grid' });
     for (const tile of run.tiles) {
       const button = el('button', { type: 'button', class: 'match-tile' },
-        cardText(tile.text, tile.lang));
+        cardSide(tile.text, tile.image, tile.lang));
       button.addEventListener('click', () => pick(tile, button));
       grid.appendChild(button);
     }

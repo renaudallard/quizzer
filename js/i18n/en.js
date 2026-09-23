@@ -37,6 +37,7 @@ export default {
   "common.term": "Term",
   "common.definition": "Definition",
   "common.hint": "Hint",
+  "image.alt": "Image",
 
   "count.cards.one": "{n} card",
   "count.cards.other": "{n} cards",
@@ -136,6 +137,13 @@ export default {
   "editor.symbols": "Maths symbols",
   "editor.symbolsHint": "A click inserts the symbol where the cursor was.",
   "editor.symbolsNoField": "Put the cursor in a field first.",
+  "editor.image": "Image",
+  "editor.addTermImage": "Add an image to the term",
+  "editor.addDefImage": "Add an image to the definition",
+  "editor.removeImage": "Remove the image",
+  "editor.imageNotImage": "This file is not an image.",
+  "editor.imageTooBig": "This image is still too large once shrunk.",
+  "editor.imageFailed": "This browser cannot keep images.",
 
   /* Flashcards */
   "flashcards.flipHint": "Click the card or press Space to flip it.",

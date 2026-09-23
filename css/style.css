@@ -416,6 +416,15 @@ a.stat-tile:hover { border-color: var(--accent); transform: translateY(-2px); co
 .symbol-palette summary { cursor: pointer; font-size: 0.86rem; color: var(--ink-2); font-weight: 600; }
 .symbols { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .btn-symbol { min-width: 40px; padding: 6px 10px; font-weight: 500; }
+.editor-image { display: flex; align-items: center; gap: 6px; }
+.editor-image .card-image { margin: 0; }
+.btn-image { align-self: flex-start; padding: 5px 10px; font-size: 0.86rem; }
+
+/* Card pictures: whole, never cropped, within the space of the card. */
+.card-image { display: block; max-width: 100%; max-height: 220px; margin: 0 auto 10px; border-radius: var(--radius-sm); object-fit: contain; }
+.card-image.thumb { max-width: 96px; max-height: 64px; margin: 0 0 6px; }
+.card-image[data-missing] { min-width: 48px; min-height: 32px; background: var(--surface-2); }
+.match-tile .card-image { max-height: 90px; margin: 0 auto 6px; }
 .sticky-actions {
   position: sticky; bottom: 0; z-index: 10;
   display: flex; gap: 10px; align-items: center; flex-wrap: wrap;

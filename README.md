@@ -100,6 +100,27 @@ clears away the blank rows nobody used, and nothing else.
 lacks: powers, roots, π, comparison signs, Greek letters and the like. A
 click puts the sign where the cursor was in the last field used.
 
+### Pictures
+
+A card side can hold a picture, with or without text. The "Image" button
+under each side picks one, and a picture pasted into a side's field, or
+dropped on the side, lands there too. Pictures are shrunk to 800 pixels on
+their longest side before they are kept, and one still over 2 MB is refused.
+They live in the browser's IndexedDB, apart from the cards, so they leave the
+room localStorage has for the rest.
+
+A side may be a picture alone, such as a photo of a dog with `de hond` as the
+answer. Answers are always typed or picked as text, so a quiz or Écrire
+question asks toward the side that has text, whatever direction was chosen,
+and a card with pictures on both sides and no text only appears in
+flashcards, review and Associer. Read aloud skips a side that is only a
+picture, and screen readers announce it as an image: put a few words next to
+the picture when what it shows matters.
+
+Pictures no card uses any more are let go at start-up once they are a day
+old, so a draft still open elsewhere keeps its own. "Tout effacer" removes
+them all.
+
 ### Grading written answers
 
 Answers are compared after case folding and punctuation stripping, French
@@ -172,6 +193,7 @@ counts the card twice.
       chart.js            stat tiles, mastery bar, activity columns
       text.js             answer comparison and hint masking
       io.js               delimited text, downloads, share links
+      images.js           card pictures, kept in IndexedDB
       util.js             identifiers, shuffling, dates
       theme.js            light, dark and system
       language.js         language choice shared by top bar and settings

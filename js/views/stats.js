@@ -8,6 +8,7 @@ import { tierCounts, TIERS, masteryPct, dueCards, nextDueInDays, tierOf } from '
 import { statTile, masteryChart, activityChart, figure, tableView } from '../chart.js';
 import { dayKey, lastDayKeys, formatDuration, pct } from '../util.js';
 import { truncate } from '../text.js';
+import { cardImage } from '../images.js';
 import { notFoundPanel } from './shared.js';
 
 const ACTIVITY_DAYS = 14;
@@ -89,7 +90,8 @@ export function statsView(id) {
                 el('th', { class: 'num' }, t('stats.col.level')),
                 el('th', { class: 'num' }, t('stats.col.due')))),
               el('tbody', {}, hardest.map((card) => el('tr', {},
-                el('td', { lang: set.termLang || null }, truncate(card.term, 42)),
+                el('td', { lang: set.termLang || null },
+                  card.term ? truncate(card.term, 42) : cardImage(card.termImage, t('image.alt'), 'thumb')),
                 el('td', { class: 'num' }, String(card.seen)),
                 el('td', { class: 'num' }, formatPercent(pct(card.correct, card.seen))),
                 el('td', { class: 'num' }, String(card.lapses)),

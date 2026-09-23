@@ -6,10 +6,10 @@ import { el, icon, mount } from '../dom.js';
 import { t, tn } from '../i18n/index.js';
 import * as store from '../store.js';
 import { shuffle } from '../util.js';
-import { gradeAny, maskAnswer, textKey } from '../text.js';
+import { gradeAny, maskAnswer } from '../text.js';
 import {
   studyShell, answerField, answerFeedback, typedAnswer, summaryPanel,
-  saveSession, bindKeys, speakButton, cardText,
+  saveSession, bindKeys, speakButton, cardSide, sideKey, askable,
 } from '../study.js';
 import { notFoundPanel } from '../views/shared.js';
 
@@ -23,16 +23,25 @@ export function writeView(id) {
 
   let run = null;
 
+  /* The definition is typed from the term, unless it is only a picture: the
+     term is then typed from the picture. */
+  function asked(card) {
+    return card.def
+      ? { text: card.term, image: card.termImage, lang: set.termLang, answer: card.def, answerLang: set.defLang }
+      : { text: card.def, image: card.defImage, lang: set.defLang, answer: card.term, answerLang: set.termLang };
+  }
+
   function begin() {
+    const cards = set.cards.filter(askable);
     run = {
-      queue: shuffle(set.cards.slice()),
+      queue: shuffle(cards),
       position: 0,
       cleared: 0,
       mistakes: 0,
       slipped: new Set(),
       hinted: false,
       pending: null,
-      total: set.cards.length,
+      total: cards.length,
       startedAt: Date.now(),
     };
     paint();
@@ -41,11 +50,15 @@ export function writeView(id) {
   function submit(value) {
     if (!run || run.pending) return;
     const card = run.queue[run.position];
-    /* Another card with the same term has a definition that is just as
+    /* Another card showing the same prompt has an answer that is just as
        right. The card asked for goes first, so a miss shows its answer. */
-    const term = textKey(card.term);
-    const accepted = [card, ...set.cards.filter((other) => other.id !== card.id && textKey(other.term) === term)]
-      .map((other) => other.def);
+    const side = asked(card);
+    const prompt = sideKey(side.text, side.image);
+    const accepted = [side.answer, ...set.cards
+      .filter((other) => other.id !== card.id && askable(other))
+      .map(asked)
+      .filter((other) => sideKey(other.text, other.image) === prompt)
+      .map((other) => other.answer)];
     const verdict = gradeAny(value, accepted, store.getSettings());
     run.pending = { verdict, typed: value, correct: verdict.verdict !== 'wrong' };
     paint();
@@ -110,14 +123,15 @@ export function writeView(id) {
     }
 
     const card = run.queue[run.position];
+    const side = asked(card);
     const remaining = run.queue.length - run.position;
     shell.setProgress(run.cleared, run.cleared + remaining);
 
     const line = el('div', { class: 'question-prompt' },
-      cardText(card.term, set.termLang),
-      speakButton(card.term, set.termLang),
+      cardSide(side.text, side.image, side.lang),
+      side.text ? speakButton(side.text, side.lang) : null,
       card.hint ? el('span', { class: 'hint' }, card.hint) : null,
-      run.hinted ? el('span', { class: 'hint' }, maskAnswer(card.def)) : null);
+      run.hinted ? el('span', { class: 'hint' }, maskAnswer(side.answer)) : null);
     const prompt = el('div', { class: 'question' },
       el('p', { class: 'question-kind' }, t('write.prompt')),
       line);
@@ -130,8 +144,8 @@ export function writeView(id) {
       feedback = answerFeedback({
         correct: run.pending.correct,
         result: run.pending.verdict,
-        expected: card.def,
-        lang: set.defLang,
+        expected: side.answer,
+        lang: side.answerLang,
         note: run.pending.correct ? null : t('write.requeued'),
         onOverride: override,
         onContinue: advance,
@@ -147,7 +161,7 @@ export function writeView(id) {
         type: 'button', class: 'btn toggle-btn', disabled: run.hinted,
         onclick: () => {
           run.hinted = true;
-          line.appendChild(el('span', { class: 'hint' }, maskAnswer(card.def)));
+          line.appendChild(el('span', { class: 'hint' }, maskAnswer(side.answer)));
           hint.disabled = true;
           field.focus();
         },

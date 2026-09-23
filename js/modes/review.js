@@ -99,8 +99,8 @@ export function reviewView(id) {
     shell.setProgress(run.cleared, run.cleared + remaining);
 
     card.setFaces(
-      { label: t('common.term'), text: entry.term, lang: set.termLang, hint: entry.hint },
-      { label: t('common.definition'), text: entry.def, lang: set.defLang });
+      { label: t('common.term'), text: entry.term, image: entry.termImage, lang: set.termLang, hint: entry.hint },
+      { label: t('common.definition'), text: entry.def, image: entry.defImage, lang: set.defLang });
     if (run.revealed) card.flip(true);
 
     const actions = run.revealed

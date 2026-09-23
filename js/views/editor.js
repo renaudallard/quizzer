@@ -7,6 +7,7 @@ import * as store from '../store.js';
 import { parseDelimited } from '../io.js';
 import { navigate, onCleanup, setBusy } from '../router.js';
 import { notFoundPanel, toastSaved } from './shared.js';
+import { addImage, cardImage } from '../images.js';
 
 const LANG_CODES = [
   'fr', 'en', 'es', 'de', 'it', 'pt', 'nl', 'ca', 'pl', 'ru', 'uk', 'ar', 'tr',
@@ -18,6 +19,13 @@ const SYMBOLS = [
   '²', '³', 'ⁿ', '√', 'π', '±', '×', '÷', '·', '≤', '≥', '≠', '≈', '∞', '∑', '∫', '∂',
   'Δ', 'α', 'β', 'θ', 'λ', 'μ', 'σ', 'φ', 'ω', '°', '½', '→', '∈',
 ];
+
+/* Why a picture could not be kept, as addImage() reports it. */
+const IMAGE_ERRORS = {
+  type: 'editor.imageNotImage',
+  size: 'editor.imageTooBig',
+  unavailable: 'editor.imageFailed',
+};
 
 function blankCard() {
   return store.normalizeCard({});
@@ -51,10 +59,14 @@ export function editorView(id) {
   let dirty = false;
   const markDirty = () => { dirty = true; };
 
-  /* A row nobody used: a blank starter row, never a stored card, which would
-     take its progress with it. Only such rows are dropped without a word. */
+  /* A side is filled by its text or its picture. A row nobody used is a
+     blank starter row, never a stored card, which would take its progress
+     with it. Only such rows are dropped without a word. */
+  const filled = (text, image) => Boolean(text.trim() || image);
+  const complete = (card) => filled(card.term, card.termImage) && filled(card.def, card.defImage);
   const stored = new Set(existing ? existing.cards.map((card) => card.id) : []);
-  const unused = (card) => !stored.has(card.id) && !card.term.trim() && !card.def.trim() && !card.hint.trim();
+  const unused = (card) => !stored.has(card.id) && !card.hint.trim()
+    && !filled(card.term, card.termImage) && !filled(card.def, card.defImage);
 
   const guard = (event) => { if (dirty) { event.preventDefault(); event.returnValue = ''; } };
   window.addEventListener('beforeunload', guard);
@@ -66,6 +78,59 @@ export function editorView(id) {
   function focusRow(index) {
     const input = list.querySelectorAll('.editor-row input[data-role="term"]')[index];
     if (input) input.focus();
+  }
+
+  /* The picture of one side: a thumbnail with a way to take it off, or a
+     button to pick one. attach() also serves pasted and dropped pictures. */
+  function imagePicker(card, key, label) {
+    const holder = el('div', { class: 'editor-image' });
+    const file = el('input', { type: 'file', accept: 'image/*', class: 'sr-only', tabindex: '-1', 'aria-hidden': 'true' });
+    file.addEventListener('change', () => {
+      if (file.files && file.files[0]) attach(file.files[0]);
+      file.value = '';
+    });
+    async function attach(picture) {
+      try {
+        card[key] = await addImage(picture);
+      } catch (error) {
+        toast(t(IMAGE_ERRORS[error.message] || 'editor.imageFailed'));
+        return;
+      }
+      markDirty();
+      show();
+    }
+    function show() {
+      mount(holder, file, card[key]
+        ? [cardImage(card[key], '', 'thumb'), el('button', {
+            type: 'button', class: 'icon-btn', 'aria-label': t('editor.removeImage'),
+            onclick: () => { card[key] = ''; markDirty(); show(); },
+          }, icon('close'))]
+        : el('button', {
+            type: 'button', class: 'btn btn-ghost btn-image', 'aria-label': label, onclick: () => file.click(),
+          }, icon('image'), t('editor.image')));
+    }
+    show();
+    return { root: holder, attach };
+  }
+
+  /* A picture pasted in a side's field, or dropped on the side, goes there. */
+  function takesPictures(field, side, picker) {
+    const picture = (files) => [...(files || [])].find((one) => /^image\//.test(one.type));
+    field.addEventListener('paste', (event) => {
+      const found = picture(event.clipboardData && event.clipboardData.files);
+      if (!found) return;
+      event.preventDefault();
+      picker.attach(found);
+    });
+    side.addEventListener('dragover', (event) => {
+      if (event.dataTransfer && [...event.dataTransfer.types].includes('Files')) event.preventDefault();
+    });
+    side.addEventListener('drop', (event) => {
+      const found = picture(event.dataTransfer && event.dataTransfer.files);
+      if (!found) return;
+      event.preventDefault();
+      picker.attach(found);
+    });
   }
 
   function cardRow(card, index) {
@@ -82,7 +147,7 @@ export function editorView(id) {
       oninput: () => { card.def = def.value; markDirty(); },
     });
     const hint = el('input', {
-      type: 'text', class: 'input', value: card.hint,
+      type: 'text', class: 'input', value: card.hint, dataset: { role: 'hint' },
       placeholder: t('editor.hintPlaceholder'), 'aria-label': t('common.hint'),
       oninput: () => { card.hint = hint.value; markDirty(); },
     });
@@ -97,10 +162,17 @@ export function editorView(id) {
       focusRow(target);
     };
 
+    const termPicker = imagePicker(card, 'termImage', t('editor.addTermImage'));
+    const defPicker = imagePicker(card, 'defImage', t('editor.addDefImage'));
+    const termSide = el('div', { class: 'editor-fields' }, term, hint, termPicker.root);
+    const defSide = el('div', { class: 'editor-fields' }, def, defPicker.root);
+    takesPictures(term, termSide, termPicker);
+    takesPictures(def, defSide, defPicker);
+
     return el('div', { class: 'editor-row' },
       el('span', { class: 'idx' }, String(index + 1)),
-      el('div', { class: 'editor-fields' }, term, hint),
-      def,
+      termSide,
+      defSide,
       el('div', { class: 'editor-row-tools' },
         el('button', {
           type: 'button', class: 'icon-btn', 'aria-label': t('common.moveUp'),
@@ -166,21 +238,23 @@ export function editorView(id) {
     /* Unused rows are left out, but a card with one side missing, or an
        existing card that was emptied, would be dropped with its progress:
        say which one instead of saving without it. */
-    const incomplete = draft.cards.findIndex((card) => !unused(card) && !(card.term.trim() && card.def.trim()));
+    const incomplete = draft.cards.findIndex((card) => !unused(card) && !complete(card));
     if (incomplete >= 0) {
       toast(t('editor.incomplete', { n: incomplete + 1 }));
       const row = list.querySelectorAll('.editor-row')[incomplete];
-      const side = draft.cards[incomplete].term.trim() ? 'def' : 'term';
+      const lacking = draft.cards[incomplete];
+      const side = filled(lacking.term, lacking.termImage) ? 'def' : 'term';
       if (row) row.querySelector('input[data-role="' + side + '"]').focus();
       return;
     }
-    /* The text comes from the draft, the progress and the star from the store
-       as it is now, since another tab may have moved them on meanwhile. */
+    /* Text and pictures come from the draft, the progress and the star from
+       the store as it is now, since another tab may have moved them on. */
     const current = existing && store.getSet(existing.id);
     const live = new Map(current ? current.cards.map((card) => [card.id, card]) : []);
-    const cards = draft.cards
-      .filter((card) => card.term.trim() && card.def.trim())
-      .map((card) => ({ ...card, ...live.get(card.id), term: card.term, def: card.def, hint: card.hint }));
+    const cards = draft.cards.filter(complete).map((card) => ({
+      ...card, ...live.get(card.id),
+      term: card.term, def: card.def, hint: card.hint, termImage: card.termImage, defImage: card.defImage,
+    }));
     if (!cards.length) {
       toast(t('editor.needCard'));
       return;

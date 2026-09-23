@@ -40,6 +40,9 @@ export function normalizeCard(raw) {
     term: str(raw && raw.term).trim(),
     def: str(raw && raw.def).trim(),
     hint: str(raw && raw.hint).trim(),
+    /* Ids of pictures kept by images.js; a side may be a picture alone. */
+    termImage: str(raw && raw.termImage),
+    defImage: str(raw && raw.defImage),
     star: Boolean(raw && raw.star),
     box: clamp(Math.round(num(raw && raw.box)), 0, MAX_BOX),
     due: Math.max(0, Math.round(num(raw && raw.due))),
@@ -61,7 +64,7 @@ export function normalizeSet(raw) {
     bestMatchMs: raw && Number.isFinite(raw.bestMatchMs) ? raw.bestMatchMs : null,
     created: num(raw && raw.created, now),
     updated: num(raw && raw.updated, now),
-    cards: cards.filter((card) => card.term || card.def),
+    cards: cards.filter((card) => card.term || card.def || card.termImage || card.defImage),
   };
 }
 
@@ -247,6 +250,18 @@ export function deleteSet(id) {
   return true;
 }
 
+/* Every picture a card uses, so the others can be let go. */
+export function imageIds() {
+  const ids = new Set();
+  for (const set of state.sets) {
+    for (const card of set.cards) {
+      if (card.termImage) ids.add(card.termImage);
+      if (card.defImage) ids.add(card.defImage);
+    }
+  }
+  return ids;
+}
+
 export function getCard(setId, cardId) {
   const set = getSet(setId);
   return set ? set.cards.find((card) => card.id === cardId) || null : null;
@@ -412,6 +427,16 @@ export function importPayload(payload) {
   }
   save();
   return count;
+}
+
+/* True while an unreadable payload sits aside, or storage cannot be read:
+   the pictures its cards may use must be kept until it is dealt with. */
+export function hasSalvage() {
+  try {
+    return localStorage.getItem(SALVAGE_KEY) !== null;
+  } catch {
+    return true;
+  }
 }
 
 /* Erasing everything includes the copy of any payload that was set aside. */

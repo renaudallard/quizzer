@@ -4,6 +4,7 @@ import { el, icon, toast } from '../dom.js';
 import { t } from '../i18n/index.js';
 import * as store from '../store.js';
 import { shareUrl, copyText } from '../io.js';
+import { cardImage } from '../images.js';
 
 /* Some messaging apps cut links around this length. */
 const LONG_LINK = 8000;
@@ -52,15 +53,24 @@ export function messagePanel(title, message, back = { href: '#/', label: t('erro
         el('a', { class: 'btn btn-primary', href: back.href }, back.label))));
 }
 
+/* A small picture for lists, announced only when it stands without text. */
+function thumbnail(image, text) {
+  return image ? cardImage(image, text ? '' : t('image.alt'), 'thumb') : null;
+}
+
 /* One card as a row: the term with its hint and the definition, each marked
    with its language when the set declares one, so read aloud and screen
-   readers pronounce them right. tools, when given, fills the last column. */
+   readers pronounce them right, and each with its picture when it has one.
+   tools, when given, fills the last column. */
 export function cardRow(card, { termLang, defLang } = {}, tools) {
   return el('div', { class: 'card-row' },
     el('div', { class: 'term' },
-      el('span', { lang: termLang || null }, card.term),
+      thumbnail(card.termImage, card.term),
+      card.term ? el('span', { lang: termLang || null }, card.term) : null,
       card.hint ? el('span', { class: 'hint' }, card.hint) : null),
-    el('div', { class: 'def', lang: defLang || null }, card.def),
+    el('div', { class: 'def' },
+      thumbnail(card.defImage, card.def),
+      card.def ? el('span', { lang: defLang || null }, card.def) : null),
     tools === undefined ? null : el('div', { class: 'card-row-tools' }, tools));
 }
 

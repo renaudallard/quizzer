@@ -7,9 +7,32 @@ import { getSettings, recordSession } from './store.js';
 import { onCleanup, setBusy } from './router.js';
 import { cardRow } from './views/shared.js';
 import { pct } from './util.js';
+import { cardImage } from './images.js';
+import { textKey } from './text.js';
 
 export function cardText(text, lang) {
   return el('span', lang ? { lang } : {}, text);
+}
+
+/* What tells one side of a card from another: its text, or its picture when
+   it has no text. */
+export function sideKey(text, image) {
+  return text ? textKey(text) : 'image ' + image;
+}
+
+/* Answers are typed or picked as text, so a card needs text on one side to
+   be asked at all. */
+export function askable(card) {
+  return Boolean(card.term || card.def);
+}
+
+/* One side of a card as it is shown: its picture, then its text. A picture
+   alone is announced as an image; next to text it needs no words of its own. */
+export function cardSide(text, image, lang) {
+  return [
+    image ? cardImage(image, text ? '' : t('image.alt')) : null,
+    text ? cardText(text, lang) : null,
+  ];
 }
 
 /* Drops a node into a translated sentence where its placeholder sits, so the
@@ -92,10 +115,10 @@ export function flipCard({ onFlip } = {}) {
   const root = el('div', { class: 'flashcard-wrap' }, card, voice, live);
   let specs = [null, null];
 
-  function face(node, { label, text, lang, hint }) {
+  function face(node, { label, text, lang, hint, image }) {
     mount(node,
       el('span', { class: 'side' }, label),
-      el('span', { class: 'content' }, cardText(text, lang)),
+      el('span', { class: 'content' }, cardSide(text, image, lang)),
       hint ? el('span', { class: 'hint' }, hint) : null);
   }
 
@@ -105,8 +128,8 @@ export function flipCard({ onFlip } = {}) {
     hidden.setAttribute('aria-hidden', 'true');
     const spec = specs[flipped ? 1 : 0];
     if (!spec) return;
-    mount(voice, speakButton(spec.text, spec.lang));
-    mount(live, spec.label + ': ', cardText(spec.text, spec.lang));
+    mount(voice, spec.text ? speakButton(spec.text, spec.lang) : null);
+    mount(live, spec.label + ': ', spec.text ? cardText(spec.text, spec.lang) : t('image.alt'));
   }
 
   const api = {
@@ -130,7 +153,7 @@ export function flipCard({ onFlip } = {}) {
     /* Reads out the side in view, like the button under the card. */
     speak() {
       const spec = specs[api.flipped ? 1 : 0];
-      if (spec) speak(spec.text, spec.lang);
+      if (spec && spec.text) speak(spec.text, spec.lang);
     },
   };
   return api;

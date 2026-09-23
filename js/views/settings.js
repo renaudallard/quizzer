@@ -7,6 +7,7 @@ import { THEMES, getTheme, setTheme, onThemeChange } from '../theme.js';
 import { onCleanup } from '../router.js';
 import { chooseLanguage, fillLanguageSelect } from '../language.js';
 import { toastSaved } from './shared.js';
+import { clearImages } from '../images.js';
 
 function formatBytes(bytes) {
   const kilobytes = bytes / 1024;
@@ -65,9 +66,10 @@ export function settingsView(focus) {
   }
 
   const reset = el('button', { type: 'button', class: 'btn btn-danger' }, icon('trash'), t('settings.reset'));
-  reset.addEventListener('click', () => {
+  reset.addEventListener('click', async () => {
     if (!confirm(t('settings.resetConfirm'))) return;
     store.resetAll();
+    await clearImages().catch(() => {});
     location.hash = '#/';
     location.reload();
   });

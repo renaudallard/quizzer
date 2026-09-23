@@ -37,6 +37,7 @@ export default {
   "common.term": "Terme",
   "common.definition": "Définition",
   "common.hint": "Indice",
+  "image.alt": "Image",
 
   "count.cards.one": "{n} carte",
   "count.cards.other": "{n} cartes",
@@ -136,6 +137,13 @@ export default {
   "editor.symbols": "Symboles mathématiques",
   "editor.symbolsHint": "Un clic insère le symbole là où se trouvait le curseur.",
   "editor.symbolsNoField": "Placez d’abord le curseur dans un champ.",
+  "editor.image": "Image",
+  "editor.addTermImage": "Ajouter une image au terme",
+  "editor.addDefImage": "Ajouter une image à la définition",
+  "editor.removeImage": "Retirer l’image",
+  "editor.imageNotImage": "Ce fichier n’est pas une image.",
+  "editor.imageTooBig": "Cette image reste trop lourde, même réduite.",
+  "editor.imageFailed": "Ce navigateur ne peut pas garder d’images.",
 
   /* Flashcards */
   "flashcards.flipHint": "Cliquez sur la carte ou appuyez sur Espace pour la retourner.",

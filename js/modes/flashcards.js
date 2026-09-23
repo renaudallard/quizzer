@@ -105,8 +105,8 @@ export function flashcardsView(id) {
     }
 
     const entry = current();
-    const termSide = { label: t('common.term'), text: entry.term, lang: set.termLang, hint: entry.hint };
-    const defSide = { label: t('common.definition'), text: entry.def, lang: set.defLang };
+    const termSide = { label: t('common.term'), text: entry.term, image: entry.termImage, lang: set.termLang, hint: entry.hint };
+    const defSide = { label: t('common.definition'), text: entry.def, image: entry.defImage, lang: set.defLang };
     const front = state.reversed ? defSide : termSide;
     const back = state.reversed ? termSide : defSide;
 

@@ -9,7 +9,7 @@ import { shuffle, sample, pct } from '../util.js';
 import { gradeAny, textKey } from '../text.js';
 import {
   studyShell, answerField, answerFeedback, typedAnswer, summaryPanel,
-  saveSession, bindKeys, speakButton, cardText,
+  saveSession, bindKeys, speakButton, cardText, cardSide, sideKey, askable,
 } from '../study.js';
 import { notFoundPanel } from '../views/shared.js';
 
@@ -29,7 +29,9 @@ const DIRECTIONS = [
 /* Both sides of every card, normalised once per build rather than once per
    card for every question. */
 function indexCards(cards) {
-  return cards.map((card) => ({ card, term: textKey(card.term), def: textKey(card.def) }));
+  return cards.map((card) => ({
+    card, term: sideKey(card.term, card.termImage), def: sideKey(card.def, card.defImage),
+  }));
 }
 
 /* A prompt can belong to several cards, such as two words that both mean
@@ -45,17 +47,21 @@ function buildQuestions(set, source, config) {
   const index = indexCards(set.cards);
   const byId = new Map(index.map((entry) => [entry.card.id, entry]));
 
-  return shuffle(source).slice(0, config.count).map((card) => {
+  return shuffle(source.filter(askable)).slice(0, config.count).map((card) => {
     const kind = config.types[Math.floor(Math.random() * config.types.length)];
-    const forward = config.direction === 'mixed'
+    let forward = config.direction === 'mixed'
       ? Math.random() < 0.5
       : config.direction === 'forward';
+    /* A side that is only a picture cannot be typed or listed as an option:
+       the question then goes the other way. */
+    if (!(forward ? card.def : card.term)) forward = !forward;
     const own = sidesOf(byId.get(card.id) || indexCards([card])[0], forward);
 
     const question = {
       card,
       kind,
       prompt: forward ? card.term : card.def,
+      promptImage: forward ? card.termImage : card.defImage,
       answer: own.text,
       accepted: [own.text],
       promptLang: forward ? set.termLang : set.defLang,
@@ -69,14 +75,14 @@ function buildQuestions(set, source, config) {
       if (entry.card.id === card.id) continue;
       const sides = sidesOf(entry, forward);
       if (sides.prompt === own.prompt) {
-        question.accepted.push(sides.text);
+        if (sides.text) question.accepted.push(sides.text);
         taken.add(sides.key);
       }
     }
     if (kind !== 'written') {
       for (const entry of index) {
         const sides = sidesOf(entry, forward);
-        if (!sides.key || taken.has(sides.key)) continue;
+        if (!sides.text || taken.has(sides.key)) continue;
         taken.add(sides.key);
         others.push(sides.text);
       }
@@ -102,7 +108,7 @@ export function quizView(id) {
   shell.body.appendChild(stage);
 
   const config = {
-    count: Math.min(20, set.cards.length),
+    count: Math.min(20, set.cards.filter(askable).length),
     types: ['choice', 'truefalse', 'written'],
     direction: 'forward',
   };
@@ -111,7 +117,8 @@ export function quizView(id) {
   function showSetup() {
     shell.setProgress(0, 0);
 
-    const counts = COUNTS.filter((value) => value < set.cards.length).concat(set.cards.length);
+    const available = set.cards.filter(askable).length;
+    const counts = COUNTS.filter((value) => value < available).concat(available);
     const countSelect = el('select', { class: 'select' },
       counts.map((value) => el('option', { value: String(value) }, tn('count.questions', value))));
     countSelect.value = String(config.count);
@@ -216,8 +223,8 @@ export function quizView(id) {
     return el('div', { class: 'question' },
       el('p', { class: 'question-kind' }, t(ASK_KEYS[question.kind])),
       el('div', { class: 'question-prompt' },
-        cardText(question.prompt, question.promptLang),
-        speakButton(question.prompt, question.promptLang),
+        cardSide(question.prompt, question.promptImage, question.promptLang),
+        question.prompt ? speakButton(question.prompt, question.promptLang) : null,
         question.kind === 'truefalse'
           ? el('span', { class: 'hint' }, '→ ', cardText(question.shown, question.answerLang))
           : null,

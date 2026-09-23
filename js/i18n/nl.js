@@ -37,6 +37,7 @@ export default {
   "common.term": "Term",
   "common.definition": "Definitie",
   "common.hint": "Hint",
+  "image.alt": "Afbeelding",
 
   "count.cards.one": "{n} kaart",
   "count.cards.other": "{n} kaarten",
@@ -136,6 +137,13 @@ export default {
   "editor.symbols": "Wiskundige symbolen",
   "editor.symbolsHint": "Een klik voegt het symbool in waar de cursor stond.",
   "editor.symbolsNoField": "Zet eerst de cursor in een veld.",
+  "editor.image": "Afbeelding",
+  "editor.addTermImage": "Afbeelding bij de term toevoegen",
+  "editor.addDefImage": "Afbeelding bij de definitie toevoegen",
+  "editor.removeImage": "Afbeelding weghalen",
+  "editor.imageNotImage": "Dit bestand is geen afbeelding.",
+  "editor.imageTooBig": "Deze afbeelding blijft te groot, ook verkleind.",
+  "editor.imageFailed": "Deze browser kan geen afbeeldingen bewaren.",
 
   /* Flashcards */
   "flashcards.flipHint": "Omdraaien: klik op de kaart of druk op spatie.",

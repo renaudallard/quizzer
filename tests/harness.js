@@ -7,6 +7,7 @@ import * as srs from '../js/srs.js';
 import * as io from '../js/io.js';
 import * as text from '../js/text.js';
 import * as i18n from '../js/i18n/index.js';
+import * as images from '../js/images.js';
 import { initTheme } from '../js/theme.js';
 import { teardown } from '../js/router.js';
 
@@ -187,6 +188,24 @@ async function run() {
     assert(legacy === 'café;coffee', 'Windows-1252: ' + JSON.stringify(legacy));
     assert(wide === 'café;coffee', 'UTF-16: ' + JSON.stringify(wide));
     return 'UTF-8, UTF-16 et Windows-1252';
+  });
+
+  /* A one pixel PNG kept and read back. It stays in the store, where the
+     learner's own pictures are, until the start-up clean-up a day later. */
+  let picture;
+  let pictureUrl = null;
+  try {
+    const bytes = Uint8Array.from(atob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=='), (char) => char.charCodeAt(0));
+    picture = await images.addImage(new File([bytes], 'test.png', { type: 'image/png' }));
+    pictureUrl = await images.imageUrl(picture);
+  } catch (error) {
+    picture = error;
+  }
+  check('une image se garde et se relit', () => {
+    if (picture instanceof Error && picture.message === 'unavailable') return 'IndexedDB indisponible: pas d’images ici';
+    assert(typeof picture === 'string', 'image refusée: ' + (picture && picture.message));
+    assert(pictureUrl && pictureUrl.startsWith('blob:'), 'adresse: ' + pictureUrl);
+    return 'ok';
   });
 
   const reference = i18n.CATALOGS[i18n.DEFAULT_LOCALE];

@@ -7,6 +7,7 @@ import * as store from './store.js';
 import * as router from './router.js';
 import { initTheme, getTheme, cycleTheme, onThemeChange } from './theme.js';
 import { savedLanguage, chooseLanguage, fillLanguageSelect } from './language.js';
+import { pruneImages } from './images.js';
 
 import { homeView } from './views/home.js';
 import { setView } from './views/set.js';
@@ -128,6 +129,9 @@ function setRoutes() {
 
 function main() {
   store.load();
+  /* Only with the cards in hand: an empty state after a failed load would
+     otherwise look like pictures nobody uses. */
+  if (!store.unsaved() && !store.hasSalvage()) pruneImages(store.imageIds()).catch(() => {});
   setupLocale();
   setupSaveAlert();
   setupSkipLink();
