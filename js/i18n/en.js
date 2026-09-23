@@ -306,6 +306,8 @@ export default {
   "shortcuts.submit": "Check or move on",
   "shortcuts.speak": "Hear the card",
   "shortcuts.star": "Mark the card as hard",
+  "key.space": "Space",
+  "key.enter": "Enter",
 
   /* Samples and errors */
   "samples.loaded.one": "{n} sample set loaded.",

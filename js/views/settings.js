@@ -106,22 +106,24 @@ export function settingsView(focus) {
         reset)));
 }
 
-const SHORTCUTS = [
-  ['shortcuts.flip', ['Espace', 'Enter']],
-  ['shortcuts.nav', ['←', '→']],
-  ['shortcuts.answer', ['1', '2', '3', '4']],
-  ['shortcuts.submit', ['Enter']],
-  ['shortcuts.speak', ['A']],
-  ['shortcuts.star', ['S']],
-];
-
 export function shortcutsView() {
+  /* Keys with a name are named in the interface language. */
+  const space = t('key.space');
+  const enter = t('key.enter');
+  const shortcuts = [
+    ['shortcuts.flip', [space, enter]],
+    ['shortcuts.nav', ['←', '→']],
+    ['shortcuts.answer', ['1', '2', '3', '4']],
+    ['shortcuts.submit', [enter]],
+    ['shortcuts.speak', ['A']],
+    ['shortcuts.star', ['S']],
+  ];
   return el('div', { class: 'container container-narrow stack' },
     el('h1', {}, t('shortcuts.title')),
     el('p', { class: 'lede' }, t('shortcuts.lede')),
     el('section', { class: 'panel' },
       el('div', { class: 'kbd-list' },
-        SHORTCUTS.map(([key, keys]) => el('div', { class: 'kbd-row' },
+        shortcuts.map(([key, keys]) => el('div', { class: 'kbd-row' },
           el('span', {}, t(key)),
           el('span', { class: 'row', style: { gap: '4px' } }, keys.map((label) => el('kbd', {}, label))))))),
     el('p', {}, el('a', { class: 'btn', href: '#/' }, t('error.goHome'))));

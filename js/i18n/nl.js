@@ -306,6 +306,8 @@ export default {
   "shortcuts.submit": "Controleren of verdergaan",
   "shortcuts.speak": "Kaart beluisteren",
   "shortcuts.star": "Kaart als moeilijk markeren",
+  "key.space": "Spatie",
+  "key.enter": "Enter",
 
   /* Voorbeelden en fouten */
   "samples.loaded.one": "{n} voorbeeldset geladen.",

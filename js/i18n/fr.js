@@ -306,6 +306,8 @@ export default {
   "shortcuts.submit": "Valider ou passer à la suite",
   "shortcuts.speak": "Écouter la carte",
   "shortcuts.star": "Marquer la carte comme difficile",
+  "key.space": "Espace",
+  "key.enter": "Entrée",
 
   /* Exemples et erreurs */
   "samples.loaded.one": "{n} jeu d’exemple chargé.",
