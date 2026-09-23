@@ -491,7 +491,8 @@ a.stat-tile:hover { border-color: var(--accent); transform: translateY(-2px); co
 }
 .option[data-state="correct"] { border-color: var(--good); background: color-mix(in srgb, var(--good) 12%, var(--surface)); }
 .option[data-state="wrong"] { border-color: var(--critical); background: color-mix(in srgb, var(--critical) 12%, var(--surface)); }
-.option[data-state="correct"] .key { background: var(--good); color: #fff; }
+/* White on this green would only reach 3.35:1; dark ink reaches 5.87:1. */
+.option[data-state="correct"] .key { background: var(--good); color: #0b0b0b; }
 .option[data-state="wrong"] .key { background: var(--critical); color: #fff; }
 
 .answer-form { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
