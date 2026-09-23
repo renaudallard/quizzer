@@ -3,7 +3,8 @@
 import { el, icon, toast } from '../dom.js';
 import { t, getLocale } from '../i18n/index.js';
 import * as store from '../store.js';
-import { THEMES, getTheme, setTheme } from '../theme.js';
+import { THEMES, getTheme, setTheme, onThemeChange } from '../theme.js';
+import { onCleanup } from '../router.js';
 import { chooseLanguage, fillLanguageSelect } from '../language.js';
 
 function formatBytes(bytes) {
@@ -38,6 +39,8 @@ export function settingsView(focus) {
     THEMES.map((theme) => el('option', { value: theme }, t('theme.' + theme))));
   themeSelect.value = getTheme();
   themeSelect.addEventListener('change', () => setTheme(themeSelect.value));
+  /* The top bar toggle, or another tab, may change the theme meanwhile. */
+  onCleanup(onThemeChange((theme) => { themeSelect.value = theme; }));
 
   const goal = el('input', {
     type: 'number', class: 'input', step: '1',
