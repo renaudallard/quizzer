@@ -4055,6 +4055,3942 @@
       ]
     },
     {
+      "id": "sample-en-01",
+      "title": "Anglais 1: premiers mots",
+      "description": "Saluer, remercier, s'excuser et faire connaissance.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "hello",
+          "def": "bonjour"
+        },
+        {
+          "term": "hi",
+          "def": "salut",
+          "hint": "en arrivant"
+        },
+        {
+          "term": "bye",
+          "def": "salut",
+          "hint": "en partant"
+        },
+        {
+          "term": "good morning",
+          "def": "bonjour",
+          "hint": "le matin"
+        },
+        {
+          "term": "good afternoon",
+          "def": "bonjour",
+          "hint": "l'après-midi"
+        },
+        {
+          "term": "good evening",
+          "def": "bonsoir"
+        },
+        {
+          "term": "good night",
+          "def": "bonne nuit"
+        },
+        {
+          "term": "goodbye",
+          "def": "au revoir"
+        },
+        {
+          "term": "see you later",
+          "def": "à tout à l'heure"
+        },
+        {
+          "term": "see you tomorrow",
+          "def": "à demain"
+        },
+        {
+          "term": "welcome",
+          "def": "bienvenue"
+        },
+        {
+          "term": "thanks",
+          "def": "merci",
+          "hint": "familier"
+        },
+        {
+          "term": "thank you",
+          "def": "merci",
+          "hint": "poli"
+        },
+        {
+          "term": "please",
+          "def": "s'il te plaît / s'il vous plaît"
+        },
+        {
+          "term": "you're welcome",
+          "def": "de rien"
+        },
+        {
+          "term": "sorry",
+          "def": "pardon / désolé"
+        },
+        {
+          "term": "excuse me",
+          "def": "excusez-moi"
+        },
+        {
+          "term": "yes",
+          "def": "oui"
+        },
+        {
+          "term": "no",
+          "def": "non"
+        },
+        {
+          "term": "maybe",
+          "def": "peut-être"
+        },
+        {
+          "term": "how are you?",
+          "def": "comment ça va ?"
+        },
+        {
+          "term": "fine, thanks",
+          "def": "bien, merci"
+        },
+        {
+          "term": "what's your name?",
+          "def": "comment tu t'appelles ?"
+        },
+        {
+          "term": "my name is",
+          "def": "je m'appelle"
+        },
+        {
+          "term": "where are you from?",
+          "def": "d'où viens-tu ?"
+        },
+        {
+          "term": "I'm from Belgium",
+          "def": "je viens de Belgique"
+        },
+        {
+          "term": "nice to meet you",
+          "def": "enchanté"
+        },
+        {
+          "term": "I don't understand",
+          "def": "je ne comprends pas"
+        },
+        {
+          "term": "do you speak French?",
+          "def": "parlez-vous français ?"
+        },
+        {
+          "term": "a little",
+          "def": "un peu"
+        },
+        {
+          "term": "cheers",
+          "def": "santé",
+          "hint": "en trinquant"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-02",
+      "title": "Anglais 2: les nombres",
+      "description": "De zéro à un million, et les premiers ordinaux.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "zero",
+          "def": "0"
+        },
+        {
+          "term": "one",
+          "def": "1"
+        },
+        {
+          "term": "two",
+          "def": "2"
+        },
+        {
+          "term": "three",
+          "def": "3"
+        },
+        {
+          "term": "four",
+          "def": "4"
+        },
+        {
+          "term": "five",
+          "def": "5"
+        },
+        {
+          "term": "six",
+          "def": "6"
+        },
+        {
+          "term": "seven",
+          "def": "7"
+        },
+        {
+          "term": "eight",
+          "def": "8"
+        },
+        {
+          "term": "nine",
+          "def": "9"
+        },
+        {
+          "term": "ten",
+          "def": "10"
+        },
+        {
+          "term": "eleven",
+          "def": "11"
+        },
+        {
+          "term": "twelve",
+          "def": "12"
+        },
+        {
+          "term": "thirteen",
+          "def": "13"
+        },
+        {
+          "term": "fourteen",
+          "def": "14"
+        },
+        {
+          "term": "fifteen",
+          "def": "15"
+        },
+        {
+          "term": "sixteen",
+          "def": "16"
+        },
+        {
+          "term": "seventeen",
+          "def": "17"
+        },
+        {
+          "term": "eighteen",
+          "def": "18"
+        },
+        {
+          "term": "nineteen",
+          "def": "19"
+        },
+        {
+          "term": "twenty",
+          "def": "20"
+        },
+        {
+          "term": "twenty-one",
+          "def": "21"
+        },
+        {
+          "term": "thirty",
+          "def": "30"
+        },
+        {
+          "term": "forty",
+          "def": "40"
+        },
+        {
+          "term": "fifty",
+          "def": "50"
+        },
+        {
+          "term": "sixty",
+          "def": "60"
+        },
+        {
+          "term": "seventy",
+          "def": "70"
+        },
+        {
+          "term": "eighty",
+          "def": "80"
+        },
+        {
+          "term": "ninety",
+          "def": "90"
+        },
+        {
+          "term": "a hundred",
+          "def": "100"
+        },
+        {
+          "term": "a thousand",
+          "def": "1 000"
+        },
+        {
+          "term": "a million",
+          "def": "1 000 000"
+        },
+        {
+          "term": "first",
+          "def": "premier"
+        },
+        {
+          "term": "second",
+          "def": "deuxième"
+        },
+        {
+          "term": "third",
+          "def": "troisième"
+        },
+        {
+          "term": "half",
+          "def": "la moitié"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-03",
+      "title": "Anglais 3: le temps et le calendrier",
+      "description": "Les jours, les mois, les saisons et les moments de la journée.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "Monday",
+          "def": "lundi"
+        },
+        {
+          "term": "Tuesday",
+          "def": "mardi"
+        },
+        {
+          "term": "Wednesday",
+          "def": "mercredi"
+        },
+        {
+          "term": "Thursday",
+          "def": "jeudi"
+        },
+        {
+          "term": "Friday",
+          "def": "vendredi"
+        },
+        {
+          "term": "Saturday",
+          "def": "samedi"
+        },
+        {
+          "term": "Sunday",
+          "def": "dimanche"
+        },
+        {
+          "term": "January",
+          "def": "janvier"
+        },
+        {
+          "term": "February",
+          "def": "février"
+        },
+        {
+          "term": "March",
+          "def": "mars"
+        },
+        {
+          "term": "April",
+          "def": "avril"
+        },
+        {
+          "term": "May",
+          "def": "mai"
+        },
+        {
+          "term": "June",
+          "def": "juin"
+        },
+        {
+          "term": "July",
+          "def": "juillet"
+        },
+        {
+          "term": "August",
+          "def": "août"
+        },
+        {
+          "term": "September",
+          "def": "septembre"
+        },
+        {
+          "term": "October",
+          "def": "octobre"
+        },
+        {
+          "term": "November",
+          "def": "novembre"
+        },
+        {
+          "term": "December",
+          "def": "décembre"
+        },
+        {
+          "term": "spring",
+          "def": "le printemps"
+        },
+        {
+          "term": "summer",
+          "def": "l'été"
+        },
+        {
+          "term": "autumn / fall (US)",
+          "def": "l'automne"
+        },
+        {
+          "term": "winter",
+          "def": "l'hiver"
+        },
+        {
+          "term": "morning",
+          "def": "le matin"
+        },
+        {
+          "term": "afternoon",
+          "def": "l'après-midi"
+        },
+        {
+          "term": "evening",
+          "def": "le soir"
+        },
+        {
+          "term": "night",
+          "def": "la nuit"
+        },
+        {
+          "term": "day",
+          "def": "le jour"
+        },
+        {
+          "term": "week",
+          "def": "la semaine"
+        },
+        {
+          "term": "month",
+          "def": "le mois"
+        },
+        {
+          "term": "year",
+          "def": "l'année"
+        },
+        {
+          "term": "hour",
+          "def": "l'heure"
+        },
+        {
+          "term": "minute",
+          "def": "la minute"
+        },
+        {
+          "term": "today",
+          "def": "aujourd'hui"
+        },
+        {
+          "term": "tomorrow",
+          "def": "demain"
+        },
+        {
+          "term": "yesterday",
+          "def": "hier"
+        },
+        {
+          "term": "weekend",
+          "def": "le week-end"
+        },
+        {
+          "term": "what time is it?",
+          "def": "quelle heure est-il ?"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-04",
+      "title": "Anglais 4: la famille et les gens",
+      "description": "La famille, les proches et les gens autour de soi.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "family",
+          "def": "la famille"
+        },
+        {
+          "term": "parents",
+          "def": "les parents"
+        },
+        {
+          "term": "father",
+          "def": "le père"
+        },
+        {
+          "term": "mother",
+          "def": "la mère"
+        },
+        {
+          "term": "dad",
+          "def": "papa"
+        },
+        {
+          "term": "mum (UK) / mom (US)",
+          "def": "maman"
+        },
+        {
+          "term": "son",
+          "def": "le fils"
+        },
+        {
+          "term": "daughter",
+          "def": "la fille",
+          "hint": "de ses parents"
+        },
+        {
+          "term": "brother",
+          "def": "le frère"
+        },
+        {
+          "term": "sister",
+          "def": "la sœur"
+        },
+        {
+          "term": "child",
+          "def": "l'enfant"
+        },
+        {
+          "term": "children",
+          "def": "les enfants"
+        },
+        {
+          "term": "baby",
+          "def": "le bébé"
+        },
+        {
+          "term": "grandfather",
+          "def": "le grand-père"
+        },
+        {
+          "term": "grandmother",
+          "def": "la grand-mère"
+        },
+        {
+          "term": "uncle",
+          "def": "l'oncle"
+        },
+        {
+          "term": "aunt",
+          "def": "la tante"
+        },
+        {
+          "term": "cousin",
+          "def": "le cousin / la cousine"
+        },
+        {
+          "term": "nephew",
+          "def": "le neveu"
+        },
+        {
+          "term": "niece",
+          "def": "la nièce"
+        },
+        {
+          "term": "husband",
+          "def": "le mari"
+        },
+        {
+          "term": "wife",
+          "def": "l'épouse"
+        },
+        {
+          "term": "man",
+          "def": "l'homme"
+        },
+        {
+          "term": "woman",
+          "def": "la femme"
+        },
+        {
+          "term": "boy",
+          "def": "le garçon"
+        },
+        {
+          "term": "girl",
+          "def": "la fille",
+          "hint": "pas un garçon"
+        },
+        {
+          "term": "friend",
+          "def": "l'ami / l'amie"
+        },
+        {
+          "term": "boyfriend",
+          "def": "le petit ami"
+        },
+        {
+          "term": "girlfriend",
+          "def": "la petite amie"
+        },
+        {
+          "term": "neighbour / neighbor",
+          "def": "le voisin / la voisine"
+        },
+        {
+          "term": "people",
+          "def": "les gens"
+        },
+        {
+          "term": "colleague",
+          "def": "le collègue"
+        },
+        {
+          "term": "married",
+          "def": "marié"
+        },
+        {
+          "term": "name",
+          "def": "le nom"
+        },
+        {
+          "term": "age",
+          "def": "l'âge"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-05",
+      "title": "Anglais 5: manger et boire",
+      "description": "Les repas, les aliments, les boissons et le couvert.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "food",
+          "def": "la nourriture"
+        },
+        {
+          "term": "breakfast",
+          "def": "le petit-déjeuner"
+        },
+        {
+          "term": "lunch",
+          "def": "le déjeuner"
+        },
+        {
+          "term": "dinner",
+          "def": "le dîner"
+        },
+        {
+          "term": "water",
+          "def": "l'eau"
+        },
+        {
+          "term": "coffee",
+          "def": "le café"
+        },
+        {
+          "term": "tea",
+          "def": "le thé"
+        },
+        {
+          "term": "milk",
+          "def": "le lait"
+        },
+        {
+          "term": "beer",
+          "def": "la bière"
+        },
+        {
+          "term": "wine",
+          "def": "le vin"
+        },
+        {
+          "term": "juice",
+          "def": "le jus"
+        },
+        {
+          "term": "bread",
+          "def": "le pain"
+        },
+        {
+          "term": "butter",
+          "def": "le beurre"
+        },
+        {
+          "term": "cheese",
+          "def": "le fromage"
+        },
+        {
+          "term": "egg",
+          "def": "l'œuf"
+        },
+        {
+          "term": "meat",
+          "def": "la viande"
+        },
+        {
+          "term": "fish",
+          "def": "le poisson"
+        },
+        {
+          "term": "chicken",
+          "def": "le poulet"
+        },
+        {
+          "term": "vegetable",
+          "def": "le légume"
+        },
+        {
+          "term": "potato",
+          "def": "la pomme de terre"
+        },
+        {
+          "term": "tomato",
+          "def": "la tomate"
+        },
+        {
+          "term": "fruit",
+          "def": "le fruit / les fruits"
+        },
+        {
+          "term": "apple",
+          "def": "la pomme"
+        },
+        {
+          "term": "banana",
+          "def": "la banane"
+        },
+        {
+          "term": "orange",
+          "def": "l'orange"
+        },
+        {
+          "term": "strawberry",
+          "def": "la fraise"
+        },
+        {
+          "term": "rice",
+          "def": "le riz"
+        },
+        {
+          "term": "soup",
+          "def": "la soupe"
+        },
+        {
+          "term": "sugar",
+          "def": "le sucre"
+        },
+        {
+          "term": "salt",
+          "def": "le sel"
+        },
+        {
+          "term": "chips (UK) / fries (US)",
+          "def": "les frites"
+        },
+        {
+          "term": "glass",
+          "def": "le verre"
+        },
+        {
+          "term": "plate",
+          "def": "l'assiette"
+        },
+        {
+          "term": "fork",
+          "def": "la fourchette"
+        },
+        {
+          "term": "knife",
+          "def": "le couteau"
+        },
+        {
+          "term": "spoon",
+          "def": "la cuillère"
+        },
+        {
+          "term": "I'm hungry",
+          "def": "j'ai faim"
+        },
+        {
+          "term": "I'm thirsty",
+          "def": "j'ai soif"
+        },
+        {
+          "term": "the bill, please",
+          "def": "l'addition, s'il vous plaît"
+        },
+        {
+          "term": "enjoy your meal",
+          "def": "bon appétit"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-06",
+      "title": "Anglais 6: la maison",
+      "description": "Les pièces, les meubles et les objets de la maison.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "house",
+          "def": "la maison"
+        },
+        {
+          "term": "flat (UK) / apartment (US)",
+          "def": "l'appartement"
+        },
+        {
+          "term": "room",
+          "def": "la pièce"
+        },
+        {
+          "term": "bedroom",
+          "def": "la chambre"
+        },
+        {
+          "term": "kitchen",
+          "def": "la cuisine"
+        },
+        {
+          "term": "bathroom",
+          "def": "la salle de bains"
+        },
+        {
+          "term": "living room",
+          "def": "le salon"
+        },
+        {
+          "term": "toilet",
+          "def": "les toilettes"
+        },
+        {
+          "term": "garden",
+          "def": "le jardin"
+        },
+        {
+          "term": "door",
+          "def": "la porte"
+        },
+        {
+          "term": "window",
+          "def": "la fenêtre"
+        },
+        {
+          "term": "wall",
+          "def": "le mur"
+        },
+        {
+          "term": "floor",
+          "def": "le sol / l'étage"
+        },
+        {
+          "term": "roof",
+          "def": "le toit"
+        },
+        {
+          "term": "stairs",
+          "def": "l'escalier"
+        },
+        {
+          "term": "key",
+          "def": "la clé"
+        },
+        {
+          "term": "table",
+          "def": "la table"
+        },
+        {
+          "term": "chair",
+          "def": "la chaise"
+        },
+        {
+          "term": "sofa",
+          "def": "le canapé"
+        },
+        {
+          "term": "bed",
+          "def": "le lit"
+        },
+        {
+          "term": "wardrobe",
+          "def": "l'armoire"
+        },
+        {
+          "term": "lamp",
+          "def": "la lampe"
+        },
+        {
+          "term": "mirror",
+          "def": "le miroir"
+        },
+        {
+          "term": "bath",
+          "def": "la baignoire / le bain"
+        },
+        {
+          "term": "shower",
+          "def": "la douche"
+        },
+        {
+          "term": "fridge",
+          "def": "le frigo"
+        },
+        {
+          "term": "oven",
+          "def": "le four"
+        },
+        {
+          "term": "washing machine",
+          "def": "la machine à laver"
+        },
+        {
+          "term": "television",
+          "def": "la télévision"
+        },
+        {
+          "term": "computer",
+          "def": "l'ordinateur"
+        },
+        {
+          "term": "phone",
+          "def": "le téléphone"
+        },
+        {
+          "term": "book",
+          "def": "le livre"
+        },
+        {
+          "term": "dog",
+          "def": "le chien"
+        },
+        {
+          "term": "cat",
+          "def": "le chat"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-07",
+      "title": "Anglais 7: le corps et la santé",
+      "description": "Le corps, et de quoi dire que l'on ne va pas bien.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "body",
+          "def": "le corps"
+        },
+        {
+          "term": "head",
+          "def": "la tête"
+        },
+        {
+          "term": "hair",
+          "def": "les cheveux"
+        },
+        {
+          "term": "face",
+          "def": "le visage"
+        },
+        {
+          "term": "eye",
+          "def": "l'œil"
+        },
+        {
+          "term": "ear",
+          "def": "l'oreille"
+        },
+        {
+          "term": "nose",
+          "def": "le nez"
+        },
+        {
+          "term": "mouth",
+          "def": "la bouche"
+        },
+        {
+          "term": "tooth",
+          "def": "la dent"
+        },
+        {
+          "term": "neck",
+          "def": "le cou"
+        },
+        {
+          "term": "shoulder",
+          "def": "l'épaule"
+        },
+        {
+          "term": "arm",
+          "def": "le bras"
+        },
+        {
+          "term": "hand",
+          "def": "la main"
+        },
+        {
+          "term": "finger",
+          "def": "le doigt"
+        },
+        {
+          "term": "stomach",
+          "def": "le ventre / l'estomac"
+        },
+        {
+          "term": "back",
+          "def": "le dos"
+        },
+        {
+          "term": "leg",
+          "def": "la jambe"
+        },
+        {
+          "term": "knee",
+          "def": "le genou"
+        },
+        {
+          "term": "foot",
+          "def": "le pied"
+        },
+        {
+          "term": "heart",
+          "def": "le cœur"
+        },
+        {
+          "term": "skin",
+          "def": "la peau"
+        },
+        {
+          "term": "doctor",
+          "def": "le médecin"
+        },
+        {
+          "term": "hospital",
+          "def": "l'hôpital"
+        },
+        {
+          "term": "pharmacy",
+          "def": "la pharmacie"
+        },
+        {
+          "term": "medicine",
+          "def": "le médicament"
+        },
+        {
+          "term": "ill / sick",
+          "def": "malade"
+        },
+        {
+          "term": "healthy",
+          "def": "en bonne santé"
+        },
+        {
+          "term": "pain",
+          "def": "la douleur"
+        },
+        {
+          "term": "I have a headache",
+          "def": "j'ai mal à la tête"
+        },
+        {
+          "term": "I'm tired",
+          "def": "je suis fatigué"
+        },
+        {
+          "term": "fever",
+          "def": "la fièvre"
+        },
+        {
+          "term": "a cold",
+          "def": "un rhume"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-08",
+      "title": "Anglais 8: vêtements et couleurs",
+      "description": "Les vêtements, les accessoires et les couleurs.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "clothes",
+          "def": "les vêtements"
+        },
+        {
+          "term": "trousers (UK) / pants (US)",
+          "def": "le pantalon"
+        },
+        {
+          "term": "shirt",
+          "def": "la chemise"
+        },
+        {
+          "term": "jumper / sweater",
+          "def": "le pull"
+        },
+        {
+          "term": "coat",
+          "def": "le manteau"
+        },
+        {
+          "term": "skirt",
+          "def": "la jupe"
+        },
+        {
+          "term": "dress",
+          "def": "la robe"
+        },
+        {
+          "term": "T-shirt",
+          "def": "le t-shirt"
+        },
+        {
+          "term": "shoes",
+          "def": "les chaussures"
+        },
+        {
+          "term": "socks",
+          "def": "les chaussettes"
+        },
+        {
+          "term": "hat",
+          "def": "le chapeau"
+        },
+        {
+          "term": "cap",
+          "def": "la casquette"
+        },
+        {
+          "term": "scarf",
+          "def": "l'écharpe"
+        },
+        {
+          "term": "gloves",
+          "def": "les gants"
+        },
+        {
+          "term": "belt",
+          "def": "la ceinture"
+        },
+        {
+          "term": "bag",
+          "def": "le sac"
+        },
+        {
+          "term": "glasses",
+          "def": "les lunettes"
+        },
+        {
+          "term": "watch",
+          "def": "la montre"
+        },
+        {
+          "term": "colour / color",
+          "def": "la couleur"
+        },
+        {
+          "term": "red",
+          "def": "rouge"
+        },
+        {
+          "term": "blue",
+          "def": "bleu"
+        },
+        {
+          "term": "green",
+          "def": "vert"
+        },
+        {
+          "term": "yellow",
+          "def": "jaune"
+        },
+        {
+          "term": "black",
+          "def": "noir"
+        },
+        {
+          "term": "white",
+          "def": "blanc"
+        },
+        {
+          "term": "grey / gray",
+          "def": "gris"
+        },
+        {
+          "term": "brown",
+          "def": "brun / marron"
+        },
+        {
+          "term": "pink",
+          "def": "rose"
+        },
+        {
+          "term": "orange",
+          "def": "orange"
+        },
+        {
+          "term": "purple",
+          "def": "violet"
+        },
+        {
+          "term": "light blue",
+          "def": "bleu clair"
+        },
+        {
+          "term": "dark blue",
+          "def": "bleu foncé"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-09",
+      "title": "Anglais 9: la ville et les transports",
+      "description": "Se déplacer, s'orienter et trouver les lieux utiles.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "city",
+          "def": "la ville"
+        },
+        {
+          "term": "village",
+          "def": "le village"
+        },
+        {
+          "term": "street",
+          "def": "la rue"
+        },
+        {
+          "term": "square",
+          "def": "la place"
+        },
+        {
+          "term": "shop (UK) / store (US)",
+          "def": "le magasin"
+        },
+        {
+          "term": "supermarket",
+          "def": "le supermarché"
+        },
+        {
+          "term": "market",
+          "def": "le marché"
+        },
+        {
+          "term": "bakery",
+          "def": "la boulangerie"
+        },
+        {
+          "term": "bank",
+          "def": "la banque"
+        },
+        {
+          "term": "post office",
+          "def": "la poste"
+        },
+        {
+          "term": "station",
+          "def": "la gare"
+        },
+        {
+          "term": "school",
+          "def": "l'école"
+        },
+        {
+          "term": "church",
+          "def": "l'église"
+        },
+        {
+          "term": "museum",
+          "def": "le musée"
+        },
+        {
+          "term": "restaurant",
+          "def": "le restaurant"
+        },
+        {
+          "term": "hotel",
+          "def": "l'hôtel"
+        },
+        {
+          "term": "car",
+          "def": "la voiture"
+        },
+        {
+          "term": "bike / bicycle",
+          "def": "le vélo"
+        },
+        {
+          "term": "bus",
+          "def": "le bus"
+        },
+        {
+          "term": "train",
+          "def": "le train"
+        },
+        {
+          "term": "tram",
+          "def": "le tram"
+        },
+        {
+          "term": "underground (UK) / subway (US)",
+          "def": "le métro"
+        },
+        {
+          "term": "plane",
+          "def": "l'avion"
+        },
+        {
+          "term": "boat",
+          "def": "le bateau"
+        },
+        {
+          "term": "ticket",
+          "def": "le ticket / le billet"
+        },
+        {
+          "term": "on the left",
+          "def": "à gauche"
+        },
+        {
+          "term": "on the right",
+          "def": "à droite"
+        },
+        {
+          "term": "straight on",
+          "def": "tout droit"
+        },
+        {
+          "term": "where is the station?",
+          "def": "où est la gare ?"
+        },
+        {
+          "term": "far",
+          "def": "loin"
+        },
+        {
+          "term": "near",
+          "def": "près"
+        },
+        {
+          "term": "map",
+          "def": "la carte / le plan"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-10",
+      "title": "Anglais 10: les verbes courants",
+      "description": "Quarante verbes du quotidien.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "be",
+          "def": "être"
+        },
+        {
+          "term": "have",
+          "def": "avoir"
+        },
+        {
+          "term": "go",
+          "def": "aller"
+        },
+        {
+          "term": "come",
+          "def": "venir"
+        },
+        {
+          "term": "do",
+          "def": "faire",
+          "hint": "une action"
+        },
+        {
+          "term": "make",
+          "def": "faire",
+          "hint": "fabriquer"
+        },
+        {
+          "term": "can",
+          "def": "pouvoir"
+        },
+        {
+          "term": "must",
+          "def": "devoir"
+        },
+        {
+          "term": "want",
+          "def": "vouloir"
+        },
+        {
+          "term": "be allowed to",
+          "def": "avoir le droit"
+        },
+        {
+          "term": "say",
+          "def": "dire"
+        },
+        {
+          "term": "speak",
+          "def": "parler",
+          "hint": "une langue"
+        },
+        {
+          "term": "talk",
+          "def": "parler",
+          "hint": "bavarder"
+        },
+        {
+          "term": "ask",
+          "def": "demander"
+        },
+        {
+          "term": "know",
+          "def": "savoir / connaître"
+        },
+        {
+          "term": "think",
+          "def": "penser"
+        },
+        {
+          "term": "understand",
+          "def": "comprendre"
+        },
+        {
+          "term": "learn",
+          "def": "apprendre"
+        },
+        {
+          "term": "read",
+          "def": "lire"
+        },
+        {
+          "term": "write",
+          "def": "écrire"
+        },
+        {
+          "term": "see",
+          "def": "voir"
+        },
+        {
+          "term": "look (at)",
+          "def": "regarder"
+        },
+        {
+          "term": "hear",
+          "def": "entendre"
+        },
+        {
+          "term": "listen (to)",
+          "def": "écouter"
+        },
+        {
+          "term": "eat",
+          "def": "manger"
+        },
+        {
+          "term": "drink",
+          "def": "boire"
+        },
+        {
+          "term": "sleep",
+          "def": "dormir"
+        },
+        {
+          "term": "work",
+          "def": "travailler"
+        },
+        {
+          "term": "live",
+          "def": "habiter / vivre"
+        },
+        {
+          "term": "buy",
+          "def": "acheter"
+        },
+        {
+          "term": "pay",
+          "def": "payer"
+        },
+        {
+          "term": "give",
+          "def": "donner"
+        },
+        {
+          "term": "take",
+          "def": "prendre"
+        },
+        {
+          "term": "look for",
+          "def": "chercher"
+        },
+        {
+          "term": "find",
+          "def": "trouver"
+        },
+        {
+          "term": "wait (for)",
+          "def": "attendre"
+        },
+        {
+          "term": "begin / start",
+          "def": "commencer"
+        },
+        {
+          "term": "help",
+          "def": "aider"
+        },
+        {
+          "term": "love",
+          "def": "aimer"
+        },
+        {
+          "term": "like",
+          "def": "aimer bien"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-11",
+      "title": "Anglais 11: les adjectifs",
+      "description": "Quarante adjectifs, souvent par paires de contraires.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "big",
+          "def": "grand"
+        },
+        {
+          "term": "small",
+          "def": "petit"
+        },
+        {
+          "term": "long",
+          "def": "long"
+        },
+        {
+          "term": "short",
+          "def": "court"
+        },
+        {
+          "term": "old",
+          "def": "vieux"
+        },
+        {
+          "term": "new",
+          "def": "nouveau / neuf"
+        },
+        {
+          "term": "young",
+          "def": "jeune"
+        },
+        {
+          "term": "good",
+          "def": "bon"
+        },
+        {
+          "term": "bad",
+          "def": "mauvais"
+        },
+        {
+          "term": "beautiful",
+          "def": "beau"
+        },
+        {
+          "term": "ugly",
+          "def": "laid"
+        },
+        {
+          "term": "hot",
+          "def": "chaud"
+        },
+        {
+          "term": "cold",
+          "def": "froid"
+        },
+        {
+          "term": "fast",
+          "def": "rapide"
+        },
+        {
+          "term": "slow",
+          "def": "lent"
+        },
+        {
+          "term": "expensive",
+          "def": "cher"
+        },
+        {
+          "term": "cheap",
+          "def": "bon marché"
+        },
+        {
+          "term": "easy",
+          "def": "facile"
+        },
+        {
+          "term": "difficult",
+          "def": "difficile"
+        },
+        {
+          "term": "happy",
+          "def": "heureux / content"
+        },
+        {
+          "term": "sad",
+          "def": "triste"
+        },
+        {
+          "term": "busy",
+          "def": "occupé"
+        },
+        {
+          "term": "quiet",
+          "def": "calme"
+        },
+        {
+          "term": "full",
+          "def": "plein"
+        },
+        {
+          "term": "empty",
+          "def": "vide"
+        },
+        {
+          "term": "open",
+          "def": "ouvert"
+        },
+        {
+          "term": "closed",
+          "def": "fermé"
+        },
+        {
+          "term": "light",
+          "def": "léger",
+          "hint": "le poids"
+        },
+        {
+          "term": "heavy",
+          "def": "lourd"
+        },
+        {
+          "term": "delicious",
+          "def": "délicieux"
+        },
+        {
+          "term": "high",
+          "def": "haut"
+        },
+        {
+          "term": "low",
+          "def": "bas"
+        },
+        {
+          "term": "fat",
+          "def": "gros"
+        },
+        {
+          "term": "thin",
+          "def": "mince"
+        },
+        {
+          "term": "strong",
+          "def": "fort"
+        },
+        {
+          "term": "weak",
+          "def": "faible"
+        },
+        {
+          "term": "rich",
+          "def": "riche"
+        },
+        {
+          "term": "poor",
+          "def": "pauvre"
+        },
+        {
+          "term": "kind",
+          "def": "gentil"
+        },
+        {
+          "term": "angry",
+          "def": "fâché / en colère"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-12",
+      "title": "Anglais 12: les petits mots",
+      "description": "Questions, pronoms, liaisons et petits mots de tous les jours.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "who?",
+          "def": "qui ?"
+        },
+        {
+          "term": "what?",
+          "def": "quoi ?"
+        },
+        {
+          "term": "where?",
+          "def": "où ?"
+        },
+        {
+          "term": "when?",
+          "def": "quand ?"
+        },
+        {
+          "term": "why?",
+          "def": "pourquoi ?"
+        },
+        {
+          "term": "how?",
+          "def": "comment ?"
+        },
+        {
+          "term": "how much? / how many?",
+          "def": "combien ?"
+        },
+        {
+          "term": "I",
+          "def": "je"
+        },
+        {
+          "term": "you",
+          "def": "tu / vous"
+        },
+        {
+          "term": "he",
+          "def": "il"
+        },
+        {
+          "term": "she",
+          "def": "elle"
+        },
+        {
+          "term": "we",
+          "def": "nous"
+        },
+        {
+          "term": "they",
+          "def": "ils / elles"
+        },
+        {
+          "term": "and",
+          "def": "et"
+        },
+        {
+          "term": "or",
+          "def": "ou"
+        },
+        {
+          "term": "but",
+          "def": "mais"
+        },
+        {
+          "term": "because",
+          "def": "parce que"
+        },
+        {
+          "term": "if",
+          "def": "si"
+        },
+        {
+          "term": "with",
+          "def": "avec"
+        },
+        {
+          "term": "without",
+          "def": "sans"
+        },
+        {
+          "term": "for",
+          "def": "pour"
+        },
+        {
+          "term": "after",
+          "def": "après"
+        },
+        {
+          "term": "before",
+          "def": "avant"
+        },
+        {
+          "term": "in",
+          "def": "dans"
+        },
+        {
+          "term": "on",
+          "def": "sur"
+        },
+        {
+          "term": "under",
+          "def": "sous"
+        },
+        {
+          "term": "next to",
+          "def": "à côté de"
+        },
+        {
+          "term": "between",
+          "def": "entre"
+        },
+        {
+          "term": "here",
+          "def": "ici"
+        },
+        {
+          "term": "there",
+          "def": "là / là-bas"
+        },
+        {
+          "term": "now",
+          "def": "maintenant"
+        },
+        {
+          "term": "always",
+          "def": "toujours"
+        },
+        {
+          "term": "never",
+          "def": "jamais"
+        },
+        {
+          "term": "sometimes",
+          "def": "parfois"
+        },
+        {
+          "term": "often",
+          "def": "souvent"
+        },
+        {
+          "term": "also / too",
+          "def": "aussi"
+        },
+        {
+          "term": "very",
+          "def": "très"
+        },
+        {
+          "term": "a lot",
+          "def": "beaucoup"
+        },
+        {
+          "term": "not",
+          "def": "ne pas"
+        },
+        {
+          "term": "none",
+          "def": "aucun"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-13",
+      "title": "Anglais 13: le travail et les métiers",
+      "description": "Les métiers, le bureau et la vie professionnelle.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "work",
+          "def": "le travail"
+        },
+        {
+          "term": "job",
+          "def": "l'emploi / le boulot"
+        },
+        {
+          "term": "profession",
+          "def": "le métier / la profession"
+        },
+        {
+          "term": "office",
+          "def": "le bureau",
+          "hint": "le lieu de travail"
+        },
+        {
+          "term": "factory",
+          "def": "l'usine"
+        },
+        {
+          "term": "company",
+          "def": "l'entreprise"
+        },
+        {
+          "term": "boss",
+          "def": "le patron"
+        },
+        {
+          "term": "employee",
+          "def": "l'employé"
+        },
+        {
+          "term": "salary",
+          "def": "le salaire"
+        },
+        {
+          "term": "meeting",
+          "def": "la réunion"
+        },
+        {
+          "term": "appointment",
+          "def": "le rendez-vous"
+        },
+        {
+          "term": "teacher",
+          "def": "l'enseignant / le professeur"
+        },
+        {
+          "term": "nurse",
+          "def": "l'infirmier / l'infirmière"
+        },
+        {
+          "term": "lawyer",
+          "def": "l'avocat"
+        },
+        {
+          "term": "engineer",
+          "def": "l'ingénieur"
+        },
+        {
+          "term": "cook",
+          "def": "le cuisinier"
+        },
+        {
+          "term": "waiter",
+          "def": "le serveur"
+        },
+        {
+          "term": "shop assistant",
+          "def": "le vendeur"
+        },
+        {
+          "term": "farmer",
+          "def": "le fermier / l'agriculteur"
+        },
+        {
+          "term": "police officer",
+          "def": "le policier"
+        },
+        {
+          "term": "firefighter",
+          "def": "le pompier"
+        },
+        {
+          "term": "painter",
+          "def": "le peintre"
+        },
+        {
+          "term": "driver",
+          "def": "le chauffeur"
+        },
+        {
+          "term": "student",
+          "def": "l'étudiant"
+        },
+        {
+          "term": "journalist",
+          "def": "le journaliste"
+        },
+        {
+          "term": "hairdresser",
+          "def": "le coiffeur"
+        },
+        {
+          "term": "postman",
+          "def": "le facteur"
+        },
+        {
+          "term": "plumber",
+          "def": "le plombier"
+        },
+        {
+          "term": "architect",
+          "def": "l'architecte"
+        },
+        {
+          "term": "unemployed",
+          "def": "au chômage / sans emploi"
+        },
+        {
+          "term": "apply (for a job)",
+          "def": "postuler"
+        },
+        {
+          "term": "earn",
+          "def": "gagner",
+          "hint": "de l'argent"
+        },
+        {
+          "term": "contract",
+          "def": "le contrat"
+        },
+        {
+          "term": "customer",
+          "def": "le client"
+        },
+        {
+          "term": "training",
+          "def": "la formation"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-14",
+      "title": "Anglais 14: l'école et les études",
+      "description": "La classe, les matières et le matériel scolaire.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "class",
+          "def": "la classe"
+        },
+        {
+          "term": "lesson",
+          "def": "le cours / la leçon"
+        },
+        {
+          "term": "pupil",
+          "def": "l'élève"
+        },
+        {
+          "term": "university",
+          "def": "l'université"
+        },
+        {
+          "term": "subject",
+          "def": "la matière",
+          "hint": "à l'école"
+        },
+        {
+          "term": "maths (UK) / math (US)",
+          "def": "les mathématiques"
+        },
+        {
+          "term": "history",
+          "def": "l'histoire"
+        },
+        {
+          "term": "geography",
+          "def": "la géographie"
+        },
+        {
+          "term": "English",
+          "def": "l'anglais"
+        },
+        {
+          "term": "French",
+          "def": "le français"
+        },
+        {
+          "term": "music",
+          "def": "la musique"
+        },
+        {
+          "term": "notebook",
+          "def": "le cahier"
+        },
+        {
+          "term": "pen",
+          "def": "le stylo"
+        },
+        {
+          "term": "pencil",
+          "def": "le crayon"
+        },
+        {
+          "term": "rubber (UK) / eraser (US)",
+          "def": "la gomme"
+        },
+        {
+          "term": "scissors",
+          "def": "les ciseaux"
+        },
+        {
+          "term": "ruler",
+          "def": "la règle"
+        },
+        {
+          "term": "schoolbag",
+          "def": "le cartable"
+        },
+        {
+          "term": "blackboard",
+          "def": "le tableau / le tableau noir"
+        },
+        {
+          "term": "test",
+          "def": "le contrôle / le test"
+        },
+        {
+          "term": "exam",
+          "def": "l'examen"
+        },
+        {
+          "term": "homework",
+          "def": "les devoirs"
+        },
+        {
+          "term": "question",
+          "def": "la question"
+        },
+        {
+          "term": "answer",
+          "def": "la réponse"
+        },
+        {
+          "term": "mistake",
+          "def": "la faute / l'erreur"
+        },
+        {
+          "term": "mark (UK) / grade (US)",
+          "def": "la note",
+          "hint": "à l'école"
+        },
+        {
+          "term": "break",
+          "def": "la récréation / la pause"
+        },
+        {
+          "term": "study",
+          "def": "étudier"
+        },
+        {
+          "term": "explain",
+          "def": "expliquer"
+        },
+        {
+          "term": "repeat",
+          "def": "répéter"
+        },
+        {
+          "term": "pass (an exam)",
+          "def": "réussir",
+          "hint": "à un examen"
+        },
+        {
+          "term": "fail (an exam)",
+          "def": "échouer",
+          "hint": "à un examen"
+        },
+        {
+          "term": "dictionary",
+          "def": "le dictionnaire"
+        },
+        {
+          "term": "page",
+          "def": "la page"
+        },
+        {
+          "term": "classroom",
+          "def": "la salle de classe"
+        },
+        {
+          "term": "primary school",
+          "def": "l'école primaire"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-15",
+      "title": "Anglais 15: la nature et la météo",
+      "description": "Le temps qu'il fait, les paysages et la nature.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "weather",
+          "def": "le temps / la météo"
+        },
+        {
+          "term": "sun",
+          "def": "le soleil"
+        },
+        {
+          "term": "rain",
+          "def": "la pluie"
+        },
+        {
+          "term": "snow",
+          "def": "la neige"
+        },
+        {
+          "term": "wind",
+          "def": "le vent"
+        },
+        {
+          "term": "cloud",
+          "def": "le nuage"
+        },
+        {
+          "term": "sky",
+          "def": "le ciel"
+        },
+        {
+          "term": "air",
+          "def": "l'air"
+        },
+        {
+          "term": "storm",
+          "def": "la tempête"
+        },
+        {
+          "term": "fog",
+          "def": "le brouillard"
+        },
+        {
+          "term": "thunderstorm",
+          "def": "l'orage"
+        },
+        {
+          "term": "temperature",
+          "def": "la température"
+        },
+        {
+          "term": "it's raining",
+          "def": "il pleut"
+        },
+        {
+          "term": "it's snowing",
+          "def": "il neige"
+        },
+        {
+          "term": "it's windy",
+          "def": "il y a du vent"
+        },
+        {
+          "term": "it's hot",
+          "def": "il fait chaud"
+        },
+        {
+          "term": "it's cold",
+          "def": "il fait froid"
+        },
+        {
+          "term": "sea",
+          "def": "la mer"
+        },
+        {
+          "term": "beach",
+          "def": "la plage"
+        },
+        {
+          "term": "mountain",
+          "def": "la montagne"
+        },
+        {
+          "term": "hill",
+          "def": "la colline"
+        },
+        {
+          "term": "forest",
+          "def": "la forêt"
+        },
+        {
+          "term": "river",
+          "def": "la rivière / le fleuve"
+        },
+        {
+          "term": "lake",
+          "def": "le lac"
+        },
+        {
+          "term": "island",
+          "def": "l'île"
+        },
+        {
+          "term": "tree",
+          "def": "l'arbre"
+        },
+        {
+          "term": "flower",
+          "def": "la fleur"
+        },
+        {
+          "term": "grass",
+          "def": "l'herbe"
+        },
+        {
+          "term": "leaf",
+          "def": "la feuille"
+        },
+        {
+          "term": "stone",
+          "def": "la pierre"
+        },
+        {
+          "term": "earth",
+          "def": "la terre"
+        },
+        {
+          "term": "fire",
+          "def": "le feu"
+        },
+        {
+          "term": "moon",
+          "def": "la lune"
+        },
+        {
+          "term": "star",
+          "def": "l'étoile"
+        },
+        {
+          "term": "nature",
+          "def": "la nature"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-16",
+      "title": "Anglais 16: les animaux",
+      "description": "Les animaux de la maison, de la ferme et du monde sauvage.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "animal",
+          "def": "l'animal"
+        },
+        {
+          "term": "bird",
+          "def": "l'oiseau"
+        },
+        {
+          "term": "horse",
+          "def": "le cheval"
+        },
+        {
+          "term": "cow",
+          "def": "la vache"
+        },
+        {
+          "term": "pig",
+          "def": "le cochon"
+        },
+        {
+          "term": "sheep",
+          "def": "le mouton"
+        },
+        {
+          "term": "goat",
+          "def": "la chèvre"
+        },
+        {
+          "term": "rooster",
+          "def": "le coq"
+        },
+        {
+          "term": "duck",
+          "def": "le canard"
+        },
+        {
+          "term": "rabbit",
+          "def": "le lapin"
+        },
+        {
+          "term": "mouse",
+          "def": "la souris"
+        },
+        {
+          "term": "rat",
+          "def": "le rat"
+        },
+        {
+          "term": "bear",
+          "def": "l'ours"
+        },
+        {
+          "term": "wolf",
+          "def": "le loup"
+        },
+        {
+          "term": "fox",
+          "def": "le renard"
+        },
+        {
+          "term": "deer",
+          "def": "le cerf / le chevreuil"
+        },
+        {
+          "term": "lion",
+          "def": "le lion"
+        },
+        {
+          "term": "tiger",
+          "def": "le tigre"
+        },
+        {
+          "term": "elephant",
+          "def": "l'éléphant"
+        },
+        {
+          "term": "monkey",
+          "def": "le singe"
+        },
+        {
+          "term": "snake",
+          "def": "le serpent"
+        },
+        {
+          "term": "frog",
+          "def": "la grenouille"
+        },
+        {
+          "term": "tortoise / turtle",
+          "def": "la tortue"
+        },
+        {
+          "term": "butterfly",
+          "def": "le papillon"
+        },
+        {
+          "term": "bee",
+          "def": "l'abeille"
+        },
+        {
+          "term": "spider",
+          "def": "l'araignée"
+        },
+        {
+          "term": "mosquito",
+          "def": "le moustique"
+        },
+        {
+          "term": "fly",
+          "def": "la mouche"
+        },
+        {
+          "term": "whale",
+          "def": "la baleine"
+        },
+        {
+          "term": "dolphin",
+          "def": "le dauphin"
+        },
+        {
+          "term": "owl",
+          "def": "le hibou / la chouette"
+        },
+        {
+          "term": "pigeon",
+          "def": "le pigeon"
+        },
+        {
+          "term": "ant",
+          "def": "la fourmi"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-17",
+      "title": "Anglais 17: loisirs et sports",
+      "description": "Le temps libre, le sport, la musique et les sorties.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "hobby",
+          "def": "le hobby / le passe-temps"
+        },
+        {
+          "term": "sport",
+          "def": "le sport"
+        },
+        {
+          "term": "play football",
+          "def": "jouer au football"
+        },
+        {
+          "term": "swim",
+          "def": "nager"
+        },
+        {
+          "term": "ride a bike",
+          "def": "faire du vélo"
+        },
+        {
+          "term": "go for a walk",
+          "def": "se promener"
+        },
+        {
+          "term": "run",
+          "def": "courir"
+        },
+        {
+          "term": "dance",
+          "def": "danser"
+        },
+        {
+          "term": "sing",
+          "def": "chanter"
+        },
+        {
+          "term": "draw",
+          "def": "dessiner"
+        },
+        {
+          "term": "paint",
+          "def": "peindre"
+        },
+        {
+          "term": "cook",
+          "def": "cuisiner"
+        },
+        {
+          "term": "play",
+          "def": "jouer"
+        },
+        {
+          "term": "game",
+          "def": "le jeu"
+        },
+        {
+          "term": "match",
+          "def": "le match / la compétition"
+        },
+        {
+          "term": "team",
+          "def": "l'équipe"
+        },
+        {
+          "term": "win",
+          "def": "gagner"
+        },
+        {
+          "term": "lose",
+          "def": "perdre"
+        },
+        {
+          "term": "ball",
+          "def": "le ballon / la balle"
+        },
+        {
+          "term": "swimming pool",
+          "def": "la piscine"
+        },
+        {
+          "term": "film / movie",
+          "def": "le film"
+        },
+        {
+          "term": "cinema",
+          "def": "le cinéma"
+        },
+        {
+          "term": "concert",
+          "def": "le concert"
+        },
+        {
+          "term": "theatre / theater",
+          "def": "le théâtre"
+        },
+        {
+          "term": "guitar",
+          "def": "la guitare"
+        },
+        {
+          "term": "piano",
+          "def": "le piano"
+        },
+        {
+          "term": "photo",
+          "def": "la photo"
+        },
+        {
+          "term": "party",
+          "def": "la fête"
+        },
+        {
+          "term": "free time",
+          "def": "le temps libre"
+        },
+        {
+          "term": "go out",
+          "def": "sortir"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-18",
+      "title": "Anglais 18: les courses et l'argent",
+      "description": "Acheter, payer et compter son argent.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "money",
+          "def": "l'argent"
+        },
+        {
+          "term": "euro",
+          "def": "l'euro"
+        },
+        {
+          "term": "cent",
+          "def": "le centime"
+        },
+        {
+          "term": "price",
+          "def": "le prix"
+        },
+        {
+          "term": "discount",
+          "def": "la réduction / la remise"
+        },
+        {
+          "term": "the sales",
+          "def": "les soldes"
+        },
+        {
+          "term": "checkout",
+          "def": "la caisse"
+        },
+        {
+          "term": "receipt",
+          "def": "le ticket de caisse / le reçu"
+        },
+        {
+          "term": "wallet",
+          "def": "le portefeuille"
+        },
+        {
+          "term": "bank card",
+          "def": "la carte bancaire"
+        },
+        {
+          "term": "in cash",
+          "def": "en espèces / comptant"
+        },
+        {
+          "term": "size",
+          "def": "la taille"
+        },
+        {
+          "term": "try on",
+          "def": "essayer",
+          "hint": "un vêtement"
+        },
+        {
+          "term": "fitting room",
+          "def": "la cabine d'essayage"
+        },
+        {
+          "term": "cost",
+          "def": "coûter"
+        },
+        {
+          "term": "how much is it?",
+          "def": "combien ça coûte ?"
+        },
+        {
+          "term": "too expensive",
+          "def": "trop cher"
+        },
+        {
+          "term": "present / gift",
+          "def": "le cadeau"
+        },
+        {
+          "term": "basket",
+          "def": "le panier"
+        },
+        {
+          "term": "shopping",
+          "def": "les courses"
+        },
+        {
+          "term": "do the shopping",
+          "def": "faire les courses"
+        },
+        {
+          "term": "butcher",
+          "def": "le boucher"
+        },
+        {
+          "term": "opening hours",
+          "def": "les heures d'ouverture"
+        },
+        {
+          "term": "change",
+          "def": "la monnaie",
+          "hint": "rendue"
+        },
+        {
+          "term": "save",
+          "def": "épargner / économiser"
+        },
+        {
+          "term": "borrow",
+          "def": "emprunter"
+        },
+        {
+          "term": "lend",
+          "def": "prêter"
+        },
+        {
+          "term": "bill",
+          "def": "la facture"
+        },
+        {
+          "term": "sell",
+          "def": "vendre"
+        },
+        {
+          "term": "free",
+          "def": "gratuit",
+          "hint": "sans payer"
+        },
+        {
+          "term": "coin",
+          "def": "la pièce",
+          "hint": "de monnaie"
+        },
+        {
+          "term": "banknote",
+          "def": "le billet de banque"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-19",
+      "title": "Anglais 19: voyages et vacances",
+      "description": "Partir, réserver, se loger et visiter.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "holiday (UK) / vacation (US)",
+          "def": "les vacances"
+        },
+        {
+          "term": "trip",
+          "def": "le voyage"
+        },
+        {
+          "term": "travel",
+          "def": "voyager"
+        },
+        {
+          "term": "passport",
+          "def": "le passeport"
+        },
+        {
+          "term": "identity card",
+          "def": "la carte d'identité"
+        },
+        {
+          "term": "suitcase",
+          "def": "la valise"
+        },
+        {
+          "term": "luggage",
+          "def": "les bagages"
+        },
+        {
+          "term": "airport",
+          "def": "l'aéroport"
+        },
+        {
+          "term": "flight",
+          "def": "le vol"
+        },
+        {
+          "term": "platform",
+          "def": "le quai"
+        },
+        {
+          "term": "delay",
+          "def": "le retard"
+        },
+        {
+          "term": "leave",
+          "def": "partir"
+        },
+        {
+          "term": "arrive",
+          "def": "arriver"
+        },
+        {
+          "term": "book (a room)",
+          "def": "réserver"
+        },
+        {
+          "term": "campsite",
+          "def": "le camping"
+        },
+        {
+          "term": "tent",
+          "def": "la tente"
+        },
+        {
+          "term": "tourist",
+          "def": "le touriste"
+        },
+        {
+          "term": "guide",
+          "def": "le guide"
+        },
+        {
+          "term": "tourist office",
+          "def": "l'office de tourisme / l'office du tourisme"
+        },
+        {
+          "term": "border",
+          "def": "la frontière"
+        },
+        {
+          "term": "abroad",
+          "def": "à l'étranger"
+        },
+        {
+          "term": "postcard",
+          "def": "la carte postale"
+        },
+        {
+          "term": "souvenir",
+          "def": "le souvenir"
+        },
+        {
+          "term": "guided tour",
+          "def": "la visite guidée"
+        },
+        {
+          "term": "visit",
+          "def": "visiter"
+        },
+        {
+          "term": "view",
+          "def": "la vue"
+        },
+        {
+          "term": "reservation",
+          "def": "la réservation"
+        },
+        {
+          "term": "reception",
+          "def": "la réception"
+        },
+        {
+          "term": "have a good trip!",
+          "def": "bon voyage !"
+        },
+        {
+          "term": "have a nice holiday!",
+          "def": "bonnes vacances !"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-20",
+      "title": "Anglais 20: émotions et caractère",
+      "description": "Dire ce que l'on ressent et décrire quelqu'un.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "feeling",
+          "def": "le sentiment"
+        },
+        {
+          "term": "afraid",
+          "def": "qui a peur / effrayé"
+        },
+        {
+          "term": "fear",
+          "def": "la peur"
+        },
+        {
+          "term": "nervous",
+          "def": "nerveux"
+        },
+        {
+          "term": "surprised",
+          "def": "surpris"
+        },
+        {
+          "term": "jealous",
+          "def": "jaloux"
+        },
+        {
+          "term": "proud",
+          "def": "fier"
+        },
+        {
+          "term": "lonely",
+          "def": "seul / solitaire"
+        },
+        {
+          "term": "in love",
+          "def": "amoureux"
+        },
+        {
+          "term": "love",
+          "def": "l'amour"
+        },
+        {
+          "term": "joy",
+          "def": "la joie"
+        },
+        {
+          "term": "sadness",
+          "def": "la tristesse"
+        },
+        {
+          "term": "grief",
+          "def": "le chagrin"
+        },
+        {
+          "term": "anger",
+          "def": "la colère"
+        },
+        {
+          "term": "hope",
+          "def": "l'espoir"
+        },
+        {
+          "term": "be bored",
+          "def": "s'ennuyer"
+        },
+        {
+          "term": "laugh",
+          "def": "rire"
+        },
+        {
+          "term": "cry",
+          "def": "pleurer"
+        },
+        {
+          "term": "smile",
+          "def": "sourire"
+        },
+        {
+          "term": "friendly",
+          "def": "aimable"
+        },
+        {
+          "term": "honest",
+          "def": "honnête"
+        },
+        {
+          "term": "lazy",
+          "def": "paresseux"
+        },
+        {
+          "term": "clever",
+          "def": "intelligent / malin"
+        },
+        {
+          "term": "stupid",
+          "def": "bête / stupide"
+        },
+        {
+          "term": "funny",
+          "def": "drôle"
+        },
+        {
+          "term": "serious",
+          "def": "sérieux"
+        },
+        {
+          "term": "shy",
+          "def": "timide"
+        },
+        {
+          "term": "patient",
+          "def": "patient"
+        },
+        {
+          "term": "polite",
+          "def": "poli"
+        },
+        {
+          "term": "curious",
+          "def": "curieux"
+        },
+        {
+          "term": "worry",
+          "def": "s'inquiéter"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-21",
+      "title": "Anglais 21: l'heure",
+      "description": "Lire l'heure en anglais: « quarter past three », « twenty to four », a.m. et p.m.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "three o'clock",
+          "def": "3 h"
+        },
+        {
+          "term": "quarter past three",
+          "def": "3 h 15"
+        },
+        {
+          "term": "half past three",
+          "def": "3 h 30"
+        },
+        {
+          "term": "quarter to four",
+          "def": "3 h 45"
+        },
+        {
+          "term": "five past three",
+          "def": "3 h 05"
+        },
+        {
+          "term": "ten past three",
+          "def": "3 h 10"
+        },
+        {
+          "term": "twenty past three",
+          "def": "3 h 20"
+        },
+        {
+          "term": "twenty-five past three",
+          "def": "3 h 25"
+        },
+        {
+          "term": "twenty-five to four",
+          "def": "3 h 35"
+        },
+        {
+          "term": "twenty to four",
+          "def": "3 h 40"
+        },
+        {
+          "term": "ten to four",
+          "def": "3 h 50"
+        },
+        {
+          "term": "five to four",
+          "def": "3 h 55"
+        },
+        {
+          "term": "noon / midday",
+          "def": "midi"
+        },
+        {
+          "term": "midnight",
+          "def": "minuit"
+        },
+        {
+          "term": "half past twelve",
+          "def": "12 h 30"
+        },
+        {
+          "term": "half past one",
+          "def": "1 h 30"
+        },
+        {
+          "term": "quarter to twelve",
+          "def": "11 h 45"
+        },
+        {
+          "term": "at quarter past nine",
+          "def": "à 9 h 15"
+        },
+        {
+          "term": "seven a.m.",
+          "def": "7 h du matin"
+        },
+        {
+          "term": "seven p.m.",
+          "def": "19 h"
+        },
+        {
+          "term": "in the morning",
+          "def": "le matin"
+        },
+        {
+          "term": "in the afternoon",
+          "def": "l'après-midi"
+        },
+        {
+          "term": "in the evening",
+          "def": "le soir"
+        },
+        {
+          "term": "at night",
+          "def": "la nuit"
+        },
+        {
+          "term": "a quarter of an hour",
+          "def": "un quart d'heure"
+        },
+        {
+          "term": "half an hour",
+          "def": "une demi-heure"
+        },
+        {
+          "term": "an hour and a half",
+          "def": "une heure et demie"
+        },
+        {
+          "term": "exactly",
+          "def": "pile / exactement"
+        },
+        {
+          "term": "about",
+          "def": "environ"
+        },
+        {
+          "term": "early",
+          "def": "tôt"
+        },
+        {
+          "term": "late",
+          "def": "tard"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-22",
+      "title": "Anglais 22: les verbes à particule",
+      "description": "Les « phrasal verbs »: un verbe suivi d'une particule qui en change le sens, comme « give up ».",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "get up",
+          "def": "se lever",
+          "hint": "du lit"
+        },
+        {
+          "term": "wake up",
+          "def": "se réveiller"
+        },
+        {
+          "term": "come back",
+          "def": "revenir"
+        },
+        {
+          "term": "go away",
+          "def": "s'en aller"
+        },
+        {
+          "term": "come in",
+          "def": "entrer"
+        },
+        {
+          "term": "sit down",
+          "def": "s'asseoir"
+        },
+        {
+          "term": "stand up",
+          "def": "se lever",
+          "hint": "d'une chaise"
+        },
+        {
+          "term": "put on",
+          "def": "mettre",
+          "hint": "un vêtement"
+        },
+        {
+          "term": "take off",
+          "def": "enlever",
+          "hint": "un vêtement"
+        },
+        {
+          "term": "turn on",
+          "def": "allumer"
+        },
+        {
+          "term": "turn off",
+          "def": "éteindre"
+        },
+        {
+          "term": "look after",
+          "def": "s'occuper de"
+        },
+        {
+          "term": "look forward to",
+          "def": "attendre avec impatience"
+        },
+        {
+          "term": "find out",
+          "def": "découvrir"
+        },
+        {
+          "term": "give up",
+          "def": "abandonner"
+        },
+        {
+          "term": "give back",
+          "def": "rendre"
+        },
+        {
+          "term": "pick up",
+          "def": "ramasser"
+        },
+        {
+          "term": "put down",
+          "def": "poser"
+        },
+        {
+          "term": "fill in",
+          "def": "remplir",
+          "hint": "un formulaire"
+        },
+        {
+          "term": "set off",
+          "def": "partir",
+          "hint": "en voyage"
+        },
+        {
+          "term": "call back",
+          "def": "rappeler"
+        },
+        {
+          "term": "tidy up",
+          "def": "ranger"
+        },
+        {
+          "term": "clean up",
+          "def": "nettoyer"
+        },
+        {
+          "term": "break down",
+          "def": "tomber en panne"
+        },
+        {
+          "term": "run out of",
+          "def": "manquer de / être à court de"
+        },
+        {
+          "term": "get on",
+          "def": "monter",
+          "hint": "dans un véhicule"
+        },
+        {
+          "term": "get off",
+          "def": "descendre",
+          "hint": "d'un véhicule"
+        },
+        {
+          "term": "carry on",
+          "def": "continuer"
+        },
+        {
+          "term": "hurry up",
+          "def": "se dépêcher"
+        },
+        {
+          "term": "slow down",
+          "def": "ralentir"
+        },
+        {
+          "term": "grow up",
+          "def": "grandir"
+        },
+        {
+          "term": "throw away",
+          "def": "jeter"
+        },
+        {
+          "term": "turn it off",
+          "def": "éteins-le"
+        },
+        {
+          "term": "put your coat on",
+          "def": "mets ton manteau"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-23",
+      "title": "Anglais 23: les verbes irréguliers",
+      "description": "Base verbale, prétérit et participe passé: go, went, gone.",
+      "termLang": "en",
+      "defLang": "en",
+      "cards": [
+        {
+          "term": "be (être)",
+          "def": "was, been"
+        },
+        {
+          "term": "begin (commencer)",
+          "def": "began, begun"
+        },
+        {
+          "term": "break (casser)",
+          "def": "broke, broken"
+        },
+        {
+          "term": "bring (apporter)",
+          "def": "brought, brought"
+        },
+        {
+          "term": "buy (acheter)",
+          "def": "bought, bought"
+        },
+        {
+          "term": "choose (choisir)",
+          "def": "chose, chosen"
+        },
+        {
+          "term": "come (venir)",
+          "def": "came, come"
+        },
+        {
+          "term": "do (faire)",
+          "def": "did, done"
+        },
+        {
+          "term": "drink (boire)",
+          "def": "drank, drunk"
+        },
+        {
+          "term": "drive (conduire)",
+          "def": "drove, driven"
+        },
+        {
+          "term": "eat (manger)",
+          "def": "ate, eaten"
+        },
+        {
+          "term": "fall (tomber)",
+          "def": "fell, fallen"
+        },
+        {
+          "term": "feel (ressentir)",
+          "def": "felt, felt"
+        },
+        {
+          "term": "find (trouver)",
+          "def": "found, found"
+        },
+        {
+          "term": "fly (voler)",
+          "def": "flew, flown"
+        },
+        {
+          "term": "forget (oublier)",
+          "def": "forgot, forgotten"
+        },
+        {
+          "term": "get (obtenir)",
+          "def": "got, got"
+        },
+        {
+          "term": "give (donner)",
+          "def": "gave, given"
+        },
+        {
+          "term": "go (aller)",
+          "def": "went, gone"
+        },
+        {
+          "term": "have (avoir)",
+          "def": "had, had"
+        },
+        {
+          "term": "hear (entendre)",
+          "def": "heard, heard"
+        },
+        {
+          "term": "know (savoir)",
+          "def": "knew, known"
+        },
+        {
+          "term": "leave (partir)",
+          "def": "left, left"
+        },
+        {
+          "term": "lose (perdre)",
+          "def": "lost, lost"
+        },
+        {
+          "term": "make (fabriquer)",
+          "def": "made, made"
+        },
+        {
+          "term": "meet (rencontrer)",
+          "def": "met, met"
+        },
+        {
+          "term": "pay (payer)",
+          "def": "paid, paid"
+        },
+        {
+          "term": "put (mettre)",
+          "def": "put, put"
+        },
+        {
+          "term": "read (lire)",
+          "def": "read, read"
+        },
+        {
+          "term": "run (courir)",
+          "def": "ran, run"
+        },
+        {
+          "term": "say (dire)",
+          "def": "said, said"
+        },
+        {
+          "term": "see (voir)",
+          "def": "saw, seen"
+        },
+        {
+          "term": "sell (vendre)",
+          "def": "sold, sold"
+        },
+        {
+          "term": "sleep (dormir)",
+          "def": "slept, slept"
+        },
+        {
+          "term": "speak (parler)",
+          "def": "spoke, spoken"
+        },
+        {
+          "term": "swim (nager)",
+          "def": "swam, swum"
+        },
+        {
+          "term": "take (prendre)",
+          "def": "took, taken"
+        },
+        {
+          "term": "tell (raconter)",
+          "def": "told, told"
+        },
+        {
+          "term": "think (penser)",
+          "def": "thought, thought"
+        },
+        {
+          "term": "write (écrire)",
+          "def": "wrote, written"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-24",
+      "title": "Anglais 24: expressions courantes",
+      "description": "Les tournures que l'on entend tous les jours.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "that's right",
+          "def": "c'est exact / c'est ça"
+        },
+        {
+          "term": "no idea",
+          "def": "aucune idée"
+        },
+        {
+          "term": "it doesn't matter",
+          "def": "peu importe"
+        },
+        {
+          "term": "no problem",
+          "def": "pas de problème"
+        },
+        {
+          "term": "of course",
+          "def": "bien sûr / naturellement"
+        },
+        {
+          "term": "what a pity / what a shame",
+          "def": "quel dommage"
+        },
+        {
+          "term": "I feel like",
+          "def": "j'ai envie de"
+        },
+        {
+          "term": "I don't know",
+          "def": "je ne sais pas"
+        },
+        {
+          "term": "all right",
+          "def": "c'est bon / d'accord"
+        },
+        {
+          "term": "just a moment",
+          "def": "un instant"
+        },
+        {
+          "term": "can I help you?",
+          "def": "puis-je vous aider ?"
+        },
+        {
+          "term": "what do you mean?",
+          "def": "que veux-tu dire ? / qu'est-ce que tu veux dire ?"
+        },
+        {
+          "term": "once more, please",
+          "def": "encore une fois, s'il vous plaît"
+        },
+        {
+          "term": "more slowly, please",
+          "def": "plus lentement, s'il vous plaît"
+        },
+        {
+          "term": "how do you say that in English?",
+          "def": "comment dit-on ça en anglais ?"
+        },
+        {
+          "term": "what does that mean?",
+          "def": "qu'est-ce que ça veut dire ?"
+        },
+        {
+          "term": "good luck!",
+          "def": "bonne chance !"
+        },
+        {
+          "term": "get well soon!",
+          "def": "bon rétablissement !"
+        },
+        {
+          "term": "congratulations!",
+          "def": "félicitations !"
+        },
+        {
+          "term": "have a nice day!",
+          "def": "bonne journée !"
+        },
+        {
+          "term": "have a nice weekend!",
+          "def": "bon week-end !"
+        },
+        {
+          "term": "see you next week",
+          "def": "à la semaine prochaine"
+        },
+        {
+          "term": "so-so",
+          "def": "comme ci, comme ça"
+        },
+        {
+          "term": "I agree with you",
+          "def": "je suis d'accord avec toi"
+        },
+        {
+          "term": "I don't agree",
+          "def": "je ne suis pas d'accord"
+        },
+        {
+          "term": "it goes without saying",
+          "def": "ça va de soi / c'est évident"
+        },
+        {
+          "term": "on time",
+          "def": "à l'heure"
+        },
+        {
+          "term": "be late",
+          "def": "être en retard"
+        },
+        {
+          "term": "straight away",
+          "def": "tout de suite / immédiatement"
+        },
+        {
+          "term": "anyway",
+          "def": "en tout cas / de toute façon"
+        },
+        {
+          "term": "as soon as possible",
+          "def": "le plus vite possible"
+        },
+        {
+          "term": "in my opinion",
+          "def": "à mon avis / selon moi"
+        },
+        {
+          "term": "I don't have time",
+          "def": "je n'ai pas le temps"
+        },
+        {
+          "term": "it's crowded",
+          "def": "il y a du monde / c'est bondé"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-25",
+      "title": "Anglais 25: les faux amis",
+      "description": "Des mots anglais qui ressemblent à un mot français sans vouloir dire la même chose.",
+      "termLang": "en",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "actually",
+          "def": "en fait",
+          "hint": "pas « actuellement »"
+        },
+        {
+          "term": "currently",
+          "def": "actuellement"
+        },
+        {
+          "term": "eventually",
+          "def": "finalement",
+          "hint": "pas « éventuellement »"
+        },
+        {
+          "term": "possibly",
+          "def": "éventuellement"
+        },
+        {
+          "term": "library",
+          "def": "la bibliothèque",
+          "hint": "pas « la librairie »"
+        },
+        {
+          "term": "bookshop",
+          "def": "la librairie"
+        },
+        {
+          "term": "sensible",
+          "def": "raisonnable",
+          "hint": "pas « sensible »"
+        },
+        {
+          "term": "sensitive",
+          "def": "sensible / susceptible"
+        },
+        {
+          "term": "attend",
+          "def": "assister à",
+          "hint": "pas « attendre »"
+        },
+        {
+          "term": "assist",
+          "def": "aider",
+          "hint": "pas « assister à »"
+        },
+        {
+          "term": "pretend",
+          "def": "faire semblant",
+          "hint": "pas « prétendre »"
+        },
+        {
+          "term": "claim",
+          "def": "prétendre"
+        },
+        {
+          "term": "realize",
+          "def": "se rendre compte",
+          "hint": "pas « réaliser »"
+        },
+        {
+          "term": "achieve",
+          "def": "réaliser"
+        },
+        {
+          "term": "rest",
+          "def": "se reposer",
+          "hint": "pas « rester »"
+        },
+        {
+          "term": "stay",
+          "def": "rester"
+        },
+        {
+          "term": "demand",
+          "def": "exiger",
+          "hint": "pas « demander »"
+        },
+        {
+          "term": "deceive",
+          "def": "tromper",
+          "hint": "pas « décevoir »"
+        },
+        {
+          "term": "disappoint",
+          "def": "décevoir"
+        },
+        {
+          "term": "sympathetic",
+          "def": "compatissant",
+          "hint": "pas « sympathique »"
+        },
+        {
+          "term": "coin",
+          "def": "la pièce",
+          "hint": "pas « le coin »"
+        },
+        {
+          "term": "corner",
+          "def": "le coin"
+        },
+        {
+          "term": "journey",
+          "def": "le voyage",
+          "hint": "pas « la journée »"
+        },
+        {
+          "term": "lecture",
+          "def": "le cours magistral / la conférence",
+          "hint": "pas « la lecture »"
+        },
+        {
+          "term": "support",
+          "def": "soutenir",
+          "hint": "pas « supporter »"
+        },
+        {
+          "term": "phrase",
+          "def": "l'expression",
+          "hint": "pas « la phrase »"
+        },
+        {
+          "term": "sentence",
+          "def": "la phrase"
+        },
+        {
+          "term": "cave",
+          "def": "la grotte",
+          "hint": "pas « la cave »"
+        },
+        {
+          "term": "cellar",
+          "def": "la cave"
+        },
+        {
+          "term": "car",
+          "def": "la voiture",
+          "hint": "pas « le car »"
+        },
+        {
+          "term": "coach",
+          "def": "le car / l'autocar"
+        },
+        {
+          "term": "location",
+          "def": "l'emplacement / le lieu",
+          "hint": "pas « la location »"
+        },
+        {
+          "term": "surname",
+          "def": "le nom de famille",
+          "hint": "pas « le surnom »"
+        },
+        {
+          "term": "nickname",
+          "def": "le surnom"
+        },
+        {
+          "term": "advertisement",
+          "def": "la publicité",
+          "hint": "pas « l'avertissement »"
+        },
+        {
+          "term": "warning",
+          "def": "l'avertissement"
+        },
+        {
+          "term": "gentle",
+          "def": "doux",
+          "hint": "pas « gentil »"
+        },
+        {
+          "term": "fabric",
+          "def": "le tissu",
+          "hint": "pas « la fabrique »"
+        },
+        {
+          "term": "injure",
+          "def": "blesser",
+          "hint": "pas « injurier »"
+        },
+        {
+          "term": "agenda",
+          "def": "l'ordre du jour",
+          "hint": "pas « l'agenda »"
+        }
+      ]
+    },
+    {
+      "id": "sample-en-26",
+      "title": "Anglais 26: les pluriels",
+      "description": "Le pluriel des noms courants, réguliers ou non, avec leur sens en indice.",
+      "termLang": "en",
+      "defLang": "en",
+      "cards": [
+        {
+          "term": "child",
+          "def": "children",
+          "hint": "l'enfant"
+        },
+        {
+          "term": "man",
+          "def": "men",
+          "hint": "l'homme"
+        },
+        {
+          "term": "woman",
+          "def": "women",
+          "hint": "la femme"
+        },
+        {
+          "term": "person",
+          "def": "people",
+          "hint": "la personne"
+        },
+        {
+          "term": "foot",
+          "def": "feet",
+          "hint": "le pied"
+        },
+        {
+          "term": "tooth",
+          "def": "teeth",
+          "hint": "la dent"
+        },
+        {
+          "term": "mouse",
+          "def": "mice",
+          "hint": "la souris"
+        },
+        {
+          "term": "goose",
+          "def": "geese",
+          "hint": "l'oie"
+        },
+        {
+          "term": "sheep",
+          "def": "sheep",
+          "hint": "le mouton"
+        },
+        {
+          "term": "fish",
+          "def": "fish",
+          "hint": "le poisson"
+        },
+        {
+          "term": "knife",
+          "def": "knives",
+          "hint": "le couteau"
+        },
+        {
+          "term": "wife",
+          "def": "wives",
+          "hint": "l'épouse"
+        },
+        {
+          "term": "leaf",
+          "def": "leaves",
+          "hint": "la feuille"
+        },
+        {
+          "term": "life",
+          "def": "lives",
+          "hint": "la vie"
+        },
+        {
+          "term": "half",
+          "def": "halves",
+          "hint": "la moitié"
+        },
+        {
+          "term": "wolf",
+          "def": "wolves",
+          "hint": "le loup"
+        },
+        {
+          "term": "potato",
+          "def": "potatoes",
+          "hint": "la pomme de terre"
+        },
+        {
+          "term": "tomato",
+          "def": "tomatoes",
+          "hint": "la tomate"
+        },
+        {
+          "term": "hero",
+          "def": "heroes",
+          "hint": "le héros"
+        },
+        {
+          "term": "box",
+          "def": "boxes",
+          "hint": "la boîte"
+        },
+        {
+          "term": "bus",
+          "def": "buses",
+          "hint": "le bus"
+        },
+        {
+          "term": "church",
+          "def": "churches",
+          "hint": "l'église"
+        },
+        {
+          "term": "city",
+          "def": "cities",
+          "hint": "la ville"
+        },
+        {
+          "term": "baby",
+          "def": "babies",
+          "hint": "le bébé"
+        },
+        {
+          "term": "lady",
+          "def": "ladies",
+          "hint": "la dame"
+        },
+        {
+          "term": "boy",
+          "def": "boys",
+          "hint": "le garçon"
+        },
+        {
+          "term": "day",
+          "def": "days",
+          "hint": "le jour"
+        },
+        {
+          "term": "key",
+          "def": "keys",
+          "hint": "la clé"
+        },
+        {
+          "term": "roof",
+          "def": "roofs",
+          "hint": "le toit"
+        },
+        {
+          "term": "photo",
+          "def": "photos",
+          "hint": "la photo"
+        },
+        {
+          "term": "piano",
+          "def": "pianos",
+          "hint": "le piano"
+        },
+        {
+          "term": "ox",
+          "def": "oxen",
+          "hint": "le bœuf"
+        }
+      ]
+    },
+    {
       "id": "sample-capitales-europe",
       "title": "Capitales d'Europe",
       "description": "26 pays, 26 capitales.",

@@ -66,21 +66,36 @@ is reached the tile stops at the goal and its caption gives the real count.
 ### Sample sets
 
 "Charger les exemples" adds the sets that ship with the site: Spanish basics,
-European capitals, English irregular verbs, chemical symbols, and a Dutch
-course for French speakers in twenty-six sets, about 900 words and phrases.
-Sets 1 to 12 lay the basics, from first words and numbers to everyday verbs,
-adjectives and the small words that hold sentences together. Sets 13 to 26
-go further: work, school, nature and weather, animals, leisure, shopping,
-travel and feelings, then telling the time, where "half drie" means half past
-two, separable verbs, irregular verbs with their auxiliary, everyday
-expressions, a de or het drill and plurals. Every noun comes with its
-article, de or het, since it has to be learned with the word, and read aloud
-speaks the Dutch side in Dutch. The Dutch was checked against a machine
-translator and Wiktionary: meanings, spelling, articles, plurals and verb
-forms. Cards that share a French answer, such as dank
-je and dank u for merci, carry a hint that tells them apart, and where a word
-has two usual French renderings both are accepted, as with de jas for le
-manteau or la veste.
+European capitals, English irregular verbs, chemical symbols, and two
+courses for French speakers, in Dutch and English. Each course has
+twenty-six sets and about 900 words and phrases, on the same plan. Sets 1 to
+12 lay the basics, from first words and numbers to everyday verbs, adjectives
+and the small words that hold sentences together. Sets 13 to 26 go further:
+work, school, nature and weather, animals, leisure, shopping, travel and
+feelings, then telling the time, verbs that behave in their own way,
+irregular verbs, everyday expressions, a drill and plurals. Read aloud
+speaks each course in its own language.
+
+Where the languages differ, so do the sets:
+
+- Dutch: telling the time, where "half drie" means half past two, separable
+  verbs, irregular verbs with their auxiliary, and a de or het drill. Every
+  noun comes with its article, de or het, since it has to be learned with
+  the word.
+- English: telling the time with past, to, a.m. and p.m., phrasal verbs,
+  irregular verbs, and false friends in place of an article drill, such as
+  actually for en fait, with a hint naming the French word it does not mean.
+  Nouns come without an article, since the English one says nothing of
+  gender.
+
+The Dutch was checked against a machine translator and Wiktionary: meanings,
+spelling, articles, plurals and verb forms. The English was checked against
+English and French Wiktionary for spelling, meanings, plurals and verb forms,
+with a machine translator as a second opinion on the phrases and on the
+answers the dictionaries did not confirm. Cards that share a French answer,
+such as dank je and dank u for merci, carry a hint that tells them apart, and
+where a word has two usual French renderings both are accepted, as with de
+jas for le manteau or la veste.
 
 The button is on the empty home page and above your sets once you have some.
 It only adds the sample sets you do not have yet, so sets added to the site
