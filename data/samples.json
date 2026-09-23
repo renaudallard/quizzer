@@ -30,7 +30,7 @@
     {
       "id": "sci",
       "title": "Sciences",
-      "description": "Les symboles chimiques courants."
+      "description": "Préfixes et unités du Système international, formules de physique et de chimie, symboles chimiques, système solaire, os et organes du corps humain."
     },
     {
       "id": "geo",
@@ -13197,6 +13197,552 @@
         {
           "term": "Uranium",
           "def": "U"
+        }
+      ]
+    },
+    {
+      "id": "sample-sci-prefixes",
+      "group": "sci",
+      "title": "Préfixes du Système international",
+      "description": "De femto à péta: le préfixe, son symbole et la puissance de 10 qu’il vaut.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "péta (P)",
+          "def": "10¹⁵"
+        },
+        {
+          "term": "téra (T)",
+          "def": "10¹²"
+        },
+        {
+          "term": "giga (G)",
+          "def": "10⁹"
+        },
+        {
+          "term": "méga (M)",
+          "def": "10⁶"
+        },
+        {
+          "term": "kilo (k)",
+          "def": "10³"
+        },
+        {
+          "term": "hecto (h)",
+          "def": "10²"
+        },
+        {
+          "term": "déca (da)",
+          "def": "10¹"
+        },
+        {
+          "term": "déci (d)",
+          "def": "10⁻¹"
+        },
+        {
+          "term": "centi (c)",
+          "def": "10⁻²"
+        },
+        {
+          "term": "milli (m)",
+          "def": "10⁻³"
+        },
+        {
+          "term": "micro (μ)",
+          "def": "10⁻⁶"
+        },
+        {
+          "term": "nano (n)",
+          "def": "10⁻⁹"
+        },
+        {
+          "term": "pico (p)",
+          "def": "10⁻¹²"
+        },
+        {
+          "term": "femto (f)",
+          "def": "10⁻¹⁵"
+        }
+      ]
+    },
+    {
+      "id": "sample-sci-unites",
+      "group": "sci",
+      "title": "Unités du Système international",
+      "description": "La grandeur et son unité, avec le symbole.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "longueur",
+          "def": "mètre (m)"
+        },
+        {
+          "term": "masse",
+          "def": "kilogramme (kg)"
+        },
+        {
+          "term": "temps",
+          "def": "seconde (s)"
+        },
+        {
+          "term": "intensité du courant électrique",
+          "def": "ampère (A)"
+        },
+        {
+          "term": "température thermodynamique",
+          "def": "kelvin (K)"
+        },
+        {
+          "term": "quantité de matière",
+          "def": "mole (mol)"
+        },
+        {
+          "term": "intensité lumineuse",
+          "def": "candela (cd)"
+        },
+        {
+          "term": "force",
+          "def": "newton (N)"
+        },
+        {
+          "term": "énergie",
+          "def": "joule (J)"
+        },
+        {
+          "term": "puissance",
+          "def": "watt (W)"
+        },
+        {
+          "term": "pression",
+          "def": "pascal (Pa)"
+        },
+        {
+          "term": "fréquence",
+          "def": "hertz (Hz)"
+        },
+        {
+          "term": "tension électrique",
+          "def": "volt (V)"
+        },
+        {
+          "term": "résistance électrique",
+          "def": "ohm (Ω)"
+        },
+        {
+          "term": "charge électrique",
+          "def": "coulomb (C)"
+        },
+        {
+          "term": "capacité électrique",
+          "def": "farad (F)"
+        },
+        {
+          "term": "champ magnétique / induction magnétique",
+          "def": "tesla (T)"
+        },
+        {
+          "term": "flux lumineux",
+          "def": "lumen (lm)"
+        },
+        {
+          "term": "éclairement lumineux",
+          "def": "lux (lx)"
+        },
+        {
+          "term": "activité radioactive",
+          "def": "becquerel (Bq)"
+        },
+        {
+          "term": "angle plan",
+          "def": "radian (rad)"
+        },
+        {
+          "term": "température Celsius",
+          "def": "degré Celsius (°C)"
+        }
+      ]
+    },
+    {
+      "id": "sample-sci-physique",
+      "group": "sci",
+      "title": "Formules de physique",
+      "description": "Les relations du collège et du lycée, lettres comprises.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "loi d’Ohm (tension U, résistance R, intensité I)",
+          "def": "U = R × I"
+        },
+        {
+          "term": "puissance électrique (tension U, intensité I)",
+          "def": "P = U × I"
+        },
+        {
+          "term": "énergie électrique (puissance P, durée t)",
+          "def": "E = P × t"
+        },
+        {
+          "term": "vitesse moyenne (distance d, durée t)",
+          "def": "v = d / t"
+        },
+        {
+          "term": "poids (masse m, intensité de la pesanteur g)",
+          "def": "P = m × g"
+        },
+        {
+          "term": "masse volumique (masse m, volume V)",
+          "def": "ρ = m / V"
+        },
+        {
+          "term": "concentration en masse (masse m de soluté, volume V de solution)",
+          "def": "Cm = m / V"
+        },
+        {
+          "term": "énergie cinétique (masse m, vitesse v)",
+          "def": "Ec = ½ × m × v²"
+        },
+        {
+          "term": "énergie potentielle de pesanteur (masse m, pesanteur g, altitude h)",
+          "def": "Ep = m × g × h"
+        },
+        {
+          "term": "équivalence masse énergie (masse m, vitesse de la lumière c)",
+          "def": "E = m × c²"
+        },
+        {
+          "term": "fréquence (période T)",
+          "def": "f = 1 / T"
+        },
+        {
+          "term": "pression (force F, surface S)",
+          "def": "P = F / S"
+        },
+        {
+          "term": "loi des gaz parfaits (pression P, volume V, quantité n, température T)",
+          "def": "P × V = n × R × T"
+        }
+      ]
+    },
+    {
+      "id": "sample-sci-chimie",
+      "group": "sci",
+      "title": "Formules chimiques courantes",
+      "description": "Les molécules et composés que l’on croise le plus souvent.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "eau",
+          "def": "H₂O"
+        },
+        {
+          "term": "dioxyde de carbone",
+          "def": "CO₂"
+        },
+        {
+          "term": "monoxyde de carbone",
+          "def": "CO"
+        },
+        {
+          "term": "dioxygène",
+          "def": "O₂"
+        },
+        {
+          "term": "diazote",
+          "def": "N₂"
+        },
+        {
+          "term": "dihydrogène",
+          "def": "H₂"
+        },
+        {
+          "term": "ozone",
+          "def": "O₃"
+        },
+        {
+          "term": "méthane",
+          "def": "CH₄"
+        },
+        {
+          "term": "ammoniac",
+          "def": "NH₃"
+        },
+        {
+          "term": "chlorure de sodium",
+          "def": "NaCl",
+          "hint": "le sel de cuisine"
+        },
+        {
+          "term": "chlorure d’hydrogène",
+          "def": "HCl"
+        },
+        {
+          "term": "hydroxyde de sodium",
+          "def": "NaOH",
+          "hint": "la soude"
+        },
+        {
+          "term": "acide sulfurique",
+          "def": "H₂SO₄"
+        },
+        {
+          "term": "carbonate de calcium",
+          "def": "CaCO₃",
+          "hint": "le calcaire"
+        },
+        {
+          "term": "dioxyde de soufre",
+          "def": "SO₂"
+        },
+        {
+          "term": "glucose",
+          "def": "C₆H₁₂O₆"
+        },
+        {
+          "term": "éthanol",
+          "def": "C₂H₆O"
+        },
+        {
+          "term": "saccharose",
+          "def": "C₁₂H₂₂O₁₁",
+          "hint": "le sucre de table"
+        }
+      ]
+    },
+    {
+      "id": "sample-sci-systeme-solaire",
+      "group": "sci",
+      "title": "Le système solaire",
+      "description": "Les planètes dans l’ordre, leurs satellites et quelques distances.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "1re planète en partant du Soleil",
+          "def": "Mercure"
+        },
+        {
+          "term": "2e planète en partant du Soleil",
+          "def": "Vénus"
+        },
+        {
+          "term": "3e planète en partant du Soleil",
+          "def": "Terre"
+        },
+        {
+          "term": "4e planète en partant du Soleil",
+          "def": "Mars"
+        },
+        {
+          "term": "5e planète en partant du Soleil",
+          "def": "Jupiter"
+        },
+        {
+          "term": "6e planète en partant du Soleil",
+          "def": "Saturne"
+        },
+        {
+          "term": "7e planète en partant du Soleil",
+          "def": "Uranus"
+        },
+        {
+          "term": "8e planète en partant du Soleil",
+          "def": "Neptune"
+        },
+        {
+          "term": "étoile du système solaire",
+          "def": "Soleil"
+        },
+        {
+          "term": "satellite naturel de la Terre",
+          "def": "Lune"
+        },
+        {
+          "term": "planète naine depuis 2006, autrefois la 9e planète",
+          "def": "Pluton"
+        },
+        {
+          "term": "plus grand satellite du système solaire",
+          "def": "Ganymède"
+        },
+        {
+          "term": "plus grand satellite de Saturne",
+          "def": "Titan"
+        },
+        {
+          "term": "les deux satellites de Mars",
+          "def": "Phobos et Déimos"
+        },
+        {
+          "term": "région entre Mars et Jupiter où orbitent la plupart des astéroïdes",
+          "def": "ceinture d’astéroïdes"
+        },
+        {
+          "term": "galaxie qui contient le système solaire",
+          "def": "Voie lactée"
+        },
+        {
+          "term": "distance parcourue par la lumière en un an",
+          "def": "année-lumière"
+        },
+        {
+          "term": "distance moyenne entre la Terre et le Soleil",
+          "def": "unité astronomique (au)"
+        }
+      ]
+    },
+    {
+      "id": "sample-sci-os",
+      "group": "sci",
+      "title": "Les os du corps humain",
+      "description": "Les principaux os, avec les noms d’aujourd’hui et ceux d’avant 1998.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "os de la cuisse",
+          "def": "fémur"
+        },
+        {
+          "term": "os du bras, entre l’épaule et le coude",
+          "def": "humérus"
+        },
+        {
+          "term": "os de l’avant-bras, du côté du pouce",
+          "def": "radius"
+        },
+        {
+          "term": "os de l’avant-bras, du côté du petit doigt",
+          "def": "ulna / cubitus"
+        },
+        {
+          "term": "gros os de la jambe, à l’avant",
+          "def": "tibia"
+        },
+        {
+          "term": "os fin de la jambe, à l’extérieur",
+          "def": "fibula / péroné"
+        },
+        {
+          "term": "os plat à l’avant du genou",
+          "def": "patella / rotule"
+        },
+        {
+          "term": "os long entre le sternum et l’épaule",
+          "def": "clavicule"
+        },
+        {
+          "term": "os plat en haut du dos, derrière l’épaule",
+          "def": "scapula / omoplate"
+        },
+        {
+          "term": "os plat au milieu de la poitrine",
+          "def": "sternum"
+        },
+        {
+          "term": "os qui forment la cage thoracique avec le sternum",
+          "def": "côtes"
+        },
+        {
+          "term": "os empilés qui forment la colonne vertébrale",
+          "def": "vertèbres"
+        },
+        {
+          "term": "os de la mâchoire inférieure",
+          "def": "mandibule"
+        },
+        {
+          "term": "os qui forment les doigts et les orteils",
+          "def": "phalanges"
+        },
+        {
+          "term": "os du talon",
+          "def": "calcanéus / calcanéum"
+        },
+        {
+          "term": "plus petit os du corps, dans l’oreille moyenne",
+          "def": "étrier"
+        },
+        {
+          "term": "os qui enferment et protègent le cerveau",
+          "def": "crâne"
+        }
+      ]
+    },
+    {
+      "id": "sample-sci-organes",
+      "group": "sci",
+      "title": "Les organes du corps humain",
+      "description": "Les principaux organes et leur rôle.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "organe qui pompe le sang dans tout le corps",
+          "def": "cœur"
+        },
+        {
+          "term": "organes où l’air échange l’oxygène contre le dioxyde de carbone",
+          "def": "poumons"
+        },
+        {
+          "term": "organes qui filtrent le sang et produisent l’urine",
+          "def": "reins"
+        },
+        {
+          "term": "poche qui stocke l’urine",
+          "def": "vessie"
+        },
+        {
+          "term": "organe qui produit la bile",
+          "def": "foie"
+        },
+        {
+          "term": "petite poche sous le foie qui stocke la bile",
+          "def": "vésicule biliaire"
+        },
+        {
+          "term": "glande qui produit l’insuline",
+          "def": "pancréas"
+        },
+        {
+          "term": "tube qui mène les aliments de la bouche à l’estomac",
+          "def": "œsophage"
+        },
+        {
+          "term": "poche où les aliments sont brassés avec le suc gastrique",
+          "def": "estomac"
+        },
+        {
+          "term": "partie du tube digestif où les nutriments passent dans le sang",
+          "def": "intestin grêle"
+        },
+        {
+          "term": "partie du tube digestif où l’eau est réabsorbée",
+          "def": "gros intestin / côlon"
+        },
+        {
+          "term": "conduit qui mène l’air du larynx aux bronches",
+          "def": "trachée"
+        },
+        {
+          "term": "organe de la gorge qui porte les cordes vocales",
+          "def": "larynx"
+        },
+        {
+          "term": "centre de commande du système nerveux, dans le crâne",
+          "def": "cerveau"
+        },
+        {
+          "term": "plus grand organe du corps",
+          "def": "peau"
+        },
+        {
+          "term": "organe accolé à l’estomac, à gauche, qui participe à l’immunité et au renouvellement des cellules du sang",
+          "def": "rate"
         }
       ]
     },

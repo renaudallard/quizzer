@@ -79,7 +79,7 @@ is reached the tile stops at the goal and its caption gives the real count.
 
 "Charger les exemples" offers the sets that ship with the site, in groups:
 three courses for French speakers, in Dutch, English and Italian, Spanish
-basics, mathematics, chemical symbols and European capitals. Each course has
+basics, mathematics, sciences and European capitals. Each course has
 twenty-six sets and about 900 words and phrases, on the same plan. Sets 1 to
 12 lay the basics, from first words and numbers to everyday verbs, adjectives
 and the small words that hold sentences together. Sets 13 to 26 go further:
@@ -124,6 +124,13 @@ rules for sums, products and quotients. The numbers, identities, values and
 derivatives were checked by computing them, and every answer was typed as a
 plain keyboard would, x^2, sqrt and pi included, to be sure the grading
 takes it.
+
+Sciences adds seven sets to the chemical symbols: the prefixes and units of
+the International System, physics formulas, common chemical formulas, the
+solar system, and the bones and organs of the human body. Bones renamed in
+1998 accept both names, such as fibula and péroné. The prefixes, units and
+chemical formulas were checked against Wikipedia and Wikidata, the anatomy
+and the solar system against the French Wikipedia articles.
 
 The button is on the empty home page and above your sets once you have some.
 It opens the list of samples by group, each course and each subject with its
