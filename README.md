@@ -273,9 +273,11 @@ with the arrow keys, and the page stays where it was scrolled.
 - Leaving the editor through the top bar without saving loses the draft. The
   save button is always visible in the sticky bar, and closing the tab warns.
 - Read aloud depends on the voices the browser and system provide.
-- Switching language on a study page, or while a draft is in progress, leaves
-  that page as it is until you move on, so no round, result or draft is lost;
-  the top bar and everything shown afterwards switch at once.
+- Switching language on a study page, or while a draft is in progress, does
+  not rebuild that page, so no round, result or draft is lost. What is already
+  on screen keeps its language and only what the page draws afterwards, such
+  as the next question, comes in the new one; the top bar switches at once,
+  and so does every page opened afterwards.
 
 ## License
 
