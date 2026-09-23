@@ -79,14 +79,14 @@ is reached the tile stops at the goal and its caption gives the real count.
 
 "Charger les exemples" offers the sets that ship with the site, in groups:
 three courses for French speakers, in Dutch, English and Italian, Spanish
-basics, mathematics, sciences, history and geography. Each course has
+basics, French, mathematics, sciences, history and geography. Each course has
 twenty-six sets and about 900 words and phrases, on the same plan. Sets 1 to
 12 lay the basics, from first words and numbers to everyday verbs, adjectives
 and the small words that hold sentences together. Sets 13 to 26 go further:
 work, school, nature and weather, animals, leisure, shopping, travel and
-feelings, then telling the time, verbs that behave in their own way,
-irregular verbs, everyday expressions, a drill and plurals. Read aloud
-speaks each course in its own language.
+feelings, then telling the time, verbs that behave in their own way, irregular
+verbs, everyday expressions, a drill and plurals. Read aloud speaks each
+course in its own language.
 
 Where the languages differ, so do the sets:
 
@@ -115,6 +115,17 @@ dictionaries did not confirm. Cards that share a French answer, such as dank
 je and dank u for merci, carry a hint that tells them apart, and where a word
 has two usual French renderings both are accepted, as with de jas for le
 manteau or la veste.
+
+Français has four sets: the present of twelve common irregular verbs, with
+the three vous forms that do not end in -ez, grammatical homophones, given as
+a sentence with a gap and the two choices as the hint, irregular plurals in
+-aux and -oux with their exceptions, and thirty-two works with their author.
+Homophones that differ only by an accent, such as a and à, are left out: the
+grading forgives accents and a slipped letter, so they could not be drilled
+by typing, and for the same reason the plurals set suggests turning off
+"Tolérer les fautes de frappe". The verb forms and plurals were checked
+against the French Wiktionary, the authors against the French Wikipedia
+articles, and the completed sentences with a grammar checker.
 
 Mathématiques has eight sets: the multiplication tables from 2 to 9, squares
 and cubes, powers of 2 and of 10, algebra identities and the rules for

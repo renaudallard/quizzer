@@ -23,6 +23,11 @@
       "description": "Les 30 mots essentiels."
     },
     {
+      "id": "fr",
+      "title": "Français",
+      "description": "Verbes irréguliers au présent, homophones, pluriels irréguliers, auteurs et œuvres."
+    },
+    {
       "id": "maths",
       "title": "Mathématiques",
       "description": "Tables, carrés et puissances, calcul littéral, valeurs trigonométriques, formules de géométrie et dérivées."
@@ -12222,6 +12227,588 @@
         {
           "term": "fácil",
           "def": "facile"
+        }
+      ]
+    },
+    {
+      "id": "sample-fr-verbes-present",
+      "group": "fr",
+      "title": "Verbes irréguliers au présent",
+      "description": "Douze verbes courants avec je, nous et ils, et les trois seuls vous qui ne finissent pas en -ez.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "être: je …",
+          "def": "(je) suis"
+        },
+        {
+          "term": "être: nous …",
+          "def": "(nous) sommes"
+        },
+        {
+          "term": "être: ils …",
+          "def": "(ils) sont"
+        },
+        {
+          "term": "être: vous …",
+          "def": "(vous) êtes"
+        },
+        {
+          "term": "avoir: j’…",
+          "def": "(j’) ai"
+        },
+        {
+          "term": "avoir: nous …",
+          "def": "(nous) avons"
+        },
+        {
+          "term": "avoir: ils …",
+          "def": "(ils) ont"
+        },
+        {
+          "term": "aller: je …",
+          "def": "(je) vais"
+        },
+        {
+          "term": "aller: nous …",
+          "def": "(nous) allons"
+        },
+        {
+          "term": "aller: ils …",
+          "def": "(ils) vont"
+        },
+        {
+          "term": "faire: je …",
+          "def": "(je) fais"
+        },
+        {
+          "term": "faire: nous …",
+          "def": "(nous) faisons"
+        },
+        {
+          "term": "faire: ils …",
+          "def": "(ils) font"
+        },
+        {
+          "term": "faire: vous …",
+          "def": "(vous) faites"
+        },
+        {
+          "term": "dire: je …",
+          "def": "(je) dis"
+        },
+        {
+          "term": "dire: nous …",
+          "def": "(nous) disons"
+        },
+        {
+          "term": "dire: ils …",
+          "def": "(ils) disent"
+        },
+        {
+          "term": "dire: vous …",
+          "def": "(vous) dites"
+        },
+        {
+          "term": "pouvoir: je …",
+          "def": "(je) peux"
+        },
+        {
+          "term": "pouvoir: nous …",
+          "def": "(nous) pouvons"
+        },
+        {
+          "term": "pouvoir: ils …",
+          "def": "(ils) peuvent"
+        },
+        {
+          "term": "vouloir: je …",
+          "def": "(je) veux"
+        },
+        {
+          "term": "vouloir: nous …",
+          "def": "(nous) voulons"
+        },
+        {
+          "term": "vouloir: ils …",
+          "def": "(ils) veulent"
+        },
+        {
+          "term": "savoir: je …",
+          "def": "(je) sais"
+        },
+        {
+          "term": "savoir: nous …",
+          "def": "(nous) savons"
+        },
+        {
+          "term": "savoir: ils …",
+          "def": "(ils) savent"
+        },
+        {
+          "term": "venir: je …",
+          "def": "(je) viens"
+        },
+        {
+          "term": "venir: nous …",
+          "def": "(nous) venons"
+        },
+        {
+          "term": "venir: ils …",
+          "def": "(ils) viennent"
+        },
+        {
+          "term": "prendre: je …",
+          "def": "(je) prends"
+        },
+        {
+          "term": "prendre: nous …",
+          "def": "(nous) prenons"
+        },
+        {
+          "term": "prendre: ils …",
+          "def": "(ils) prennent"
+        },
+        {
+          "term": "devoir: je …",
+          "def": "(je) dois"
+        },
+        {
+          "term": "devoir: nous …",
+          "def": "(nous) devons"
+        },
+        {
+          "term": "devoir: ils …",
+          "def": "(ils) doivent"
+        },
+        {
+          "term": "voir: je …",
+          "def": "(je) vois"
+        },
+        {
+          "term": "voir: nous …",
+          "def": "(nous) voyons"
+        },
+        {
+          "term": "voir: ils …",
+          "def": "(ils) voient"
+        }
+      ]
+    },
+    {
+      "id": "sample-fr-homophones",
+      "group": "fr",
+      "title": "Homophones grammaticaux",
+      "description": "Le mot qui complète la phrase, avec les deux choix en indice.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "Le ciel … bleu.",
+          "def": "est",
+          "hint": "et ou est"
+        },
+        {
+          "term": "Paul … Marie arrivent.",
+          "def": "et",
+          "hint": "et ou est"
+        },
+        {
+          "term": "Ils … partis tôt.",
+          "def": "sont",
+          "hint": "son ou sont"
+        },
+        {
+          "term": "Il cherche … vélo.",
+          "def": "son",
+          "hint": "son ou sont"
+        },
+        {
+          "term": "Il met … mains dans ses poches.",
+          "def": "ses",
+          "hint": "ces ou ses"
+        },
+        {
+          "term": "Regarde … nuages !",
+          "def": "ces",
+          "hint": "ces ou ses"
+        },
+        {
+          "term": "Ils … lèvent tôt.",
+          "def": "se",
+          "hint": "ce ou se"
+        },
+        {
+          "term": "… livre est passionnant.",
+          "def": "ce",
+          "hint": "ce ou se"
+        },
+        {
+          "term": "… dit qu’il va pleuvoir.",
+          "def": "on",
+          "hint": "on ou ont"
+        },
+        {
+          "term": "Elles … fini leurs devoirs.",
+          "def": "ont",
+          "hint": "on ou ont"
+        },
+        {
+          "term": "Elle range … chambre.",
+          "def": "sa",
+          "hint": "ça ou sa"
+        },
+        {
+          "term": "… ne me dérange pas.",
+          "def": "ça",
+          "hint": "ça ou sa"
+        },
+        {
+          "term": "J’ai oublié … lunettes.",
+          "def": "mes",
+          "hint": "mes ou mais"
+        },
+        {
+          "term": "Il est petit, … fort.",
+          "def": "mais",
+          "hint": "mes ou mais"
+        },
+        {
+          "term": "Il … venir demain.",
+          "def": "peut",
+          "hint": "peu ou peut"
+        },
+        {
+          "term": "J’ai … de temps.",
+          "def": "peu",
+          "hint": "peu ou peut"
+        },
+        {
+          "term": "Je n’aime … le thé … le café.",
+          "def": "ni",
+          "hint": "ni ou n’y"
+        },
+        {
+          "term": "Il … est jamais allé.",
+          "def": "n’y",
+          "hint": "ni ou n’y"
+        },
+        {
+          "term": "… tu veux, on y va.",
+          "def": "si",
+          "hint": "si ou s’y"
+        },
+        {
+          "term": "Elle … attendait.",
+          "def": "s’y",
+          "hint": "si ou s’y"
+        },
+        {
+          "term": "Il est … sa chambre.",
+          "def": "dans",
+          "hint": "dans ou d’en"
+        },
+        {
+          "term": "Il vient … parler.",
+          "def": "d’en",
+          "hint": "dans ou d’en"
+        },
+        {
+          "term": "Il … va.",
+          "def": "s’en",
+          "hint": "sans ou s’en"
+        },
+        {
+          "term": "Un café … sucre.",
+          "def": "sans",
+          "hint": "sans ou s’en"
+        },
+        {
+          "term": "Il … est trompé.",
+          "def": "s’",
+          "hint": "c’ ou s’"
+        },
+        {
+          "term": "… est vrai.",
+          "def": "c’",
+          "hint": "c’ ou s’"
+        }
+      ]
+    },
+    {
+      "id": "sample-fr-pluriels",
+      "group": "fr",
+      "title": "Pluriels irréguliers",
+      "description": "Les pluriels en -aux et en -oux, et leurs exceptions. Pour que -s et -x comptent à l’écrit, décochez « Tolérer les fautes de frappe » dans les paramètres.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "cheval",
+          "def": "chevaux"
+        },
+        {
+          "term": "journal",
+          "def": "journaux"
+        },
+        {
+          "term": "animal",
+          "def": "animaux"
+        },
+        {
+          "term": "bal",
+          "def": "bals"
+        },
+        {
+          "term": "carnaval",
+          "def": "carnavals"
+        },
+        {
+          "term": "festival",
+          "def": "festivals"
+        },
+        {
+          "term": "chacal",
+          "def": "chacals"
+        },
+        {
+          "term": "récital",
+          "def": "récitals"
+        },
+        {
+          "term": "travail",
+          "def": "travaux"
+        },
+        {
+          "term": "vitrail",
+          "def": "vitraux"
+        },
+        {
+          "term": "corail",
+          "def": "coraux"
+        },
+        {
+          "term": "émail",
+          "def": "émaux"
+        },
+        {
+          "term": "détail",
+          "def": "détails"
+        },
+        {
+          "term": "bijou",
+          "def": "bijoux"
+        },
+        {
+          "term": "caillou",
+          "def": "cailloux"
+        },
+        {
+          "term": "chou",
+          "def": "choux"
+        },
+        {
+          "term": "genou",
+          "def": "genoux"
+        },
+        {
+          "term": "hibou",
+          "def": "hiboux"
+        },
+        {
+          "term": "joujou",
+          "def": "joujoux"
+        },
+        {
+          "term": "pou",
+          "def": "poux"
+        },
+        {
+          "term": "clou",
+          "def": "clous"
+        },
+        {
+          "term": "trou",
+          "def": "trous"
+        },
+        {
+          "term": "œil",
+          "def": "yeux"
+        },
+        {
+          "term": "ciel",
+          "def": "cieux / ciels"
+        },
+        {
+          "term": "pneu",
+          "def": "pneus"
+        },
+        {
+          "term": "bleu",
+          "def": "bleus"
+        },
+        {
+          "term": "feu",
+          "def": "feux"
+        },
+        {
+          "term": "landau",
+          "def": "landaus"
+        },
+        {
+          "term": "bateau",
+          "def": "bateaux"
+        },
+        {
+          "term": "nez",
+          "def": "nez"
+        },
+        {
+          "term": "madame",
+          "def": "mesdames"
+        },
+        {
+          "term": "monsieur",
+          "def": "messieurs"
+        }
+      ]
+    },
+    {
+      "id": "sample-fr-auteurs",
+      "group": "fr",
+      "title": "Auteurs et œuvres",
+      "description": "L’œuvre et son auteur, le prénom étant facultatif.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "Les Misérables",
+          "def": "(Victor) Hugo"
+        },
+        {
+          "term": "Le Petit Prince",
+          "def": "(Antoine de) Saint-Exupéry"
+        },
+        {
+          "term": "Les Fables",
+          "def": "(Jean de) La Fontaine"
+        },
+        {
+          "term": "Le Cid",
+          "def": "(Pierre) Corneille"
+        },
+        {
+          "term": "Phèdre",
+          "def": "(Jean) Racine"
+        },
+        {
+          "term": "L’Avare",
+          "def": "Molière"
+        },
+        {
+          "term": "Candide",
+          "def": "Voltaire"
+        },
+        {
+          "term": "Du contrat social",
+          "def": "(Jean-Jacques) Rousseau"
+        },
+        {
+          "term": "Les Fleurs du mal",
+          "def": "(Charles) Baudelaire"
+        },
+        {
+          "term": "Madame Bovary",
+          "def": "(Gustave) Flaubert"
+        },
+        {
+          "term": "Le Rouge et le Noir",
+          "def": "Stendhal"
+        },
+        {
+          "term": "Le Père Goriot",
+          "def": "(Honoré de) Balzac"
+        },
+        {
+          "term": "Germinal",
+          "def": "(Émile) Zola"
+        },
+        {
+          "term": "Les Trois Mousquetaires",
+          "def": "(Alexandre) Dumas"
+        },
+        {
+          "term": "Vingt mille lieues sous les mers",
+          "def": "(Jules) Verne"
+        },
+        {
+          "term": "Bel-Ami",
+          "def": "(Guy de) Maupassant"
+        },
+        {
+          "term": "À la recherche du temps perdu",
+          "def": "(Marcel) Proust"
+        },
+        {
+          "term": "L’Étranger",
+          "def": "(Albert) Camus"
+        },
+        {
+          "term": "Huis clos",
+          "def": "(Jean-Paul) Sartre"
+        },
+        {
+          "term": "Le Deuxième Sexe",
+          "def": "(Simone de) Beauvoir"
+        },
+        {
+          "term": "Gargantua",
+          "def": "(François) Rabelais"
+        },
+        {
+          "term": "Les Essais",
+          "def": "(Michel de) Montaigne"
+        },
+        {
+          "term": "Les Liaisons dangereuses",
+          "def": "(Pierre) Choderlos de Laclos"
+        },
+        {
+          "term": "Cyrano de Bergerac",
+          "def": "(Edmond) Rostand"
+        },
+        {
+          "term": "Alcools",
+          "def": "(Guillaume) Apollinaire"
+        },
+        {
+          "term": "Paroles",
+          "def": "(Jacques) Prévert"
+        },
+        {
+          "term": "En attendant Godot",
+          "def": "(Samuel) Beckett"
+        },
+        {
+          "term": "Mémoires d’Hadrien",
+          "def": "(Marguerite) Yourcenar"
+        },
+        {
+          "term": "Le Grand Meaulnes",
+          "def": "Alain-Fournier"
+        },
+        {
+          "term": "Pelléas et Mélisande",
+          "def": "(Maurice) Maeterlinck"
+        },
+        {
+          "term": "Le Chien jaune, une enquête de Maigret",
+          "def": "(Georges) Simenon"
+        },
+        {
+          "term": "Les Aventures de Tintin",
+          "def": "Hergé"
         }
       ]
     },
