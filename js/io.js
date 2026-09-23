@@ -21,13 +21,16 @@ export function slugify(name) {
 
 const DELIMITERS = ['\t', ';', ','];
 
-/* The separator is the first of tab, semicolon and comma found on the first
-   line that holds data. Quotes are read the way the parser reads them, a
-   quote opening a field after any of the three, so a quoted comma or
+/* The separator is the one of tab, semicolon and comma found on the most
+   lines that hold data, tab first, then semicolon, then comma on a tie. A
+   definition that lists alternatives with ";" in a comma file then does not
+   decide for the whole file. Quotes are read the way the parser reads them,
+   a quote opening a field after any of the three, so a quoted comma or
    semicolon cannot mislead it. Whitespace is passed over the same way too:
    a line of spaces or tabs holds no data, and a "#" after any whitespace
    starts a comment line. */
 function detectDelimiter(text) {
+  const lines = new Map(DELIMITERS.map((candidate) => [candidate, 0]));
   let i = 0;
   while (i < text.length) {
     const found = new Set();
@@ -56,9 +59,11 @@ function detectDelimiter(text) {
       if (char === QUOTE && fieldStart) quoted = true;
       fieldStart = false;
     }
-    if (data) return DELIMITERS.find((candidate) => found.has(candidate)) || '\t';
+    if (data) for (const candidate of found) lines.set(candidate, lines.get(candidate) + 1);
   }
-  return '\t';
+  let best = DELIMITERS[0];
+  for (const candidate of DELIMITERS) if (lines.get(candidate) > lines.get(best)) best = candidate;
+  return best;
 }
 
 /* Quote aware reader, so a definition may legitimately hold the delimiter as

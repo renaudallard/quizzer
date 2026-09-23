@@ -198,8 +198,9 @@ the storage figure in the settings counts it.
 - **CSV** is quote aware on both sides, so a definition may contain a comma,
   a semicolon or a line break. A header row is recognised and skipped, in
   French, English or Dutch.
-- **Pasted text** accepts tab, semicolon or comma as the separator, detected
-  from the first line that holds data, with quoted fields taken into account.
+- **Pasted text** accepts tab, semicolon or comma as the separator: the one
+  found on the most lines that hold data wins, tab first, then semicolon, then
+  comma on a tie, and quoted fields are taken into account.
   A line that starts with `#`, spaces and tabs aside, is a comment and is
   ignored, and a line of spaces or tabs holds no data; quote a term that
   starts with `#` to keep it. The CSV export does this by itself.
