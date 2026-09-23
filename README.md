@@ -105,7 +105,9 @@ When several cards share a prompt, such as `hola` and `buenos días` which both
 mean `bonjour`, each of their answers is right: the quiz never offers one as a
 wrong option, and a typed answer may be any of them. Prompts are shared when
 they differ only by case or punctuation; accents count, so `ou` and `où` stay
-two different prompts.
+two different prompts. In Associer, tiles that read exactly the same are
+interchangeable, and whichever of them is used, the rest of the board can
+still be paired.
 
 A wrong answer can still be claimed with the "Je l'avais" button. Nothing is
 written to the store until you move to the next card, so the override never
