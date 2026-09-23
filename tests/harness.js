@@ -401,9 +401,8 @@ async function run() {
     const nodes = [...shell.querySelectorAll('[data-i18n]')];
     const stale = nodes.filter((node) => node.textContent.trim() !== reference[node.dataset.i18n]);
     assert(!stale.length, 'textes différents: ' + stale.map((node) => node.dataset.i18n).join(', '));
-    const names = ['data-i18n-aria-label', 'data-i18n-title', 'data-i18n-placeholder'];
-    const keyed = [...shell.querySelectorAll(names.map((name) => '[' + name + ']').join(','))]
-      .flatMap((node) => names.map((name) => node.getAttribute(name)).filter(Boolean));
+    const keyed = [...shell.querySelectorAll('[data-i18n-aria-label]')]
+      .map((node) => node.getAttribute('data-i18n-aria-label'));
     const unknown = keyed.filter((key) => !Object.hasOwn(reference, key));
     assert(!unknown.length, 'clés inconnues: ' + unknown.join(', '));
     return nodes.length + ' textes, ' + keyed.length + ' attributs';

@@ -126,21 +126,14 @@ export function formatRelativeDays(days) {
     .format(days, 'day');
 }
 
-const ATTRS = {
-  'data-i18n-aria-label': 'aria-label',
-  'data-i18n-title': 'title',
-  'data-i18n-placeholder': 'placeholder',
-};
-
 /* Translates markup written directly in index.html, which ships in French so
-   the first paint is already correct with no script running. */
+   the first paint is already correct with no script running: the text of
+   elements marked data-i18n, and the labels marked data-i18n-aria-label. */
 export function applyStatic(root = document) {
   for (const node of root.querySelectorAll('[data-i18n]')) {
     node.textContent = t(node.dataset.i18n);
   }
-  for (const [dataAttr, target] of Object.entries(ATTRS)) {
-    for (const node of root.querySelectorAll('[' + dataAttr + ']')) {
-      node.setAttribute(target, t(node.getAttribute(dataAttr)));
-    }
+  for (const node of root.querySelectorAll('[data-i18n-aria-label]')) {
+    node.setAttribute('aria-label', t(node.getAttribute('data-i18n-aria-label')));
   }
 }
