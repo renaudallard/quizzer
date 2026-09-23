@@ -89,7 +89,7 @@ export function statsView(id) {
                 el('th', { class: 'num' }, t('stats.col.level')),
                 el('th', { class: 'num' }, t('stats.col.due')))),
               el('tbody', {}, hardest.map((card) => el('tr', {},
-                el('td', {}, truncate(card.term, 42)),
+                el('td', { lang: set.termLang || null }, truncate(card.term, 42)),
                 el('td', { class: 'num' }, String(card.seen)),
                 el('td', { class: 'num' }, formatPercent(pct(card.correct, card.seen))),
                 el('td', { class: 'num' }, String(card.lapses)),
