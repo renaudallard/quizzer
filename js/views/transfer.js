@@ -41,8 +41,8 @@ function importPanel() {
       setTheme(getTheme());
       toast(tn('transfer.importOk', count));
       navigate('');
-    } catch (error) {
-      toast(t('transfer.importFailed', { reason: error.message }));
+    } catch {
+      toast(t('transfer.importFailed'));
     } finally {
       input.value = '';
     }
@@ -74,8 +74,8 @@ function pastePanel() {
     try {
       text.value = await readText(chosen);
       if (!name.value.trim()) name.value = chosen.name.replace(/\.[^.]+$/, '');
-    } catch (error) {
-      toast(t('transfer.importFailed', { reason: error.message }));
+    } catch {
+      toast(t('transfer.fileFailed'));
     } finally {
       file.value = '';
     }
