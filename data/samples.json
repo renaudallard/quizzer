@@ -46,6 +46,11 @@
       "id": "geo",
       "title": "Géographie",
       "description": "Les capitales du monde par continent, les départements français, les provinces de Belgique, les monnaies et les nationalités."
+    },
+    {
+      "id": "fun",
+      "title": "Curiosités",
+      "description": "L’alphabet grec, les chiffres romains, l’alphabet de l’OTAN et les termes musicaux italiens."
     }
   ],
   "sets": [
@@ -16213,6 +16218,458 @@
         {
           "term": "Nouvelle-Zélande",
           "def": "néo-zélandais"
+        }
+      ]
+    },
+    {
+      "id": "sample-fun-alphabet-grec",
+      "group": "fun",
+      "title": "L’alphabet grec",
+      "description": "Les vingt-quatre lettres, minuscule et majuscule, et leur nom.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "α (Α)",
+          "def": "alpha"
+        },
+        {
+          "term": "β (Β)",
+          "def": "bêta"
+        },
+        {
+          "term": "γ (Γ)",
+          "def": "gamma"
+        },
+        {
+          "term": "δ (Δ)",
+          "def": "delta"
+        },
+        {
+          "term": "ε (Ε)",
+          "def": "epsilon"
+        },
+        {
+          "term": "ζ (Ζ)",
+          "def": "zêta"
+        },
+        {
+          "term": "η (Η)",
+          "def": "êta"
+        },
+        {
+          "term": "θ (Θ)",
+          "def": "thêta"
+        },
+        {
+          "term": "ι (Ι)",
+          "def": "iota"
+        },
+        {
+          "term": "κ (Κ)",
+          "def": "kappa"
+        },
+        {
+          "term": "λ (Λ)",
+          "def": "lambda"
+        },
+        {
+          "term": "μ (Μ)",
+          "def": "mu"
+        },
+        {
+          "term": "ν (Ν)",
+          "def": "nu"
+        },
+        {
+          "term": "ξ (Ξ)",
+          "def": "xi"
+        },
+        {
+          "term": "ο (Ο)",
+          "def": "omicron"
+        },
+        {
+          "term": "π (Π)",
+          "def": "pi"
+        },
+        {
+          "term": "ρ (Ρ)",
+          "def": "rhô"
+        },
+        {
+          "term": "σ (Σ)",
+          "def": "sigma"
+        },
+        {
+          "term": "τ (Τ)",
+          "def": "tau"
+        },
+        {
+          "term": "υ (Υ)",
+          "def": "upsilon"
+        },
+        {
+          "term": "φ (Φ)",
+          "def": "phi"
+        },
+        {
+          "term": "χ (Χ)",
+          "def": "chi / khi"
+        },
+        {
+          "term": "ψ (Ψ)",
+          "def": "psi"
+        },
+        {
+          "term": "ω (Ω)",
+          "def": "oméga"
+        }
+      ]
+    },
+    {
+      "id": "sample-fun-chiffres-romains",
+      "group": "fun",
+      "title": "Chiffres romains",
+      "description": "Les sept symboles, les soustractions et quelques nombres et dates.",
+      "termLang": "fr",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "I",
+          "def": "1"
+        },
+        {
+          "term": "V",
+          "def": "5"
+        },
+        {
+          "term": "X",
+          "def": "10"
+        },
+        {
+          "term": "L",
+          "def": "50"
+        },
+        {
+          "term": "C",
+          "def": "100"
+        },
+        {
+          "term": "D",
+          "def": "500"
+        },
+        {
+          "term": "M",
+          "def": "1 000"
+        },
+        {
+          "term": "IV",
+          "def": "4"
+        },
+        {
+          "term": "IX",
+          "def": "9"
+        },
+        {
+          "term": "XIV",
+          "def": "14"
+        },
+        {
+          "term": "XIX",
+          "def": "19"
+        },
+        {
+          "term": "XXIV",
+          "def": "24"
+        },
+        {
+          "term": "XL",
+          "def": "40"
+        },
+        {
+          "term": "XLII",
+          "def": "42"
+        },
+        {
+          "term": "LXXVII",
+          "def": "77"
+        },
+        {
+          "term": "XC",
+          "def": "90"
+        },
+        {
+          "term": "XCIX",
+          "def": "99"
+        },
+        {
+          "term": "CXL",
+          "def": "140"
+        },
+        {
+          "term": "CD",
+          "def": "400"
+        },
+        {
+          "term": "CDXLIV",
+          "def": "444"
+        },
+        {
+          "term": "DCCC",
+          "def": "800"
+        },
+        {
+          "term": "CM",
+          "def": "900"
+        },
+        {
+          "term": "MDCCLXXXIX",
+          "def": "1789"
+        },
+        {
+          "term": "MCMXIV",
+          "def": "1914"
+        },
+        {
+          "term": "MCMXCIX",
+          "def": "1999"
+        },
+        {
+          "term": "MM",
+          "def": "2 000"
+        },
+        {
+          "term": "MMXXVI",
+          "def": "2026"
+        },
+        {
+          "term": "MMMCMXCIX",
+          "def": "3 999"
+        }
+      ]
+    },
+    {
+      "id": "sample-fun-alphabet-otan",
+      "group": "fun",
+      "title": "Alphabet de l’OTAN",
+      "description": "L’alphabet d’épellation de la radio, d’Alfa à Zulu.",
+      "termLang": "fr",
+      "defLang": "en",
+      "cards": [
+        {
+          "term": "A",
+          "def": "Alfa / Alpha"
+        },
+        {
+          "term": "B",
+          "def": "Bravo"
+        },
+        {
+          "term": "C",
+          "def": "Charlie"
+        },
+        {
+          "term": "D",
+          "def": "Delta"
+        },
+        {
+          "term": "E",
+          "def": "Echo"
+        },
+        {
+          "term": "F",
+          "def": "Foxtrot"
+        },
+        {
+          "term": "G",
+          "def": "Golf"
+        },
+        {
+          "term": "H",
+          "def": "Hotel"
+        },
+        {
+          "term": "I",
+          "def": "India"
+        },
+        {
+          "term": "J",
+          "def": "Juliett / Juliet"
+        },
+        {
+          "term": "K",
+          "def": "Kilo"
+        },
+        {
+          "term": "L",
+          "def": "Lima"
+        },
+        {
+          "term": "M",
+          "def": "Mike"
+        },
+        {
+          "term": "N",
+          "def": "November"
+        },
+        {
+          "term": "O",
+          "def": "Oscar"
+        },
+        {
+          "term": "P",
+          "def": "Papa"
+        },
+        {
+          "term": "Q",
+          "def": "Quebec"
+        },
+        {
+          "term": "R",
+          "def": "Romeo"
+        },
+        {
+          "term": "S",
+          "def": "Sierra"
+        },
+        {
+          "term": "T",
+          "def": "Tango"
+        },
+        {
+          "term": "U",
+          "def": "Uniform"
+        },
+        {
+          "term": "V",
+          "def": "Victor"
+        },
+        {
+          "term": "W",
+          "def": "Whiskey"
+        },
+        {
+          "term": "X",
+          "def": "X-ray"
+        },
+        {
+          "term": "Y",
+          "def": "Yankee"
+        },
+        {
+          "term": "Z",
+          "def": "Zulu"
+        }
+      ]
+    },
+    {
+      "id": "sample-fun-termes-musicaux",
+      "group": "fun",
+      "title": "Termes musicaux italiens",
+      "description": "Mouvements, nuances et articulations.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "largo",
+          "def": "large (lent)"
+        },
+        {
+          "term": "lento",
+          "def": "lent"
+        },
+        {
+          "term": "adagio",
+          "def": "à l’aise"
+        },
+        {
+          "term": "andante",
+          "def": "allant"
+        },
+        {
+          "term": "moderato",
+          "def": "modéré"
+        },
+        {
+          "term": "allegretto",
+          "def": "assez allègre / assez vite"
+        },
+        {
+          "term": "allegro",
+          "def": "allègre / gai"
+        },
+        {
+          "term": "vivace",
+          "def": "vif"
+        },
+        {
+          "term": "presto",
+          "def": "rapide"
+        },
+        {
+          "term": "prestissimo",
+          "def": "très rapide / extrêmement rapide"
+        },
+        {
+          "term": "accelerando",
+          "def": "en accélérant"
+        },
+        {
+          "term": "ritardando",
+          "def": "en retardant"
+        },
+        {
+          "term": "rallentando",
+          "def": "en ralentissant"
+        },
+        {
+          "term": "a tempo",
+          "def": "retour au tempo"
+        },
+        {
+          "term": "pianissimo",
+          "def": "très faible / très doucement"
+        },
+        {
+          "term": "piano",
+          "def": "faible / doucement"
+        },
+        {
+          "term": "mezzo piano",
+          "def": "moyennement faible / modérément doux"
+        },
+        {
+          "term": "mezzo forte",
+          "def": "moyennement fort / modérément fort"
+        },
+        {
+          "term": "forte",
+          "def": "fort"
+        },
+        {
+          "term": "fortissimo",
+          "def": "très fort"
+        },
+        {
+          "term": "crescendo",
+          "def": "en augmentant (le son)"
+        },
+        {
+          "term": "decrescendo / diminuendo",
+          "def": "en diminuant (le son)"
+        },
+        {
+          "term": "legato",
+          "def": "lié"
+        },
+        {
+          "term": "staccato",
+          "def": "détaché"
+        },
+        {
+          "term": "da capo",
+          "def": "depuis le début / du début"
         }
       ]
     }

@@ -79,14 +79,14 @@ is reached the tile stops at the goal and its caption gives the real count.
 
 "Charger les exemples" offers the sets that ship with the site, in groups:
 three courses for French speakers, in Dutch, English and Italian, Spanish
-basics, French, mathematics, sciences, history and geography. Each course has
-twenty-six sets and about 900 words and phrases, on the same plan. Sets 1 to
-12 lay the basics, from first words and numbers to everyday verbs, adjectives
-and the small words that hold sentences together. Sets 13 to 26 go further:
-work, school, nature and weather, animals, leisure, shopping, travel and
-feelings, then telling the time, verbs that behave in their own way, irregular
-verbs, everyday expressions, a drill and plurals. Read aloud speaks each
-course in its own language.
+basics, French, mathematics, sciences, history, geography and a few
+curiosities. Each course has twenty-six sets and about 900 words and phrases,
+on the same plan. Sets 1 to 12 lay the basics, from first words and numbers to
+everyday verbs, adjectives and the small words that hold sentences together.
+Sets 13 to 26 go further: work, school, nature and weather, animals, leisure,
+shopping, travel and feelings, then telling the time, verbs that behave in
+their own way, irregular verbs, everyday expressions, a drill and plurals.
+Read aloud speaks each course in its own language.
 
 Where the languages differ, so do the sets:
 
@@ -157,6 +157,12 @@ Equatorial Guinea's hint recalls that Malabo was the capital until 2026. The
 capitals, départements and provinces follow the French Wikipedia lists and
 articles, the currencies each country's article, and the adjectives the
 French Wiktionary.
+
+Curiosités has the Greek alphabet, Roman numerals, the NATO spelling
+alphabet, read aloud in English, and the Italian music terms for tempo,
+dynamics and articulation. The letter names, spelling words and music terms
+follow the French Wikipedia articles, and every numeral was checked by
+converting it back.
 
 The button is on the empty home page and above your sets once you have some.
 It opens the list of samples by group, each course and each subject with its
