@@ -32,7 +32,7 @@ compile and nothing to configure.
 | **Flashcards** | Flip through the cards, shuffle them, reverse them, mark the hard ones, or sort them into "je sais" and "à revoir" and go over the second pile | no |
 | **Apprendre** | Every card is first picked out in multiple choice, then typed from memory; the cards you know least come first, seven at a time, a miss sends a card back to multiple choice, and the score counts the cards never missed | yes |
 | **Révision espacée** | Only the cards that are due, graded by you as "à revoir" or "je savais" | yes |
-| **Quiz** | Multiple choice, true or false and written answers, in either direction | yes |
+| **Quiz** | Multiple choice, true or false and written answers, in either direction, with an optional time limit | yes |
 | **Écrire** | Type every answer; a card you miss returns later in the round, and the score counts the cards right the first time | yes |
 | **Associer** | Pair six terms with their definitions against the clock | best time only |
 
@@ -42,6 +42,13 @@ and grading yourself for the schedule is what Révision espacée is for. The
 piles last for the pass. At its end the score counts the cards you knew, the
 others are listed, and one button goes through just those; turning sorting
 off brings the whole set back.
+
+The quiz can run against a time limit, from one to thirty minutes. The
+countdown sits above the question and turns red for the last fifth of the
+time, a minute at most. When it runs out the quiz ends: an answer already
+given counts, and the questions not reached count as missed in the result and
+in the replay of the misses, but leave the schedule alone since they were not
+tried.
 
 ### Spaced repetition
 
@@ -240,19 +247,19 @@ counts the card twice.
 Serve the directory and open <http://localhost:8080/tests/harness.html>. It
 exercises the store, the Leitner ladder, answer grading, the CSV and share link
 round trips, and reading CSV files in UTF-8, UTF-16 and Windows-1252. It
-renders all fourteen views in every interface language, failing on any key
-that no catalogue holds and on any `{placeholder}` left unfilled. It checks
-that each catalogue has exactly the French keys, with the same
-`{placeholders}` in every string, and that the French text built into
-`index.html` matches the French catalogue and its attribute keys exist. On the home
-page it checks that the daily goal figure stops at the goal, that the goal tile
-opens its setting with the field focused, and that percentages follow the
-interface language. It restores a full backup into an emptied store and
-compares every part, imports it a second time to show that nothing doubles,
-and feeds in a damaged backup that must change nothing. It also plays a full
-quiz, a learn round, a full write round, a match round, a review session, a
-flashcard pass and a sorted one to their summary screens, the sorted pass
-leaving the schedule alone.
+renders all fourteen views in every interface language, failing on any key that
+no catalogue holds and on any `{placeholder}` left unfilled. It checks that
+each catalogue has exactly the French keys, with the same `{placeholders}` in
+every string, and that the French text built into `index.html` matches the
+French catalogue and its attribute keys exist. On the home page it checks that
+the daily goal figure stops at the goal, that the goal tile opens its setting
+with the field focused, and that percentages follow the interface language. It
+restores a full backup into an emptied store and compares every part, imports
+it a second time to show that nothing doubles, and feeds in a damaged backup
+that must change nothing. It also plays a full quiz, a timed one, a learn
+round, a full write round, a match round, a review session, a flashcard pass
+and a sorted one to their summary screens, the sorted pass leaving the schedule
+alone.
 
 Your own data, including any unreadable copy set aside, is read out of
 `localStorage` before the run and put back after it, or as the page closes if

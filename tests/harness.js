@@ -258,6 +258,28 @@ async function run() {
     return steps + ' questions';
   });
 
+  check('le quiz minuté affiche son décompte', () => {
+    main.replaceChildren(quizView(set.id));
+    main.querySelectorAll('select')[2].value = '1';
+    main.querySelector('.panel .btn-primary').click();
+    const clock = main.querySelector('.quiz-timer');
+    assert(clock, 'pas de décompte');
+    assert(clock.textContent === i18n.t('quiz.timeLeft', { time: '1:00' }), 'décompte: ' + clock.textContent);
+    let steps = 0;
+    while (!main.querySelector('.summary') && steps++ < 200) {
+      const option = main.querySelector('.option:not([disabled])');
+      if (option) option.click();
+      else {
+        main.querySelector('.answer-form input:not([readonly])').value = 'x';
+        main.querySelector('.answer-form button').click();
+      }
+      main.querySelector('.study-nav .btn-primary').click();
+    }
+    assert(main.querySelector('.summary h2').textContent === i18n.t('quiz.resultTitle'), 'fini avant la limite');
+    assert(!main.querySelector('.quiz-timer'), 'le décompte reste affiché');
+    return steps + ' questions';
+  });
+
   check('apprendre mène chaque carte jusqu’à l’écrit', () => {
     const small = store.createSet({ title: 'Petit', cards: [
       { term: 'a', def: 'alpha' }, { term: 'b', def: 'beta' }, { term: 'c', def: 'gamma' },

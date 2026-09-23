@@ -484,6 +484,8 @@ a.stat-tile:hover { border-color: var(--accent); transform: translateY(-2px); co
 
 .question { margin-bottom: 20px; }
 .question-kind { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); font-weight: 650; }
+.quiz-timer { margin: 0 0 12px; text-align: right; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.quiz-timer[data-low="1"] { color: var(--critical-ink); font-weight: 650; }
 .question-prompt {
   font-size: clamp(1.25rem, 1rem + 1.4vw, 1.6rem); font-weight: 600;
   padding: 26px 22px; margin: 8px 0 0; background: var(--surface);
