@@ -138,6 +138,9 @@ export function levenshtein(a, b) {
   return prev[b.length];
 }
 
+/* A number is right or wrong: one digit more or less is another number. */
+const NUMBER = /^−?\d+( \d+)*$/;
+
 function typoBudget(length) {
   if (length <= 4) return 0;
   if (length <= 8) return 1;
@@ -177,7 +180,7 @@ export function grade(input, expected, options = {}) {
     }
     /* The allowance follows the expected answer, so padding a short answer
        cannot buy a typo and a long answer keeps its slack. */
-    if (typos && levenshtein(givenLoose, loose) <= typoBudget(loose.length)) near = true;
+    if (typos && !NUMBER.test(loose) && levenshtein(givenLoose, loose) <= typoBudget(loose.length)) near = true;
   }
 
   if (accentOnly) return { verdict: 'almost', accent: true };

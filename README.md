@@ -217,8 +217,9 @@ punctuation, such as `?`, is compared exactly as typed.
 Numbers keep their meaning. A point, comma or colon between digits still
 separates them, so `314` is wrong for `3,14` while `3.14` and `3 14` are
 right; a space before a group of three digits only groups them, so `1000`
-matches `1 000`; and a minus sign in front of a number counts, so `5` is
-wrong for `-5`.
+matches `1 000`; a minus sign in front of a number counts, so `5` is wrong
+for `-5`; and a number gets no typo allowance, since one digit more or less
+makes another number: `0,01` is wrong for `0,001`.
 
 Formulas are graded as formulas. An answer that holds an operator or a maths
 sign, such as `+`, `=`, `×`, `^`, `√`, `≤` or `²`, a factorial such as `5!`,
@@ -241,7 +242,8 @@ Two tolerances are on by default and can be turned off in the settings:
   accented. With the tolerance off the answer is graded "presque" and the
   interface says accents count.
 - **Typos.** One wrong letter up to eight letters, two beyond that, gives
-  "presque" rather than "raté". Under five letters nothing is forgiven.
+  "presque" rather than "raté". Under five letters nothing is forgiven,
+  and in a number nothing ever is.
   The length that counts is the expected answer's, not what was typed.
 
 A definition may list alternatives with ` / ` or `;`, and a parenthesised
