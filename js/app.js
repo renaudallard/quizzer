@@ -78,10 +78,13 @@ function setupSaveAlert() {
 
 /* Another tab has written the store. Taking its data now means a save from
    this tab cannot put an older copy back. The page is rebuilt to show it,
-   unless it holds a draft or a round, whose own saves go by id. */
+   unless it holds a draft or a round, whose own saves go by id. A tab that
+   could not save keeps what it holds instead, alert included, since loading
+   would throw its changes away. */
 function followOtherTabs() {
   window.addEventListener('storage', (event) => {
     if (event.key !== null && event.key !== store.STORAGE_KEY) return;
+    if (store.unsaved()) return;
     store.load();
     initTheme();
     const before = getLocale();
