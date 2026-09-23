@@ -1,9 +1,42 @@
 {
   "app": "quizzer",
   "version": 1,
+  "groups": [
+    {
+      "id": "nl",
+      "title": "Néerlandais",
+      "description": "Un cours en 26 jeux pour francophones, des premiers mots aux verbes irréguliers."
+    },
+    {
+      "id": "en",
+      "title": "Anglais",
+      "description": "Un cours en 26 jeux pour francophones, et les verbes irréguliers les plus courants."
+    },
+    {
+      "id": "it",
+      "title": "Italien",
+      "description": "Un cours en 26 jeux pour francophones, des premiers mots aux verbes irréguliers."
+    },
+    {
+      "id": "es",
+      "title": "Espagnol",
+      "description": "Les 30 mots essentiels."
+    },
+    {
+      "id": "sci",
+      "title": "Sciences",
+      "description": "Les symboles chimiques courants."
+    },
+    {
+      "id": "geo",
+      "title": "Géographie",
+      "description": "Les capitales d’Europe."
+    }
+  ],
   "sets": [
     {
       "id": "sample-es-base",
+      "group": "es",
       "title": "Espagnol: les 30 mots essentiels",
       "description": "De quoi tenir une première conversation.",
       "termLang": "es",
@@ -134,6 +167,7 @@
     },
     {
       "id": "sample-nl-01",
+      "group": "nl",
       "title": "Néerlandais 1: premiers mots",
       "description": "Saluer, remercier, s'excuser et faire connaissance.",
       "termLang": "nl",
@@ -278,6 +312,7 @@
     },
     {
       "id": "sample-nl-02",
+      "group": "nl",
       "title": "Néerlandais 2: les nombres",
       "description": "De zéro à un million, et les premiers ordinaux.",
       "termLang": "nl",
@@ -431,6 +466,7 @@
     },
     {
       "id": "sample-nl-03",
+      "group": "nl",
       "title": "Néerlandais 3: le temps et le calendrier",
       "description": "Les jours, les mois, les saisons et les moments de la journée.",
       "termLang": "nl",
@@ -592,6 +628,7 @@
     },
     {
       "id": "sample-nl-04",
+      "group": "nl",
       "title": "Néerlandais 4: la famille et les gens",
       "description": "La famille, les proches et les gens autour de soi.",
       "termLang": "nl",
@@ -729,6 +766,7 @@
     },
     {
       "id": "sample-nl-05",
+      "group": "nl",
       "title": "Néerlandais 5: manger et boire",
       "description": "Les repas, les aliments, les boissons et le couvert.",
       "termLang": "nl",
@@ -898,6 +936,7 @@
     },
     {
       "id": "sample-nl-06",
+      "group": "nl",
       "title": "Néerlandais 6: la maison",
       "description": "Les pièces, les meubles et les objets de la maison.",
       "termLang": "nl",
@@ -1044,6 +1083,7 @@
     },
     {
       "id": "sample-nl-07",
+      "group": "nl",
       "title": "Néerlandais 7: le corps et la santé",
       "description": "Le corps, et de quoi dire que l'on ne va pas bien.",
       "termLang": "nl",
@@ -1181,6 +1221,7 @@
     },
     {
       "id": "sample-nl-08",
+      "group": "nl",
       "title": "Néerlandais 8: vêtements et couleurs",
       "description": "Les vêtements, les accessoires et les couleurs.",
       "termLang": "nl",
@@ -1318,6 +1359,7 @@
     },
     {
       "id": "sample-nl-09",
+      "group": "nl",
       "title": "Néerlandais 9: la ville et les transports",
       "description": "Se déplacer, s'orienter et trouver les lieux utiles.",
       "termLang": "nl",
@@ -1456,6 +1498,7 @@
     },
     {
       "id": "sample-nl-10",
+      "group": "nl",
       "title": "Néerlandais 10: les verbes courants",
       "description": "Quarante verbes du quotidien, à l'infinitif.",
       "termLang": "nl",
@@ -1629,6 +1672,7 @@
     },
     {
       "id": "sample-nl-11",
+      "group": "nl",
       "title": "Néerlandais 11: les adjectifs",
       "description": "Quarante adjectifs, souvent par paires de contraires.",
       "termLang": "nl",
@@ -1799,6 +1843,7 @@
     },
     {
       "id": "sample-nl-12",
+      "group": "nl",
       "title": "Néerlandais 12: les petits mots",
       "description": "Questions, pronoms, liaisons et petits mots de tous les jours.",
       "termLang": "nl",
@@ -1971,6 +2016,7 @@
     },
     {
       "id": "sample-nl-13",
+      "group": "nl",
       "title": "Néerlandais 13: le travail et les métiers",
       "description": "Les métiers, le bureau et la vie professionnelle.",
       "termLang": "nl",
@@ -2122,6 +2168,7 @@
     },
     {
       "id": "sample-nl-14",
+      "group": "nl",
       "title": "Néerlandais 14: l'école et les études",
       "description": "La classe, les matières et le matériel scolaire.",
       "termLang": "nl",
@@ -2280,6 +2327,7 @@
     },
     {
       "id": "sample-nl-15",
+      "group": "nl",
       "title": "Néerlandais 15: la nature et la météo",
       "description": "Le temps qu'il fait, les paysages et la nature.",
       "termLang": "nl",
@@ -2425,6 +2473,7 @@
     },
     {
       "id": "sample-nl-16",
+      "group": "nl",
       "title": "Néerlandais 16: les animaux",
       "description": "Les animaux de la maison, de la ferme et du monde sauvage.",
       "termLang": "nl",
@@ -2566,6 +2615,7 @@
     },
     {
       "id": "sample-nl-17",
+      "group": "nl",
       "title": "Néerlandais 17: loisirs et sports",
       "description": "Le temps libre, le sport, la musique et les sorties.",
       "termLang": "nl",
@@ -2695,6 +2745,7 @@
     },
     {
       "id": "sample-nl-18",
+      "group": "nl",
       "title": "Néerlandais 18: les courses et l'argent",
       "description": "Acheter, payer et compter son argent.",
       "termLang": "nl",
@@ -2830,6 +2881,7 @@
     },
     {
       "id": "sample-nl-19",
+      "group": "nl",
       "title": "Néerlandais 19: voyages et vacances",
       "description": "Partir, réserver, se loger et visiter.",
       "termLang": "nl",
@@ -2959,6 +3011,7 @@
     },
     {
       "id": "sample-nl-20",
+      "group": "nl",
       "title": "Néerlandais 20: émotions et caractère",
       "description": "Dire ce que l'on ressent et décrire quelqu'un.",
       "termLang": "nl",
@@ -3092,6 +3145,7 @@
     },
     {
       "id": "sample-nl-21",
+      "group": "nl",
       "title": "Néerlandais 21: l'heure",
       "description": "Lire l'heure à la néerlandaise, où « half drie » veut dire deux heures et demie.",
       "termLang": "nl",
@@ -3213,6 +3267,7 @@
     },
     {
       "id": "sample-nl-22",
+      "group": "nl",
       "title": "Néerlandais 22: les verbes à particule",
       "description": "Des verbes qui se séparent: « opstaan », mais « ik sta op ».",
       "termLang": "nl",
@@ -3364,6 +3419,7 @@
     },
     {
       "id": "sample-nl-23",
+      "group": "nl",
       "title": "Néerlandais 23: les verbes irréguliers",
       "description": "Infinitif, imparfait et participe passé avec son auxiliaire: gaan, ging, is gegaan.",
       "termLang": "nl",
@@ -3533,6 +3589,7 @@
     },
     {
       "id": "sample-nl-24",
+      "group": "nl",
       "title": "Néerlandais 24: expressions courantes",
       "description": "Les tournures que l'on entend tous les jours.",
       "termLang": "nl",
@@ -3678,6 +3735,7 @@
     },
     {
       "id": "sample-nl-25",
+      "group": "nl",
       "title": "Néerlandais 25: de ou het ?",
       "description": "Le bon article pour quarante noms courants, avec leur sens en indice.",
       "termLang": "nl",
@@ -3887,6 +3945,7 @@
     },
     {
       "id": "sample-nl-26",
+      "group": "nl",
       "title": "Néerlandais 26: les pluriels",
       "description": "Le pluriel des noms courants, réguliers ou non, avec leur sens en indice.",
       "termLang": "nl",
@@ -4056,6 +4115,7 @@
     },
     {
       "id": "sample-en-01",
+      "group": "en",
       "title": "Anglais 1: premiers mots",
       "description": "Saluer, remercier, s'excuser et faire connaissance.",
       "termLang": "en",
@@ -4196,6 +4256,7 @@
     },
     {
       "id": "sample-en-02",
+      "group": "en",
       "title": "Anglais 2: les nombres",
       "description": "De zéro à un million, et les premiers ordinaux.",
       "termLang": "en",
@@ -4349,6 +4410,7 @@
     },
     {
       "id": "sample-en-03",
+      "group": "en",
       "title": "Anglais 3: le temps et le calendrier",
       "description": "Les jours, les mois, les saisons et les moments de la journée.",
       "termLang": "en",
@@ -4510,6 +4572,7 @@
     },
     {
       "id": "sample-en-04",
+      "group": "en",
       "title": "Anglais 4: la famille et les gens",
       "description": "La famille, les proches et les gens autour de soi.",
       "termLang": "en",
@@ -4661,6 +4724,7 @@
     },
     {
       "id": "sample-en-05",
+      "group": "en",
       "title": "Anglais 5: manger et boire",
       "description": "Les repas, les aliments, les boissons et le couvert.",
       "termLang": "en",
@@ -4830,6 +4894,7 @@
     },
     {
       "id": "sample-en-06",
+      "group": "en",
       "title": "Anglais 6: la maison",
       "description": "Les pièces, les meubles et les objets de la maison.",
       "termLang": "en",
@@ -4975,6 +5040,7 @@
     },
     {
       "id": "sample-en-07",
+      "group": "en",
       "title": "Anglais 7: le corps et la santé",
       "description": "Le corps, et de quoi dire que l'on ne va pas bien.",
       "termLang": "en",
@@ -5112,6 +5178,7 @@
     },
     {
       "id": "sample-en-08",
+      "group": "en",
       "title": "Anglais 8: vêtements et couleurs",
       "description": "Les vêtements, les accessoires et les couleurs.",
       "termLang": "en",
@@ -5249,6 +5316,7 @@
     },
     {
       "id": "sample-en-09",
+      "group": "en",
       "title": "Anglais 9: la ville et les transports",
       "description": "Se déplacer, s'orienter et trouver les lieux utiles.",
       "termLang": "en",
@@ -5386,6 +5454,7 @@
     },
     {
       "id": "sample-en-10",
+      "group": "en",
       "title": "Anglais 10: les verbes courants",
       "description": "Quarante verbes du quotidien.",
       "termLang": "en",
@@ -5559,6 +5628,7 @@
     },
     {
       "id": "sample-en-11",
+      "group": "en",
       "title": "Anglais 11: les adjectifs",
       "description": "Quarante adjectifs, souvent par paires de contraires.",
       "termLang": "en",
@@ -5729,6 +5799,7 @@
     },
     {
       "id": "sample-en-12",
+      "group": "en",
       "title": "Anglais 12: les petits mots",
       "description": "Questions, pronoms, liaisons et petits mots de tous les jours.",
       "termLang": "en",
@@ -5898,6 +5969,7 @@
     },
     {
       "id": "sample-en-13",
+      "group": "en",
       "title": "Anglais 13: le travail et les métiers",
       "description": "Les métiers, le bureau et la vie professionnelle.",
       "termLang": "en",
@@ -6049,6 +6121,7 @@
     },
     {
       "id": "sample-en-14",
+      "group": "en",
       "title": "Anglais 14: l'école et les études",
       "description": "La classe, les matières et le matériel scolaire.",
       "termLang": "en",
@@ -6206,6 +6279,7 @@
     },
     {
       "id": "sample-en-15",
+      "group": "en",
       "title": "Anglais 15: la nature et la météo",
       "description": "Le temps qu'il fait, les paysages et la nature.",
       "termLang": "en",
@@ -6355,6 +6429,7 @@
     },
     {
       "id": "sample-en-16",
+      "group": "en",
       "title": "Anglais 16: les animaux",
       "description": "Les animaux de la maison, de la ferme et du monde sauvage.",
       "termLang": "en",
@@ -6496,6 +6571,7 @@
     },
     {
       "id": "sample-en-17",
+      "group": "en",
       "title": "Anglais 17: loisirs et sports",
       "description": "Le temps libre, le sport, la musique et les sorties.",
       "termLang": "en",
@@ -6625,6 +6701,7 @@
     },
     {
       "id": "sample-en-18",
+      "group": "en",
       "title": "Anglais 18: les courses et l'argent",
       "description": "Acheter, payer et compter son argent.",
       "termLang": "en",
@@ -6766,6 +6843,7 @@
     },
     {
       "id": "sample-en-19",
+      "group": "en",
       "title": "Anglais 19: voyages et vacances",
       "description": "Partir, réserver, se loger et visiter.",
       "termLang": "en",
@@ -6895,6 +6973,7 @@
     },
     {
       "id": "sample-en-20",
+      "group": "en",
       "title": "Anglais 20: émotions et caractère",
       "description": "Dire ce que l'on ressent et décrire quelqu'un.",
       "termLang": "en",
@@ -7028,6 +7107,7 @@
     },
     {
       "id": "sample-en-21",
+      "group": "en",
       "title": "Anglais 21: l'heure",
       "description": "Lire l'heure en anglais: « quarter past three », « twenty to four », a.m. et p.m.",
       "termLang": "en",
@@ -7161,6 +7241,7 @@
     },
     {
       "id": "sample-en-22",
+      "group": "en",
       "title": "Anglais 22: les verbes à particule",
       "description": "Les « phrasal verbs »: un verbe suivi d'une particule qui en change le sens, comme « give up ».",
       "termLang": "en",
@@ -7314,6 +7395,7 @@
     },
     {
       "id": "sample-en-23",
+      "group": "en",
       "title": "Anglais 23: les verbes irréguliers",
       "description": "Base verbale, prétérit et participe passé: go, went, gone.",
       "termLang": "en",
@@ -7483,6 +7565,7 @@
     },
     {
       "id": "sample-en-24",
+      "group": "en",
       "title": "Anglais 24: expressions courantes",
       "description": "Les tournures que l'on entend tous les jours.",
       "termLang": "en",
@@ -7628,6 +7711,7 @@
     },
     {
       "id": "sample-en-25",
+      "group": "en",
       "title": "Anglais 25: les faux amis",
       "description": "Des mots anglais qui ressemblent à un mot français sans vouloir dire la même chose.",
       "termLang": "en",
@@ -7823,6 +7907,7 @@
     },
     {
       "id": "sample-en-26",
+      "group": "en",
       "title": "Anglais 26: les pluriels",
       "description": "Le pluriel des noms courants, réguliers ou non, avec leur sens en indice.",
       "termLang": "en",
@@ -7992,6 +8077,7 @@
     },
     {
       "id": "sample-it-01",
+      "group": "it",
       "title": "Italien 1: premiers mots",
       "description": "Saluer, remercier, s'excuser et faire connaissance.",
       "termLang": "it",
@@ -8130,6 +8216,7 @@
     },
     {
       "id": "sample-it-02",
+      "group": "it",
       "title": "Italien 2: les nombres",
       "description": "De zéro à un million, et les premiers ordinaux.",
       "termLang": "it",
@@ -8283,6 +8370,7 @@
     },
     {
       "id": "sample-it-03",
+      "group": "it",
       "title": "Italien 3: le temps et le calendrier",
       "description": "Les jours, les mois, les saisons et les moments de la journée.",
       "termLang": "it",
@@ -8449,6 +8537,7 @@
     },
     {
       "id": "sample-it-04",
+      "group": "it",
       "title": "Italien 4: la famille et les gens",
       "description": "La famille, les proches et les gens autour de soi.",
       "termLang": "it",
@@ -8604,6 +8693,7 @@
     },
     {
       "id": "sample-it-05",
+      "group": "it",
       "title": "Italien 5: manger et boire",
       "description": "Les repas, les aliments, les boissons et le couvert.",
       "termLang": "it",
@@ -8776,6 +8866,7 @@
     },
     {
       "id": "sample-it-06",
+      "group": "it",
       "title": "Italien 6: la maison",
       "description": "Les pièces, les meubles et les objets de la maison.",
       "termLang": "it",
@@ -8923,6 +9014,7 @@
     },
     {
       "id": "sample-it-07",
+      "group": "it",
       "title": "Italien 7: le corps et la santé",
       "description": "Le corps, et de quoi dire que l'on ne va pas bien.",
       "termLang": "it",
@@ -9067,6 +9159,7 @@
     },
     {
       "id": "sample-it-08",
+      "group": "it",
       "title": "Italien 8: vêtements et couleurs",
       "description": "Les vêtements, les accessoires et les couleurs.",
       "termLang": "it",
@@ -9205,6 +9298,7 @@
     },
     {
       "id": "sample-it-09",
+      "group": "it",
       "title": "Italien 9: la ville et les transports",
       "description": "Se déplacer, s'orienter et trouver les lieux utiles.",
       "termLang": "it",
@@ -9346,6 +9440,7 @@
     },
     {
       "id": "sample-it-10",
+      "group": "it",
       "title": "Italien 10: les verbes courants",
       "description": "Quarante verbes du quotidien, à l'infinitif.",
       "termLang": "it",
@@ -9515,6 +9610,7 @@
     },
     {
       "id": "sample-it-11",
+      "group": "it",
       "title": "Italien 11: les adjectifs",
       "description": "Quarante adjectifs, souvent par paires de contraires.",
       "termLang": "it",
@@ -9684,6 +9780,7 @@
     },
     {
       "id": "sample-it-12",
+      "group": "it",
       "title": "Italien 12: les petits mots",
       "description": "Questions, pronoms, liaisons et petits mots de tous les jours.",
       "termLang": "it",
@@ -9853,6 +9950,7 @@
     },
     {
       "id": "sample-it-13",
+      "group": "it",
       "title": "Italien 13: le travail et les métiers",
       "description": "Les métiers, le bureau et la vie professionnelle.",
       "termLang": "it",
@@ -10012,6 +10110,7 @@
     },
     {
       "id": "sample-it-14",
+      "group": "it",
       "title": "Italien 14: l'école et les études",
       "description": "La classe, les matières et le matériel scolaire.",
       "termLang": "it",
@@ -10171,6 +10270,7 @@
     },
     {
       "id": "sample-it-15",
+      "group": "it",
       "title": "Italien 15: la nature et la météo",
       "description": "Le temps qu'il fait, les paysages et la nature.",
       "termLang": "it",
@@ -10324,6 +10424,7 @@
     },
     {
       "id": "sample-it-16",
+      "group": "it",
       "title": "Italien 16: les animaux",
       "description": "Les animaux de la maison, de la ferme et du monde sauvage.",
       "termLang": "it",
@@ -10471,6 +10572,7 @@
     },
     {
       "id": "sample-it-17",
+      "group": "it",
       "title": "Italien 17: loisirs et sports",
       "description": "Le temps libre, le sport, la musique et les sorties.",
       "termLang": "it",
@@ -10600,6 +10702,7 @@
     },
     {
       "id": "sample-it-18",
+      "group": "it",
       "title": "Italien 18: les courses et l'argent",
       "description": "Acheter, payer et compter son argent.",
       "termLang": "it",
@@ -10741,6 +10844,7 @@
     },
     {
       "id": "sample-it-19",
+      "group": "it",
       "title": "Italien 19: voyages et vacances",
       "description": "Partir, réserver, se loger et visiter.",
       "termLang": "it",
@@ -10872,6 +10976,7 @@
     },
     {
       "id": "sample-it-20",
+      "group": "it",
       "title": "Italien 20: émotions et caractère",
       "description": "Dire ce que l'on ressent et décrire quelqu'un.",
       "termLang": "it",
@@ -11006,6 +11111,7 @@
     },
     {
       "id": "sample-it-21",
+      "group": "it",
       "title": "Italien 21: l'heure",
       "description": "Lire l'heure en italien, où l'on dit « sono le tre » mais « è l'una ».",
       "termLang": "it",
@@ -11147,6 +11253,7 @@
     },
     {
       "id": "sample-it-22",
+      "group": "it",
       "title": "Italien 22: les verbes pronominaux",
       "description": "Des verbes qui se conjuguent avec un pronom: « alzarsi », mais « mi alzo ».",
       "termLang": "it",
@@ -11292,6 +11399,7 @@
     },
     {
       "id": "sample-it-23",
+      "group": "it",
       "title": "Italien 23: les verbes irréguliers",
       "description": "Infinitif, présent et passé composé à la première personne: andare, vado, sono andato.",
       "termLang": "it",
@@ -11461,6 +11569,7 @@
     },
     {
       "id": "sample-it-24",
+      "group": "it",
       "title": "Italien 24: expressions courantes",
       "description": "Les tournures que l'on entend tous les jours.",
       "termLang": "it",
@@ -11606,6 +11715,7 @@
     },
     {
       "id": "sample-it-25",
+      "group": "it",
       "title": "Italien 25: il, lo, la ou l' ?",
       "description": "Le bon article pour quarante noms courants, avec leur sens en indice.",
       "termLang": "it",
@@ -11815,6 +11925,7 @@
     },
     {
       "id": "sample-it-26",
+      "group": "it",
       "title": "Italien 26: les pluriels",
       "description": "Le pluriel des noms courants, réguliers ou non, avec leur sens en indice.",
       "termLang": "it",
@@ -11984,6 +12095,7 @@
     },
     {
       "id": "sample-capitales-europe",
+      "group": "geo",
       "title": "Capitales d'Europe",
       "description": "26 pays, 26 capitales.",
       "termLang": "fr",
@@ -12099,6 +12211,7 @@
     },
     {
       "id": "sample-en-irreguliers",
+      "group": "en",
       "title": "Verbes irréguliers anglais",
       "description": "Infinitif, prétérit, participe passé.",
       "termLang": "en",
@@ -12220,6 +12333,7 @@
     },
     {
       "id": "sample-symboles-chimiques",
+      "group": "sci",
       "title": "Symboles chimiques",
       "description": "Les 25 éléments que l'on croise le plus souvent.",
       "termLang": "fr",

@@ -117,10 +117,12 @@ has two usual French renderings both are accepted, as with de jas for le
 manteau or la veste.
 
 The button is on the empty home page and above your sets once you have some.
-It only adds the sample sets you do not have yet, so sets added to the site
-later can be loaded too, and one you deleted comes back. The list is checked
-with the server on every click, so a copy the browser kept cannot hide new
-sets.
+It opens the list of samples by group, each course and each subject with its
+number of sets and cards and how many of them you already have. Only the
+groups you tick are added, and of those only the sets you do not have yet, so
+sets added to the site later can be loaded too, and one you deleted comes
+back. The list is asked of the server each time the page opens, so a copy the
+browser kept cannot hide new sets.
 
 ### Editing sets
 
@@ -217,7 +219,7 @@ counts the card twice.
 
     index.html            page shell, written in French with data-i18n hooks
     css/style.css         design tokens, components, print sheet
-    data/samples.json     sample sets, loaded on demand
+    data/samples.json     sample sets by group, loaded on demand
     js/
       app.js              bootstrap, route table, top bar wiring
       router.js           hash router with per route cleanup
@@ -237,7 +239,7 @@ counts the card twice.
       i18n/fr.js          French catalogue, the reference
       i18n/en.js          English catalogue
       i18n/nl.js          Dutch catalogue
-      views/              home, set, editor, stats, settings, transfer
+      views/              home, set, editor, stats, settings, transfer, samples
       modes/              flashcards, learn, review, quiz, write, match
     tests/harness.html    smoke test, open it in a browser
     tests/harness.js      the checks it runs
@@ -247,19 +249,19 @@ counts the card twice.
 Serve the directory and open <http://localhost:8080/tests/harness.html>. It
 exercises the store, the Leitner ladder, answer grading, the CSV and share link
 round trips, and reading CSV files in UTF-8, UTF-16 and Windows-1252. It
-renders all fourteen views in every interface language, failing on any key that
+renders all fifteen views in every interface language, failing on any key that
 no catalogue holds and on any `{placeholder}` left unfilled. It checks that
 each catalogue has exactly the French keys, with the same `{placeholders}` in
 every string, and that the French text built into `index.html` matches the
 French catalogue and its attribute keys exist. On the home page it checks that
 the daily goal figure stops at the goal, that the goal tile opens its setting
 with the field focused, and that percentages follow the interface language. It
-restores a full backup into an emptied store and compares every part, imports
-it a second time to show that nothing doubles, and feeds in a damaged backup
-that must change nothing. It also plays a full quiz, a timed one, a learn
-round, a full write round, a match round, a review session, a flashcard pass
-and a sorted one to their summary screens, the sorted pass leaving the schedule
-alone.
+checks that every sample set belongs to a group. It restores a full backup into
+an emptied store and compares every part, imports it a second time to show that
+nothing doubles, and feeds in a damaged backup that must change nothing. It
+also plays a full quiz, a timed one, a learn round, a full write round, a match
+round, a review session, a flashcard pass and a sorted one to their summary
+screens, the sorted pass leaving the schedule alone.
 
 Your own data, including any unreadable copy set aside, is read out of
 `localStorage` before the run and put back after it, or as the page closes if

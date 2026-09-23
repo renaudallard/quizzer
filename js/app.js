@@ -15,6 +15,7 @@ import { editorView } from './views/editor.js';
 import { statsView } from './views/stats.js';
 import { settingsView, shortcutsView } from './views/settings.js';
 import { transferView, sharedView } from './views/transfer.js';
+import { samplesView } from './views/samples.js';
 import { notFoundPanel } from './views/shared.js';
 import { flashcardsView } from './modes/flashcards.js';
 import { reviewView } from './modes/review.js';
@@ -118,6 +119,7 @@ function setRoutes() {
   router.register(/^$/, () => homeView());
   router.register(/^new$/, () => editorView(null));
   router.register(/^transfer$/, () => transferView());
+  router.register(/^samples$/, () => samplesView());
   router.register(/^settings(?:\/(goal))?$/, (focus) => settingsView(focus));
   router.register(/^shortcuts$/, () => shortcutsView());
   router.register(/^shared\/(.+)$/, (payload) => sharedView(payload));

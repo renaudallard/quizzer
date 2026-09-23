@@ -1,40 +1,12 @@
 /* Dashboard: what is due right now, how the last two weeks went, and the sets
    themselves. */
 
-import { el, icon, toast, mount } from '../dom.js';
+import { el, icon, mount } from '../dom.js';
 import { t, tn, formatDayKey, formatPercent } from '../i18n/index.js';
 import * as store from '../store.js';
 import { dueCards, masteryPct } from '../srs.js';
 import { statTile, meter, activityChart, figure } from '../chart.js';
 import { truncate } from '../text.js';
-import { toastSaved } from './shared.js';
-import { render, currentPath } from '../router.js';
-
-async function loadSamples(button) {
-  button.disabled = true;
-  try {
-    /* Checked with the server every time: the list grows as sample sets are
-       added, and a copy the browser kept would hide the new ones. */
-    const response = await fetch('data/samples.json', { cache: 'no-cache' });
-    if (!response.ok) throw new Error(String(response.status));
-    const payload = await response.json();
-    const known = new Set(store.getSets().map((set) => set.id));
-    const fresh = payload.sets.filter((set) => !known.has(set.id));
-    if (!fresh.length) {
-      toast(t('samples.already'));
-      return;
-    }
-    const count = store.importPayload({ sets: fresh });
-    toastSaved(tn('samples.loaded', count));
-    /* The download may finish after the learner has moved on; only the home
-       page is rebuilt, never whatever they are now doing. */
-    if (currentPath() === '') render();
-  } catch {
-    toast(t('samples.failed'));
-  } finally {
-    button.disabled = false;
-  }
-}
 
 function setCard(set) {
   const due = dueCards(set.cards).length;
@@ -80,9 +52,7 @@ function setsSection(sets) {
 }
 
 function samplesButton() {
-  const button = el('button', { type: 'button', class: 'btn' }, icon('book'), t('home.cta.samples'));
-  button.addEventListener('click', () => loadSamples(button));
-  return button;
+  return el('a', { class: 'btn', href: '#/samples' }, icon('book'), t('home.cta.samples'));
 }
 
 function emptyState() {

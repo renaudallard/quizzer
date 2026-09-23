@@ -17,6 +17,7 @@ import { editorView } from '../js/views/editor.js';
 import { statsView } from '../js/views/stats.js';
 import { settingsView, shortcutsView } from '../js/views/settings.js';
 import { transferView, sharedView } from '../js/views/transfer.js';
+import { samplesView } from '../js/views/samples.js';
 import { flashcardsView } from '../js/modes/flashcards.js';
 import { reviewView } from '../js/modes/review.js';
 import { learnView } from '../js/modes/learn.js';
@@ -78,7 +79,7 @@ function statTileIn(node, label) {
 
 const VIEWS = {
   home: homeView, set: setView, editor: editorView, stats: statsView,
-  settings: settingsView, shortcuts: shortcutsView, transfer: transferView,
+  settings: settingsView, shortcuts: shortcutsView, transfer: transferView, samples: samplesView,
   shared: sharedView, flashcards: flashcardsView, learn: learnView, review: reviewView,
   quiz: quizView, write: writeView, match: matchView,
 };
@@ -94,6 +95,15 @@ async function run() {
     const count = store.importPayload(samples);
     assert(count === samples.sets.length, 'attendu ' + samples.sets.length + ', obtenu ' + count);
     return count + ' jeux';
+  });
+
+  check('chaque jeu d’exemple a son groupe', () => {
+    const ids = new Set(samples.groups.map((group) => group.id));
+    const orphans = samples.sets.filter((sample) => !ids.has(sample.group)).map((sample) => sample.id);
+    assert(!orphans.length, 'sans groupe: ' + orphans.join(', '));
+    const empty = [...ids].filter((id) => !samples.sets.some((sample) => sample.group === id));
+    assert(!empty.length, 'groupes vides: ' + empty.join(', '));
+    return ids.size + ' groupes';
   });
 
   const set = store.getSet('sample-es-base');
