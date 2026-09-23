@@ -4,7 +4,7 @@
 /* Punctuation that carries no meaning in an answer, French quotes, dashes and
    hyphens included. Symbols such as # / % & keep their meaning. */
 const PUNCT = /[.,;:!?"'‘’‚‛“”„‟«»‹›()[\]{}¿¡…·‐‑‒–—―-]/g;
-const DIACRITICS = /[̀-ͯ]/g;
+const DIACRITICS = /[\u0300-\u036f]/g;
 /* Ligatures are spelling, not accents: "coeur" is how "cœur" is typed. */
 const LIGATURES = { 'œ': 'oe', 'æ': 'ae', 'ß': 'ss' };
 /* Letters that NFD does not split into a base and a mark. */
