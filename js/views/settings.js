@@ -29,7 +29,8 @@ function switchRow(key, hintKey, checked, onChange) {
 export function settingsView(focus) {
   const settings = store.getSettings();
 
-  const localeSelect = el('select', { class: 'select' });
+  /* The id brings the focus back here when a language change rebuilds the page. */
+  const localeSelect = el('select', { class: 'select', id: 'settings-locale' });
   fillLanguageSelect(localeSelect);
   localeSelect.addEventListener('change', () => chooseLanguage(localeSelect.value));
 
@@ -49,8 +50,15 @@ export function settingsView(focus) {
       toast(t('settings.saved'));
     },
   });
-  /* The router focuses the page once it is mounted, so wait for that. */
-  if (focus === 'goal') queueMicrotask(() => goal.focus());
+  /* The router focuses the page once it is mounted, so wait for that, and
+     only take the focus from the page itself: when the same page is rebuilt,
+     the learner may be on another control, such as the language menu. */
+  if (focus === 'goal') {
+    queueMicrotask(() => {
+      const active = document.activeElement;
+      if (active && active.contains(goal)) goal.focus();
+    });
+  }
 
   const reset = el('button', { type: 'button', class: 'btn btn-danger' }, icon('trash'), t('settings.reset'));
   reset.addEventListener('click', () => {

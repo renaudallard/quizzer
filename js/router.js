@@ -67,6 +67,8 @@ export function teardown() {
   resetTooltip();
 }
 
+let shownPath = null;
+
 export function render() {
   teardown();
 
@@ -81,9 +83,23 @@ export function render() {
   }
   if (view === null || view === undefined) view = fallback(path);
 
+  /* A new page takes the focus and starts at the top. The same page built
+     again, after a language change or another tab's save, leaves the reader
+     where they were: the scroll stays, a control outside the page keeps the
+     focus, and one inside it gets the focus back through its id. */
+  const active = document.activeElement;
+  const hadFocus = Boolean(active && outlet.contains(active));
+  const focusedId = hadFocus ? active.id : '';
+  const arrived = path !== shownPath;
+  shownPath = path;
   mount(outlet, view);
-  outlet.focus({ preventScroll: true });
-  window.scrollTo(0, 0);
+  if (arrived) {
+    outlet.focus({ preventScroll: true });
+    window.scrollTo(0, 0);
+  } else if (hadFocus) {
+    const again = focusedId ? document.getElementById(focusedId) : null;
+    (again || outlet).focus({ preventScroll: true });
+  }
   for (const fn of afterRender) fn(path);
 }
 

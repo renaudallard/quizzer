@@ -257,6 +257,11 @@ Term and definition text carries its own `lang` attribute when the set
 declares one, which is what makes read aloud pronounce a Spanish card in
 Spanish. The announcement of a turned card carries it too.
 
+Moving to another page puts the focus on the page and scrolls to the top.
+Rebuilding the same page, after a language change or another tab's save,
+does neither: the language menu keeps the focus, so it can be stepped through
+with the arrow keys, and the page stays where it was scrolled.
+
 ## Known limits
 
 - Card sets live in one browser. There is no sync between devices; that is
