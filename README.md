@@ -194,8 +194,9 @@ the storage figure in the settings counts it.
   known by its id is replaced and new ones are added in file order, sessions
   are matched by id, each day keeps the higher of the two counts, and the
   settings in the file are applied at once. Importing the same backup twice
-  changes nothing. Sessions whose set is missing, and entries that are not
-  valid, are skipped. Older exports that only hold sets still import.
+  changes nothing. Sessions whose set is missing, entries that are not valid
+  and settings of the wrong type, such as `"false"` for a switch, are
+  skipped. Older exports that only hold sets still import.
 - **CSV** is quote aware on both sides, so a definition may contain a comma,
   a semicolon or a line break. A header row is recognised and skipped, in
   French, English or Dutch.

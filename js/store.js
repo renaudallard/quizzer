@@ -65,13 +65,17 @@ export function normalizeSet(raw) {
   };
 }
 
-/* Known keys only, laid over base. A null value means "never chosen" and
-   leaves the base value alone, and so does a goal that is not a number. */
+/* Known keys only, laid over base, each only with the type of its default:
+   a switch takes a boolean, so "false" in a file cannot turn one on, and the
+   language a string. A null value means "never chosen" and leaves the base
+   value alone, and so does a goal that is not a number. */
 function normalizeSettings(raw, base = DEFAULT_SETTINGS) {
   const settings = { ...base };
   if (raw && typeof raw === 'object') {
-    for (const key of Object.keys(DEFAULT_SETTINGS)) {
-      if (raw[key] !== undefined && raw[key] !== null) settings[key] = raw[key];
+    for (const [key, fallback] of Object.entries(DEFAULT_SETTINGS)) {
+      const value = raw[key];
+      if (value === undefined || value === null) continue;
+      if (typeof value === (fallback === null ? 'string' : typeof fallback)) settings[key] = value;
     }
   }
   settings.goal = clamp(Math.round(num(settings.goal, base.goal)), GOAL_RANGE.min, GOAL_RANGE.max);
