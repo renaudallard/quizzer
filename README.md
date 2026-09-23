@@ -72,7 +72,9 @@ everyday verbs, adjectives and the small words that hold sentences together.
 The course holds about 430 words and phrases. Every noun comes with its
 article, de or het, since it has to be learned with the word, and read aloud
 speaks the Dutch side in Dutch. Cards that share a French answer, such as dank
-je and dank u for merci, carry a hint that tells them apart.
+je and dank u for merci, carry a hint that tells them apart, and where a word
+has two usual French renderings both are accepted, as with de jas for le
+manteau or la veste.
 
 The button is on the empty home page and above your sets once you have some.
 It only adds the sample sets you do not have yet, so sets added to the site

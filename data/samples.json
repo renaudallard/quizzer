@@ -207,11 +207,11 @@
         },
         {
           "term": "graag gedaan",
-          "def": "de rien"
+          "def": "de rien / avec plaisir"
         },
         {
           "term": "sorry",
-          "def": "pardon"
+          "def": "pardon / désolé"
         },
         {
           "term": "het spijt me",
@@ -691,11 +691,11 @@
         },
         {
           "term": "de vriend",
-          "def": "l'ami"
+          "def": "l'ami / le petit ami"
         },
         {
           "term": "de vriendin",
-          "def": "l'amie"
+          "def": "l'amie / la petite amie"
         },
         {
           "term": "de buurman",
@@ -1204,7 +1204,7 @@
         },
         {
           "term": "de jas",
-          "def": "le manteau"
+          "def": "le manteau / la veste"
         },
         {
           "term": "de rok",
@@ -1362,7 +1362,7 @@
         },
         {
           "term": "het postkantoor",
-          "def": "la poste"
+          "def": "la poste / le bureau de poste"
         },
         {
           "term": "het station",
@@ -1422,7 +1422,7 @@
         },
         {
           "term": "het kaartje",
-          "def": "le ticket"
+          "def": "le ticket / le billet"
         },
         {
           "term": "links",
@@ -1712,7 +1712,7 @@
         },
         {
           "term": "blij",
-          "def": "content"
+          "def": "content / heureux"
         },
         {
           "term": "verdrietig",
@@ -1965,7 +1965,7 @@
         },
         {
           "term": "geen",
-          "def": "pas de"
+          "def": "pas de / aucun"
         }
       ]
     },
