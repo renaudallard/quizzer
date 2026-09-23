@@ -19,6 +19,7 @@ import { settingsView, shortcutsView } from '../js/views/settings.js';
 import { transferView, sharedView } from '../js/views/transfer.js';
 import { flashcardsView } from '../js/modes/flashcards.js';
 import { reviewView } from '../js/modes/review.js';
+import { learnView } from '../js/modes/learn.js';
 import { quizView } from '../js/modes/quiz.js';
 import { writeView } from '../js/modes/write.js';
 import { matchView } from '../js/modes/match.js';
@@ -78,7 +79,7 @@ function statTileIn(node, label) {
 const VIEWS = {
   home: homeView, set: setView, editor: editorView, stats: statsView,
   settings: settingsView, shortcuts: shortcutsView, transfer: transferView,
-  shared: sharedView, flashcards: flashcardsView, review: reviewView,
+  shared: sharedView, flashcards: flashcardsView, learn: learnView, review: reviewView,
   quiz: quizView, write: writeView, match: matchView,
 };
 
@@ -254,6 +255,34 @@ async function run() {
       if (next) next.click();
     }
     assert(main.querySelector('.summary'), 'pas de résultat');
+    return steps + ' questions';
+  });
+
+  check('apprendre mène chaque carte jusqu’à l’écrit', () => {
+    const small = store.createSet({ title: 'Petit', cards: [
+      { term: 'a', def: 'alpha' }, { term: 'b', def: 'beta' }, { term: 'c', def: 'gamma' },
+    ] });
+    const answers = new Map(small.cards.map((card) => [card.term, card.def]));
+    main.replaceChildren(learnView(small.id));
+    main.querySelector('.panel .btn-primary').click();
+    let steps = 0;
+    while (!main.querySelector('.summary') && steps++ < 50) {
+      const answer = answers.get(main.querySelector('.question-prompt span').textContent);
+      const options = [...main.querySelectorAll('.option')];
+      if (options.length) {
+        /* The first answer is a miss, which sends its card back. */
+        options.find((option) => option.textContent.endsWith(answer) !== (steps === 1)).click();
+      } else {
+        main.querySelector('.answer-form input').value = answer;
+        main.querySelector('.answer-form button').click();
+      }
+      main.querySelector('.study-nav .btn-primary').click();
+    }
+    assert(main.querySelector('.summary'), 'pas de résumé');
+    const score = main.querySelector('.summary-score').textContent;
+    assert(score === '2/3', 'score: ' + score);
+    assert(steps === 7, 'questions: ' + steps);
+    store.deleteSet(small.id);
     return steps + ' questions';
   });
 

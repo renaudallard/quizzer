@@ -8,7 +8,7 @@ export const STORAGE_KEY = 'quizzer.v1';
 export const SALVAGE_KEY = 'quizzer.v1.unreadable';
 const MAX_SESSIONS = 200;
 const ACTIVITY_DAYS = 400;
-const SESSION_MODES = ['quiz', 'write', 'match', 'review'];
+const SESSION_MODES = ['quiz', 'learn', 'write', 'match', 'review'];
 const DAY_KEY = /^\d{4}-\d{2}-\d{2}$/;
 
 export const GOAL_RANGE = { min: 5, max: 200 };

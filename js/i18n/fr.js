@@ -94,6 +94,8 @@ export default {
 
   "mode.flashcards": "Flashcards",
   "mode.flashcards.desc": "Feuilletez les cartes et retournez-les pour vérifier.",
+  "mode.learn": "Apprendre",
+  "mode.learn.desc": "Du QCM à la réponse écrite, en commençant par vos points faibles.",
   "mode.review": "Révision espacée",
   "mode.review.desc": "Revoyez chaque carte juste avant de l’oublier.",
   "mode.quiz": "Quiz",
@@ -169,6 +171,14 @@ export default {
   "review.doneBody.other": "{n} cartes sur {total} étaient acquises.",
   "review.remaining.one": "{n} carte restante",
   "review.remaining.other": "{n} cartes restantes",
+
+  /* Apprendre */
+  "learn.setupTitle": "Préparer la session",
+  "learn.setupBody": "Chaque carte se reconnaît d’abord parmi plusieurs réponses, puis s’écrit de mémoire. Une erreur la renvoie aux choix et la fait revenir bientôt. Les cartes que vous connaissez le moins passent en premier.",
+  "learn.remaining.one": "{n} carte à apprendre",
+  "learn.remaining.other": "{n} cartes à apprendre",
+  "learn.doneTitle": "Tout est appris",
+  "learn.doneBody": "{questions}, {mistakes}.",
 
   /* Quiz */
   "quiz.setupTitle": "Préparer le quiz",

@@ -1,4 +1,4 @@
-/* One set: how far along it is, the five ways to study it, and its cards. */
+/* One set: how far along it is, the six ways to study it, and its cards. */
 
 import { el, icon, toast } from '../dom.js';
 import { t, tn, formatPercent } from '../i18n/index.js';
@@ -11,6 +11,7 @@ import { notFoundPanel, shareControls, cardRow, toastSaved } from './shared.js';
 
 const MODES = [
   { path: 'cards', key: 'mode.flashcards', glyph: 'cards', min: 1 },
+  { path: 'learn', key: 'mode.learn', glyph: 'target', min: 2 },
   { path: 'review', key: 'mode.review', glyph: 'repeat', min: 1 },
   { path: 'quiz', key: 'mode.quiz', glyph: 'quiz', min: 2 },
   { path: 'write', key: 'mode.write', glyph: 'keyboard', min: 1 },

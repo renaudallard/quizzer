@@ -1,6 +1,6 @@
 # Quizzer
 
-A study site in the spirit of Quizlet: card sets you own, five ways to drill
+A study site in the spirit of Quizlet: card sets you own, six ways to drill
 them, and a spaced repetition schedule that decides what to show you today.
 
 The interface is **French by default**. English and Dutch are one click away
@@ -30,6 +30,7 @@ compile and nothing to configure.
 | Mode | What it is | Feeds the schedule |
 |------|------------|--------------------|
 | **Flashcards** | Flip through the cards, shuffle them, reverse them, mark the hard ones | no |
+| **Apprendre** | Every card is first picked out in multiple choice, then typed from memory; the cards you know least come first, seven at a time, a miss sends a card back to multiple choice, and the score counts the cards never missed | yes |
 | **Révision espacée** | Only the cards that are due, graded by you as "à revoir" or "je savais" | yes |
 | **Quiz** | Multiple choice, true or false and written answers, in either direction | yes |
 | **Écrire** | Type every answer; a card you miss returns later in the round, and the score counts the cards right the first time | yes |
@@ -132,9 +133,9 @@ They live in the browser's IndexedDB, apart from the cards, so they leave the
 room localStorage has for the rest.
 
 A side may be a picture alone, such as a photo of a dog with `de hond` as the
-answer. Answers are always typed or picked as text, so a quiz or Écrire
-question asks toward the side that has text, whatever direction was chosen,
-and a card with pictures on both sides and no text only appears in
+answer. Answers are always typed or picked as text, so a quiz, Apprendre or
+Écrire question asks toward the side that has text, whatever direction was
+chosen, and a card with pictures on both sides and no text only appears in
 flashcards, review and Associer. Read aloud skips a side that is only a
 picture, and screen readers announce it as an image: put a few words next to
 the picture when what it shows matters.
@@ -190,12 +191,12 @@ right and must be typed whole. In `collègue (m/f)` the slash stays inside the
 optional precision: `collègue` is right, `m` alone is not.
 
 When several cards share a prompt, such as `hola` and `buenos días` which both
-mean `bonjour`, each of their answers is right: the quiz never offers one as a
-wrong option, and a typed answer may be any of them. Prompts are shared when
-they differ only by case or punctuation; accents count, so `ou` and `où` stay
-two different prompts. In Associer, tiles that read exactly the same are
-interchangeable, and whichever of them is used, the rest of the board can
-still be paired.
+mean `bonjour`, each of their answers is right: the quiz and Apprendre never
+offer one as a wrong option, and a typed answer may be any of them. Prompts
+are shared when they differ only by case or punctuation; accents count, so
+`ou` and `où` stay two different prompts. In Associer, tiles that read exactly
+the same are interchangeable, and whichever of them is used, the rest of the
+board can still be paired.
 
 A wrong answer can still be claimed with the "Je l'avais" button. Nothing is
 written to the store until you move to the next card, so the override never
@@ -211,8 +212,8 @@ counts the card twice.
       router.js           hash router with per route cleanup
       store.js            localStorage state, import and export
       srs.js              Leitner boxes and mastery levels
-      study.js            widgets shared by the five modes
-      question.js         quiz questions, built and asked
+      study.js            widgets shared by the six modes
+      question.js         questions shared by quiz and learn
       chart.js            stat tiles, mastery bar, activity columns
       text.js             answer comparison and hint masking
       io.js               delimited text, downloads, share links
@@ -226,7 +227,7 @@ counts the card twice.
       i18n/en.js          English catalogue
       i18n/nl.js          Dutch catalogue
       views/              home, set, editor, stats, settings, transfer
-      modes/              flashcards, review, quiz, write, match
+      modes/              flashcards, learn, review, quiz, write, match
     tests/harness.html    smoke test, open it in a browser
     tests/harness.js      the checks it runs
 
@@ -235,7 +236,7 @@ counts the card twice.
 Serve the directory and open <http://localhost:8080/tests/harness.html>. It
 exercises the store, the Leitner ladder, answer grading, the CSV and share link
 round trips, and reading CSV files in UTF-8, UTF-16 and Windows-1252. It
-renders all thirteen views in every interface language, failing on any key
+renders all fourteen views in every interface language, failing on any key
 that no catalogue holds and on any `{placeholder}` left unfilled. It checks
 that each catalogue has exactly the French keys, with the same
 `{placeholders}` in every string, and that the French text built into
@@ -245,8 +246,8 @@ opens its setting with the field focused, and that percentages follow the
 interface language. It restores a full backup into an emptied store and
 compares every part, imports it a second time to show that nothing doubles,
 and feeds in a damaged backup that must change nothing. It also plays a full
-quiz, a full write round, a match round, a review session and a flashcard pass
-to their summary screens.
+quiz, a learn round, a full write round, a match round, a review session and a
+flashcard pass to their summary screens.
 
 Your own data, including any unreadable copy set aside, is read out of
 `localStorage` before the run and put back after it, or as the page closes if
@@ -316,8 +317,8 @@ the storage figure in the settings counts it.
 | `Space` / `Enter` | cards, review | flip or reveal |
 | `←` `→` | cards | previous, next |
 | `1` `2` | review | à revoir, je savais |
-| `1` to `4` | quiz | pick an answer |
-| `Enter` | quiz, write | check, then continue |
+| `1` to `4` | quiz, learn | pick an answer |
+| `Enter` | quiz, learn, write | check, then continue |
 | `S` | cards | mark as hard |
 | `A` | cards | read aloud the side in view |
 

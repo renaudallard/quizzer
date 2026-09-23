@@ -94,6 +94,8 @@ export default {
 
   "mode.flashcards": "Flashcards",
   "mode.flashcards.desc": "Blader door de kaarten en draai ze om ter controle.",
+  "mode.learn": "Leren",
+  "mode.learn.desc": "Van meerkeuze naar zelf schrijven, je zwakke plekken eerst.",
   "mode.review": "Gespreid herhalen",
   "mode.review.desc": "Zie elke kaart terug vlak voordat je die zou vergeten.",
   "mode.quiz": "Quiz",
@@ -169,6 +171,14 @@ export default {
   "review.doneBody.other": "{n} van de {total} kaarten zaten erin.",
   "review.remaining.one": "Nog {n} kaart",
   "review.remaining.other": "Nog {n} kaarten",
+
+  /* Leren */
+  "learn.setupTitle": "Sessie instellen",
+  "learn.setupBody": "Elke kaart kies je eerst uit een paar antwoorden en schrijf je daarna uit je hoofd. Na een fout gaat de kaart terug naar de keuzes en komt die snel weer langs. De kaarten die je het minst kent, komen eerst.",
+  "learn.remaining.one": "Nog {n} kaart te leren",
+  "learn.remaining.other": "Nog {n} kaarten te leren",
+  "learn.doneTitle": "Alles geleerd",
+  "learn.doneBody": "{questions}, {mistakes}.",
 
   /* Quiz */
   "quiz.setupTitle": "Quiz instellen",

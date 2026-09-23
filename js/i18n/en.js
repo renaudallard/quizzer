@@ -94,6 +94,8 @@ export default {
 
   "mode.flashcards": "Flashcards",
   "mode.flashcards.desc": "Flip through the cards and check yourself.",
+  "mode.learn": "Learn",
+  "mode.learn.desc": "From multiple choice to written answers, weak spots first.",
   "mode.review": "Spaced review",
   "mode.review.desc": "See each card just before you would forget it.",
   "mode.quiz": "Quiz",
@@ -169,6 +171,14 @@ export default {
   "review.doneBody.other": "{n} cards out of {total} were solid.",
   "review.remaining.one": "{n} card left",
   "review.remaining.other": "{n} cards left",
+
+  /* Learn */
+  "learn.setupTitle": "Set up the session",
+  "learn.setupBody": "Each card is first picked out among several answers, then written from memory. A mistake sends it back to the choices and brings it round again soon. The cards you know least come first.",
+  "learn.remaining.one": "{n} card to learn",
+  "learn.remaining.other": "{n} cards to learn",
+  "learn.doneTitle": "Everything learned",
+  "learn.doneBody": "{questions}, {mistakes}.",
 
   /* Quiz */
   "quiz.setupTitle": "Set up the quiz",

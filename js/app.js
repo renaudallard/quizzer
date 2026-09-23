@@ -18,6 +18,7 @@ import { transferView, sharedView } from './views/transfer.js';
 import { notFoundPanel } from './views/shared.js';
 import { flashcardsView } from './modes/flashcards.js';
 import { reviewView } from './modes/review.js';
+import { learnView } from './modes/learn.js';
 import { quizView } from './modes/quiz.js';
 import { writeView } from './modes/write.js';
 import { matchView } from './modes/match.js';
@@ -106,6 +107,7 @@ function setRoutes() {
   const modes = {
     cards: flashcardsView,
     review: reviewView,
+    learn: learnView,
     quiz: quizView,
     write: writeView,
     match: matchView,
