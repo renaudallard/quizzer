@@ -44,7 +44,7 @@ function setCard(set) {
     el('div', { class: 'set-card-meta' },
       el('span', { class: 'chip' }, tn('count.cards', set.cards.length)),
       due ? el('span', { class: 'chip chip-due' }, tn('set.dueNow', due)) : null,
-      el('span', { class: 'chip' }, t('set.progress', { p: mastery }))));
+      el('span', { class: 'chip' }, t('set.progress', { p: formatPercent(mastery) }))));
 }
 
 function setsSection(sets) {

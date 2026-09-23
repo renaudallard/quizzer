@@ -1,7 +1,7 @@
 /* One set: how far along it is, the five ways to study it, and its cards. */
 
 import { el, icon } from '../dom.js';
-import { t, tn } from '../i18n/index.js';
+import { t, tn, formatPercent } from '../i18n/index.js';
 import * as store from '../store.js';
 import { dueCards, masteryPct } from '../srs.js';
 import { meter } from '../chart.js';
@@ -58,7 +58,7 @@ export function setView(id) {
       el('div', { class: 'row', style: { marginBottom: '12px' } },
         el('span', { class: 'chip' }, tn('count.cards', set.cards.length)),
         due ? el('span', { class: 'chip chip-due' }, tn('set.dueNow', due)) : el('span', { class: 'chip' }, t('set.upToDate')),
-        el('span', { class: 'chip chip-accent' }, t('set.progress', { p: mastery }))),
+        el('span', { class: 'chip chip-accent' }, t('set.progress', { p: formatPercent(mastery) }))),
       meter(mastery),
       el('div', { class: 'row', style: { marginTop: '16px' } },
         el('a', { class: 'btn', href: '#/set/' + set.id + '/edit' }, icon('edit'), t('common.edit')),

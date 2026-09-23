@@ -89,7 +89,7 @@ export default {
   "set.dueNow.one": "{n} carte à réviser",
   "set.dueNow.other": "{n} cartes à réviser",
   "set.upToDate": "Révisions à jour",
-  "set.progress": "{p} % maîtrisé",
+  "set.progress": "{p} maîtrisé",
 
   "mode.flashcards": "Flashcards",
   "mode.flashcards.desc": "Feuilletez les cartes et retournez-les pour vérifier.",

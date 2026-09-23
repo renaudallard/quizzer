@@ -89,7 +89,7 @@ export default {
   "set.dueNow.one": "{n} card to review",
   "set.dueNow.other": "{n} cards to review",
   "set.upToDate": "Reviews up to date",
-  "set.progress": "{p}% mastered",
+  "set.progress": "{p} mastered",
 
   "mode.flashcards": "Flashcards",
   "mode.flashcards.desc": "Flip through the cards and check yourself.",

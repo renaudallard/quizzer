@@ -89,7 +89,7 @@ export default {
   "set.dueNow.one": "{n} kaart te herhalen",
   "set.dueNow.other": "{n} kaarten te herhalen",
   "set.upToDate": "Alles herhaald",
-  "set.progress": "{p}% beheerst",
+  "set.progress": "{p} beheerst",
 
   "mode.flashcards": "Flashcards",
   "mode.flashcards.desc": "Blader door de kaarten en draai ze om ter controle.",

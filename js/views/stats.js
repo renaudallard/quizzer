@@ -47,7 +47,7 @@ export function statsView(id) {
   const points = sessionActivity(set.id);
 
   const tiles = el('section', { class: 'kpi-row' },
-    statTile({ label: t('stat.cards'), value: set.cards.length, sub: t('set.progress', { p: masteryPct(set.cards) }) }),
+    statTile({ label: t('stat.cards'), value: set.cards.length, sub: t('set.progress', { p: formatPercent(masteryPct(set.cards)) }) }),
     statTile({ label: t('stat.due'), value: due, sub: t('stat.dueSub') }),
     statTile({
       label: t('stat.accuracy'),
