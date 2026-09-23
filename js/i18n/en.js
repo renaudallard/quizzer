@@ -133,6 +133,9 @@ export default {
   "editor.saved": "Set saved.",
   "editor.discard": "Discard the changes in progress?",
   "editor.removeCard": "Delete this card",
+  "editor.symbols": "Maths symbols",
+  "editor.symbolsHint": "A click inserts the symbol where the cursor was.",
+  "editor.symbolsNoField": "Put the cursor in a field first.",
 
   /* Flashcards */
   "flashcards.flipHint": "Click the card or press Space to flip it.",

@@ -133,6 +133,9 @@ export default {
   "editor.saved": "Set opgeslagen.",
   "editor.discard": "De huidige wijzigingen verwerpen?",
   "editor.removeCard": "Deze kaart verwijderen",
+  "editor.symbols": "Wiskundige symbolen",
+  "editor.symbolsHint": "Een klik voegt het symbool in waar de cursor stond.",
+  "editor.symbolsNoField": "Zet eerst de cursor in een veld.",
 
   /* Flashcards */
   "flashcards.flipHint": "Omdraaien: klik op de kaart of druk op spatie.",

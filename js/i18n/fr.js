@@ -133,6 +133,9 @@ export default {
   "editor.saved": "Jeu enregistré.",
   "editor.discard": "Abandonner les modifications en cours ?",
   "editor.removeCard": "Supprimer cette carte",
+  "editor.symbols": "Symboles mathématiques",
+  "editor.symbolsHint": "Un clic insère le symbole là où se trouvait le curseur.",
+  "editor.symbolsNoField": "Placez d’abord le curseur dans un champ.",
 
   /* Flashcards */
   "flashcards.flipHint": "Cliquez sur la carte ou appuyez sur Espace pour la retourner.",

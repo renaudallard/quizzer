@@ -412,6 +412,10 @@ a.stat-tile:hover { border-color: var(--accent); transform: translateY(-2px); co
 .editor-row .idx { padding-top: 10px; color: var(--ink-muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
 .editor-row-tools { display: flex; gap: 2px; padding-top: 2px; }
 .editor-fields { display: flex; flex-direction: column; gap: 6px; }
+.symbol-palette { margin-bottom: 12px; }
+.symbol-palette summary { cursor: pointer; font-size: 0.86rem; color: var(--ink-2); font-weight: 600; }
+.symbols { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.btn-symbol { min-width: 40px; padding: 6px 10px; font-weight: 500; }
 .sticky-actions {
   position: sticky; bottom: 0; z-index: 10;
   display: flex; gap: 10px; align-items: center; flex-wrap: wrap;

@@ -13,6 +13,12 @@ const LANG_CODES = [
   'zh', 'ja', 'ko', 'la', 'el', 'sv', 'da', 'nb', 'fi', 'cs', 'he', 'hi', 'ro', 'hu', 'vi', 'id',
 ];
 
+/* Signs a keyboard lacks, for maths and science cards. */
+const SYMBOLS = [
+  '²', '³', 'ⁿ', '√', 'π', '±', '×', '÷', '·', '≤', '≥', '≠', '≈', '∞', '∑', '∫', '∂',
+  'Δ', 'α', 'β', 'θ', 'λ', 'μ', 'σ', 'φ', 'ω', '°', '½', '→', '∈',
+];
+
 function blankCard() {
   return store.normalizeCard({});
 }
@@ -200,6 +206,27 @@ export function editorView(id) {
     navigate(existing ? 'set/' + existing.id : '');
   });
 
+  /* A click puts the sign where the cursor was in the last field used; the
+     button never takes the focus, so the caret stays where it was. */
+  let lastField = null;
+  function insertSymbol(symbol) {
+    if (!lastField || !lastField.isConnected) {
+      toast(t('editor.symbolsNoField'));
+      return;
+    }
+    lastField.setRangeText(symbol, lastField.selectionStart, lastField.selectionEnd, 'end');
+    lastField.dispatchEvent(new Event('input', { bubbles: true }));
+    lastField.focus();
+  }
+  const palette = el('details', { class: 'symbol-palette' },
+    el('summary', {}, t('editor.symbols')),
+    el('p', { class: 'field-hint' }, t('editor.symbolsHint')),
+    el('div', { class: 'symbols' }, SYMBOLS.map((symbol) => el('button', {
+      type: 'button', class: 'btn btn-symbol',
+      onmousedown: (event) => event.preventDefault(),
+      onclick: () => insertSymbol(symbol),
+    }, symbol))));
+
   const addCard = el('button', { type: 'button', class: 'btn' }, icon('plus'), t('editor.addCard'));
   addCard.addEventListener('click', () => {
     draft.cards.push(blankCard());
@@ -208,7 +235,7 @@ export function editorView(id) {
     focusRow(draft.cards.length - 1);
   });
 
-  return el('div', { class: 'container' },
+  const root = el('div', { class: 'container' },
     el('h1', {}, existing ? t('editor.editTitle') : t('editor.newTitle')),
 
     el('section', { class: 'panel stack', style: { marginBottom: '20px' } },
@@ -227,6 +254,7 @@ export function editorView(id) {
       el('div', { class: 'row-between', style: { marginBottom: '12px' } },
         el('h2', {}, t('editor.cards')),
         addCard),
+      palette,
       list),
 
     el('section', { class: 'panel stack', style: { marginBottom: '20px' } },
@@ -238,4 +266,8 @@ export function editorView(id) {
     el('div', { class: 'sticky-actions' },
       el('button', { type: 'button', class: 'btn btn-primary btn-lg', onclick: save }, t('common.save')),
       cancel));
+  root.addEventListener('focusin', (event) => {
+    if (event.target.matches('input[type="text"], textarea')) lastField = event.target;
+  });
+  return root;
 }
