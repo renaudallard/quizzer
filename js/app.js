@@ -118,8 +118,9 @@ function setRoutes() {
   router.register(/^settings(?:\/(goal))?$/, (focus) => settingsView(focus));
   router.register(/^shortcuts$/, () => shortcutsView());
   router.register(/^shared\/(.+)$/, (payload) => sharedView(payload));
+  /* Own keys only: a plain object also answers to "constructor". */
   router.register(/^set\/([^/]+)\/([a-z]+)$/, (id, mode) => (
-    modes[mode] ? modes[mode](id) : null
+    Object.prototype.hasOwnProperty.call(modes, mode) ? modes[mode](id) : null
   ));
   router.register(/^set\/([^/]+)$/, (id) => setView(id));
   router.setFallback(() => notFoundPanel(t('error.notFoundBody')));
