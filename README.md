@@ -212,6 +212,7 @@ counts the card twice.
       store.js            localStorage state, import and export
       srs.js              Leitner boxes and mastery levels
       study.js            widgets shared by the five modes
+      question.js         quiz questions, built and asked
       chart.js            stat tiles, mastery bar, activity columns
       text.js             answer comparison and hint masking
       io.js               delimited text, downloads, share links
