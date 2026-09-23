@@ -6,6 +6,7 @@ import { t, getLocale } from './i18n/index.js';
 import { getSettings, recordSession } from './store.js';
 import { onCleanup, setBusy } from './router.js';
 import { cardRow } from './views/shared.js';
+import { pct } from './util.js';
 
 export function cardText(text, lang) {
   return el('span', lang ? { lang } : {}, text);
@@ -43,7 +44,7 @@ export function studyShell({ set, modeKey }) {
     body);
 
   function setProgress(done, total) {
-    const percent = total ? Math.round((done / total) * 100) : 0;
+    const percent = pct(done, total);
     fill.style.width = percent + '%';
     bar.setAttribute('aria-valuenow', String(percent));
     counter.textContent = total ? t('progress.position', { current: done, total }) : '';

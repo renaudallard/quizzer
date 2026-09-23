@@ -1,7 +1,7 @@
 /* The whole application state lives under one localStorage key and is written
    back on every change. The data is small, so there is nothing to optimise. */
 
-import { uid, dayKey, lastDayKeys, addDays, clamp } from './util.js';
+import { uid, dayKey, lastDayKeys, addDays, clamp, pct } from './util.js';
 import { schedule, isDue, MAX_BOX } from './srs.js';
 
 export const STORAGE_KEY = 'quizzer.v1';
@@ -355,7 +355,7 @@ export function summary(now = Date.now()) {
     cards,
     due,
     mastered,
-    accuracy: seen ? Math.round((correct / seen) * 100) : null,
+    accuracy: seen ? pct(correct, seen) : null,
     streak: streak(),
     today: state.activity[dayKey()] || 0,
   };

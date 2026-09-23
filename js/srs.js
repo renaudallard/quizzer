@@ -1,7 +1,7 @@
 /* Leitner boxes. A card climbs one box per success and falls back to the first
    box on a miss, so the cards you keep forgetting keep coming back. */
 
-import { startOfDay, addDays, DAY_MS } from './util.js';
+import { startOfDay, addDays, DAY_MS, pct } from './util.js';
 
 export const INTERVALS_DAYS = [0, 1, 3, 7, 16, 35];
 export const MAX_BOX = INTERVALS_DAYS.length - 1;
@@ -45,9 +45,8 @@ export function tierCounts(cards) {
 
 /* Share of the total climb already done, across the whole set. */
 export function masteryPct(cards) {
-  if (!cards.length) return 0;
   const climbed = cards.reduce((sum, card) => sum + Math.min(card.box || 0, MAX_BOX), 0);
-  return Math.round((climbed / (cards.length * MAX_BOX)) * 100);
+  return pct(climbed, cards.length * MAX_BOX);
 }
 
 export function nextDueInDays(card, now = Date.now()) {
