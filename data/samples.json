@@ -7991,6 +7991,3998 @@
       ]
     },
     {
+      "id": "sample-it-01",
+      "title": "Italien 1: premiers mots",
+      "description": "Saluer, remercier, s'excuser et faire connaissance.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "ciao",
+          "def": "salut"
+        },
+        {
+          "term": "buongiorno",
+          "def": "bonjour"
+        },
+        {
+          "term": "buon pomeriggio",
+          "def": "bon après-midi"
+        },
+        {
+          "term": "buonasera",
+          "def": "bonsoir"
+        },
+        {
+          "term": "buonanotte",
+          "def": "bonne nuit"
+        },
+        {
+          "term": "arrivederci",
+          "def": "au revoir"
+        },
+        {
+          "term": "a dopo",
+          "def": "à tout à l'heure"
+        },
+        {
+          "term": "a presto",
+          "def": "à bientôt"
+        },
+        {
+          "term": "a domani",
+          "def": "à demain"
+        },
+        {
+          "term": "benvenuto",
+          "def": "bienvenue"
+        },
+        {
+          "term": "grazie",
+          "def": "merci"
+        },
+        {
+          "term": "grazie mille",
+          "def": "merci beaucoup"
+        },
+        {
+          "term": "per favore",
+          "def": "s'il te plaît / s'il vous plaît"
+        },
+        {
+          "term": "prego",
+          "def": "de rien / je vous en prie"
+        },
+        {
+          "term": "scusa",
+          "def": "excuse-moi / pardon"
+        },
+        {
+          "term": "mi scusi",
+          "def": "excusez-moi"
+        },
+        {
+          "term": "mi dispiace",
+          "def": "je suis désolé"
+        },
+        {
+          "term": "sì",
+          "def": "oui"
+        },
+        {
+          "term": "no",
+          "def": "non"
+        },
+        {
+          "term": "forse",
+          "def": "peut-être"
+        },
+        {
+          "term": "come stai?",
+          "def": "comment vas-tu ?"
+        },
+        {
+          "term": "come va?",
+          "def": "comment ça va ?"
+        },
+        {
+          "term": "bene, grazie",
+          "def": "bien, merci"
+        },
+        {
+          "term": "come ti chiami?",
+          "def": "comment tu t'appelles ?"
+        },
+        {
+          "term": "mi chiamo",
+          "def": "je m'appelle"
+        },
+        {
+          "term": "di dove sei?",
+          "def": "d'où es-tu ? / d'où viens-tu ?"
+        },
+        {
+          "term": "vengo dal Belgio",
+          "def": "je viens de Belgique"
+        },
+        {
+          "term": "piacere",
+          "def": "enchanté"
+        },
+        {
+          "term": "non capisco",
+          "def": "je ne comprends pas"
+        },
+        {
+          "term": "parla francese?",
+          "def": "parlez-vous français ?"
+        },
+        {
+          "term": "un po'",
+          "def": "un peu"
+        },
+        {
+          "term": "cin cin",
+          "def": "santé",
+          "hint": "en trinquant"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-02",
+      "title": "Italien 2: les nombres",
+      "description": "De zéro à un million, et les premiers ordinaux.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "zero",
+          "def": "0"
+        },
+        {
+          "term": "uno",
+          "def": "1"
+        },
+        {
+          "term": "due",
+          "def": "2"
+        },
+        {
+          "term": "tre",
+          "def": "3"
+        },
+        {
+          "term": "quattro",
+          "def": "4"
+        },
+        {
+          "term": "cinque",
+          "def": "5"
+        },
+        {
+          "term": "sei",
+          "def": "6"
+        },
+        {
+          "term": "sette",
+          "def": "7"
+        },
+        {
+          "term": "otto",
+          "def": "8"
+        },
+        {
+          "term": "nove",
+          "def": "9"
+        },
+        {
+          "term": "dieci",
+          "def": "10"
+        },
+        {
+          "term": "undici",
+          "def": "11"
+        },
+        {
+          "term": "dodici",
+          "def": "12"
+        },
+        {
+          "term": "tredici",
+          "def": "13"
+        },
+        {
+          "term": "quattordici",
+          "def": "14"
+        },
+        {
+          "term": "quindici",
+          "def": "15"
+        },
+        {
+          "term": "sedici",
+          "def": "16"
+        },
+        {
+          "term": "diciassette",
+          "def": "17"
+        },
+        {
+          "term": "diciotto",
+          "def": "18"
+        },
+        {
+          "term": "diciannove",
+          "def": "19"
+        },
+        {
+          "term": "venti",
+          "def": "20"
+        },
+        {
+          "term": "ventuno",
+          "def": "21"
+        },
+        {
+          "term": "trenta",
+          "def": "30"
+        },
+        {
+          "term": "quaranta",
+          "def": "40"
+        },
+        {
+          "term": "cinquanta",
+          "def": "50"
+        },
+        {
+          "term": "sessanta",
+          "def": "60"
+        },
+        {
+          "term": "settanta",
+          "def": "70"
+        },
+        {
+          "term": "ottanta",
+          "def": "80"
+        },
+        {
+          "term": "novanta",
+          "def": "90"
+        },
+        {
+          "term": "cento",
+          "def": "100"
+        },
+        {
+          "term": "mille",
+          "def": "1 000"
+        },
+        {
+          "term": "un milione",
+          "def": "1 000 000"
+        },
+        {
+          "term": "primo",
+          "def": "premier"
+        },
+        {
+          "term": "secondo",
+          "def": "deuxième"
+        },
+        {
+          "term": "terzo",
+          "def": "troisième"
+        },
+        {
+          "term": "la metà",
+          "def": "la moitié"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-03",
+      "title": "Italien 3: le temps et le calendrier",
+      "description": "Les jours, les mois, les saisons et les moments de la journée.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "lunedì",
+          "def": "lundi"
+        },
+        {
+          "term": "martedì",
+          "def": "mardi"
+        },
+        {
+          "term": "mercoledì",
+          "def": "mercredi"
+        },
+        {
+          "term": "giovedì",
+          "def": "jeudi"
+        },
+        {
+          "term": "venerdì",
+          "def": "vendredi"
+        },
+        {
+          "term": "sabato",
+          "def": "samedi"
+        },
+        {
+          "term": "domenica",
+          "def": "dimanche"
+        },
+        {
+          "term": "gennaio",
+          "def": "janvier"
+        },
+        {
+          "term": "febbraio",
+          "def": "février"
+        },
+        {
+          "term": "marzo",
+          "def": "mars"
+        },
+        {
+          "term": "aprile",
+          "def": "avril"
+        },
+        {
+          "term": "maggio",
+          "def": "mai"
+        },
+        {
+          "term": "giugno",
+          "def": "juin"
+        },
+        {
+          "term": "luglio",
+          "def": "juillet"
+        },
+        {
+          "term": "agosto",
+          "def": "août"
+        },
+        {
+          "term": "settembre",
+          "def": "septembre"
+        },
+        {
+          "term": "ottobre",
+          "def": "octobre"
+        },
+        {
+          "term": "novembre",
+          "def": "novembre"
+        },
+        {
+          "term": "dicembre",
+          "def": "décembre"
+        },
+        {
+          "term": "la primavera",
+          "def": "le printemps"
+        },
+        {
+          "term": "l'estate",
+          "def": "l'été",
+          "hint": "féminin"
+        },
+        {
+          "term": "l'autunno",
+          "def": "l'automne",
+          "hint": "masculin"
+        },
+        {
+          "term": "l'inverno",
+          "def": "l'hiver",
+          "hint": "masculin"
+        },
+        {
+          "term": "la mattina",
+          "def": "le matin"
+        },
+        {
+          "term": "il pomeriggio",
+          "def": "l'après-midi"
+        },
+        {
+          "term": "la sera",
+          "def": "le soir"
+        },
+        {
+          "term": "la notte",
+          "def": "la nuit"
+        },
+        {
+          "term": "il giorno",
+          "def": "le jour"
+        },
+        {
+          "term": "la settimana",
+          "def": "la semaine"
+        },
+        {
+          "term": "il mese",
+          "def": "le mois"
+        },
+        {
+          "term": "l'anno",
+          "def": "l'année / l'an",
+          "hint": "masculin"
+        },
+        {
+          "term": "l'ora",
+          "def": "l'heure",
+          "hint": "féminin"
+        },
+        {
+          "term": "il minuto",
+          "def": "la minute"
+        },
+        {
+          "term": "oggi",
+          "def": "aujourd'hui"
+        },
+        {
+          "term": "domani",
+          "def": "demain"
+        },
+        {
+          "term": "ieri",
+          "def": "hier"
+        },
+        {
+          "term": "il fine settimana",
+          "def": "le week-end"
+        },
+        {
+          "term": "che ore sono?",
+          "def": "quelle heure est-il ?"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-04",
+      "title": "Italien 4: la famille et les gens",
+      "description": "La famille, les proches et les gens autour de soi.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "la famiglia",
+          "def": "la famille"
+        },
+        {
+          "term": "i genitori",
+          "def": "les parents"
+        },
+        {
+          "term": "il padre",
+          "def": "le père"
+        },
+        {
+          "term": "la madre",
+          "def": "la mère"
+        },
+        {
+          "term": "il papà",
+          "def": "papa"
+        },
+        {
+          "term": "la mamma",
+          "def": "maman"
+        },
+        {
+          "term": "il figlio",
+          "def": "le fils"
+        },
+        {
+          "term": "la figlia",
+          "def": "la fille",
+          "hint": "de ses parents"
+        },
+        {
+          "term": "il fratello",
+          "def": "le frère"
+        },
+        {
+          "term": "la sorella",
+          "def": "la sœur"
+        },
+        {
+          "term": "il bambino",
+          "def": "l'enfant"
+        },
+        {
+          "term": "i bambini",
+          "def": "les enfants"
+        },
+        {
+          "term": "il neonato",
+          "def": "le bébé / le nouveau-né"
+        },
+        {
+          "term": "il nonno",
+          "def": "le grand-père"
+        },
+        {
+          "term": "la nonna",
+          "def": "la grand-mère"
+        },
+        {
+          "term": "lo zio",
+          "def": "l'oncle"
+        },
+        {
+          "term": "la zia",
+          "def": "la tante"
+        },
+        {
+          "term": "il cugino",
+          "def": "le cousin"
+        },
+        {
+          "term": "la cugina",
+          "def": "la cousine"
+        },
+        {
+          "term": "il nipote",
+          "def": "le neveu / le petit-fils"
+        },
+        {
+          "term": "la nipote",
+          "def": "la nièce / la petite-fille"
+        },
+        {
+          "term": "il marito",
+          "def": "le mari"
+        },
+        {
+          "term": "la moglie",
+          "def": "l'épouse"
+        },
+        {
+          "term": "la donna",
+          "def": "la femme"
+        },
+        {
+          "term": "l'uomo",
+          "def": "l'homme",
+          "hint": "masculin"
+        },
+        {
+          "term": "il ragazzo",
+          "def": "le garçon"
+        },
+        {
+          "term": "la ragazza",
+          "def": "la fille",
+          "hint": "pas un garçon"
+        },
+        {
+          "term": "l'amico",
+          "def": "l'ami",
+          "hint": "masculin"
+        },
+        {
+          "term": "l'amica",
+          "def": "l'amie",
+          "hint": "féminin"
+        },
+        {
+          "term": "il vicino",
+          "def": "le voisin"
+        },
+        {
+          "term": "la gente",
+          "def": "les gens"
+        },
+        {
+          "term": "il collega",
+          "def": "le collègue"
+        },
+        {
+          "term": "sposato",
+          "def": "marié"
+        },
+        {
+          "term": "il nome",
+          "def": "le nom"
+        },
+        {
+          "term": "l'età",
+          "def": "l'âge",
+          "hint": "féminin"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-05",
+      "title": "Italien 5: manger et boire",
+      "description": "Les repas, les aliments, les boissons et le couvert.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "il cibo",
+          "def": "la nourriture"
+        },
+        {
+          "term": "la colazione",
+          "def": "le petit-déjeuner"
+        },
+        {
+          "term": "il pranzo",
+          "def": "le déjeuner"
+        },
+        {
+          "term": "la cena",
+          "def": "le dîner"
+        },
+        {
+          "term": "l'acqua",
+          "def": "l'eau",
+          "hint": "féminin"
+        },
+        {
+          "term": "il caffè",
+          "def": "le café"
+        },
+        {
+          "term": "il tè",
+          "def": "le thé"
+        },
+        {
+          "term": "il latte",
+          "def": "le lait"
+        },
+        {
+          "term": "la birra",
+          "def": "la bière"
+        },
+        {
+          "term": "il vino",
+          "def": "le vin"
+        },
+        {
+          "term": "il succo",
+          "def": "le jus"
+        },
+        {
+          "term": "il pane",
+          "def": "le pain"
+        },
+        {
+          "term": "il burro",
+          "def": "le beurre"
+        },
+        {
+          "term": "il formaggio",
+          "def": "le fromage"
+        },
+        {
+          "term": "l'uovo",
+          "def": "l'œuf",
+          "hint": "masculin"
+        },
+        {
+          "term": "la carne",
+          "def": "la viande"
+        },
+        {
+          "term": "il pesce",
+          "def": "le poisson"
+        },
+        {
+          "term": "il pollo",
+          "def": "le poulet"
+        },
+        {
+          "term": "la verdura",
+          "def": "les légumes"
+        },
+        {
+          "term": "la patata",
+          "def": "la pomme de terre"
+        },
+        {
+          "term": "il pomodoro",
+          "def": "la tomate"
+        },
+        {
+          "term": "la frutta",
+          "def": "les fruits"
+        },
+        {
+          "term": "la mela",
+          "def": "la pomme"
+        },
+        {
+          "term": "la banana",
+          "def": "la banane"
+        },
+        {
+          "term": "l'arancia",
+          "def": "l'orange",
+          "hint": "féminin"
+        },
+        {
+          "term": "la fragola",
+          "def": "la fraise"
+        },
+        {
+          "term": "il riso",
+          "def": "le riz"
+        },
+        {
+          "term": "la zuppa",
+          "def": "la soupe"
+        },
+        {
+          "term": "lo zucchero",
+          "def": "le sucre"
+        },
+        {
+          "term": "il sale",
+          "def": "le sel"
+        },
+        {
+          "term": "le patatine fritte",
+          "def": "les frites"
+        },
+        {
+          "term": "il bicchiere",
+          "def": "le verre"
+        },
+        {
+          "term": "il piatto",
+          "def": "l'assiette"
+        },
+        {
+          "term": "la forchetta",
+          "def": "la fourchette"
+        },
+        {
+          "term": "il coltello",
+          "def": "le couteau"
+        },
+        {
+          "term": "il cucchiaio",
+          "def": "la cuillère"
+        },
+        {
+          "term": "ho fame",
+          "def": "j'ai faim"
+        },
+        {
+          "term": "ho sete",
+          "def": "j'ai soif"
+        },
+        {
+          "term": "il conto, per favore",
+          "def": "l'addition, s'il vous plaît"
+        },
+        {
+          "term": "buon appetito",
+          "def": "bon appétit"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-06",
+      "title": "Italien 6: la maison",
+      "description": "Les pièces, les meubles et les objets de la maison.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "la casa",
+          "def": "la maison"
+        },
+        {
+          "term": "l'appartamento",
+          "def": "l'appartement",
+          "hint": "masculin"
+        },
+        {
+          "term": "la stanza",
+          "def": "la pièce"
+        },
+        {
+          "term": "la camera da letto",
+          "def": "la chambre"
+        },
+        {
+          "term": "la cucina",
+          "def": "la cuisine"
+        },
+        {
+          "term": "il bagno",
+          "def": "la salle de bains"
+        },
+        {
+          "term": "il soggiorno",
+          "def": "le salon"
+        },
+        {
+          "term": "il giardino",
+          "def": "le jardin"
+        },
+        {
+          "term": "la porta",
+          "def": "la porte"
+        },
+        {
+          "term": "la finestra",
+          "def": "la fenêtre"
+        },
+        {
+          "term": "il muro",
+          "def": "le mur"
+        },
+        {
+          "term": "il pavimento",
+          "def": "le sol / le plancher"
+        },
+        {
+          "term": "il tetto",
+          "def": "le toit"
+        },
+        {
+          "term": "il piano",
+          "def": "l'étage"
+        },
+        {
+          "term": "le scale",
+          "def": "l'escalier"
+        },
+        {
+          "term": "la chiave",
+          "def": "la clé"
+        },
+        {
+          "term": "il tavolo",
+          "def": "la table"
+        },
+        {
+          "term": "la sedia",
+          "def": "la chaise"
+        },
+        {
+          "term": "il divano",
+          "def": "le canapé"
+        },
+        {
+          "term": "il letto",
+          "def": "le lit"
+        },
+        {
+          "term": "l'armadio",
+          "def": "l'armoire",
+          "hint": "masculin"
+        },
+        {
+          "term": "la lampada",
+          "def": "la lampe"
+        },
+        {
+          "term": "lo specchio",
+          "def": "le miroir"
+        },
+        {
+          "term": "la vasca da bagno",
+          "def": "la baignoire"
+        },
+        {
+          "term": "la doccia",
+          "def": "la douche"
+        },
+        {
+          "term": "il frigorifero",
+          "def": "le frigo / le réfrigérateur"
+        },
+        {
+          "term": "il forno",
+          "def": "le four"
+        },
+        {
+          "term": "la lavatrice",
+          "def": "la machine à laver"
+        },
+        {
+          "term": "la televisione",
+          "def": "la télévision"
+        },
+        {
+          "term": "il computer",
+          "def": "l'ordinateur"
+        },
+        {
+          "term": "il telefono",
+          "def": "le téléphone"
+        },
+        {
+          "term": "il libro",
+          "def": "le livre"
+        },
+        {
+          "term": "il cane",
+          "def": "le chien"
+        },
+        {
+          "term": "il gatto",
+          "def": "le chat"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-07",
+      "title": "Italien 7: le corps et la santé",
+      "description": "Le corps, et de quoi dire que l'on ne va pas bien.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "il corpo",
+          "def": "le corps"
+        },
+        {
+          "term": "la testa",
+          "def": "la tête"
+        },
+        {
+          "term": "i capelli",
+          "def": "les cheveux"
+        },
+        {
+          "term": "la faccia",
+          "def": "le visage"
+        },
+        {
+          "term": "l'occhio",
+          "def": "l'œil",
+          "hint": "masculin"
+        },
+        {
+          "term": "l'orecchio",
+          "def": "l'oreille",
+          "hint": "masculin"
+        },
+        {
+          "term": "il naso",
+          "def": "le nez"
+        },
+        {
+          "term": "la bocca",
+          "def": "la bouche"
+        },
+        {
+          "term": "il dente",
+          "def": "la dent"
+        },
+        {
+          "term": "il collo",
+          "def": "le cou"
+        },
+        {
+          "term": "la spalla",
+          "def": "l'épaule"
+        },
+        {
+          "term": "il braccio",
+          "def": "le bras"
+        },
+        {
+          "term": "la mano",
+          "def": "la main"
+        },
+        {
+          "term": "il dito",
+          "def": "le doigt"
+        },
+        {
+          "term": "la pancia",
+          "def": "le ventre"
+        },
+        {
+          "term": "lo stomaco",
+          "def": "l'estomac"
+        },
+        {
+          "term": "la schiena",
+          "def": "le dos"
+        },
+        {
+          "term": "la gamba",
+          "def": "la jambe"
+        },
+        {
+          "term": "il ginocchio",
+          "def": "le genou"
+        },
+        {
+          "term": "il piede",
+          "def": "le pied"
+        },
+        {
+          "term": "il cuore",
+          "def": "le cœur"
+        },
+        {
+          "term": "la pelle",
+          "def": "la peau"
+        },
+        {
+          "term": "il medico",
+          "def": "le médecin"
+        },
+        {
+          "term": "l'ospedale",
+          "def": "l'hôpital",
+          "hint": "masculin"
+        },
+        {
+          "term": "la farmacia",
+          "def": "la pharmacie"
+        },
+        {
+          "term": "la medicina",
+          "def": "le médicament"
+        },
+        {
+          "term": "malato",
+          "def": "malade"
+        },
+        {
+          "term": "sano",
+          "def": "en bonne santé / sain"
+        },
+        {
+          "term": "il dolore",
+          "def": "la douleur"
+        },
+        {
+          "term": "ho mal di testa",
+          "def": "j'ai mal à la tête"
+        },
+        {
+          "term": "sono stanco",
+          "def": "je suis fatigué"
+        },
+        {
+          "term": "la febbre",
+          "def": "la fièvre"
+        },
+        {
+          "term": "il raffreddore",
+          "def": "le rhume"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-08",
+      "title": "Italien 8: vêtements et couleurs",
+      "description": "Les vêtements, les accessoires et les couleurs.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "i vestiti",
+          "def": "les vêtements"
+        },
+        {
+          "term": "i pantaloni",
+          "def": "le pantalon"
+        },
+        {
+          "term": "la camicia",
+          "def": "la chemise"
+        },
+        {
+          "term": "il maglione",
+          "def": "le pull"
+        },
+        {
+          "term": "il cappotto",
+          "def": "le manteau"
+        },
+        {
+          "term": "la gonna",
+          "def": "la jupe"
+        },
+        {
+          "term": "il vestito",
+          "def": "la robe / le costume"
+        },
+        {
+          "term": "la maglietta",
+          "def": "le t-shirt"
+        },
+        {
+          "term": "le scarpe",
+          "def": "les chaussures"
+        },
+        {
+          "term": "i calzini",
+          "def": "les chaussettes"
+        },
+        {
+          "term": "il cappello",
+          "def": "le chapeau"
+        },
+        {
+          "term": "il berretto",
+          "def": "la casquette / le bonnet"
+        },
+        {
+          "term": "la sciarpa",
+          "def": "l'écharpe"
+        },
+        {
+          "term": "i guanti",
+          "def": "les gants"
+        },
+        {
+          "term": "la cintura",
+          "def": "la ceinture"
+        },
+        {
+          "term": "la borsa",
+          "def": "le sac"
+        },
+        {
+          "term": "gli occhiali",
+          "def": "les lunettes"
+        },
+        {
+          "term": "l'orologio",
+          "def": "la montre / l'horloge",
+          "hint": "masculin"
+        },
+        {
+          "term": "il colore",
+          "def": "la couleur"
+        },
+        {
+          "term": "rosso",
+          "def": "rouge"
+        },
+        {
+          "term": "blu",
+          "def": "bleu"
+        },
+        {
+          "term": "verde",
+          "def": "vert"
+        },
+        {
+          "term": "giallo",
+          "def": "jaune"
+        },
+        {
+          "term": "nero",
+          "def": "noir"
+        },
+        {
+          "term": "bianco",
+          "def": "blanc"
+        },
+        {
+          "term": "grigio",
+          "def": "gris"
+        },
+        {
+          "term": "marrone",
+          "def": "marron / brun"
+        },
+        {
+          "term": "rosa",
+          "def": "rose"
+        },
+        {
+          "term": "arancione",
+          "def": "orange"
+        },
+        {
+          "term": "viola",
+          "def": "violet"
+        },
+        {
+          "term": "azzurro",
+          "def": "bleu clair"
+        },
+        {
+          "term": "blu scuro",
+          "def": "bleu foncé"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-09",
+      "title": "Italien 9: la ville et les transports",
+      "description": "Se déplacer, s'orienter et trouver les lieux utiles.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "la città",
+          "def": "la ville"
+        },
+        {
+          "term": "il paese",
+          "def": "le village / le pays"
+        },
+        {
+          "term": "la strada",
+          "def": "la rue / la route"
+        },
+        {
+          "term": "la piazza",
+          "def": "la place"
+        },
+        {
+          "term": "il negozio",
+          "def": "le magasin"
+        },
+        {
+          "term": "il supermercato",
+          "def": "le supermarché"
+        },
+        {
+          "term": "il mercato",
+          "def": "le marché"
+        },
+        {
+          "term": "la panetteria",
+          "def": "la boulangerie"
+        },
+        {
+          "term": "la banca",
+          "def": "la banque"
+        },
+        {
+          "term": "l'ufficio postale",
+          "def": "la poste",
+          "hint": "masculin"
+        },
+        {
+          "term": "la stazione",
+          "def": "la gare"
+        },
+        {
+          "term": "la scuola",
+          "def": "l'école"
+        },
+        {
+          "term": "la chiesa",
+          "def": "l'église"
+        },
+        {
+          "term": "il museo",
+          "def": "le musée"
+        },
+        {
+          "term": "il ristorante",
+          "def": "le restaurant"
+        },
+        {
+          "term": "l'albergo",
+          "def": "l'hôtel",
+          "hint": "masculin"
+        },
+        {
+          "term": "la macchina",
+          "def": "la voiture"
+        },
+        {
+          "term": "la bicicletta",
+          "def": "le vélo"
+        },
+        {
+          "term": "l'autobus",
+          "def": "le bus",
+          "hint": "masculin"
+        },
+        {
+          "term": "il treno",
+          "def": "le train"
+        },
+        {
+          "term": "il tram",
+          "def": "le tram"
+        },
+        {
+          "term": "la metropolitana",
+          "def": "le métro"
+        },
+        {
+          "term": "l'aereo",
+          "def": "l'avion",
+          "hint": "masculin"
+        },
+        {
+          "term": "la nave",
+          "def": "le bateau / le navire"
+        },
+        {
+          "term": "il biglietto",
+          "def": "le ticket / le billet"
+        },
+        {
+          "term": "a sinistra",
+          "def": "à gauche"
+        },
+        {
+          "term": "a destra",
+          "def": "à droite"
+        },
+        {
+          "term": "sempre dritto",
+          "def": "tout droit"
+        },
+        {
+          "term": "dov'è la stazione?",
+          "def": "où est la gare ?"
+        },
+        {
+          "term": "lontano",
+          "def": "loin"
+        },
+        {
+          "term": "vicino",
+          "def": "près"
+        },
+        {
+          "term": "la mappa",
+          "def": "la carte / le plan"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-10",
+      "title": "Italien 10: les verbes courants",
+      "description": "Quarante verbes du quotidien, à l'infinitif.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "essere",
+          "def": "être"
+        },
+        {
+          "term": "avere",
+          "def": "avoir"
+        },
+        {
+          "term": "andare",
+          "def": "aller"
+        },
+        {
+          "term": "venire",
+          "def": "venir"
+        },
+        {
+          "term": "fare",
+          "def": "faire"
+        },
+        {
+          "term": "potere",
+          "def": "pouvoir"
+        },
+        {
+          "term": "dovere",
+          "def": "devoir"
+        },
+        {
+          "term": "volere",
+          "def": "vouloir"
+        },
+        {
+          "term": "dire",
+          "def": "dire"
+        },
+        {
+          "term": "parlare",
+          "def": "parler"
+        },
+        {
+          "term": "chiedere",
+          "def": "demander"
+        },
+        {
+          "term": "sapere",
+          "def": "savoir"
+        },
+        {
+          "term": "conoscere",
+          "def": "connaître"
+        },
+        {
+          "term": "pensare",
+          "def": "penser"
+        },
+        {
+          "term": "capire",
+          "def": "comprendre"
+        },
+        {
+          "term": "imparare",
+          "def": "apprendre"
+        },
+        {
+          "term": "leggere",
+          "def": "lire"
+        },
+        {
+          "term": "scrivere",
+          "def": "écrire"
+        },
+        {
+          "term": "vedere",
+          "def": "voir"
+        },
+        {
+          "term": "guardare",
+          "def": "regarder"
+        },
+        {
+          "term": "sentire",
+          "def": "entendre / sentir"
+        },
+        {
+          "term": "ascoltare",
+          "def": "écouter"
+        },
+        {
+          "term": "mangiare",
+          "def": "manger"
+        },
+        {
+          "term": "bere",
+          "def": "boire"
+        },
+        {
+          "term": "dormire",
+          "def": "dormir"
+        },
+        {
+          "term": "lavorare",
+          "def": "travailler"
+        },
+        {
+          "term": "abitare",
+          "def": "habiter"
+        },
+        {
+          "term": "vivere",
+          "def": "vivre"
+        },
+        {
+          "term": "comprare",
+          "def": "acheter"
+        },
+        {
+          "term": "pagare",
+          "def": "payer"
+        },
+        {
+          "term": "dare",
+          "def": "donner"
+        },
+        {
+          "term": "prendere",
+          "def": "prendre"
+        },
+        {
+          "term": "cercare",
+          "def": "chercher"
+        },
+        {
+          "term": "trovare",
+          "def": "trouver"
+        },
+        {
+          "term": "aspettare",
+          "def": "attendre"
+        },
+        {
+          "term": "cominciare",
+          "def": "commencer"
+        },
+        {
+          "term": "aiutare",
+          "def": "aider"
+        },
+        {
+          "term": "amare",
+          "def": "aimer"
+        },
+        {
+          "term": "piacere",
+          "def": "plaire"
+        },
+        {
+          "term": "aprire",
+          "def": "ouvrir"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-11",
+      "title": "Italien 11: les adjectifs",
+      "description": "Quarante adjectifs, souvent par paires de contraires.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "grande",
+          "def": "grand"
+        },
+        {
+          "term": "piccolo",
+          "def": "petit"
+        },
+        {
+          "term": "lungo",
+          "def": "long"
+        },
+        {
+          "term": "corto",
+          "def": "court"
+        },
+        {
+          "term": "vecchio",
+          "def": "vieux"
+        },
+        {
+          "term": "nuovo",
+          "def": "nouveau / neuf"
+        },
+        {
+          "term": "giovane",
+          "def": "jeune"
+        },
+        {
+          "term": "buono",
+          "def": "bon"
+        },
+        {
+          "term": "cattivo",
+          "def": "mauvais / méchant"
+        },
+        {
+          "term": "bello",
+          "def": "beau"
+        },
+        {
+          "term": "brutto",
+          "def": "laid"
+        },
+        {
+          "term": "caldo",
+          "def": "chaud"
+        },
+        {
+          "term": "freddo",
+          "def": "froid"
+        },
+        {
+          "term": "veloce",
+          "def": "rapide"
+        },
+        {
+          "term": "lento",
+          "def": "lent"
+        },
+        {
+          "term": "caro",
+          "def": "cher"
+        },
+        {
+          "term": "economico",
+          "def": "bon marché / économique"
+        },
+        {
+          "term": "facile",
+          "def": "facile"
+        },
+        {
+          "term": "difficile",
+          "def": "difficile"
+        },
+        {
+          "term": "felice",
+          "def": "heureux"
+        },
+        {
+          "term": "triste",
+          "def": "triste"
+        },
+        {
+          "term": "occupato",
+          "def": "occupé"
+        },
+        {
+          "term": "tranquillo",
+          "def": "calme / tranquille"
+        },
+        {
+          "term": "pieno",
+          "def": "plein"
+        },
+        {
+          "term": "vuoto",
+          "def": "vide"
+        },
+        {
+          "term": "aperto",
+          "def": "ouvert"
+        },
+        {
+          "term": "chiuso",
+          "def": "fermé"
+        },
+        {
+          "term": "leggero",
+          "def": "léger"
+        },
+        {
+          "term": "pesante",
+          "def": "lourd"
+        },
+        {
+          "term": "delizioso",
+          "def": "délicieux"
+        },
+        {
+          "term": "alto",
+          "def": "haut"
+        },
+        {
+          "term": "basso",
+          "def": "bas"
+        },
+        {
+          "term": "grasso",
+          "def": "gros / gras"
+        },
+        {
+          "term": "magro",
+          "def": "mince / maigre"
+        },
+        {
+          "term": "forte",
+          "def": "fort"
+        },
+        {
+          "term": "debole",
+          "def": "faible"
+        },
+        {
+          "term": "ricco",
+          "def": "riche"
+        },
+        {
+          "term": "povero",
+          "def": "pauvre"
+        },
+        {
+          "term": "gentile",
+          "def": "gentil"
+        },
+        {
+          "term": "arrabbiato",
+          "def": "fâché / en colère"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-12",
+      "title": "Italien 12: les petits mots",
+      "description": "Questions, pronoms, liaisons et petits mots de tous les jours.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "chi?",
+          "def": "qui ?"
+        },
+        {
+          "term": "che cosa?",
+          "def": "quoi ?"
+        },
+        {
+          "term": "dove?",
+          "def": "où ?"
+        },
+        {
+          "term": "quando?",
+          "def": "quand ?"
+        },
+        {
+          "term": "perché",
+          "def": "pourquoi / parce que"
+        },
+        {
+          "term": "come?",
+          "def": "comment ?"
+        },
+        {
+          "term": "quanto?",
+          "def": "combien ?"
+        },
+        {
+          "term": "io",
+          "def": "je"
+        },
+        {
+          "term": "tu",
+          "def": "tu"
+        },
+        {
+          "term": "lui",
+          "def": "il"
+        },
+        {
+          "term": "lei",
+          "def": "elle"
+        },
+        {
+          "term": "noi",
+          "def": "nous"
+        },
+        {
+          "term": "voi",
+          "def": "vous"
+        },
+        {
+          "term": "loro",
+          "def": "ils / elles"
+        },
+        {
+          "term": "e",
+          "def": "et"
+        },
+        {
+          "term": "o",
+          "def": "ou"
+        },
+        {
+          "term": "ma",
+          "def": "mais"
+        },
+        {
+          "term": "se",
+          "def": "si"
+        },
+        {
+          "term": "con",
+          "def": "avec"
+        },
+        {
+          "term": "senza",
+          "def": "sans"
+        },
+        {
+          "term": "per",
+          "def": "pour"
+        },
+        {
+          "term": "dopo",
+          "def": "après"
+        },
+        {
+          "term": "prima",
+          "def": "avant"
+        },
+        {
+          "term": "in",
+          "def": "dans / en"
+        },
+        {
+          "term": "su",
+          "def": "sur"
+        },
+        {
+          "term": "sotto",
+          "def": "sous"
+        },
+        {
+          "term": "accanto a",
+          "def": "à côté de"
+        },
+        {
+          "term": "tra",
+          "def": "entre"
+        },
+        {
+          "term": "qui",
+          "def": "ici"
+        },
+        {
+          "term": "là",
+          "def": "là / là-bas"
+        },
+        {
+          "term": "adesso",
+          "def": "maintenant"
+        },
+        {
+          "term": "sempre",
+          "def": "toujours"
+        },
+        {
+          "term": "mai",
+          "def": "jamais"
+        },
+        {
+          "term": "a volte",
+          "def": "parfois"
+        },
+        {
+          "term": "spesso",
+          "def": "souvent"
+        },
+        {
+          "term": "anche",
+          "def": "aussi"
+        },
+        {
+          "term": "molto",
+          "def": "très / beaucoup"
+        },
+        {
+          "term": "non",
+          "def": "ne pas / non"
+        },
+        {
+          "term": "niente",
+          "def": "rien"
+        },
+        {
+          "term": "tutto",
+          "def": "tout"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-13",
+      "title": "Italien 13: le travail et les métiers",
+      "description": "Les métiers, le bureau et la vie professionnelle.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "il lavoro",
+          "def": "le travail"
+        },
+        {
+          "term": "il mestiere",
+          "def": "le métier"
+        },
+        {
+          "term": "la professione",
+          "def": "la profession"
+        },
+        {
+          "term": "l'ufficio",
+          "def": "le bureau",
+          "hint": "masculin"
+        },
+        {
+          "term": "la fabbrica",
+          "def": "l'usine"
+        },
+        {
+          "term": "l'azienda",
+          "def": "l'entreprise",
+          "hint": "féminin"
+        },
+        {
+          "term": "il capo",
+          "def": "le patron / le chef"
+        },
+        {
+          "term": "l'impiegato",
+          "def": "l'employé",
+          "hint": "masculin"
+        },
+        {
+          "term": "lo stipendio",
+          "def": "le salaire"
+        },
+        {
+          "term": "la riunione",
+          "def": "la réunion"
+        },
+        {
+          "term": "l'appuntamento",
+          "def": "le rendez-vous",
+          "hint": "masculin"
+        },
+        {
+          "term": "il professore",
+          "def": "le professeur"
+        },
+        {
+          "term": "l'infermiere",
+          "def": "l'infirmier",
+          "hint": "masculin"
+        },
+        {
+          "term": "l'avvocato",
+          "def": "l'avocat",
+          "hint": "masculin"
+        },
+        {
+          "term": "l'ingegnere",
+          "def": "l'ingénieur",
+          "hint": "masculin"
+        },
+        {
+          "term": "il cuoco",
+          "def": "le cuisinier"
+        },
+        {
+          "term": "il cameriere",
+          "def": "le serveur"
+        },
+        {
+          "term": "il commesso",
+          "def": "le vendeur"
+        },
+        {
+          "term": "il contadino",
+          "def": "le paysan / l'agriculteur"
+        },
+        {
+          "term": "il poliziotto",
+          "def": "le policier"
+        },
+        {
+          "term": "il pompiere",
+          "def": "le pompier"
+        },
+        {
+          "term": "il pittore",
+          "def": "le peintre"
+        },
+        {
+          "term": "la segretaria",
+          "def": "la secrétaire"
+        },
+        {
+          "term": "lo studente",
+          "def": "l'étudiant"
+        },
+        {
+          "term": "il giornalista",
+          "def": "le journaliste"
+        },
+        {
+          "term": "il parrucchiere",
+          "def": "le coiffeur"
+        },
+        {
+          "term": "il postino",
+          "def": "le facteur"
+        },
+        {
+          "term": "l'idraulico",
+          "def": "le plombier",
+          "hint": "masculin"
+        },
+        {
+          "term": "l'architetto",
+          "def": "l'architecte",
+          "hint": "masculin"
+        },
+        {
+          "term": "disoccupato",
+          "def": "au chômage / sans emploi"
+        },
+        {
+          "term": "candidarsi",
+          "def": "postuler"
+        },
+        {
+          "term": "guadagnare",
+          "def": "gagner",
+          "hint": "de l'argent"
+        },
+        {
+          "term": "il contratto",
+          "def": "le contrat"
+        },
+        {
+          "term": "il cliente",
+          "def": "le client"
+        },
+        {
+          "term": "la formazione",
+          "def": "la formation"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-14",
+      "title": "Italien 14: l'école et les études",
+      "description": "La classe, les matières et le matériel scolaire.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "la classe",
+          "def": "la classe"
+        },
+        {
+          "term": "la lezione",
+          "def": "le cours / la leçon"
+        },
+        {
+          "term": "l'alunno",
+          "def": "l'élève",
+          "hint": "masculin"
+        },
+        {
+          "term": "l'università",
+          "def": "l'université",
+          "hint": "féminin"
+        },
+        {
+          "term": "la materia",
+          "def": "la matière"
+        },
+        {
+          "term": "la matematica",
+          "def": "les mathématiques"
+        },
+        {
+          "term": "la storia",
+          "def": "l'histoire"
+        },
+        {
+          "term": "la geografia",
+          "def": "la géographie"
+        },
+        {
+          "term": "l'inglese",
+          "def": "l'anglais",
+          "hint": "masculin"
+        },
+        {
+          "term": "il francese",
+          "def": "le français"
+        },
+        {
+          "term": "la musica",
+          "def": "la musique"
+        },
+        {
+          "term": "il quaderno",
+          "def": "le cahier"
+        },
+        {
+          "term": "la penna",
+          "def": "le stylo"
+        },
+        {
+          "term": "la matita",
+          "def": "le crayon"
+        },
+        {
+          "term": "la gomma",
+          "def": "la gomme"
+        },
+        {
+          "term": "le forbici",
+          "def": "les ciseaux"
+        },
+        {
+          "term": "il righello",
+          "def": "la règle"
+        },
+        {
+          "term": "lo zaino",
+          "def": "le cartable / le sac à dos"
+        },
+        {
+          "term": "la lavagna",
+          "def": "le tableau"
+        },
+        {
+          "term": "la verifica",
+          "def": "le contrôle"
+        },
+        {
+          "term": "l'esame",
+          "def": "l'examen",
+          "hint": "masculin"
+        },
+        {
+          "term": "i compiti",
+          "def": "les devoirs"
+        },
+        {
+          "term": "la domanda",
+          "def": "la question"
+        },
+        {
+          "term": "la risposta",
+          "def": "la réponse"
+        },
+        {
+          "term": "l'errore",
+          "def": "l'erreur / la faute",
+          "hint": "masculin"
+        },
+        {
+          "term": "il voto",
+          "def": "la note"
+        },
+        {
+          "term": "la ricreazione",
+          "def": "la récréation"
+        },
+        {
+          "term": "studiare",
+          "def": "étudier"
+        },
+        {
+          "term": "spiegare",
+          "def": "expliquer"
+        },
+        {
+          "term": "ripetere",
+          "def": "répéter"
+        },
+        {
+          "term": "superare un esame",
+          "def": "réussir un examen"
+        },
+        {
+          "term": "essere bocciato",
+          "def": "échouer / être recalé"
+        },
+        {
+          "term": "il dizionario",
+          "def": "le dictionnaire"
+        },
+        {
+          "term": "la pagina",
+          "def": "la page"
+        },
+        {
+          "term": "l'aula",
+          "def": "la salle de classe",
+          "hint": "féminin"
+        },
+        {
+          "term": "la scuola elementare",
+          "def": "l'école primaire"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-15",
+      "title": "Italien 15: la nature et la météo",
+      "description": "Le temps qu'il fait, les paysages et la nature.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "il tempo",
+          "def": "le temps"
+        },
+        {
+          "term": "il sole",
+          "def": "le soleil"
+        },
+        {
+          "term": "la pioggia",
+          "def": "la pluie"
+        },
+        {
+          "term": "la neve",
+          "def": "la neige"
+        },
+        {
+          "term": "il vento",
+          "def": "le vent"
+        },
+        {
+          "term": "la nuvola",
+          "def": "le nuage"
+        },
+        {
+          "term": "il cielo",
+          "def": "le ciel"
+        },
+        {
+          "term": "l'aria",
+          "def": "l'air",
+          "hint": "féminin"
+        },
+        {
+          "term": "la tempesta",
+          "def": "la tempête"
+        },
+        {
+          "term": "la nebbia",
+          "def": "le brouillard"
+        },
+        {
+          "term": "il temporale",
+          "def": "l'orage"
+        },
+        {
+          "term": "la temperatura",
+          "def": "la température"
+        },
+        {
+          "term": "piove",
+          "def": "il pleut"
+        },
+        {
+          "term": "nevica",
+          "def": "il neige"
+        },
+        {
+          "term": "c'è vento",
+          "def": "il y a du vent"
+        },
+        {
+          "term": "fa caldo",
+          "def": "il fait chaud"
+        },
+        {
+          "term": "fa freddo",
+          "def": "il fait froid"
+        },
+        {
+          "term": "il mare",
+          "def": "la mer"
+        },
+        {
+          "term": "la spiaggia",
+          "def": "la plage"
+        },
+        {
+          "term": "la montagna",
+          "def": "la montagne"
+        },
+        {
+          "term": "la collina",
+          "def": "la colline"
+        },
+        {
+          "term": "il bosco",
+          "def": "le bois / la forêt"
+        },
+        {
+          "term": "il fiume",
+          "def": "la rivière / le fleuve"
+        },
+        {
+          "term": "il lago",
+          "def": "le lac"
+        },
+        {
+          "term": "l'isola",
+          "def": "l'île",
+          "hint": "féminin"
+        },
+        {
+          "term": "l'albero",
+          "def": "l'arbre",
+          "hint": "masculin"
+        },
+        {
+          "term": "il fiore",
+          "def": "la fleur"
+        },
+        {
+          "term": "l'erba",
+          "def": "l'herbe",
+          "hint": "féminin"
+        },
+        {
+          "term": "la foglia",
+          "def": "la feuille"
+        },
+        {
+          "term": "la pietra",
+          "def": "la pierre"
+        },
+        {
+          "term": "la terra",
+          "def": "la terre"
+        },
+        {
+          "term": "il fuoco",
+          "def": "le feu"
+        },
+        {
+          "term": "la luna",
+          "def": "la lune"
+        },
+        {
+          "term": "la stella",
+          "def": "l'étoile"
+        },
+        {
+          "term": "la natura",
+          "def": "la nature"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-16",
+      "title": "Italien 16: les animaux",
+      "description": "Les animaux de la maison, de la ferme et du monde sauvage.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "l'animale",
+          "def": "l'animal",
+          "hint": "masculin"
+        },
+        {
+          "term": "l'uccello",
+          "def": "l'oiseau",
+          "hint": "masculin"
+        },
+        {
+          "term": "il cavallo",
+          "def": "le cheval"
+        },
+        {
+          "term": "la mucca",
+          "def": "la vache"
+        },
+        {
+          "term": "il maiale",
+          "def": "le cochon"
+        },
+        {
+          "term": "la pecora",
+          "def": "le mouton / la brebis"
+        },
+        {
+          "term": "la capra",
+          "def": "la chèvre"
+        },
+        {
+          "term": "il gallo",
+          "def": "le coq"
+        },
+        {
+          "term": "l'anatra",
+          "def": "le canard",
+          "hint": "féminin"
+        },
+        {
+          "term": "il coniglio",
+          "def": "le lapin"
+        },
+        {
+          "term": "il topo",
+          "def": "la souris"
+        },
+        {
+          "term": "il ratto",
+          "def": "le rat"
+        },
+        {
+          "term": "l'orso",
+          "def": "l'ours",
+          "hint": "masculin"
+        },
+        {
+          "term": "il lupo",
+          "def": "le loup"
+        },
+        {
+          "term": "la volpe",
+          "def": "le renard"
+        },
+        {
+          "term": "il cervo",
+          "def": "le cerf"
+        },
+        {
+          "term": "il leone",
+          "def": "le lion"
+        },
+        {
+          "term": "la tigre",
+          "def": "le tigre"
+        },
+        {
+          "term": "l'elefante",
+          "def": "l'éléphant",
+          "hint": "masculin"
+        },
+        {
+          "term": "la scimmia",
+          "def": "le singe"
+        },
+        {
+          "term": "il serpente",
+          "def": "le serpent"
+        },
+        {
+          "term": "la rana",
+          "def": "la grenouille"
+        },
+        {
+          "term": "la tartaruga",
+          "def": "la tortue"
+        },
+        {
+          "term": "la farfalla",
+          "def": "le papillon"
+        },
+        {
+          "term": "l'ape",
+          "def": "l'abeille",
+          "hint": "féminin"
+        },
+        {
+          "term": "il ragno",
+          "def": "l'araignée"
+        },
+        {
+          "term": "la zanzara",
+          "def": "le moustique"
+        },
+        {
+          "term": "la mosca",
+          "def": "la mouche"
+        },
+        {
+          "term": "la balena",
+          "def": "la baleine"
+        },
+        {
+          "term": "il delfino",
+          "def": "le dauphin"
+        },
+        {
+          "term": "il gufo",
+          "def": "le hibou"
+        },
+        {
+          "term": "il piccione",
+          "def": "le pigeon"
+        },
+        {
+          "term": "la formica",
+          "def": "la fourmi"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-17",
+      "title": "Italien 17: loisirs et sports",
+      "description": "Le temps libre, le sport, la musique et les sorties.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "il passatempo",
+          "def": "le passe-temps / le hobby"
+        },
+        {
+          "term": "lo sport",
+          "def": "le sport"
+        },
+        {
+          "term": "giocare a calcio",
+          "def": "jouer au football"
+        },
+        {
+          "term": "nuotare",
+          "def": "nager"
+        },
+        {
+          "term": "andare in bicicletta",
+          "def": "faire du vélo"
+        },
+        {
+          "term": "fare una passeggiata",
+          "def": "se promener / faire une promenade"
+        },
+        {
+          "term": "correre",
+          "def": "courir"
+        },
+        {
+          "term": "ballare",
+          "def": "danser"
+        },
+        {
+          "term": "cantare",
+          "def": "chanter"
+        },
+        {
+          "term": "disegnare",
+          "def": "dessiner"
+        },
+        {
+          "term": "dipingere",
+          "def": "peindre"
+        },
+        {
+          "term": "cucinare",
+          "def": "cuisiner"
+        },
+        {
+          "term": "giocare",
+          "def": "jouer"
+        },
+        {
+          "term": "il gioco",
+          "def": "le jeu"
+        },
+        {
+          "term": "la partita",
+          "def": "le match"
+        },
+        {
+          "term": "la squadra",
+          "def": "l'équipe"
+        },
+        {
+          "term": "vincere",
+          "def": "gagner"
+        },
+        {
+          "term": "perdere",
+          "def": "perdre"
+        },
+        {
+          "term": "la palla",
+          "def": "la balle / le ballon"
+        },
+        {
+          "term": "la piscina",
+          "def": "la piscine"
+        },
+        {
+          "term": "il film",
+          "def": "le film"
+        },
+        {
+          "term": "il cinema",
+          "def": "le cinéma"
+        },
+        {
+          "term": "il concerto",
+          "def": "le concert"
+        },
+        {
+          "term": "il teatro",
+          "def": "le théâtre"
+        },
+        {
+          "term": "la chitarra",
+          "def": "la guitare"
+        },
+        {
+          "term": "il pianoforte",
+          "def": "le piano"
+        },
+        {
+          "term": "la foto",
+          "def": "la photo"
+        },
+        {
+          "term": "la festa",
+          "def": "la fête"
+        },
+        {
+          "term": "il tempo libero",
+          "def": "le temps libre"
+        },
+        {
+          "term": "uscire",
+          "def": "sortir"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-18",
+      "title": "Italien 18: les courses et l'argent",
+      "description": "Acheter, payer et compter son argent.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "i soldi",
+          "def": "l'argent"
+        },
+        {
+          "term": "l'euro",
+          "def": "l'euro",
+          "hint": "masculin"
+        },
+        {
+          "term": "il centesimo",
+          "def": "le centime"
+        },
+        {
+          "term": "il prezzo",
+          "def": "le prix"
+        },
+        {
+          "term": "lo sconto",
+          "def": "la réduction / la remise"
+        },
+        {
+          "term": "i saldi",
+          "def": "les soldes"
+        },
+        {
+          "term": "la cassa",
+          "def": "la caisse"
+        },
+        {
+          "term": "lo scontrino",
+          "def": "le ticket de caisse"
+        },
+        {
+          "term": "il portafoglio",
+          "def": "le portefeuille"
+        },
+        {
+          "term": "la carta di credito",
+          "def": "la carte de crédit"
+        },
+        {
+          "term": "in contanti",
+          "def": "en espèces / en liquide"
+        },
+        {
+          "term": "la taglia",
+          "def": "la taille"
+        },
+        {
+          "term": "provare",
+          "def": "essayer"
+        },
+        {
+          "term": "il camerino",
+          "def": "la cabine d'essayage"
+        },
+        {
+          "term": "costare",
+          "def": "coûter"
+        },
+        {
+          "term": "quanto costa?",
+          "def": "combien ça coûte ?"
+        },
+        {
+          "term": "troppo caro",
+          "def": "trop cher"
+        },
+        {
+          "term": "il regalo",
+          "def": "le cadeau"
+        },
+        {
+          "term": "il cestino",
+          "def": "le panier"
+        },
+        {
+          "term": "la spesa",
+          "def": "les courses"
+        },
+        {
+          "term": "fare la spesa",
+          "def": "faire les courses"
+        },
+        {
+          "term": "la macelleria",
+          "def": "la boucherie"
+        },
+        {
+          "term": "l'orario di apertura",
+          "def": "les heures d'ouverture",
+          "hint": "masculin"
+        },
+        {
+          "term": "il resto",
+          "def": "la monnaie",
+          "hint": "rendue"
+        },
+        {
+          "term": "risparmiare",
+          "def": "épargner / économiser"
+        },
+        {
+          "term": "prendere in prestito",
+          "def": "emprunter"
+        },
+        {
+          "term": "prestare",
+          "def": "prêter"
+        },
+        {
+          "term": "la fattura",
+          "def": "la facture"
+        },
+        {
+          "term": "vendere",
+          "def": "vendre"
+        },
+        {
+          "term": "gratis",
+          "def": "gratuit / gratuitement"
+        },
+        {
+          "term": "la moneta",
+          "def": "la pièce",
+          "hint": "de monnaie"
+        },
+        {
+          "term": "la banconota",
+          "def": "le billet de banque"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-19",
+      "title": "Italien 19: voyages et vacances",
+      "description": "Partir, réserver, se loger et visiter.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "le vacanze",
+          "def": "les vacances"
+        },
+        {
+          "term": "il viaggio",
+          "def": "le voyage"
+        },
+        {
+          "term": "viaggiare",
+          "def": "voyager"
+        },
+        {
+          "term": "il passaporto",
+          "def": "le passeport"
+        },
+        {
+          "term": "la carta d'identità",
+          "def": "la carte d'identité"
+        },
+        {
+          "term": "la valigia",
+          "def": "la valise"
+        },
+        {
+          "term": "i bagagli",
+          "def": "les bagages"
+        },
+        {
+          "term": "l'aeroporto",
+          "def": "l'aéroport",
+          "hint": "masculin"
+        },
+        {
+          "term": "il volo",
+          "def": "le vol"
+        },
+        {
+          "term": "il binario",
+          "def": "la voie / le quai"
+        },
+        {
+          "term": "il ritardo",
+          "def": "le retard"
+        },
+        {
+          "term": "partire",
+          "def": "partir"
+        },
+        {
+          "term": "arrivare",
+          "def": "arriver"
+        },
+        {
+          "term": "prenotare",
+          "def": "réserver"
+        },
+        {
+          "term": "il campeggio",
+          "def": "le camping"
+        },
+        {
+          "term": "la tenda",
+          "def": "la tente"
+        },
+        {
+          "term": "il turista",
+          "def": "le touriste"
+        },
+        {
+          "term": "la guida",
+          "def": "le guide / la guide"
+        },
+        {
+          "term": "l'ufficio turistico",
+          "def": "l'office de tourisme / l'office du tourisme",
+          "hint": "masculin"
+        },
+        {
+          "term": "il confine",
+          "def": "la frontière"
+        },
+        {
+          "term": "all'estero",
+          "def": "à l'étranger"
+        },
+        {
+          "term": "la cartolina",
+          "def": "la carte postale"
+        },
+        {
+          "term": "il souvenir",
+          "def": "le souvenir"
+        },
+        {
+          "term": "la visita guidata",
+          "def": "la visite guidée"
+        },
+        {
+          "term": "visitare",
+          "def": "visiter"
+        },
+        {
+          "term": "la vista",
+          "def": "la vue"
+        },
+        {
+          "term": "la prenotazione",
+          "def": "la réservation"
+        },
+        {
+          "term": "la reception",
+          "def": "la réception"
+        },
+        {
+          "term": "buon viaggio!",
+          "def": "bon voyage !"
+        },
+        {
+          "term": "buone vacanze!",
+          "def": "bonnes vacances !"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-20",
+      "title": "Italien 20: émotions et caractère",
+      "description": "Dire ce que l'on ressent et décrire quelqu'un.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "il sentimento",
+          "def": "le sentiment"
+        },
+        {
+          "term": "spaventato",
+          "def": "effrayé"
+        },
+        {
+          "term": "la paura",
+          "def": "la peur"
+        },
+        {
+          "term": "nervoso",
+          "def": "nerveux"
+        },
+        {
+          "term": "sorpreso",
+          "def": "surpris"
+        },
+        {
+          "term": "geloso",
+          "def": "jaloux"
+        },
+        {
+          "term": "orgoglioso",
+          "def": "fier"
+        },
+        {
+          "term": "solo",
+          "def": "seul"
+        },
+        {
+          "term": "innamorato",
+          "def": "amoureux"
+        },
+        {
+          "term": "l'amore",
+          "def": "l'amour",
+          "hint": "masculin"
+        },
+        {
+          "term": "la gioia",
+          "def": "la joie"
+        },
+        {
+          "term": "la tristezza",
+          "def": "la tristesse"
+        },
+        {
+          "term": "il dispiacere",
+          "def": "le chagrin / la peine"
+        },
+        {
+          "term": "la rabbia",
+          "def": "la colère"
+        },
+        {
+          "term": "la speranza",
+          "def": "l'espoir"
+        },
+        {
+          "term": "annoiarsi",
+          "def": "s'ennuyer"
+        },
+        {
+          "term": "ridere",
+          "def": "rire"
+        },
+        {
+          "term": "piangere",
+          "def": "pleurer"
+        },
+        {
+          "term": "sorridere",
+          "def": "sourire"
+        },
+        {
+          "term": "simpatico",
+          "def": "sympathique"
+        },
+        {
+          "term": "onesto",
+          "def": "honnête"
+        },
+        {
+          "term": "pigro",
+          "def": "paresseux"
+        },
+        {
+          "term": "intelligente",
+          "def": "intelligent"
+        },
+        {
+          "term": "stupido",
+          "def": "bête / stupide"
+        },
+        {
+          "term": "divertente",
+          "def": "drôle"
+        },
+        {
+          "term": "serio",
+          "def": "sérieux"
+        },
+        {
+          "term": "timido",
+          "def": "timide"
+        },
+        {
+          "term": "paziente",
+          "def": "patient"
+        },
+        {
+          "term": "educato",
+          "def": "poli"
+        },
+        {
+          "term": "curioso",
+          "def": "curieux"
+        },
+        {
+          "term": "preoccuparsi",
+          "def": "s'inquiéter"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-21",
+      "title": "Italien 21: l'heure",
+      "description": "Lire l'heure en italien, où l'on dit « sono le tre » mais « è l'una ».",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "sono le tre",
+          "def": "3 h"
+        },
+        {
+          "term": "è l'una",
+          "def": "1 h"
+        },
+        {
+          "term": "è mezzogiorno",
+          "def": "midi"
+        },
+        {
+          "term": "è mezzanotte",
+          "def": "minuit"
+        },
+        {
+          "term": "sono le tre e un quarto",
+          "def": "3 h 15"
+        },
+        {
+          "term": "sono le tre e mezza",
+          "def": "3 h 30"
+        },
+        {
+          "term": "sono le quattro meno un quarto",
+          "def": "3 h 45"
+        },
+        {
+          "term": "sono le tre e cinque",
+          "def": "3 h 05"
+        },
+        {
+          "term": "sono le tre e dieci",
+          "def": "3 h 10"
+        },
+        {
+          "term": "sono le tre e venti",
+          "def": "3 h 20"
+        },
+        {
+          "term": "sono le tre e venticinque",
+          "def": "3 h 25"
+        },
+        {
+          "term": "sono le quattro meno venticinque",
+          "def": "3 h 35"
+        },
+        {
+          "term": "sono le quattro meno venti",
+          "def": "3 h 40"
+        },
+        {
+          "term": "sono le quattro meno dieci",
+          "def": "3 h 50"
+        },
+        {
+          "term": "sono le quattro meno cinque",
+          "def": "3 h 55"
+        },
+        {
+          "term": "è l'una e mezza",
+          "def": "1 h 30"
+        },
+        {
+          "term": "sono le quindici",
+          "def": "15 h"
+        },
+        {
+          "term": "sono le quindici e trenta",
+          "def": "15 h 30"
+        },
+        {
+          "term": "alle nove e un quarto",
+          "def": "à 9 h 15"
+        },
+        {
+          "term": "le sette di mattina",
+          "def": "7 h du matin"
+        },
+        {
+          "term": "le sette di sera",
+          "def": "19 h"
+        },
+        {
+          "term": "di mattina",
+          "def": "le matin"
+        },
+        {
+          "term": "di pomeriggio",
+          "def": "l'après-midi"
+        },
+        {
+          "term": "di sera",
+          "def": "le soir"
+        },
+        {
+          "term": "di notte",
+          "def": "la nuit"
+        },
+        {
+          "term": "un quarto d'ora",
+          "def": "un quart d'heure"
+        },
+        {
+          "term": "mezz'ora",
+          "def": "une demi-heure"
+        },
+        {
+          "term": "un'ora e mezza",
+          "def": "une heure et demie"
+        },
+        {
+          "term": "in punto",
+          "def": "pile"
+        },
+        {
+          "term": "circa",
+          "def": "environ"
+        },
+        {
+          "term": "presto",
+          "def": "tôt"
+        },
+        {
+          "term": "tardi",
+          "def": "tard"
+        },
+        {
+          "term": "a che ora?",
+          "def": "à quelle heure ?"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-22",
+      "title": "Italien 22: les verbes pronominaux",
+      "description": "Des verbes qui se conjuguent avec un pronom: « alzarsi », mais « mi alzo ».",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "alzarsi",
+          "def": "se lever"
+        },
+        {
+          "term": "svegliarsi",
+          "def": "se réveiller"
+        },
+        {
+          "term": "addormentarsi",
+          "def": "s'endormir"
+        },
+        {
+          "term": "vestirsi",
+          "def": "s'habiller"
+        },
+        {
+          "term": "spogliarsi",
+          "def": "se déshabiller"
+        },
+        {
+          "term": "lavarsi",
+          "def": "se laver"
+        },
+        {
+          "term": "lavarsi i denti",
+          "def": "se brosser les dents"
+        },
+        {
+          "term": "farsi la doccia",
+          "def": "se doucher / prendre une douche"
+        },
+        {
+          "term": "pettinarsi",
+          "def": "se coiffer / se peigner"
+        },
+        {
+          "term": "truccarsi",
+          "def": "se maquiller"
+        },
+        {
+          "term": "radersi",
+          "def": "se raser"
+        },
+        {
+          "term": "chiamarsi",
+          "def": "s'appeler"
+        },
+        {
+          "term": "sentirsi",
+          "def": "se sentir"
+        },
+        {
+          "term": "divertirsi",
+          "def": "s'amuser"
+        },
+        {
+          "term": "riposarsi",
+          "def": "se reposer"
+        },
+        {
+          "term": "sedersi",
+          "def": "s'asseoir"
+        },
+        {
+          "term": "fermarsi",
+          "def": "s'arrêter"
+        },
+        {
+          "term": "sbrigarsi",
+          "def": "se dépêcher"
+        },
+        {
+          "term": "sbagliarsi",
+          "def": "se tromper"
+        },
+        {
+          "term": "ricordarsi",
+          "def": "se souvenir"
+        },
+        {
+          "term": "dimenticarsi",
+          "def": "oublier"
+        },
+        {
+          "term": "arrabbiarsi",
+          "def": "se fâcher / se mettre en colère"
+        },
+        {
+          "term": "innamorarsi",
+          "def": "tomber amoureux"
+        },
+        {
+          "term": "sposarsi",
+          "def": "se marier"
+        },
+        {
+          "term": "trasferirsi",
+          "def": "déménager"
+        },
+        {
+          "term": "laurearsi",
+          "def": "obtenir son diplôme"
+        },
+        {
+          "term": "iscriversi",
+          "def": "s'inscrire"
+        },
+        {
+          "term": "abituarsi",
+          "def": "s'habituer"
+        },
+        {
+          "term": "accorgersi",
+          "def": "s'apercevoir / se rendre compte"
+        },
+        {
+          "term": "lamentarsi",
+          "def": "se plaindre"
+        },
+        {
+          "term": "occuparsi di",
+          "def": "s'occuper de"
+        },
+        {
+          "term": "come ti senti?",
+          "def": "comment te sens-tu ?"
+        },
+        {
+          "term": "mi alzo alle sette",
+          "def": "je me lève à sept heures"
+        },
+        {
+          "term": "mi sono alzato presto",
+          "def": "je me suis levé tôt"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-23",
+      "title": "Italien 23: les verbes irréguliers",
+      "description": "Infinitif, présent et passé composé à la première personne: andare, vado, sono andato.",
+      "termLang": "it",
+      "defLang": "it",
+      "cards": [
+        {
+          "term": "essere (être)",
+          "def": "sono, sono stato"
+        },
+        {
+          "term": "avere (avoir)",
+          "def": "ho, ho avuto"
+        },
+        {
+          "term": "andare (aller)",
+          "def": "vado, sono andato"
+        },
+        {
+          "term": "venire (venir)",
+          "def": "vengo, sono venuto"
+        },
+        {
+          "term": "fare (faire)",
+          "def": "faccio, ho fatto"
+        },
+        {
+          "term": "dire (dire)",
+          "def": "dico, ho detto"
+        },
+        {
+          "term": "dare (donner)",
+          "def": "do, ho dato"
+        },
+        {
+          "term": "stare (être, rester)",
+          "def": "sto, sono stato"
+        },
+        {
+          "term": "bere (boire)",
+          "def": "bevo, ho bevuto"
+        },
+        {
+          "term": "uscire (sortir)",
+          "def": "esco, sono uscito"
+        },
+        {
+          "term": "potere (pouvoir)",
+          "def": "posso, ho potuto"
+        },
+        {
+          "term": "volere (vouloir)",
+          "def": "voglio, ho voluto"
+        },
+        {
+          "term": "dovere (devoir)",
+          "def": "devo, ho dovuto"
+        },
+        {
+          "term": "sapere (savoir)",
+          "def": "so, ho saputo"
+        },
+        {
+          "term": "rimanere (rester)",
+          "def": "rimango, sono rimasto"
+        },
+        {
+          "term": "scegliere (choisir)",
+          "def": "scelgo, ho scelto"
+        },
+        {
+          "term": "tenere (tenir)",
+          "def": "tengo, ho tenuto"
+        },
+        {
+          "term": "salire (monter)",
+          "def": "salgo, sono salito"
+        },
+        {
+          "term": "nascere (naître)",
+          "def": "nasco, sono nato"
+        },
+        {
+          "term": "leggere (lire)",
+          "def": "leggo, ho letto"
+        },
+        {
+          "term": "scrivere (écrire)",
+          "def": "scrivo, ho scritto"
+        },
+        {
+          "term": "prendere (prendre)",
+          "def": "prendo, ho preso"
+        },
+        {
+          "term": "mettere (mettre)",
+          "def": "metto, ho messo"
+        },
+        {
+          "term": "vedere (voir)",
+          "def": "vedo, ho visto"
+        },
+        {
+          "term": "chiudere (fermer)",
+          "def": "chiudo, ho chiuso"
+        },
+        {
+          "term": "aprire (ouvrir)",
+          "def": "apro, ho aperto"
+        },
+        {
+          "term": "chiedere (demander)",
+          "def": "chiedo, ho chiesto"
+        },
+        {
+          "term": "rispondere (répondre)",
+          "def": "rispondo, ho risposto"
+        },
+        {
+          "term": "perdere (perdre)",
+          "def": "perdo, ho perso"
+        },
+        {
+          "term": "vivere (vivre)",
+          "def": "vivo, ho vissuto"
+        },
+        {
+          "term": "scendere (descendre)",
+          "def": "scendo, sono sceso"
+        },
+        {
+          "term": "decidere (décider)",
+          "def": "decido, ho deciso"
+        },
+        {
+          "term": "ridere (rire)",
+          "def": "rido, ho riso"
+        },
+        {
+          "term": "piangere (pleurer)",
+          "def": "piango, ho pianto"
+        },
+        {
+          "term": "spendere (dépenser)",
+          "def": "spendo, ho speso"
+        },
+        {
+          "term": "offrire (offrir)",
+          "def": "offro, ho offerto"
+        },
+        {
+          "term": "conoscere (connaître)",
+          "def": "conosco, ho conosciuto"
+        },
+        {
+          "term": "vincere (gagner)",
+          "def": "vinco, ho vinto"
+        },
+        {
+          "term": "spegnere (éteindre)",
+          "def": "spengo, ho spento"
+        },
+        {
+          "term": "rompere (casser)",
+          "def": "rompo, ho rotto"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-24",
+      "title": "Italien 24: expressions courantes",
+      "description": "Les tournures que l'on entend tous les jours.",
+      "termLang": "it",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "è vero",
+          "def": "c'est vrai"
+        },
+        {
+          "term": "non ne ho idea",
+          "def": "je n'en ai aucune idée"
+        },
+        {
+          "term": "non importa",
+          "def": "peu importe / ça ne fait rien"
+        },
+        {
+          "term": "nessun problema",
+          "def": "pas de problème"
+        },
+        {
+          "term": "certo",
+          "def": "bien sûr / certainement"
+        },
+        {
+          "term": "che peccato",
+          "def": "quel dommage"
+        },
+        {
+          "term": "ho voglia di",
+          "def": "j'ai envie de"
+        },
+        {
+          "term": "non lo so",
+          "def": "je ne sais pas"
+        },
+        {
+          "term": "va bene",
+          "def": "d'accord / ça va"
+        },
+        {
+          "term": "un attimo",
+          "def": "un instant"
+        },
+        {
+          "term": "posso aiutarla?",
+          "def": "puis-je vous aider ?"
+        },
+        {
+          "term": "cosa vuoi dire?",
+          "def": "que veux-tu dire ? / qu'est-ce que tu veux dire ?"
+        },
+        {
+          "term": "ancora una volta, per favore",
+          "def": "encore une fois, s'il vous plaît"
+        },
+        {
+          "term": "più lentamente, per favore",
+          "def": "plus lentement, s'il vous plaît"
+        },
+        {
+          "term": "come si dice in italiano?",
+          "def": "comment dit-on en italien ?"
+        },
+        {
+          "term": "che cosa vuol dire?",
+          "def": "qu'est-ce que ça veut dire ?"
+        },
+        {
+          "term": "in bocca al lupo!",
+          "def": "bonne chance !"
+        },
+        {
+          "term": "buona guarigione!",
+          "def": "bon rétablissement !"
+        },
+        {
+          "term": "congratulazioni!",
+          "def": "félicitations !"
+        },
+        {
+          "term": "buona giornata!",
+          "def": "bonne journée !"
+        },
+        {
+          "term": "buon fine settimana!",
+          "def": "bon week-end !"
+        },
+        {
+          "term": "alla prossima settimana",
+          "def": "à la semaine prochaine"
+        },
+        {
+          "term": "così così",
+          "def": "comme ci, comme ça"
+        },
+        {
+          "term": "sono d'accordo",
+          "def": "je suis d'accord"
+        },
+        {
+          "term": "non sono d'accordo",
+          "def": "je ne suis pas d'accord"
+        },
+        {
+          "term": "magari!",
+          "def": "si seulement ! / j'aimerais bien !"
+        },
+        {
+          "term": "in orario",
+          "def": "à l'heure"
+        },
+        {
+          "term": "essere in ritardo",
+          "def": "être en retard"
+        },
+        {
+          "term": "subito",
+          "def": "tout de suite"
+        },
+        {
+          "term": "comunque",
+          "def": "de toute façon / en tout cas"
+        },
+        {
+          "term": "il prima possibile",
+          "def": "le plus vite possible / dès que possible"
+        },
+        {
+          "term": "secondo me",
+          "def": "à mon avis / selon moi"
+        },
+        {
+          "term": "non ho tempo",
+          "def": "je n'ai pas le temps"
+        },
+        {
+          "term": "c'è molta gente",
+          "def": "il y a beaucoup de monde"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-25",
+      "title": "Italien 25: il, lo, la ou l' ?",
+      "description": "Le bon article pour quarante noms courants, avec leur sens en indice.",
+      "termLang": "it",
+      "defLang": "it",
+      "cards": [
+        {
+          "term": "libro",
+          "def": "il",
+          "hint": "livre"
+        },
+        {
+          "term": "cane",
+          "def": "il",
+          "hint": "chien"
+        },
+        {
+          "term": "giorno",
+          "def": "il",
+          "hint": "jour"
+        },
+        {
+          "term": "treno",
+          "def": "il",
+          "hint": "train"
+        },
+        {
+          "term": "pane",
+          "def": "il",
+          "hint": "pain"
+        },
+        {
+          "term": "mare",
+          "def": "il",
+          "hint": "mer"
+        },
+        {
+          "term": "fiore",
+          "def": "il",
+          "hint": "fleur"
+        },
+        {
+          "term": "latte",
+          "def": "il",
+          "hint": "lait"
+        },
+        {
+          "term": "problema",
+          "def": "il",
+          "hint": "problème"
+        },
+        {
+          "term": "cinema",
+          "def": "il",
+          "hint": "cinéma"
+        },
+        {
+          "term": "zio",
+          "def": "lo",
+          "hint": "oncle"
+        },
+        {
+          "term": "studente",
+          "def": "lo",
+          "hint": "étudiant"
+        },
+        {
+          "term": "zaino",
+          "def": "lo",
+          "hint": "sac à dos"
+        },
+        {
+          "term": "specchio",
+          "def": "lo",
+          "hint": "miroir"
+        },
+        {
+          "term": "sport",
+          "def": "lo",
+          "hint": "sport"
+        },
+        {
+          "term": "zucchero",
+          "def": "lo",
+          "hint": "sucre"
+        },
+        {
+          "term": "sconto",
+          "def": "lo",
+          "hint": "réduction"
+        },
+        {
+          "term": "stadio",
+          "def": "lo",
+          "hint": "stade"
+        },
+        {
+          "term": "yogurt",
+          "def": "lo",
+          "hint": "yaourt"
+        },
+        {
+          "term": "psicologo",
+          "def": "lo",
+          "hint": "psychologue"
+        },
+        {
+          "term": "casa",
+          "def": "la",
+          "hint": "maison"
+        },
+        {
+          "term": "chiave",
+          "def": "la",
+          "hint": "clé"
+        },
+        {
+          "term": "notte",
+          "def": "la",
+          "hint": "nuit"
+        },
+        {
+          "term": "mano",
+          "def": "la",
+          "hint": "main"
+        },
+        {
+          "term": "radio",
+          "def": "la",
+          "hint": "radio"
+        },
+        {
+          "term": "foto",
+          "def": "la",
+          "hint": "photo"
+        },
+        {
+          "term": "zia",
+          "def": "la",
+          "hint": "tante"
+        },
+        {
+          "term": "stazione",
+          "def": "la",
+          "hint": "gare"
+        },
+        {
+          "term": "scuola",
+          "def": "la",
+          "hint": "école"
+        },
+        {
+          "term": "gente",
+          "def": "la",
+          "hint": "gens"
+        },
+        {
+          "term": "amico",
+          "def": "l'",
+          "hint": "ami"
+        },
+        {
+          "term": "acqua",
+          "def": "l'",
+          "hint": "eau"
+        },
+        {
+          "term": "uovo",
+          "def": "l'",
+          "hint": "œuf"
+        },
+        {
+          "term": "albero",
+          "def": "l'",
+          "hint": "arbre"
+        },
+        {
+          "term": "ora",
+          "def": "l'",
+          "hint": "heure"
+        },
+        {
+          "term": "isola",
+          "def": "l'",
+          "hint": "île"
+        },
+        {
+          "term": "estate",
+          "def": "l'",
+          "hint": "été"
+        },
+        {
+          "term": "università",
+          "def": "l'",
+          "hint": "université"
+        },
+        {
+          "term": "ospedale",
+          "def": "l'",
+          "hint": "hôpital"
+        },
+        {
+          "term": "uomo",
+          "def": "l'",
+          "hint": "homme"
+        }
+      ]
+    },
+    {
+      "id": "sample-it-26",
+      "title": "Italien 26: les pluriels",
+      "description": "Le pluriel des noms courants, réguliers ou non, avec leur sens en indice.",
+      "termLang": "it",
+      "defLang": "it",
+      "cards": [
+        {
+          "term": "il libro",
+          "def": "i libri",
+          "hint": "le livre"
+        },
+        {
+          "term": "la casa",
+          "def": "le case",
+          "hint": "la maison"
+        },
+        {
+          "term": "il cane",
+          "def": "i cani",
+          "hint": "le chien"
+        },
+        {
+          "term": "la chiave",
+          "def": "le chiavi",
+          "hint": "la clé"
+        },
+        {
+          "term": "lo zio",
+          "def": "gli zii",
+          "hint": "l'oncle"
+        },
+        {
+          "term": "lo studente",
+          "def": "gli studenti",
+          "hint": "l'étudiant"
+        },
+        {
+          "term": "l'amico",
+          "def": "gli amici",
+          "hint": "l'ami"
+        },
+        {
+          "term": "l'amica",
+          "def": "le amiche",
+          "hint": "l'amie"
+        },
+        {
+          "term": "il medico",
+          "def": "i medici",
+          "hint": "le médecin"
+        },
+        {
+          "term": "il lago",
+          "def": "i laghi",
+          "hint": "le lac"
+        },
+        {
+          "term": "l'albergo",
+          "def": "gli alberghi",
+          "hint": "l'hôtel"
+        },
+        {
+          "term": "la banca",
+          "def": "le banche",
+          "hint": "la banque"
+        },
+        {
+          "term": "la camicia",
+          "def": "le camicie",
+          "hint": "la chemise"
+        },
+        {
+          "term": "l'arancia",
+          "def": "le arance",
+          "hint": "l'orange"
+        },
+        {
+          "term": "il figlio",
+          "def": "i figli",
+          "hint": "le fils"
+        },
+        {
+          "term": "lo zaino",
+          "def": "gli zaini",
+          "hint": "le sac à dos"
+        },
+        {
+          "term": "l'uomo",
+          "def": "gli uomini",
+          "hint": "l'homme"
+        },
+        {
+          "term": "l'uovo",
+          "def": "le uova",
+          "hint": "l'œuf"
+        },
+        {
+          "term": "il braccio",
+          "def": "le braccia",
+          "hint": "le bras"
+        },
+        {
+          "term": "il dito",
+          "def": "le dita",
+          "hint": "le doigt"
+        },
+        {
+          "term": "la mano",
+          "def": "le mani",
+          "hint": "la main"
+        },
+        {
+          "term": "il problema",
+          "def": "i problemi",
+          "hint": "le problème"
+        },
+        {
+          "term": "la città",
+          "def": "le città",
+          "hint": "la ville"
+        },
+        {
+          "term": "il caffè",
+          "def": "i caffè",
+          "hint": "le café"
+        },
+        {
+          "term": "la foto",
+          "def": "le foto",
+          "hint": "la photo"
+        },
+        {
+          "term": "il film",
+          "def": "i film",
+          "hint": "le film"
+        },
+        {
+          "term": "lo sport",
+          "def": "gli sport",
+          "hint": "le sport"
+        },
+        {
+          "term": "il re",
+          "def": "i re",
+          "hint": "le roi"
+        },
+        {
+          "term": "la moglie",
+          "def": "le mogli",
+          "hint": "l'épouse"
+        },
+        {
+          "term": "l'ala",
+          "def": "le ali",
+          "hint": "l'aile"
+        },
+        {
+          "term": "il dio",
+          "def": "gli dei",
+          "hint": "le dieu"
+        },
+        {
+          "term": "il bue",
+          "def": "i buoi",
+          "hint": "le bœuf"
+        }
+      ]
+    },
+    {
       "id": "sample-capitales-europe",
       "title": "Capitales d'Europe",
       "description": "26 pays, 26 capitales.",

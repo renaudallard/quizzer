@@ -66,8 +66,8 @@ is reached the tile stops at the goal and its caption gives the real count.
 ### Sample sets
 
 "Charger les exemples" adds the sets that ship with the site: Spanish basics,
-European capitals, English irregular verbs, chemical symbols, and two
-courses for French speakers, in Dutch and English. Each course has
+European capitals, English irregular verbs, chemical symbols, and three
+courses for French speakers, in Dutch, English and Italian. Each course has
 twenty-six sets and about 900 words and phrases, on the same plan. Sets 1 to
 12 lay the basics, from first words and numbers to everyday verbs, adjectives
 and the small words that hold sentences together. Sets 13 to 26 go further:
@@ -87,15 +87,22 @@ Where the languages differ, so do the sets:
   actually for en fait, with a hint naming the French word it does not mean.
   Nouns come without an article, since the English one says nothing of
   gender.
+- Italian: telling the time, where it is "sono le tre" but "è l'una",
+  reflexive verbs, irregular verbs with the present and the passato prossimo
+  with its auxiliary, and an il, lo, la or l' drill. Every noun comes with
+  its article. After l' the gender no longer shows, so the hint gives it; in
+  the plurals set the plural article shows it instead, as in l'amico, gli
+  amici. The plurals include the irregular ones, such as l'uovo, le uova.
 
 The Dutch was checked against a machine translator and Wiktionary: meanings,
-spelling, articles, plurals and verb forms. The English was checked against
-English and French Wiktionary for spelling, meanings, plurals and verb forms,
-with a machine translator as a second opinion on the phrases and on the
-answers the dictionaries did not confirm. Cards that share a French answer,
-such as dank je and dank u for merci, carry a hint that tells them apart, and
-where a word has two usual French renderings both are accepted, as with de
-jas for le manteau or la veste.
+spelling, articles, plurals and verb forms. The English and Italian were
+checked against English and French Wiktionary for spelling, meanings,
+plurals and verb forms, and the Italian genders and articles as well, with a
+machine translator as a second opinion on the phrases and on the answers the
+dictionaries did not confirm. Cards that share a French answer, such as dank
+je and dank u for merci, carry a hint that tells them apart, and where a word
+has two usual French renderings both are accepted, as with de jas for le
+manteau or la veste.
 
 The button is on the empty home page and above your sets once you have some.
 It only adds the sample sets you do not have yet, so sets added to the site
