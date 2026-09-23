@@ -13,7 +13,9 @@ import { render, currentPath } from '../router.js';
 async function loadSamples(button) {
   button.disabled = true;
   try {
-    const response = await fetch('data/samples.json');
+    /* Checked with the server every time: the list grows as sample sets are
+       added, and a copy the browser kept would hide the new ones. */
+    const response = await fetch('data/samples.json', { cache: 'no-cache' });
     if (!response.ok) throw new Error(String(response.status));
     const payload = await response.json();
     const known = new Set(store.getSets().map((set) => set.id));

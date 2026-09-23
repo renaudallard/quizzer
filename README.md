@@ -76,7 +76,9 @@ je and dank u for merci, carry a hint that tells them apart.
 
 The button is on the empty home page and above your sets once you have some.
 It only adds the sample sets you do not have yet, so sets added to the site
-later can be loaded too, and one you deleted comes back.
+later can be loaded too, and one you deleted comes back. The list is checked
+with the server on every click, so a copy the browser kept cannot hide new
+sets.
 
 ### Editing sets
 
