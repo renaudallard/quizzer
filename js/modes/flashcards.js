@@ -8,6 +8,17 @@ import { shuffle } from '../util.js';
 import { studyShell, flipCard, summaryPanel, bindKeys, speak } from '../study.js';
 import { notFoundPanel } from '../views/shared.js';
 
+/* Focus reached from the keyboard, not the focus a mouse click leaves on a
+   button. A browser that cannot tell the two apart counts it as keyboard
+   focus, which only keeps the focus where it was. */
+function keyboardFocus(node) {
+  try {
+    return node.matches(':focus-visible');
+  } catch {
+    return true;
+  }
+}
+
 export function flashcardsView(id) {
   const set = store.getSet(id);
   if (!set) return notFoundPanel(t('set.notFound'));
@@ -74,8 +85,10 @@ export function flashcardsView(id) {
   function paint() {
     /* Rebuilding the buttons drops the focus, so a keyboard user who pressed
        Suivant gets it back on the new Suivant rather than on the page, where
-       the next Enter would turn the card instead. */
-    const step = stage.contains(document.activeElement) ? document.activeElement.dataset.step : null;
+       the next Enter would turn the card instead. The focus a mouse click
+       leaves behind is let go, so Space still turns the card after a click. */
+    const active = document.activeElement;
+    const step = stage.contains(active) && keyboardFocus(active) ? active.dataset.step : null;
     if (state.index >= order.length) {
       shell.setProgress(order.length, order.length);
       mount(stage, summaryPanel({
