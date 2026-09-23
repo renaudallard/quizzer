@@ -172,17 +172,19 @@ export function typedAnswer(value) {
 
 /* What follows an answer in quiz and write: the verdict, the expected answer
    when it was missed, an optional note, the "I had it" claim when one is
-   offered, and Continue, which takes the focus. result is what grade()
-   returned for a typed answer. */
+   offered, and Continue, which takes the focus. result is what gradeAny()
+   returned for a typed answer: its answer, the one the learner came closest
+   to, may belong to another card with the same prompt, and is the one shown. */
 export function answerFeedback({ correct, result, expected, lang, note, onOverride, onContinue }) {
   const verdict = correct ? (result && result.verdict === 'almost' ? 'almost' : 'correct') : 'wrong';
   const accent = Boolean(result && result.accent);
+  const answer = (result && result.answer) || expected;
   const next = el('button', { type: 'button', class: 'btn btn-primary btn-lg', onclick: onContinue },
     t('common.continue'), icon('right'));
   queueMicrotask(() => next.focus());
   return el('div', {},
     feedbackBanner(verdict, {
-      expected: verdict === 'correct' && !accent ? null : expected,
+      expected: verdict === 'correct' && !accent ? null : answer,
       accent,
       lang,
     }),

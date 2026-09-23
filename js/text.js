@@ -136,18 +136,25 @@ export function grade(input, expected, options = {}) {
   return { verdict: 'wrong', accent: false };
 }
 
-const RANK = { correct: 2, almost: 1, wrong: 0 };
+/* An exact answer ranks above one that is only right once accents are
+   forgiven, which ranks above a near miss. */
+function rank({ verdict, accent }) {
+  if (verdict === 'correct') return accent ? 3 : 4;
+  return verdict === 'almost' ? 1 : 0;
+}
 
 /* Grades against several answers that are all right, such as the terms of
-   two cards that both mean "bonjour", and keeps the best verdict. */
+   two cards that both mean "bonjour", and keeps the best verdict with the
+   answer it came from. On a tie the earlier answer wins, so the one asked
+   for goes first. */
 export function gradeAny(input, answers, options = {}) {
   let best = null;
-  for (const expected of answers) {
-    const result = grade(input, expected, options);
-    if (!best || RANK[result.verdict] > RANK[best.verdict]) best = result;
-    if (best.verdict === 'correct' && !best.accent) break;
+  for (const answer of answers) {
+    const result = { ...grade(input, answer, options), answer };
+    if (!best || rank(result) > rank(best)) best = result;
+    if (rank(best) === 4) break;
   }
-  return best || { verdict: 'wrong', accent: false };
+  return best || { verdict: 'wrong', accent: false, answer: '' };
 }
 
 /* Progressive hint: keeps the first letter of every word and the punctuation. */

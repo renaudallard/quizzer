@@ -43,9 +43,10 @@ export function writeView(id) {
   function submit(value) {
     if (!run || run.pending) return;
     const card = run.queue[run.position];
-    /* Another card with the same term has a definition that is just as right. */
+    /* Another card with the same term has a definition that is just as
+       right. The card asked for goes first, so a miss shows its answer. */
     const term = textKey(card.term);
-    const accepted = set.cards.filter((other) => other.id === card.id || textKey(other.term) === term)
+    const accepted = [card, ...set.cards.filter((other) => other.id !== card.id && textKey(other.term) === term)]
       .map((other) => other.def);
     const verdict = gradeAny(value, accepted, store.getSettings());
     run.pending = { verdict, typed: value, correct: verdict.verdict !== 'wrong' };
