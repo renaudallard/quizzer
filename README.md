@@ -67,11 +67,17 @@ is reached the tile stops at the goal and its caption gives the real count.
 
 "Charger les exemples" adds the sets that ship with the site: Spanish basics,
 European capitals, English irregular verbs, chemical symbols, and a Dutch
-course for French speakers in twelve sets, from first words and numbers to
-everyday verbs, adjectives and the small words that hold sentences together.
-The course holds about 430 words and phrases. Every noun comes with its
+course for French speakers in twenty-six sets, about 900 words and phrases.
+Sets 1 to 12 lay the basics, from first words and numbers to everyday verbs,
+adjectives and the small words that hold sentences together. Sets 13 to 26
+go further: work, school, nature and weather, animals, leisure, shopping,
+travel and feelings, then telling the time, where "half drie" means half past
+two, separable verbs, irregular verbs with their auxiliary, everyday
+expressions, a de or het drill and plurals. Every noun comes with its
 article, de or het, since it has to be learned with the word, and read aloud
-speaks the Dutch side in Dutch. Cards that share a French answer, such as dank
+speaks the Dutch side in Dutch. The Dutch was checked against a machine
+translator and Wiktionary: meanings, spelling, articles, plurals and verb
+forms. Cards that share a French answer, such as dank
 je and dank u for merci, carry a hint that tells them apart, and where a word
 has two usual French renderings both are accepted, as with de jas for le
 manteau or la veste.

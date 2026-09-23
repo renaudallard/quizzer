@@ -1970,6 +1970,2091 @@
       ]
     },
     {
+      "id": "sample-nl-13",
+      "title": "Néerlandais 13: le travail et les métiers",
+      "description": "Les métiers, le bureau et la vie professionnelle.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "het werk",
+          "def": "le travail"
+        },
+        {
+          "term": "de baan",
+          "def": "l'emploi"
+        },
+        {
+          "term": "het beroep",
+          "def": "le métier / la profession"
+        },
+        {
+          "term": "het kantoor",
+          "def": "le bureau",
+          "hint": "le lieu de travail"
+        },
+        {
+          "term": "de fabriek",
+          "def": "l'usine"
+        },
+        {
+          "term": "het bedrijf",
+          "def": "l'entreprise"
+        },
+        {
+          "term": "de baas",
+          "def": "le patron"
+        },
+        {
+          "term": "de werknemer",
+          "def": "l'employé"
+        },
+        {
+          "term": "het salaris",
+          "def": "le salaire"
+        },
+        {
+          "term": "de vergadering",
+          "def": "la réunion"
+        },
+        {
+          "term": "de afspraak",
+          "def": "le rendez-vous"
+        },
+        {
+          "term": "de leraar",
+          "def": "l'enseignant / le professeur"
+        },
+        {
+          "term": "de verpleegkundige",
+          "def": "l'infirmier / l'infirmière"
+        },
+        {
+          "term": "de advocaat",
+          "def": "l'avocat"
+        },
+        {
+          "term": "de ingenieur",
+          "def": "l'ingénieur"
+        },
+        {
+          "term": "de kok",
+          "def": "le cuisinier"
+        },
+        {
+          "term": "de ober",
+          "def": "le serveur"
+        },
+        {
+          "term": "de verkoper",
+          "def": "le vendeur"
+        },
+        {
+          "term": "de boer",
+          "def": "le fermier / l'agriculteur"
+        },
+        {
+          "term": "de politieagent",
+          "def": "le policier"
+        },
+        {
+          "term": "de brandweerman",
+          "def": "le pompier"
+        },
+        {
+          "term": "de schilder",
+          "def": "le peintre"
+        },
+        {
+          "term": "de chauffeur",
+          "def": "le chauffeur"
+        },
+        {
+          "term": "de student",
+          "def": "l'étudiant"
+        },
+        {
+          "term": "de journalist",
+          "def": "le journaliste"
+        },
+        {
+          "term": "de kapper",
+          "def": "le coiffeur"
+        },
+        {
+          "term": "de postbode",
+          "def": "le facteur"
+        },
+        {
+          "term": "de loodgieter",
+          "def": "le plombier"
+        },
+        {
+          "term": "de architect",
+          "def": "l'architecte"
+        },
+        {
+          "term": "werkloos",
+          "def": "au chômage / sans emploi"
+        },
+        {
+          "term": "solliciteren",
+          "def": "postuler"
+        },
+        {
+          "term": "verdienen",
+          "def": "gagner",
+          "hint": "de l'argent"
+        },
+        {
+          "term": "het contract",
+          "def": "le contrat"
+        },
+        {
+          "term": "de klant",
+          "def": "le client"
+        },
+        {
+          "term": "de opleiding",
+          "def": "la formation"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-14",
+      "title": "Néerlandais 14: l'école et les études",
+      "description": "La classe, les matières et le matériel scolaire.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "de klas",
+          "def": "la classe"
+        },
+        {
+          "term": "de les",
+          "def": "le cours / la leçon"
+        },
+        {
+          "term": "de juf",
+          "def": "la maîtresse",
+          "hint": "à l'école primaire"
+        },
+        {
+          "term": "de meester",
+          "def": "le maître",
+          "hint": "à l'école primaire"
+        },
+        {
+          "term": "de leerling",
+          "def": "l'élève"
+        },
+        {
+          "term": "de universiteit",
+          "def": "l'université"
+        },
+        {
+          "term": "het vak",
+          "def": "la matière"
+        },
+        {
+          "term": "de wiskunde",
+          "def": "les mathématiques"
+        },
+        {
+          "term": "de geschiedenis",
+          "def": "l'histoire"
+        },
+        {
+          "term": "de aardrijkskunde",
+          "def": "la géographie"
+        },
+        {
+          "term": "het Engels",
+          "def": "l'anglais"
+        },
+        {
+          "term": "het Nederlands",
+          "def": "le néerlandais"
+        },
+        {
+          "term": "de muziek",
+          "def": "la musique"
+        },
+        {
+          "term": "het schrift",
+          "def": "le cahier"
+        },
+        {
+          "term": "de pen",
+          "def": "le stylo"
+        },
+        {
+          "term": "het potlood",
+          "def": "le crayon"
+        },
+        {
+          "term": "de gum",
+          "def": "la gomme"
+        },
+        {
+          "term": "de schaar",
+          "def": "les ciseaux"
+        },
+        {
+          "term": "de liniaal",
+          "def": "la règle"
+        },
+        {
+          "term": "de schooltas",
+          "def": "le cartable"
+        },
+        {
+          "term": "het schoolbord",
+          "def": "le tableau / le tableau noir"
+        },
+        {
+          "term": "de toets",
+          "def": "le contrôle / le test"
+        },
+        {
+          "term": "het examen",
+          "def": "l'examen"
+        },
+        {
+          "term": "het huiswerk",
+          "def": "les devoirs"
+        },
+        {
+          "term": "de vraag",
+          "def": "la question"
+        },
+        {
+          "term": "het antwoord",
+          "def": "la réponse"
+        },
+        {
+          "term": "de fout",
+          "def": "la faute / l'erreur"
+        },
+        {
+          "term": "het cijfer",
+          "def": "la note",
+          "hint": "à l'école"
+        },
+        {
+          "term": "de pauze",
+          "def": "la récréation / la pause"
+        },
+        {
+          "term": "studeren",
+          "def": "étudier"
+        },
+        {
+          "term": "uitleggen",
+          "def": "expliquer"
+        },
+        {
+          "term": "herhalen",
+          "def": "répéter"
+        },
+        {
+          "term": "slagen",
+          "def": "réussir",
+          "hint": "à un examen"
+        },
+        {
+          "term": "zakken",
+          "def": "échouer",
+          "hint": "à un examen"
+        },
+        {
+          "term": "het woordenboek",
+          "def": "le dictionnaire"
+        },
+        {
+          "term": "de bladzijde",
+          "def": "la page"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-15",
+      "title": "Néerlandais 15: la nature et la météo",
+      "description": "Le temps qu'il fait, les paysages et la nature.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "het weer",
+          "def": "le temps / la météo"
+        },
+        {
+          "term": "de zon",
+          "def": "le soleil"
+        },
+        {
+          "term": "de regen",
+          "def": "la pluie"
+        },
+        {
+          "term": "de sneeuw",
+          "def": "la neige"
+        },
+        {
+          "term": "de wind",
+          "def": "le vent"
+        },
+        {
+          "term": "de wolk",
+          "def": "le nuage"
+        },
+        {
+          "term": "de lucht",
+          "def": "le ciel / l'air"
+        },
+        {
+          "term": "de storm",
+          "def": "la tempête"
+        },
+        {
+          "term": "de mist",
+          "def": "le brouillard"
+        },
+        {
+          "term": "het onweer",
+          "def": "l'orage"
+        },
+        {
+          "term": "de temperatuur",
+          "def": "la température"
+        },
+        {
+          "term": "het regent",
+          "def": "il pleut"
+        },
+        {
+          "term": "het sneeuwt",
+          "def": "il neige"
+        },
+        {
+          "term": "het waait",
+          "def": "il y a du vent"
+        },
+        {
+          "term": "het is warm",
+          "def": "il fait chaud"
+        },
+        {
+          "term": "het is koud",
+          "def": "il fait froid"
+        },
+        {
+          "term": "de zee",
+          "def": "la mer"
+        },
+        {
+          "term": "het strand",
+          "def": "la plage"
+        },
+        {
+          "term": "de berg",
+          "def": "la montagne"
+        },
+        {
+          "term": "de heuvel",
+          "def": "la colline"
+        },
+        {
+          "term": "het bos",
+          "def": "la forêt / le bois"
+        },
+        {
+          "term": "de rivier",
+          "def": "la rivière / le fleuve"
+        },
+        {
+          "term": "het meer",
+          "def": "le lac"
+        },
+        {
+          "term": "het eiland",
+          "def": "l'île"
+        },
+        {
+          "term": "de boom",
+          "def": "l'arbre"
+        },
+        {
+          "term": "de bloem",
+          "def": "la fleur"
+        },
+        {
+          "term": "het gras",
+          "def": "l'herbe"
+        },
+        {
+          "term": "het blad",
+          "def": "la feuille"
+        },
+        {
+          "term": "de steen",
+          "def": "la pierre"
+        },
+        {
+          "term": "de aarde",
+          "def": "la terre"
+        },
+        {
+          "term": "het vuur",
+          "def": "le feu"
+        },
+        {
+          "term": "de maan",
+          "def": "la lune"
+        },
+        {
+          "term": "de ster",
+          "def": "l'étoile"
+        },
+        {
+          "term": "de natuur",
+          "def": "la nature"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-16",
+      "title": "Néerlandais 16: les animaux",
+      "description": "Les animaux de la maison, de la ferme et du monde sauvage.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "het dier",
+          "def": "l'animal"
+        },
+        {
+          "term": "de vogel",
+          "def": "l'oiseau"
+        },
+        {
+          "term": "het paard",
+          "def": "le cheval"
+        },
+        {
+          "term": "de koe",
+          "def": "la vache"
+        },
+        {
+          "term": "het varken",
+          "def": "le cochon"
+        },
+        {
+          "term": "het schaap",
+          "def": "le mouton"
+        },
+        {
+          "term": "de geit",
+          "def": "la chèvre"
+        },
+        {
+          "term": "de haan",
+          "def": "le coq"
+        },
+        {
+          "term": "de eend",
+          "def": "le canard"
+        },
+        {
+          "term": "het konijn",
+          "def": "le lapin"
+        },
+        {
+          "term": "de muis",
+          "def": "la souris"
+        },
+        {
+          "term": "de rat",
+          "def": "le rat"
+        },
+        {
+          "term": "de beer",
+          "def": "l'ours"
+        },
+        {
+          "term": "de wolf",
+          "def": "le loup"
+        },
+        {
+          "term": "de vos",
+          "def": "le renard"
+        },
+        {
+          "term": "het hert",
+          "def": "le cerf"
+        },
+        {
+          "term": "de leeuw",
+          "def": "le lion"
+        },
+        {
+          "term": "de tijger",
+          "def": "le tigre"
+        },
+        {
+          "term": "de olifant",
+          "def": "l'éléphant"
+        },
+        {
+          "term": "de aap",
+          "def": "le singe"
+        },
+        {
+          "term": "de slang",
+          "def": "le serpent"
+        },
+        {
+          "term": "de kikker",
+          "def": "la grenouille"
+        },
+        {
+          "term": "de schildpad",
+          "def": "la tortue"
+        },
+        {
+          "term": "de vlinder",
+          "def": "le papillon"
+        },
+        {
+          "term": "de bij",
+          "def": "l'abeille"
+        },
+        {
+          "term": "de spin",
+          "def": "l'araignée"
+        },
+        {
+          "term": "de mug",
+          "def": "le moustique"
+        },
+        {
+          "term": "de vlieg",
+          "def": "la mouche"
+        },
+        {
+          "term": "de walvis",
+          "def": "la baleine"
+        },
+        {
+          "term": "de dolfijn",
+          "def": "le dauphin"
+        },
+        {
+          "term": "de uil",
+          "def": "le hibou / la chouette"
+        },
+        {
+          "term": "de duif",
+          "def": "le pigeon"
+        },
+        {
+          "term": "de mier",
+          "def": "la fourmi"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-17",
+      "title": "Néerlandais 17: loisirs et sports",
+      "description": "Le temps libre, le sport, la musique et les sorties.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "de hobby",
+          "def": "le hobby / le passe-temps"
+        },
+        {
+          "term": "de sport",
+          "def": "le sport"
+        },
+        {
+          "term": "voetballen",
+          "def": "jouer au football"
+        },
+        {
+          "term": "zwemmen",
+          "def": "nager"
+        },
+        {
+          "term": "fietsen",
+          "def": "faire du vélo"
+        },
+        {
+          "term": "wandelen",
+          "def": "se promener"
+        },
+        {
+          "term": "hardlopen",
+          "def": "courir"
+        },
+        {
+          "term": "dansen",
+          "def": "danser"
+        },
+        {
+          "term": "zingen",
+          "def": "chanter"
+        },
+        {
+          "term": "tekenen",
+          "def": "dessiner"
+        },
+        {
+          "term": "schilderen",
+          "def": "peindre"
+        },
+        {
+          "term": "koken",
+          "def": "cuisiner"
+        },
+        {
+          "term": "spelen",
+          "def": "jouer"
+        },
+        {
+          "term": "het spel",
+          "def": "le jeu"
+        },
+        {
+          "term": "de wedstrijd",
+          "def": "le match / la compétition"
+        },
+        {
+          "term": "het team",
+          "def": "l'équipe"
+        },
+        {
+          "term": "winnen",
+          "def": "gagner"
+        },
+        {
+          "term": "verliezen",
+          "def": "perdre"
+        },
+        {
+          "term": "de bal",
+          "def": "le ballon / la balle"
+        },
+        {
+          "term": "het zwembad",
+          "def": "la piscine"
+        },
+        {
+          "term": "de film",
+          "def": "le film"
+        },
+        {
+          "term": "de bioscoop",
+          "def": "le cinéma"
+        },
+        {
+          "term": "het concert",
+          "def": "le concert"
+        },
+        {
+          "term": "het theater",
+          "def": "le théâtre"
+        },
+        {
+          "term": "de gitaar",
+          "def": "la guitare"
+        },
+        {
+          "term": "de piano",
+          "def": "le piano"
+        },
+        {
+          "term": "de foto",
+          "def": "la photo"
+        },
+        {
+          "term": "het feest",
+          "def": "la fête"
+        },
+        {
+          "term": "de vrije tijd",
+          "def": "le temps libre"
+        },
+        {
+          "term": "uitgaan",
+          "def": "sortir"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-18",
+      "title": "Néerlandais 18: les courses et l'argent",
+      "description": "Acheter, payer et compter son argent.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "het geld",
+          "def": "l'argent"
+        },
+        {
+          "term": "de euro",
+          "def": "l'euro"
+        },
+        {
+          "term": "de cent",
+          "def": "le centime"
+        },
+        {
+          "term": "de prijs",
+          "def": "le prix"
+        },
+        {
+          "term": "de korting",
+          "def": "la réduction / la remise"
+        },
+        {
+          "term": "de uitverkoop",
+          "def": "les soldes"
+        },
+        {
+          "term": "de kassa",
+          "def": "la caisse"
+        },
+        {
+          "term": "het bonnetje",
+          "def": "le ticket de caisse / le reçu"
+        },
+        {
+          "term": "de portemonnee",
+          "def": "le porte-monnaie"
+        },
+        {
+          "term": "de bankpas",
+          "def": "la carte bancaire"
+        },
+        {
+          "term": "contant",
+          "def": "en espèces / comptant"
+        },
+        {
+          "term": "de maat",
+          "def": "la taille"
+        },
+        {
+          "term": "passen",
+          "def": "essayer",
+          "hint": "un vêtement"
+        },
+        {
+          "term": "de paskamer",
+          "def": "la cabine d'essayage"
+        },
+        {
+          "term": "kosten",
+          "def": "coûter"
+        },
+        {
+          "term": "hoeveel kost het?",
+          "def": "combien ça coûte ?"
+        },
+        {
+          "term": "te duur",
+          "def": "trop cher"
+        },
+        {
+          "term": "het cadeau",
+          "def": "le cadeau"
+        },
+        {
+          "term": "het mandje",
+          "def": "le panier"
+        },
+        {
+          "term": "de boodschappen",
+          "def": "les courses"
+        },
+        {
+          "term": "boodschappen doen",
+          "def": "faire les courses"
+        },
+        {
+          "term": "de slager",
+          "def": "le boucher"
+        },
+        {
+          "term": "de openingstijden",
+          "def": "les heures d'ouverture"
+        },
+        {
+          "term": "het wisselgeld",
+          "def": "la monnaie"
+        },
+        {
+          "term": "sparen",
+          "def": "épargner / économiser"
+        },
+        {
+          "term": "lenen",
+          "def": "emprunter / prêter"
+        },
+        {
+          "term": "de rekening",
+          "def": "la facture / le compte"
+        },
+        {
+          "term": "verkopen",
+          "def": "vendre"
+        },
+        {
+          "term": "gratis",
+          "def": "gratuit"
+        },
+        {
+          "term": "de munt",
+          "def": "la pièce",
+          "hint": "de monnaie"
+        },
+        {
+          "term": "het bankbiljet",
+          "def": "le billet de banque"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-19",
+      "title": "Néerlandais 19: voyages et vacances",
+      "description": "Partir, réserver, se loger et visiter.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "de vakantie",
+          "def": "les vacances"
+        },
+        {
+          "term": "de reis",
+          "def": "le voyage"
+        },
+        {
+          "term": "reizen",
+          "def": "voyager"
+        },
+        {
+          "term": "het paspoort",
+          "def": "le passeport"
+        },
+        {
+          "term": "de identiteitskaart",
+          "def": "la carte d'identité"
+        },
+        {
+          "term": "de koffer",
+          "def": "la valise"
+        },
+        {
+          "term": "de bagage",
+          "def": "les bagages"
+        },
+        {
+          "term": "het vliegveld",
+          "def": "l'aéroport"
+        },
+        {
+          "term": "de vlucht",
+          "def": "le vol"
+        },
+        {
+          "term": "het perron",
+          "def": "le quai"
+        },
+        {
+          "term": "de vertraging",
+          "def": "le retard"
+        },
+        {
+          "term": "vertrekken",
+          "def": "partir"
+        },
+        {
+          "term": "aankomen",
+          "def": "arriver"
+        },
+        {
+          "term": "reserveren",
+          "def": "réserver"
+        },
+        {
+          "term": "de camping",
+          "def": "le camping"
+        },
+        {
+          "term": "de tent",
+          "def": "la tente"
+        },
+        {
+          "term": "de toerist",
+          "def": "le touriste"
+        },
+        {
+          "term": "de gids",
+          "def": "le guide"
+        },
+        {
+          "term": "het toeristenbureau",
+          "def": "l'office de tourisme / l'office du tourisme"
+        },
+        {
+          "term": "de grens",
+          "def": "la frontière"
+        },
+        {
+          "term": "het buitenland",
+          "def": "l'étranger"
+        },
+        {
+          "term": "de ansichtkaart",
+          "def": "la carte postale"
+        },
+        {
+          "term": "het souvenir",
+          "def": "le souvenir"
+        },
+        {
+          "term": "de rondleiding",
+          "def": "la visite guidée"
+        },
+        {
+          "term": "bezoeken",
+          "def": "visiter"
+        },
+        {
+          "term": "het uitzicht",
+          "def": "la vue"
+        },
+        {
+          "term": "de reservering",
+          "def": "la réservation"
+        },
+        {
+          "term": "de receptie",
+          "def": "la réception"
+        },
+        {
+          "term": "goede reis!",
+          "def": "bon voyage !"
+        },
+        {
+          "term": "fijne vakantie!",
+          "def": "bonnes vacances !"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-20",
+      "title": "Néerlandais 20: émotions et caractère",
+      "description": "Dire ce que l'on ressent et décrire quelqu'un.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "het gevoel",
+          "def": "le sentiment"
+        },
+        {
+          "term": "gelukkig",
+          "def": "heureux"
+        },
+        {
+          "term": "bang",
+          "def": "effrayé / apeuré"
+        },
+        {
+          "term": "de angst",
+          "def": "la peur"
+        },
+        {
+          "term": "nerveus",
+          "def": "nerveux"
+        },
+        {
+          "term": "verrast",
+          "def": "surpris"
+        },
+        {
+          "term": "jaloers",
+          "def": "jaloux"
+        },
+        {
+          "term": "trots",
+          "def": "fier"
+        },
+        {
+          "term": "eenzaam",
+          "def": "seul / solitaire"
+        },
+        {
+          "term": "verliefd",
+          "def": "amoureux"
+        },
+        {
+          "term": "de liefde",
+          "def": "l'amour"
+        },
+        {
+          "term": "de vreugde",
+          "def": "la joie"
+        },
+        {
+          "term": "het verdriet",
+          "def": "le chagrin"
+        },
+        {
+          "term": "de woede",
+          "def": "la colère"
+        },
+        {
+          "term": "de hoop",
+          "def": "l'espoir"
+        },
+        {
+          "term": "zich vervelen",
+          "def": "s'ennuyer"
+        },
+        {
+          "term": "lachen",
+          "def": "rire"
+        },
+        {
+          "term": "huilen",
+          "def": "pleurer"
+        },
+        {
+          "term": "glimlachen",
+          "def": "sourire"
+        },
+        {
+          "term": "vriendelijk",
+          "def": "aimable"
+        },
+        {
+          "term": "eerlijk",
+          "def": "honnête"
+        },
+        {
+          "term": "lui",
+          "def": "paresseux"
+        },
+        {
+          "term": "slim",
+          "def": "intelligent / malin"
+        },
+        {
+          "term": "dom",
+          "def": "bête / stupide"
+        },
+        {
+          "term": "grappig",
+          "def": "drôle"
+        },
+        {
+          "term": "serieus",
+          "def": "sérieux"
+        },
+        {
+          "term": "verlegen",
+          "def": "timide"
+        },
+        {
+          "term": "geduldig",
+          "def": "patient"
+        },
+        {
+          "term": "beleefd",
+          "def": "poli"
+        },
+        {
+          "term": "nieuwsgierig",
+          "def": "curieux"
+        },
+        {
+          "term": "zich zorgen maken",
+          "def": "s'inquiéter"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-21",
+      "title": "Néerlandais 21: l'heure",
+      "description": "Lire l'heure à la néerlandaise, où « half drie » veut dire deux heures et demie.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "drie uur",
+          "def": "3 h"
+        },
+        {
+          "term": "kwart over drie",
+          "def": "3 h 15"
+        },
+        {
+          "term": "half vier",
+          "def": "3 h 30"
+        },
+        {
+          "term": "kwart voor vier",
+          "def": "3 h 45"
+        },
+        {
+          "term": "vijf over drie",
+          "def": "3 h 05"
+        },
+        {
+          "term": "tien over drie",
+          "def": "3 h 10"
+        },
+        {
+          "term": "tien voor half vier",
+          "def": "3 h 20"
+        },
+        {
+          "term": "vijf voor half vier",
+          "def": "3 h 25"
+        },
+        {
+          "term": "vijf over half vier",
+          "def": "3 h 35"
+        },
+        {
+          "term": "tien over half vier",
+          "def": "3 h 40"
+        },
+        {
+          "term": "tien voor vier",
+          "def": "3 h 50"
+        },
+        {
+          "term": "vijf voor vier",
+          "def": "3 h 55"
+        },
+        {
+          "term": "twaalf uur",
+          "def": "12 h"
+        },
+        {
+          "term": "half één",
+          "def": "12 h 30"
+        },
+        {
+          "term": "half twee",
+          "def": "1 h 30"
+        },
+        {
+          "term": "kwart voor twaalf",
+          "def": "11 h 45"
+        },
+        {
+          "term": "om kwart over negen",
+          "def": "à 9 h 15"
+        },
+        {
+          "term": "'s morgens",
+          "def": "le matin"
+        },
+        {
+          "term": "'s middags",
+          "def": "l'après-midi"
+        },
+        {
+          "term": "'s avonds",
+          "def": "le soir"
+        },
+        {
+          "term": "'s nachts",
+          "def": "la nuit"
+        },
+        {
+          "term": "een kwartier",
+          "def": "un quart d'heure"
+        },
+        {
+          "term": "een half uur",
+          "def": "une demi-heure"
+        },
+        {
+          "term": "anderhalf uur",
+          "def": "une heure et demie"
+        },
+        {
+          "term": "precies",
+          "def": "pile / exactement"
+        },
+        {
+          "term": "ongeveer",
+          "def": "environ"
+        },
+        {
+          "term": "vroeg",
+          "def": "tôt"
+        },
+        {
+          "term": "laat",
+          "def": "tard"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-22",
+      "title": "Néerlandais 22: les verbes à particule",
+      "description": "Des verbes qui se séparent: « opstaan », mais « ik sta op ».",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "opstaan",
+          "def": "se lever"
+        },
+        {
+          "term": "opbellen",
+          "def": "téléphoner"
+        },
+        {
+          "term": "meenemen",
+          "def": "emporter"
+        },
+        {
+          "term": "meebrengen",
+          "def": "apporter"
+        },
+        {
+          "term": "binnenkomen",
+          "def": "entrer"
+        },
+        {
+          "term": "weggaan",
+          "def": "partir"
+        },
+        {
+          "term": "terugkomen",
+          "def": "revenir"
+        },
+        {
+          "term": "opruimen",
+          "def": "ranger"
+        },
+        {
+          "term": "schoonmaken",
+          "def": "nettoyer"
+        },
+        {
+          "term": "afwassen",
+          "def": "faire la vaisselle"
+        },
+        {
+          "term": "zich aankleden",
+          "def": "s'habiller"
+        },
+        {
+          "term": "zich uitkleden",
+          "def": "se déshabiller"
+        },
+        {
+          "term": "aantrekken",
+          "def": "mettre",
+          "hint": "un vêtement"
+        },
+        {
+          "term": "uittrekken",
+          "def": "enlever",
+          "hint": "un vêtement"
+        },
+        {
+          "term": "aanzetten",
+          "def": "allumer"
+        },
+        {
+          "term": "uitzetten",
+          "def": "éteindre"
+        },
+        {
+          "term": "opendoen",
+          "def": "ouvrir"
+        },
+        {
+          "term": "dichtdoen",
+          "def": "fermer"
+        },
+        {
+          "term": "invullen",
+          "def": "remplir",
+          "hint": "un formulaire"
+        },
+        {
+          "term": "zich inschrijven",
+          "def": "s'inscrire"
+        },
+        {
+          "term": "uitnodigen",
+          "def": "inviter"
+        },
+        {
+          "term": "voorstellen",
+          "def": "proposer / présenter"
+        },
+        {
+          "term": "afspreken",
+          "def": "convenir / se donner rendez-vous"
+        },
+        {
+          "term": "nadenken",
+          "def": "réfléchir"
+        },
+        {
+          "term": "meedoen",
+          "def": "participer"
+        },
+        {
+          "term": "ophouden",
+          "def": "arrêter"
+        },
+        {
+          "term": "teruggeven",
+          "def": "rendre"
+        },
+        {
+          "term": "overstappen",
+          "def": "changer / changer de train",
+          "hint": "de train"
+        },
+        {
+          "term": "instappen",
+          "def": "monter",
+          "hint": "dans un véhicule"
+        },
+        {
+          "term": "uitstappen",
+          "def": "descendre",
+          "hint": "d'un véhicule"
+        },
+        {
+          "term": "aanbieden",
+          "def": "offrir"
+        },
+        {
+          "term": "afmaken",
+          "def": "terminer / finir"
+        },
+        {
+          "term": "ik sta op",
+          "def": "je me lève"
+        },
+        {
+          "term": "hij belt me op",
+          "def": "il m'appelle"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-23",
+      "title": "Néerlandais 23: les verbes irréguliers",
+      "description": "Infinitif, imparfait et participe passé avec son auxiliaire: gaan, ging, is gegaan.",
+      "termLang": "nl",
+      "defLang": "nl",
+      "cards": [
+        {
+          "term": "zijn (être)",
+          "def": "was, is geweest"
+        },
+        {
+          "term": "hebben (avoir)",
+          "def": "had, heeft gehad"
+        },
+        {
+          "term": "gaan (aller)",
+          "def": "ging, is gegaan"
+        },
+        {
+          "term": "komen (venir)",
+          "def": "kwam, is gekomen"
+        },
+        {
+          "term": "doen (faire)",
+          "def": "deed, heeft gedaan"
+        },
+        {
+          "term": "zien (voir)",
+          "def": "zag, heeft gezien"
+        },
+        {
+          "term": "geven (donner)",
+          "def": "gaf, heeft gegeven"
+        },
+        {
+          "term": "nemen (prendre)",
+          "def": "nam, heeft genomen"
+        },
+        {
+          "term": "eten (manger)",
+          "def": "at, heeft gegeten"
+        },
+        {
+          "term": "drinken (boire)",
+          "def": "dronk, heeft gedronken"
+        },
+        {
+          "term": "slapen (dormir)",
+          "def": "sliep, heeft geslapen"
+        },
+        {
+          "term": "lezen (lire)",
+          "def": "las, heeft gelezen"
+        },
+        {
+          "term": "schrijven (écrire)",
+          "def": "schreef, heeft geschreven"
+        },
+        {
+          "term": "spreken (parler)",
+          "def": "sprak, heeft gesproken"
+        },
+        {
+          "term": "zeggen (dire)",
+          "def": "zei, heeft gezegd"
+        },
+        {
+          "term": "vragen (demander)",
+          "def": "vroeg, heeft gevraagd"
+        },
+        {
+          "term": "denken (penser)",
+          "def": "dacht, heeft gedacht"
+        },
+        {
+          "term": "brengen (apporter)",
+          "def": "bracht, heeft gebracht"
+        },
+        {
+          "term": "kopen (acheter)",
+          "def": "kocht, heeft gekocht"
+        },
+        {
+          "term": "zoeken (chercher)",
+          "def": "zocht, heeft gezocht"
+        },
+        {
+          "term": "vinden (trouver)",
+          "def": "vond, heeft gevonden"
+        },
+        {
+          "term": "beginnen (commencer)",
+          "def": "begon, is begonnen"
+        },
+        {
+          "term": "blijven (rester)",
+          "def": "bleef, is gebleven"
+        },
+        {
+          "term": "worden (devenir)",
+          "def": "werd, is geworden"
+        },
+        {
+          "term": "kunnen (pouvoir)",
+          "def": "kon, heeft gekund"
+        },
+        {
+          "term": "willen (vouloir)",
+          "def": "wilde, heeft gewild"
+        },
+        {
+          "term": "mogen (avoir le droit)",
+          "def": "mocht, heeft gemogen"
+        },
+        {
+          "term": "moeten (devoir)",
+          "def": "moest, heeft gemoeten"
+        },
+        {
+          "term": "weten (savoir)",
+          "def": "wist, heeft geweten"
+        },
+        {
+          "term": "helpen (aider)",
+          "def": "hielp, heeft geholpen"
+        },
+        {
+          "term": "sterven (mourir)",
+          "def": "stierf, is gestorven"
+        },
+        {
+          "term": "vallen (tomber)",
+          "def": "viel, is gevallen"
+        },
+        {
+          "term": "houden (tenir)",
+          "def": "hield, heeft gehouden"
+        },
+        {
+          "term": "staan (être debout)",
+          "def": "stond, heeft gestaan"
+        },
+        {
+          "term": "zitten (être assis)",
+          "def": "zat, heeft gezeten"
+        },
+        {
+          "term": "liggen (être couché)",
+          "def": "lag, heeft gelegen"
+        },
+        {
+          "term": "verliezen (perdre)",
+          "def": "verloor, heeft verloren"
+        },
+        {
+          "term": "winnen (gagner)",
+          "def": "won, heeft gewonnen"
+        },
+        {
+          "term": "krijgen (recevoir)",
+          "def": "kreeg, heeft gekregen"
+        },
+        {
+          "term": "begrijpen (comprendre)",
+          "def": "begreep, heeft begrepen"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-24",
+      "title": "Néerlandais 24: expressions courantes",
+      "description": "Les tournures que l'on entend tous les jours.",
+      "termLang": "nl",
+      "defLang": "fr",
+      "cards": [
+        {
+          "term": "dat klopt",
+          "def": "c'est exact"
+        },
+        {
+          "term": "geen idee",
+          "def": "aucune idée"
+        },
+        {
+          "term": "het maakt niet uit",
+          "def": "peu importe"
+        },
+        {
+          "term": "geen probleem",
+          "def": "pas de problème"
+        },
+        {
+          "term": "natuurlijk",
+          "def": "bien sûr / naturellement"
+        },
+        {
+          "term": "wat jammer",
+          "def": "quel dommage"
+        },
+        {
+          "term": "ik heb zin in",
+          "def": "j'ai envie de"
+        },
+        {
+          "term": "ik weet het niet",
+          "def": "je ne sais pas"
+        },
+        {
+          "term": "dat is goed",
+          "def": "c'est bon / d'accord"
+        },
+        {
+          "term": "even wachten",
+          "def": "un instant"
+        },
+        {
+          "term": "kan ik u helpen?",
+          "def": "puis-je vous aider ?"
+        },
+        {
+          "term": "wat bedoel je?",
+          "def": "que veux-tu dire ? / qu'est-ce que tu veux dire ?"
+        },
+        {
+          "term": "nog een keer, alstublieft",
+          "def": "encore une fois, s'il vous plaît"
+        },
+        {
+          "term": "langzamer, alstublieft",
+          "def": "plus lentement, s'il vous plaît"
+        },
+        {
+          "term": "hoe zeg je dat in het Nederlands?",
+          "def": "comment dit-on ça en néerlandais ?"
+        },
+        {
+          "term": "wat betekent dat?",
+          "def": "qu'est-ce que ça veut dire ?"
+        },
+        {
+          "term": "succes!",
+          "def": "bonne chance !"
+        },
+        {
+          "term": "beterschap!",
+          "def": "bon rétablissement !"
+        },
+        {
+          "term": "gefeliciteerd!",
+          "def": "félicitations !"
+        },
+        {
+          "term": "fijne dag!",
+          "def": "bonne journée !"
+        },
+        {
+          "term": "fijn weekend!",
+          "def": "bon week-end !"
+        },
+        {
+          "term": "tot volgende week",
+          "def": "à la semaine prochaine"
+        },
+        {
+          "term": "het gaat wel",
+          "def": "ça va, sans plus"
+        },
+        {
+          "term": "ik ben het met je eens",
+          "def": "je suis d'accord avec toi"
+        },
+        {
+          "term": "ik ben het er niet mee eens",
+          "def": "je ne suis pas d'accord"
+        },
+        {
+          "term": "dat spreekt vanzelf",
+          "def": "ça va de soi / c'est évident"
+        },
+        {
+          "term": "op tijd",
+          "def": "à l'heure"
+        },
+        {
+          "term": "te laat",
+          "def": "en retard"
+        },
+        {
+          "term": "meteen",
+          "def": "tout de suite / immédiatement"
+        },
+        {
+          "term": "in ieder geval",
+          "def": "en tout cas"
+        },
+        {
+          "term": "zo snel mogelijk",
+          "def": "le plus vite possible"
+        },
+        {
+          "term": "volgens mij",
+          "def": "à mon avis / selon moi"
+        },
+        {
+          "term": "ik heb geen tijd",
+          "def": "je n'ai pas le temps"
+        },
+        {
+          "term": "het is druk",
+          "def": "il y a du monde"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-25",
+      "title": "Néerlandais 25: de ou het ?",
+      "description": "Le bon article pour quarante noms courants, avec leur sens en indice.",
+      "termLang": "nl",
+      "defLang": "nl",
+      "cards": [
+        {
+          "term": "huis",
+          "def": "het",
+          "hint": "maison"
+        },
+        {
+          "term": "auto",
+          "def": "de",
+          "hint": "voiture"
+        },
+        {
+          "term": "boek",
+          "def": "het",
+          "hint": "livre"
+        },
+        {
+          "term": "tafel",
+          "def": "de",
+          "hint": "table"
+        },
+        {
+          "term": "kind",
+          "def": "het",
+          "hint": "enfant"
+        },
+        {
+          "term": "man",
+          "def": "de",
+          "hint": "homme"
+        },
+        {
+          "term": "meisje",
+          "def": "het",
+          "hint": "fille"
+        },
+        {
+          "term": "water",
+          "def": "het",
+          "hint": "eau"
+        },
+        {
+          "term": "stad",
+          "def": "de",
+          "hint": "ville"
+        },
+        {
+          "term": "land",
+          "def": "het",
+          "hint": "pays"
+        },
+        {
+          "term": "jaar",
+          "def": "het",
+          "hint": "année"
+        },
+        {
+          "term": "dag",
+          "def": "de",
+          "hint": "jour"
+        },
+        {
+          "term": "werk",
+          "def": "het",
+          "hint": "travail"
+        },
+        {
+          "term": "school",
+          "def": "de",
+          "hint": "école"
+        },
+        {
+          "term": "bed",
+          "def": "het",
+          "hint": "lit"
+        },
+        {
+          "term": "deur",
+          "def": "de",
+          "hint": "porte"
+        },
+        {
+          "term": "raam",
+          "def": "het",
+          "hint": "fenêtre"
+        },
+        {
+          "term": "stoel",
+          "def": "de",
+          "hint": "chaise"
+        },
+        {
+          "term": "brood",
+          "def": "het",
+          "hint": "pain"
+        },
+        {
+          "term": "kaas",
+          "def": "de",
+          "hint": "fromage"
+        },
+        {
+          "term": "vlees",
+          "def": "het",
+          "hint": "viande"
+        },
+        {
+          "term": "glas",
+          "def": "het",
+          "hint": "verre"
+        },
+        {
+          "term": "fiets",
+          "def": "de",
+          "hint": "vélo"
+        },
+        {
+          "term": "station",
+          "def": "het",
+          "hint": "gare"
+        },
+        {
+          "term": "weer",
+          "def": "het",
+          "hint": "météo"
+        },
+        {
+          "term": "tijd",
+          "def": "de",
+          "hint": "temps"
+        },
+        {
+          "term": "geld",
+          "def": "het",
+          "hint": "argent"
+        },
+        {
+          "term": "vraag",
+          "def": "de",
+          "hint": "question"
+        },
+        {
+          "term": "antwoord",
+          "def": "het",
+          "hint": "réponse"
+        },
+        {
+          "term": "woord",
+          "def": "het",
+          "hint": "mot"
+        },
+        {
+          "term": "taal",
+          "def": "de",
+          "hint": "langue"
+        },
+        {
+          "term": "dorp",
+          "def": "het",
+          "hint": "village"
+        },
+        {
+          "term": "straat",
+          "def": "de",
+          "hint": "rue"
+        },
+        {
+          "term": "bos",
+          "def": "het",
+          "hint": "forêt"
+        },
+        {
+          "term": "boom",
+          "def": "de",
+          "hint": "arbre"
+        },
+        {
+          "term": "paard",
+          "def": "het",
+          "hint": "cheval"
+        },
+        {
+          "term": "hond",
+          "def": "de",
+          "hint": "chien"
+        },
+        {
+          "term": "feest",
+          "def": "het",
+          "hint": "fête"
+        },
+        {
+          "term": "oog",
+          "def": "het",
+          "hint": "œil"
+        },
+        {
+          "term": "museum",
+          "def": "het",
+          "hint": "musée"
+        }
+      ]
+    },
+    {
+      "id": "sample-nl-26",
+      "title": "Néerlandais 26: les pluriels",
+      "description": "Le pluriel des noms courants, réguliers ou non, avec leur sens en indice.",
+      "termLang": "nl",
+      "defLang": "nl",
+      "cards": [
+        {
+          "term": "het kind",
+          "def": "de kinderen",
+          "hint": "l'enfant"
+        },
+        {
+          "term": "het ei",
+          "def": "de eieren",
+          "hint": "l'œuf"
+        },
+        {
+          "term": "de stad",
+          "def": "de steden",
+          "hint": "la ville"
+        },
+        {
+          "term": "het schip",
+          "def": "de schepen",
+          "hint": "le navire"
+        },
+        {
+          "term": "het glas",
+          "def": "de glazen",
+          "hint": "le verre"
+        },
+        {
+          "term": "het dak",
+          "def": "de daken",
+          "hint": "le toit"
+        },
+        {
+          "term": "het huis",
+          "def": "de huizen",
+          "hint": "la maison"
+        },
+        {
+          "term": "de man",
+          "def": "de mannen",
+          "hint": "l'homme"
+        },
+        {
+          "term": "de vrouw",
+          "def": "de vrouwen",
+          "hint": "la femme"
+        },
+        {
+          "term": "het boek",
+          "def": "de boeken",
+          "hint": "le livre"
+        },
+        {
+          "term": "de dag",
+          "def": "de dagen",
+          "hint": "le jour"
+        },
+        {
+          "term": "de weg",
+          "def": "de wegen",
+          "hint": "la route"
+        },
+        {
+          "term": "het jaar",
+          "def": "de jaren",
+          "hint": "l'année"
+        },
+        {
+          "term": "de tafel",
+          "def": "de tafels",
+          "hint": "la table"
+        },
+        {
+          "term": "de appel",
+          "def": "de appels / de appelen",
+          "hint": "la pomme"
+        },
+        {
+          "term": "de jongen",
+          "def": "de jongens",
+          "hint": "le garçon"
+        },
+        {
+          "term": "het meisje",
+          "def": "de meisjes",
+          "hint": "la fille"
+        },
+        {
+          "term": "de auto",
+          "def": "de auto's",
+          "hint": "la voiture"
+        },
+        {
+          "term": "de foto",
+          "def": "de foto's",
+          "hint": "la photo"
+        },
+        {
+          "term": "de baby",
+          "def": "de baby's",
+          "hint": "le bébé"
+        },
+        {
+          "term": "de koe",
+          "def": "de koeien",
+          "hint": "la vache"
+        },
+        {
+          "term": "de schoen",
+          "def": "de schoenen",
+          "hint": "la chaussure"
+        },
+        {
+          "term": "de vriend",
+          "def": "de vrienden",
+          "hint": "l'ami"
+        },
+        {
+          "term": "de hond",
+          "def": "de honden",
+          "hint": "le chien"
+        },
+        {
+          "term": "het lid",
+          "def": "de leden",
+          "hint": "le membre"
+        },
+        {
+          "term": "de les",
+          "def": "de lessen",
+          "hint": "le cours"
+        },
+        {
+          "term": "de bus",
+          "def": "de bussen",
+          "hint": "le bus"
+        },
+        {
+          "term": "het museum",
+          "def": "de musea / de museums",
+          "hint": "le musée"
+        },
+        {
+          "term": "de zoon",
+          "def": "de zonen / de zoons",
+          "hint": "le fils"
+        },
+        {
+          "term": "het oog",
+          "def": "de ogen",
+          "hint": "l'œil"
+        },
+        {
+          "term": "de brief",
+          "def": "de brieven",
+          "hint": "la lettre"
+        },
+        {
+          "term": "de reis",
+          "def": "de reizen",
+          "hint": "le voyage"
+        }
+      ]
+    },
+    {
       "id": "sample-capitales-europe",
       "title": "Capitales d'Europe",
       "description": "26 pays, 26 capitales.",
