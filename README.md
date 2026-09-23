@@ -99,8 +99,9 @@ Two tolerances are on by default and can be turned off in the settings:
 A definition may list alternatives with ` / ` or `;`, and a parenthesised
 precision is optional: `voiture / auto (familier)` accepts `voiture`, `auto`,
 `auto familier` and the whole definition. A slash only separates alternatives
-when a space sits next to it, so `km/h`, `24/7` or `collègue (m/f)` are
-answers in their own right and must be typed whole.
+when a space sits next to it, so `km/h` and `24/7` are answers in their own
+right and must be typed whole. In `collègue (m/f)` the slash stays inside the
+optional precision: `collègue` is right, `m` alone is not.
 
 When several cards share a prompt, such as `hola` and `buenos días` which both
 mean `bonjour`, each of their answers is right: the quiz never offers one as a
@@ -237,8 +238,8 @@ the storage figure in the settings counts it.
 
 French stays the fallback for any key a catalogue is missing, and remains the
 default for a visitor who has never chosen a language. To follow the browser
-instead, change the one line in `setupLocale` in `js/app.js` that picks
-`DEFAULT_LOCALE`.
+instead, change the one line in `savedLanguage` in `js/language.js` that falls
+back to `DEFAULT_LOCALE`.
 
 ## Accessibility and theming
 
