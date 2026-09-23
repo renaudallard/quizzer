@@ -30,24 +30,37 @@ export function normalize(text, stripAccents = true) {
    is a factorial, a pi that is not part of a Greek word, a Greek letter set
    against a Latin letter or a digit, as "Δx", or when it is built only from
    single letters, digits, operators and primes, as "x-y" or "u'/u". A
-   function name such as sin or ln counts as a single letter. */
+   function name such as sin or ln counts as a single letter. Superscript
+   letters are exponents, as in "eˣ", unless a word sits next to them:
+   French writes ordinals that way, as in "XIXᵉ siècle". */
 const MATH_SIGN = /[+=<>×÷*^√∑∏∫±≤≥≠≈∞∂⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿ₀₁₂₃₄₅₆₇₈₉½¼¾⅓⅔]|\d!|(^|[^\p{Script=Greek}])π(?!\p{Script=Greek})|\p{Script=Greek}[a-z\d]|[a-z\d]\p{Script=Greek}/iu;
 const FORMULA = /^[\s\p{L}\d.,()[\]{}+\-−*/^=<>!|'′]*$/u;
 const FUNCTIONS = 'arcsin|arccos|arctan|sinh|cosh|tanh|sin|cos|tan|cot|ln|log|exp|sqrt';
 const FUNCTION_NAME = new RegExp('\\b(?:' + FUNCTIONS + ')\\b', 'gi');
 const FUNCTION_CALL = new RegExp('(' + FUNCTIONS + ')(\\^[\\p{L}\\d]+)?\\(([\\p{L}\\d.]+)\\)', 'gu');
+const LETTER_EXPONENTS = 'ᵃᵇᶜᵈᵉⁱᵏᵐᵖᵗᵘᵛˣʸᶻ⁼⁽⁾';
 
 export function isMath(text) {
   const value = String(text);
   if (MATH_SIGN.test(value)) return true;
   const bare = value.replace(FUNCTION_NAME, 'f');
+  const chars = [...bare];
+  if (chars.some((char) => LETTER_EXPONENTS.includes(char))
+    && !/\p{L}{2}/u.test(chars.filter((char) => !LETTER_EXPONENTS.includes(char)).join(''))) return true;
   return FORMULA.test(bare) && /\p{L}/u.test(bare) && !/\p{L}{2}/u.test(bare)
     && /[-−*/^=<>()[\]{}!|]/.test(bare);
 }
 
 /* Signs a keyboard lacks, as they are typed instead: x^2 for x², H2O for
-   H₂O, sqrt for √, <= for ≤, pi or alpha for the Greek letters. */
-const SUPERSCRIPTS = { '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4', '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9', '⁺': '+', '⁻': '-', 'ⁿ': 'n' };
+   H₂O, sqrt for √, <= for ≤, pi or alpha for the Greek letters. An exponent
+   with a sign inside holds together, as it is typed: xⁿ⁻¹ is x^(n-1). */
+const SUPERSCRIPTS = {
+  '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4', '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9',
+  '⁺': '+', '⁻': '-', '⁼': '=', '⁽': '(', '⁾': ')',
+  'ᵃ': 'a', 'ᵇ': 'b', 'ᶜ': 'c', 'ᵈ': 'd', 'ᵉ': 'e', 'ⁱ': 'i', 'ᵏ': 'k', 'ᵐ': 'm', 'ⁿ': 'n', 'ᵖ': 'p',
+  'ᵗ': 't', 'ᵘ': 'u', 'ᵛ': 'v', 'ˣ': 'x', 'ʸ': 'y', 'ᶻ': 'z',
+};
+const SUPERSCRIPT_RUN = new RegExp('[' + Object.keys(SUPERSCRIPTS).join('') + ']+', 'g');
 const SPELLED = {
   '×': '*', '·': '*', '÷': '/', '⁄': '/', '−': '-', '–': '-', '≤': '<=', '≥': '>=', '≠': '!=', '√': 'sqrt', '′': "'",
   '½': '1/2', '¼': '1/4', '¾': '3/4', '⅓': '1/3', '⅔': '2/3',
@@ -62,7 +75,10 @@ const SPELLED = {
    2x. */
 function formula(text) {
   const out = String(text).normalize('NFC').toLowerCase()
-    .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿ]+/g, (run) => '^' + [...run].map((char) => SUPERSCRIPTS[char]).join(''))
+    .replace(SUPERSCRIPT_RUN, (run) => {
+      const plain = [...run].map((char) => SUPERSCRIPTS[char]).join('');
+      return '^' + (/.[-+=]/.test(plain) && !plain.startsWith('(') ? '(' + plain + ')' : plain);
+    })
     .replace(/[₀-₉]/g, (char) => String(char.charCodeAt(0) - 0x2080))
     .replace(/[×·÷⁄−–≤≥≠√′½¼¾⅓⅔αβγδεθλμπρστφω]/g, (char) => SPELLED[char])
     .replace(/(\d),(?=\d)/g, '$1.')

@@ -167,6 +167,10 @@ async function run() {
     assert(text.grade('-sin x', '−sin(x)').verdict === 'correct', 'fonction sans parenthèses');
     assert(text.grade('u/u', "u'/u").verdict === 'wrong', 'prime oublié');
     assert(text.grade('u′/u', "u'/u").verdict === 'correct', 'prime tapé');
+    assert(text.grade('x^(n-1)', 'xⁿ⁻¹').verdict === 'correct', 'exposant entre parenthèses');
+    assert(text.grade('x^n-1', 'xⁿ⁻¹').verdict === 'wrong', 'exposant sans parenthèses');
+    assert(text.grade('e^x', 'eˣ').verdict === 'correct', 'exposant en lettre');
+    assert(!text.isMath('XIXᵉ siècle'), 'ordinal en exposant');
     return 'ok';
   });
 

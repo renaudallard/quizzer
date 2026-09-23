@@ -229,7 +229,9 @@ or `exp` counting as one letter, keeps its brackets, minus signs and primes:
 `2x+1` is wrong for `2(x+1)`, `xy` is wrong for `x-y`, `sin(x)` is wrong for
 `-sin(x)` and `u/u` is wrong for `u'/u`. Only case, spaces and a decimal
 comma are overlooked, and there is no typo allowance, since one sign more or
-less makes another formula.
+less makes another formula. Superscript letters such as `ˣ` or `ᵐ` count as
+maths signs too, as in `eˣ`, unless a word sits beside them, since French
+writes `XIXᵉ siècle` and `1ᵉʳ janvier` that way.
 
 Signs a keyboard lacks are typed the usual way: `x^2` for `x²`, `H2O` for
 `H₂O`, `*` for `×` or `·`, `/` for `÷`, `<=`, `>=` and `!=` for `≤`, `≥` and
@@ -237,7 +239,9 @@ Signs a keyboard lacks are typed the usual way: `x^2` for `x²`, `H2O` for
 `theta` and the other Greek letters by name. A star between anything but two
 digits may be left out, so `2*x` is `2x`. After a function name the brackets
 around a single term may be left out too, so `sin x` is `sin(x)`, and a
-straight quote `'` stands for the prime `′`.
+straight quote `'` stands for the prime `′`. An exponent is typed after a
+caret, letters included, `e^x` for `eˣ`, and one with a sign inside goes in
+brackets: `x^(n-1)` is right for `xⁿ⁻¹`, `x^n-1` is not.
 
 Two tolerances are on by default and can be turned off in the settings:
 
