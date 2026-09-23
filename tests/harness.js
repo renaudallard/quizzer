@@ -142,6 +142,9 @@ async function run() {
     assert(text.grade('3.14', '3,14').verdict === 'correct', 'point pour virgule');
     assert(text.grade('1000', '1 000').verdict === 'correct', 'espace des milliers');
     assert(text.grade('5', '-5').verdict === 'wrong', 'signe moins oublié');
+    assert(text.grade('2x+1', '2(x+1)').verdict === 'wrong', 'parenthèses d’une formule');
+    assert(text.grade('xy', 'x-y').verdict === 'wrong', 'signe moins d’une formule');
+    assert(text.grade('2 ( x + 1 )', '2(x+1)').verdict === 'correct', 'espaces dans une formule');
     return 'ok';
   });
 

@@ -111,6 +111,14 @@ right; a space before a group of three digits only groups them, so `1000`
 matches `1 000`; and a minus sign in front of a number counts, so `5` is
 wrong for `-5`.
 
+Formulas are graded as formulas. An answer that holds an operator or a maths
+sign, such as `+`, `=`, `×`, `^`, `√`, `≤` or `²`, a factorial such as `5!`,
+or that is built only from single letters, digits and operators, such as
+`x-y` or `f(x)`, keeps its brackets and minus signs: `2x+1` is wrong for
+`2(x+1)` and `xy` is wrong for `x-y`. Only case, spaces and a decimal comma
+are overlooked, and there is no typo allowance, since one sign more or less
+makes another formula.
+
 Two tolerances are on by default and can be turned off in the settings:
 
 - **Accents.** `ecole` is accepted for `école`, and the verdict then shows

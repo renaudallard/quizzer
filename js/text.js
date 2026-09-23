@@ -24,10 +24,36 @@ export function normalize(text, stripAccents = true) {
   return out;
 }
 
+/* Maths keeps what words may drop: brackets and minus signs decide what a
+   formula means, so "2x+1" is not "2(x+1)". Text is maths when it holds an
+   operator or a maths sign, a number followed by an exclamation mark, which
+   is a factorial, a pi that is not part of a Greek word, or when it is built
+   only from single letters, digits and operators, as "x-y". */
+const MATH_SIGN = /[+=<>×÷*^√∑∏∫±≤≥≠≈∞∂⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿ₀₁₂₃₄₅₆₇₈₉]|\d!|(^|[^\p{Script=Greek}])π(?!\p{Script=Greek})/u;
+const FORMULA = /^[\s\p{L}\d.,()[\]{}+\-−*/^=<>!|]*$/u;
+
+export function isMath(text) {
+  const value = String(text);
+  if (MATH_SIGN.test(value)) return true;
+  return FORMULA.test(value) && /\p{L}/u.test(value) && !/\p{L}{2}/u.test(value)
+    && /[-−*/^=<>()[\]{}!|]/.test(value);
+}
+
+/* A formula is compared as written, apart from case, spaces, the look of a
+   minus sign and a decimal comma. */
+function formula(text) {
+  return String(text).normalize('NFC').toLowerCase()
+    .replace(/[−–]/g, '-')
+    .replace(/(\d),(?=\d)/g, '$1.')
+    .replace(/\s+/g, '');
+}
+
 /* Two texts are the same prompt or the same answer when they differ only by
    case or punctuation. Accents count, since "ou" and "où" are different
-   words, and text made only of punctuation is compared as written. */
+   words, and text made only of punctuation is compared as written. A formula
+   is compared as a formula. */
 export function textKey(text) {
+  if (isMath(text)) return formula(text);
   return normalize(text, false) || String(text).trim();
 }
 
@@ -62,9 +88,11 @@ function splitAlternatives(text) {
 
 /* A definition may list alternatives with " / " or ";", and may put an
    optional precision in brackets: "voiture / auto (familier)". The whole
-   definition is always accepted as well. */
+   definition is always accepted as well. A formula is taken whole, since
+   its slashes divide and its brackets count. */
 export function acceptedAnswers(definition) {
   const whole = String(definition).trim();
+  if (isMath(whole)) return [whole];
   const variants = new Set();
   for (const part of [whole, ...splitAlternatives(whole)]) {
     const trimmed = part.trim();
@@ -113,6 +141,11 @@ export function grade(input, expected, options = {}) {
   let near = false;
 
   for (const variant of acceptedAnswers(expected)) {
+    /* A formula is right or wrong: one sign more or less is another one. */
+    if (isMath(variant)) {
+      if (formula(typed) === formula(variant)) return { verdict: 'correct', accent: false };
+      continue;
+    }
     const strict = compact(normalize(variant, false));
     const loose = compact(normalize(variant, true));
     /* An answer made only of punctuation, such as "?", is compared as typed. */
