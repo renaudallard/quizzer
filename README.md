@@ -130,8 +130,8 @@ articles, and the completed sentences with a grammar checker.
 Mathématiques has eight sets: the multiplication tables from 2 to 9, squares
 and cubes, powers of 2 and of 10, algebra identities and the rules for
 powers, the trigonometric values of the notable angles, geometry formulas
-for perimeters, areas and volumes, and the derivatives of powers with the
-rules for sums, products and quotients. The numbers, identities, values and
+for perimeters, areas and volumes, and the derivatives of the usual
+functions with the rules for sums, products, quotients and composition. The numbers, identities, values and
 derivatives were checked by computing them, and every answer was typed as a
 plain keyboard would, x^2, sqrt and pi included, to be sure the grading
 takes it.

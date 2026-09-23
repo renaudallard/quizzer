@@ -13422,6 +13422,15 @@
           "def": "a³"
         },
         {
+          "term": "aᵐ × aⁿ",
+          "def": "aᵐ⁺ⁿ"
+        },
+        {
+          "term": "aᵐ ÷ aⁿ",
+          "def": "aᵐ⁻ⁿ",
+          "hint": "a ≠ 0"
+        },
+        {
           "term": "a⁰",
           "def": "1",
           "hint": "a ≠ 0"
@@ -13628,8 +13637,8 @@
     {
       "id": "sample-maths-derivees",
       "group": "maths",
-      "title": "Dérivées: puissances et règles de calcul",
-      "description": "Les dérivées des fonctions puissances et les règles pour les sommes, produits et quotients.",
+      "title": "Dérivées usuelles",
+      "description": "Les dérivées des fonctions usuelles et les règles pour les sommes, produits, quotients et composées.",
       "termLang": "fr",
       "defLang": "fr",
       "cards": [
@@ -13650,6 +13659,10 @@
           "def": "3x²"
         },
         {
+          "term": "dérivée de xⁿ",
+          "def": "n × xⁿ⁻¹"
+        },
+        {
           "term": "dérivée de 1/x",
           "def": "−1/x²"
         },
@@ -13660,6 +13673,18 @@
         {
           "term": "dérivée de ln(x)",
           "def": "1/x"
+        },
+        {
+          "term": "dérivée de eˣ",
+          "def": "eˣ"
+        },
+        {
+          "term": "dérivée de sin(x)",
+          "def": "cos(x)"
+        },
+        {
+          "term": "dérivée de cos(x)",
+          "def": "−sin(x)"
         },
         {
           "term": "dérivée de u + v",
@@ -13684,6 +13709,18 @@
         {
           "term": "dérivée de u²",
           "def": "2 × u × u'"
+        },
+        {
+          "term": "dérivée de uⁿ",
+          "def": "n × u' × uⁿ⁻¹"
+        },
+        {
+          "term": "dérivée de eᵘ",
+          "def": "u' × eᵘ"
+        },
+        {
+          "term": "dérivée de ln(u)",
+          "def": "u'/u"
         }
       ]
     },
