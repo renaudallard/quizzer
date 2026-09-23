@@ -40,10 +40,17 @@ export function flashcardsView(id) {
     return order[state.index] || null;
   }
 
+  /* The page keeps its own list of cards, but reads stars from the store by
+     id, since another tab may have changed them meanwhile. */
+  function hasStar(entry) {
+    const live = store.getCard(set.id, entry.id);
+    return Boolean(live ? live.star : entry.star);
+  }
+
   function rebuild() {
     let cards = set.cards;
     if (state.starredOnly) {
-      const starred = cards.filter((entry) => entry.star);
+      const starred = cards.filter(hasStar);
       if (!starred.length) {
         state.starredOnly = false;
         starredButton.setAttribute('aria-pressed', 'false');
@@ -91,7 +98,7 @@ export function flashcardsView(id) {
     const back = state.reversed ? termSide : defSide;
 
     card.setFaces(front, back);
-    paintStar(entry);
+    paintStar(hasStar(entry));
 
     shell.setProgress(state.index + 1, order.length);
     mount(stage,
@@ -112,17 +119,16 @@ export function flashcardsView(id) {
     }
   }
 
-  function paintStar(entry) {
-    starButton.setAttribute('aria-pressed', String(Boolean(entry.star)));
-    starButton.setAttribute('aria-label', entry.star ? t('flashcards.unstar') : t('flashcards.star'));
+  function paintStar(on) {
+    starButton.setAttribute('aria-pressed', String(on));
+    starButton.setAttribute('aria-label', on ? t('flashcards.unstar') : t('flashcards.star'));
   }
 
   /* Starring leaves the card as it is, turned or not. */
   starButton.addEventListener('click', () => {
     const entry = current();
     if (!entry) return;
-    store.toggleStar(set.id, entry.id);
-    paintStar(entry);
+    paintStar(store.toggleStar(set.id, entry.id));
   });
 
   bindKeys((event) => {
