@@ -71,7 +71,7 @@ export function reviewView(id) {
   }
 
   function finish() {
-    shell.setProgress(1, 1);
+    shell.setProgress(run.total, run.total);
     saveSession(set.id, {
       mode: 'review', total: run.total, correct: run.firstTry, ms: Date.now() - run.startedAt,
     });
