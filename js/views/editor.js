@@ -169,7 +169,13 @@ export function editorView(id) {
       if (row) row.querySelector('input[data-role="' + side + '"]').focus();
       return;
     }
-    const cards = draft.cards.filter((card) => card.term.trim() && card.def.trim());
+    /* The text comes from the draft, the progress and the star from the store
+       as it is now, since another tab may have moved them on meanwhile. */
+    const current = existing && store.getSet(existing.id);
+    const live = new Map(current ? current.cards.map((card) => [card.id, card]) : []);
+    const cards = draft.cards
+      .filter((card) => card.term.trim() && card.def.trim())
+      .map((card) => ({ ...card, ...live.get(card.id), term: card.term, def: card.def, hint: card.hint }));
     if (!cards.length) {
       toast(t('editor.needCard'));
       return;
