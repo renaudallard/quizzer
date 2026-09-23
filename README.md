@@ -119,6 +119,12 @@ or that is built only from single letters, digits and operators, such as
 are overlooked, and there is no typo allowance, since one sign more or less
 makes another formula.
 
+Signs a keyboard lacks are typed the usual way: `x^2` for `x²`, `H2O` for
+`H₂O`, `*` for `×` or `·`, `/` for `÷`, `<=`, `>=` and `!=` for `≤`, `≥` and
+`≠`, `sqrt2` or `sqrt(2)` for `√2`, `1/2` for `½`, and `pi`, `alpha`,
+`theta` and the other Greek letters by name. A star between anything but two
+digits may be left out, so `2*x` is `2x`.
+
 Two tolerances are on by default and can be turned off in the settings:
 
 - **Accents.** `ecole` is accepted for `école`, and the verdict then shows

@@ -145,6 +145,9 @@ async function run() {
     assert(text.grade('2x+1', '2(x+1)').verdict === 'wrong', 'parenthèses d’une formule');
     assert(text.grade('xy', 'x-y').verdict === 'wrong', 'signe moins d’une formule');
     assert(text.grade('2 ( x + 1 )', '2(x+1)').verdict === 'correct', 'espaces dans une formule');
+    assert(text.grade('pi*r^2', 'πr²').verdict === 'correct', 'symboles tapés au clavier');
+    assert(text.grade('sqrt(2)', '√2').verdict === 'correct', 'racine tapée au clavier');
+    assert(text.grade('H2O', 'H₂O').verdict === 'correct', 'indice tapé au clavier');
     return 'ok';
   });
 

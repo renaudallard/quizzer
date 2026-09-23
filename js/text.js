@@ -27,9 +27,10 @@ export function normalize(text, stripAccents = true) {
 /* Maths keeps what words may drop: brackets and minus signs decide what a
    formula means, so "2x+1" is not "2(x+1)". Text is maths when it holds an
    operator or a maths sign, a number followed by an exclamation mark, which
-   is a factorial, a pi that is not part of a Greek word, or when it is built
-   only from single letters, digits and operators, as "x-y". */
-const MATH_SIGN = /[+=<>×÷*^√∑∏∫±≤≥≠≈∞∂⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿ₀₁₂₃₄₅₆₇₈₉]|\d!|(^|[^\p{Script=Greek}])π(?!\p{Script=Greek})/u;
+   is a factorial, a pi that is not part of a Greek word, a Greek letter set
+   against a Latin letter or a digit, as "Δx", or when it is built only from
+   single letters, digits and operators, as "x-y". */
+const MATH_SIGN = /[+=<>×÷*^√∑∏∫±≤≥≠≈∞∂⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿ₀₁₂₃₄₅₆₇₈₉½¼¾⅓⅔]|\d!|(^|[^\p{Script=Greek}])π(?!\p{Script=Greek})|\p{Script=Greek}[a-z\d]|[a-z\d]\p{Script=Greek}/iu;
 const FORMULA = /^[\s\p{L}\d.,()[\]{}+\-−*/^=<>!|]*$/u;
 
 export function isMath(text) {
@@ -39,13 +40,28 @@ export function isMath(text) {
     && /[-−*/^=<>()[\]{}!|]/.test(value);
 }
 
-/* A formula is compared as written, apart from case, spaces, the look of a
-   minus sign and a decimal comma. */
+/* Signs a keyboard lacks, as they are typed instead: x^2 for x², H2O for
+   H₂O, sqrt for √, <= for ≤, pi or alpha for the Greek letters. */
+const SUPERSCRIPTS = { '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4', '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9', '⁺': '+', '⁻': '-', 'ⁿ': 'n' };
+const SPELLED = {
+  '×': '*', '·': '*', '÷': '/', '⁄': '/', '−': '-', '–': '-', '≤': '<=', '≥': '>=', '≠': '!=', '√': 'sqrt',
+  '½': '1/2', '¼': '1/4', '¾': '3/4', '⅓': '1/3', '⅔': '2/3',
+  'α': 'alpha', 'β': 'beta', 'γ': 'gamma', 'δ': 'delta', 'ε': 'epsilon', 'θ': 'theta', 'λ': 'lambda',
+  'μ': 'mu', 'π': 'pi', 'ρ': 'rho', 'σ': 'sigma', 'τ': 'tau', 'φ': 'phi', 'ω': 'omega',
+};
+
+/* A formula is compared as written, apart from case, spaces, a decimal
+   comma and the signs spelled as they are typed. A star between anything
+   but two digits is a product that may as well be left out: 2*x is 2x. */
 function formula(text) {
-  return String(text).normalize('NFC').toLowerCase()
-    .replace(/[−–]/g, '-')
+  const out = String(text).normalize('NFC').toLowerCase()
+    .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿ]+/g, (run) => '^' + [...run].map((char) => SUPERSCRIPTS[char]).join(''))
+    .replace(/[₀-₉]/g, (char) => String(char.charCodeAt(0) - 0x2080))
+    .replace(/[×·÷⁄−–≤≥≠√½¼¾⅓⅔αβγδεθλμπρστφω]/g, (char) => SPELLED[char])
     .replace(/(\d),(?=\d)/g, '$1.')
-    .replace(/\s+/g, '');
+    .replace(/\s+/g, '')
+    .replace(/sqrt\(([\p{L}\d.]+)\)/gu, 'sqrt$1');
+  return out.replace(/\*/g, (star, at) => (/\d/.test(out[at - 1] || '') && /\d/.test(out[at + 1] || '') ? star : ''));
 }
 
 /* Two texts are the same prompt or the same answer when they differ only by
