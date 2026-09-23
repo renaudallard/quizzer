@@ -223,17 +223,21 @@ makes another number: `0,01` is wrong for `0,001`.
 
 Formulas are graded as formulas. An answer that holds an operator or a maths
 sign, such as `+`, `=`, `×`, `^`, `√`, `≤` or `²`, a factorial such as `5!`,
-or that is built only from single letters, digits and operators, such as
-`x-y` or `f(x)`, keeps its brackets and minus signs: `2x+1` is wrong for
-`2(x+1)` and `xy` is wrong for `x-y`. Only case, spaces and a decimal comma
-are overlooked, and there is no typo allowance, since one sign more or less
-makes another formula.
+or that is built only from single letters, digits, operators and primes,
+such as `x-y`, `f(x)` or `u'/u`, a function name such as `sin`, `cos`, `ln`
+or `exp` counting as one letter, keeps its brackets, minus signs and primes:
+`2x+1` is wrong for `2(x+1)`, `xy` is wrong for `x-y`, `sin(x)` is wrong for
+`-sin(x)` and `u/u` is wrong for `u'/u`. Only case, spaces and a decimal
+comma are overlooked, and there is no typo allowance, since one sign more or
+less makes another formula.
 
 Signs a keyboard lacks are typed the usual way: `x^2` for `x²`, `H2O` for
 `H₂O`, `*` for `×` or `·`, `/` for `÷`, `<=`, `>=` and `!=` for `≤`, `≥` and
 `≠`, `sqrt2` or `sqrt(2)` for `√2`, `1/2` for `½`, and `pi`, `alpha`,
 `theta` and the other Greek letters by name. A star between anything but two
-digits may be left out, so `2*x` is `2x`.
+digits may be left out, so `2*x` is `2x`. After a function name the brackets
+around a single term may be left out too, so `sin x` is `sin(x)`, and a
+straight quote `'` stands for the prime `′`.
 
 Two tolerances are on by default and can be turned off in the settings:
 

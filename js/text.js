@@ -29,38 +29,45 @@ export function normalize(text, stripAccents = true) {
    operator or a maths sign, a number followed by an exclamation mark, which
    is a factorial, a pi that is not part of a Greek word, a Greek letter set
    against a Latin letter or a digit, as "Δx", or when it is built only from
-   single letters, digits and operators, as "x-y". */
+   single letters, digits, operators and primes, as "x-y" or "u'/u". A
+   function name such as sin or ln counts as a single letter. */
 const MATH_SIGN = /[+=<>×÷*^√∑∏∫±≤≥≠≈∞∂⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿ₀₁₂₃₄₅₆₇₈₉½¼¾⅓⅔]|\d!|(^|[^\p{Script=Greek}])π(?!\p{Script=Greek})|\p{Script=Greek}[a-z\d]|[a-z\d]\p{Script=Greek}/iu;
-const FORMULA = /^[\s\p{L}\d.,()[\]{}+\-−*/^=<>!|]*$/u;
+const FORMULA = /^[\s\p{L}\d.,()[\]{}+\-−*/^=<>!|'′]*$/u;
+const FUNCTIONS = 'arcsin|arccos|arctan|sinh|cosh|tanh|sin|cos|tan|cot|ln|log|exp|sqrt';
+const FUNCTION_NAME = new RegExp('\\b(?:' + FUNCTIONS + ')\\b', 'gi');
+const FUNCTION_CALL = new RegExp('(' + FUNCTIONS + ')(\\^[\\p{L}\\d]+)?\\(([\\p{L}\\d.]+)\\)', 'gu');
 
 export function isMath(text) {
   const value = String(text);
   if (MATH_SIGN.test(value)) return true;
-  return FORMULA.test(value) && /\p{L}/u.test(value) && !/\p{L}{2}/u.test(value)
-    && /[-−*/^=<>()[\]{}!|]/.test(value);
+  const bare = value.replace(FUNCTION_NAME, 'f');
+  return FORMULA.test(bare) && /\p{L}/u.test(bare) && !/\p{L}{2}/u.test(bare)
+    && /[-−*/^=<>()[\]{}!|]/.test(bare);
 }
 
 /* Signs a keyboard lacks, as they are typed instead: x^2 for x², H2O for
    H₂O, sqrt for √, <= for ≤, pi or alpha for the Greek letters. */
 const SUPERSCRIPTS = { '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4', '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9', '⁺': '+', '⁻': '-', 'ⁿ': 'n' };
 const SPELLED = {
-  '×': '*', '·': '*', '÷': '/', '⁄': '/', '−': '-', '–': '-', '≤': '<=', '≥': '>=', '≠': '!=', '√': 'sqrt',
+  '×': '*', '·': '*', '÷': '/', '⁄': '/', '−': '-', '–': '-', '≤': '<=', '≥': '>=', '≠': '!=', '√': 'sqrt', '′': "'",
   '½': '1/2', '¼': '1/4', '¾': '3/4', '⅓': '1/3', '⅔': '2/3',
   'α': 'alpha', 'β': 'beta', 'γ': 'gamma', 'δ': 'delta', 'ε': 'epsilon', 'θ': 'theta', 'λ': 'lambda',
   'μ': 'mu', 'π': 'pi', 'ρ': 'rho', 'σ': 'sigma', 'τ': 'tau', 'φ': 'phi', 'ω': 'omega',
 };
 
 /* A formula is compared as written, apart from case, spaces, a decimal
-   comma and the signs spelled as they are typed. A star between anything
-   but two digits is a product that may as well be left out: 2*x is 2x. */
+   comma and the signs spelled as they are typed. Brackets around a single
+   term after a function name may go, so sin(x) is sin x. A star between
+   anything but two digits is a product that may as well be left out: 2*x is
+   2x. */
 function formula(text) {
   const out = String(text).normalize('NFC').toLowerCase()
     .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿ]+/g, (run) => '^' + [...run].map((char) => SUPERSCRIPTS[char]).join(''))
     .replace(/[₀-₉]/g, (char) => String(char.charCodeAt(0) - 0x2080))
-    .replace(/[×·÷⁄−–≤≥≠√½¼¾⅓⅔αβγδεθλμπρστφω]/g, (char) => SPELLED[char])
+    .replace(/[×·÷⁄−–≤≥≠√′½¼¾⅓⅔αβγδεθλμπρστφω]/g, (char) => SPELLED[char])
     .replace(/(\d),(?=\d)/g, '$1.')
     .replace(/\s+/g, '')
-    .replace(/sqrt\(([\p{L}\d.]+)\)/gu, 'sqrt$1');
+    .replace(FUNCTION_CALL, '$1$2$3');
   return out.replace(/\*/g, (star, at) => (/\d/.test(out[at - 1] || '') && /\d/.test(out[at + 1] || '') ? star : ''));
 }
 

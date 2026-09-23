@@ -163,6 +163,10 @@ async function run() {
     assert(text.grade('pi*r^2', 'πr²').verdict === 'correct', 'symboles tapés au clavier');
     assert(text.grade('sqrt(2)', '√2').verdict === 'correct', 'racine tapée au clavier');
     assert(text.grade('H2O', 'H₂O').verdict === 'correct', 'indice tapé au clavier');
+    assert(text.grade('sin(x)', '−sin(x)').verdict === 'wrong', 'signe moins devant une fonction');
+    assert(text.grade('-sin x', '−sin(x)').verdict === 'correct', 'fonction sans parenthèses');
+    assert(text.grade('u/u', "u'/u").verdict === 'wrong', 'prime oublié');
+    assert(text.grade('u′/u', "u'/u").verdict === 'correct', 'prime tapé');
     return 'ok';
   });
 
