@@ -24,7 +24,9 @@ const DELIMITERS = ['\t', ';', ','];
 /* The separator is the first of tab, semicolon and comma found on the first
    line that holds data. Quotes are read the way the parser reads them, a
    quote opening a field after any of the three, so a quoted comma or
-   semicolon cannot mislead it, and comment lines are skipped the same way. */
+   semicolon cannot mislead it. Whitespace is passed over the same way too:
+   a line of spaces or tabs holds no data, and a "#" after any whitespace
+   starts a comment line. */
 function detectDelimiter(text) {
   let i = 0;
   while (i < text.length) {
@@ -43,7 +45,11 @@ function detectDelimiter(text) {
         continue;
       }
       if (char === '\n') { i++; break; }
-      if (comment || char === ' ' || char === '\r') continue;
+      if (comment || char === '\r') continue;
+      if (/\s/.test(char)) {
+        if (char === '\t') { found.add(char); fieldStart = true; }
+        continue;
+      }
       if (!data && char === '#') { comment = true; continue; }
       data = true;
       if (DELIMITERS.includes(char)) { found.add(char); fieldStart = true; continue; }

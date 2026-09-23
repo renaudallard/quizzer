@@ -200,8 +200,9 @@ the storage figure in the settings counts it.
   French, English or Dutch.
 - **Pasted text** accepts tab, semicolon or comma as the separator, detected
   from the first line that holds data, with quoted fields taken into account.
-  A line whose first character is `#` is a comment and is ignored; quote a
-  term that starts with `#` to keep it. The CSV export does this by itself.
+  A line that starts with `#`, spaces and tabs aside, is a comment and is
+  ignored, and a line of spaces or tabs holds no data; quote a term that
+  starts with `#` to keep it. The CSV export does this by itself.
 - **CSV files** open into the same box as pasted text, so the lines can be
   checked before the set is created. The file name becomes the title unless one
   was typed. UTF-16 files with a byte order mark, such as Excel's "Unicode
