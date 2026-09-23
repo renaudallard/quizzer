@@ -74,6 +74,10 @@ article, de or het, since it has to be learned with the word, and read aloud
 speaks the Dutch side in Dutch. Cards that share a French answer, such as dank
 je and dank u for merci, carry a hint that tells them apart.
 
+The button is on the empty home page and above your sets once you have some.
+It only adds the sample sets you do not have yet, so sets added to the site
+later can be loaded too, and one you deleted comes back.
+
 ### Editing sets
 
 Blank rows are left out when a set is saved. A card with only one side filled

@@ -64,10 +64,14 @@ function setsSection(sets) {
     },
   });
 
+  /* The samples stay on offer once sets exist: only the missing ones are
+     added, so sample sets shipped later can still be loaded. */
   return el('section', {},
     el('div', { class: 'row-between', style: { marginBottom: '14px' } },
       el('h2', {}, t('home.sets')),
-      el('a', { class: 'btn', href: '#/new' }, icon('plus'), t('home.cta.create'))),
+      el('div', { class: 'row' },
+        samplesButton(),
+        el('a', { class: 'btn', href: '#/new' }, icon('plus'), t('home.cta.create')))),
     sets.length > 4 ? el('div', { class: 'search-bar' }, search) : null,
     notice,
     grid);
