@@ -8,6 +8,7 @@ import { getTheme, setTheme } from '../theme.js';
 import { download, parseDelimited, readText, decodeShare } from '../io.js';
 import { navigate, setBusy } from '../router.js';
 import { dayKey } from '../util.js';
+import { exportImages, importImages } from '../images.js';
 import { notFoundPanel, shareControls, cardRow, toastSaved } from './shared.js';
 
 
@@ -16,8 +17,13 @@ function exportPanel() {
   const button = el('button', {
     type: 'button', class: 'btn btn-primary',
     disabled: sets.length === 0,
-    /* The local day, like the activity and the streak, not the UTC one. */
-    onclick: () => download('quizzer-' + dayKey() + '.json', store.exportAll()),
+    /* The pictures the cards use travel in the file, as data URLs. The name
+       carries the local day, like the activity and the streak. */
+    onclick: async () => {
+      const backup = JSON.parse(store.exportAll());
+      backup.images = await exportImages(store.imageIds()).catch(() => ({}));
+      download('quizzer-' + dayKey() + '.json', JSON.stringify(backup, null, 2));
+    },
   }, icon('download'), t('transfer.exportAll'));
 
   return el('section', { class: 'panel stack' },
@@ -35,7 +41,11 @@ function importPanel() {
     const file = input.files && input.files[0];
     if (!file) return;
     try {
-      const count = store.importPayload(JSON.parse(await file.text()));
+      const payload = JSON.parse(await file.text());
+      /* Pictures first, so the cards that use them find them. A browser
+         without IndexedDB still gets the rest of the backup. */
+      await importImages(payload && payload.images).catch(() => 0);
+      const count = store.importPayload(payload);
       /* A backup brings its settings back: apply them now, not on the next visit. */
       setLocale(store.getSettings().locale);
       setTheme(getTheme());

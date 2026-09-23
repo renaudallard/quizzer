@@ -58,6 +58,20 @@ export function formatDuration(ms) {
   return m + ':' + String(s).padStart(2, '0');
 }
 
+/* Bytes as base64, a slice at a time so a picture does not overflow the
+   argument list of fromCharCode. */
+export function toBase64(bytes) {
+  let binary = '';
+  for (let i = 0; i < bytes.length; i += 0x8000) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  }
+  return btoa(binary);
+}
+
+export function fromBase64(text) {
+  return Uint8Array.from(atob(text), (char) => char.charCodeAt(0));
+}
+
 export function pct(part, total) {
   if (!total) return 0;
   return Math.round((part / total) * 100);

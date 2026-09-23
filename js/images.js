@@ -3,7 +3,7 @@
    is kept, so a set of photos stays small. */
 
 import { el } from './dom.js';
-import { uid } from './util.js';
+import { uid, toBase64, fromBase64 } from './util.js';
 
 const DB_NAME = 'quizzer';
 const STORE = 'images';
@@ -102,6 +102,43 @@ export function cardImage(id, alt, extra) {
     else image.dataset.missing = '1';
   });
   return image;
+}
+
+async function dataUrl(blob) {
+  return 'data:' + (blob.type || 'image/png') + ';base64,' + toBase64(new Uint8Array(await blob.arrayBuffer()));
+}
+
+/* The pictures named by ids, as data URLs, for a backup. */
+export async function exportImages(ids) {
+  const out = {};
+  for (const id of ids) {
+    const record = await transact('readonly', (store) => store.get(id));
+    if (record) out[id] = await dataUrl(record.blob);
+  }
+  return out;
+}
+
+/* Puts back pictures from a backup. Anything that is not a picture's data
+   URL, or that is larger than a picture kept here could be, is skipped. The
+   base64 is decoded here rather than fetched, which a strict content
+   security policy would forbid. */
+export async function importImages(images) {
+  if (!images || typeof images !== 'object') return 0;
+  let count = 0;
+  for (const [id, url] of Object.entries(images)) {
+    const head = typeof url === 'string' ? /^data:(image\/[\w.+-]+);base64,/.exec(url) : null;
+    if (!head || (url.length - head[0].length) * 0.75 > MAX_BYTES) continue;
+    let blob;
+    try {
+      blob = new Blob([fromBase64(url.slice(head[0].length))], { type: head[1] });
+    } catch {
+      continue;
+    }
+    await transact('readwrite', (store) => store.put({ blob, created: Date.now() }, id));
+    urls.delete(id);
+    count += 1;
+  }
+  return count;
 }
 
 /* Lets go of the pictures no card uses, once past the grace period. */

@@ -1,6 +1,7 @@
 /* Getting cards in and out: delimited text, file downloads and share links. */
 
 import { normalize } from './text.js';
+import { toBase64, fromBase64 } from './util.js';
 
 const QUOTE = '"';
 
@@ -153,17 +154,11 @@ export function toCSV(set) {
 /* Share links carry the cards themselves, base64url encoded in the fragment,
    so nothing ever reaches a server. Progress is deliberately left behind. */
 function base64urlEncode(text) {
-  const bytes = new TextEncoder().encode(text);
-  let binary = '';
-  for (const byte of bytes) binary += String.fromCharCode(byte);
-  return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  return toBase64(new TextEncoder().encode(text)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
 
 function base64urlDecode(payload) {
-  const base64 = payload.replace(/-/g, '+').replace(/_/g, '/');
-  const binary = atob(base64);
-  const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
-  return new TextDecoder().decode(bytes);
+  return new TextDecoder().decode(fromBase64(payload.replace(/-/g, '+').replace(/_/g, '/')));
 }
 
 export function encodeShare(set) {

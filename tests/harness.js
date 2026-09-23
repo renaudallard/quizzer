@@ -194,17 +194,20 @@ async function run() {
      learner's own pictures are, until the start-up clean-up a day later. */
   let picture;
   let pictureUrl = null;
+  let pictureBackup = {};
   try {
     const bytes = Uint8Array.from(atob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=='), (char) => char.charCodeAt(0));
     picture = await images.addImage(new File([bytes], 'test.png', { type: 'image/png' }));
     pictureUrl = await images.imageUrl(picture);
+    pictureBackup = await images.exportImages([picture]);
   } catch (error) {
     picture = error;
   }
-  check('une image se garde et se relit', () => {
+  check('une image se garde, se relit et part dans la sauvegarde', () => {
     if (picture instanceof Error && picture.message === 'unavailable') return 'IndexedDB indisponible: pas d’images ici';
     assert(typeof picture === 'string', 'image refusée: ' + (picture && picture.message));
     assert(pictureUrl && pictureUrl.startsWith('blob:'), 'adresse: ' + pictureUrl);
+    assert(/^data:image\/png;base64,/.test(pictureBackup[picture] || ''), 'absente de la sauvegarde');
     return 'ok';
   });
 
