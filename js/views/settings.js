@@ -1,11 +1,12 @@
 /* Settings and the shortcut sheet. */
 
-import { el, icon, toast } from '../dom.js';
+import { el, icon } from '../dom.js';
 import { t, getLocale } from '../i18n/index.js';
 import * as store from '../store.js';
 import { THEMES, getTheme, setTheme, onThemeChange } from '../theme.js';
 import { onCleanup } from '../router.js';
 import { chooseLanguage, fillLanguageSelect } from '../language.js';
+import { toastSaved } from './shared.js';
 
 function formatBytes(bytes) {
   const kilobytes = bytes / 1024;
@@ -50,7 +51,7 @@ export function settingsView(focus) {
       /* The store rounds and bounds it, and keeps the old goal for an empty field. */
       const typed = goal.value.trim();
       goal.value = String(store.setSetting('goal', typed ? Number(typed) : NaN));
-      toast(t('settings.saved'));
+      toastSaved(t('settings.saved'));
     },
   });
   /* The router focuses the page once it is mounted, so wait for that, and
@@ -83,15 +84,15 @@ export function settingsView(focus) {
       el('h2', {}, t('settings.learning')),
       switchRow('settings.accents', 'settings.accentsHint', settings.accents, (value) => {
         store.setSetting('accents', value);
-        toast(t('settings.saved'));
+        toastSaved(t('settings.saved'));
       }),
       switchRow('settings.typos', 'settings.typosHint', settings.typos, (value) => {
         store.setSetting('typos', value);
-        toast(t('settings.saved'));
+        toastSaved(t('settings.saved'));
       }),
       switchRow('settings.speech', 'settings.speechHint', settings.speech, (value) => {
         store.setSetting('speech', value);
-        toast(t('settings.saved'));
+        toastSaved(t('settings.saved'));
       }),
       el('label', { class: 'field' },
         el('span', {}, t('settings.goal')),

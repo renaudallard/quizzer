@@ -1,13 +1,13 @@
 /* One set: how far along it is, the five ways to study it, and its cards. */
 
-import { el, icon, toast } from '../dom.js';
+import { el, icon } from '../dom.js';
 import { t, tn } from '../i18n/index.js';
 import * as store from '../store.js';
 import { dueCards, masteryPct } from '../srs.js';
 import { meter } from '../chart.js';
 import { download, slugify, toCSV } from '../io.js';
 import { navigate } from '../router.js';
-import { notFoundPanel, shareControls, cardRow } from './shared.js';
+import { notFoundPanel, shareControls, cardRow, toastSaved } from './shared.js';
 
 const MODES = [
   { path: 'cards', key: 'mode.flashcards', glyph: 'cards', min: 1 },
@@ -42,7 +42,7 @@ export function setView(id) {
   remove.addEventListener('click', () => {
     if (!confirm(t('set.deleteConfirm', { name: set.title }))) return;
     store.deleteSet(set.id);
-    toast(t('set.deleted'));
+    toastSaved(t('set.deleted'));
     navigate('');
   });
 

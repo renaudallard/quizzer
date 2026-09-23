@@ -6,7 +6,7 @@ import { t, tn, getLocale } from '../i18n/index.js';
 import * as store from '../store.js';
 import { parseDelimited } from '../io.js';
 import { navigate, onCleanup, setBusy } from '../router.js';
-import { notFoundPanel } from './shared.js';
+import { notFoundPanel, toastSaved } from './shared.js';
 
 const LANG_CODES = [
   'fr', 'en', 'es', 'de', 'it', 'pt', 'nl', 'ca', 'pl', 'ru', 'uk', 'ar', 'tr',
@@ -189,7 +189,7 @@ export function editorView(id) {
     };
     /* The set may have been deleted in another tab meanwhile: keep the draft. */
     const saved = (existing && store.updateSet(existing.id, payload)) || store.createSet(payload);
-    toast(t('editor.saved'));
+    toastSaved(t('editor.saved'));
     navigate('set/' + saved.id);
   }
 

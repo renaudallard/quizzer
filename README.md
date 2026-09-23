@@ -174,8 +174,9 @@ once, so an older tab never writes stale data back. A study page or a draft
 keeps showing what it had until you move on.
 
 When the browser refuses to save, because its storage is full or blocked, a
-notice stays at the top of every page until saving works again, and closing
-the tab asks first. A backup can still be downloaded in the meantime. Such a
+notice stays at the top of every page until saving works again, no message
+claims that a change was saved, and closing the tab asks first. A backup can
+still be downloaded in the meantime. Such a
 tab keeps its own changes rather than take up what other tabs save, and once
 it can save again, its copy is the one written.
 

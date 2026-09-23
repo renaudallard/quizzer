@@ -8,7 +8,7 @@ import { getTheme, setTheme } from '../theme.js';
 import { download, parseDelimited, readText, decodeShare } from '../io.js';
 import { navigate, setBusy } from '../router.js';
 import { dayKey } from '../util.js';
-import { notFoundPanel, shareControls, cardRow } from './shared.js';
+import { notFoundPanel, shareControls, cardRow, toastSaved } from './shared.js';
 
 
 function exportPanel() {
@@ -39,7 +39,7 @@ function importPanel() {
       /* A backup brings its settings back: apply them now, not on the next visit. */
       setLocale(store.getSettings().locale);
       setTheme(getTheme());
-      toast(tn('transfer.importOk', count));
+      toastSaved(tn('transfer.importOk', count));
       navigate('');
     } catch {
       toast(t('transfer.importFailed'));
@@ -94,7 +94,7 @@ function pastePanel() {
       return;
     }
     const set = store.createSet({ title: name.value.trim(), cards });
-    toast(tn('editor.bulkAdded', cards.length));
+    toastSaved(tn('editor.bulkAdded', cards.length));
     navigate('set/' + set.id);
   });
 
@@ -143,7 +143,7 @@ export function sharedView(payload) {
   const add = el('button', { type: 'button', class: 'btn btn-primary btn-lg' }, icon('plus'), t('transfer.sharedAdd'));
   add.addEventListener('click', () => {
     const set = store.createSet(incoming);
-    toast(t('transfer.sharedAdded'));
+    toastSaved(t('transfer.sharedAdded'));
     navigate('set/' + set.id);
   });
 

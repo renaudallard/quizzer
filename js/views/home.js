@@ -7,6 +7,7 @@ import * as store from '../store.js';
 import { dueCards, masteryPct } from '../srs.js';
 import { statTile, meter, activityChart, figure } from '../chart.js';
 import { truncate } from '../text.js';
+import { toastSaved } from './shared.js';
 import { render, currentPath } from '../router.js';
 
 async function loadSamples(button) {
@@ -22,7 +23,7 @@ async function loadSamples(button) {
       return;
     }
     const count = store.importPayload({ sets: fresh });
-    toast(tn('samples.loaded', count));
+    toastSaved(tn('samples.loaded', count));
     /* The download may finish after the learner has moved on; only the home
        page is rebuilt, never whatever they are now doing. */
     if (currentPath() === '') render();

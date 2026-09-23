@@ -2,6 +2,7 @@
 
 import { el, icon, toast } from '../dom.js';
 import { t } from '../i18n/index.js';
+import * as store from '../store.js';
 import { shareUrl, copyText } from '../io.js';
 
 /* Some messaging apps cut links around this length. */
@@ -32,6 +33,12 @@ export function shareControls(getSet, { label, primary = false }) {
     }
   });
   return { button, field, notice };
+}
+
+/* Confirms a change that the store has just written. While writing fails,
+   the alert at the top of the page says so, and no success is announced. */
+export function toastSaved(message) {
+  if (!store.unsaved()) toast(message);
 }
 
 /* The way out defaults to the home page; a caller sending the learner
