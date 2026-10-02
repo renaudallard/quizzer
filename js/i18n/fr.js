@@ -137,7 +137,7 @@ export default {
   "editor.discard": "Abandonner les modifications en cours ?",
   "editor.removeCard": "Supprimer cette carte",
   "editor.symbols": "Symboles et formules",
-  "editor.symbolsHint": "Un clic insère le symbole là où se trouvait le curseur. Au clavier, x^2 donne x², H_2O donne H₂O, SO_4^(2-) donne SO₄²⁻ et -> donne → dès que vous quittez le champ.",
+  "editor.symbolsHint": "Un clic insère le symbole là où se trouvait le curseur. Au clavier, x^2 donne x², H_2O donne H₂O, SO_4^(2-) donne SO₄²⁻ et -> donne → dès que vous quittez le champ. Entre dollars, du LaTeX comme $\\pi r^2$ est mis en forme.",
   "editor.symbolsNoField": "Placez d’abord le curseur dans un champ.",
   "editor.symbolsScripts": "Exposants et indices",
   "editor.symbolsOperators": "Opérations et relations",

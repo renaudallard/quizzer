@@ -8,7 +8,8 @@ import { parseDelimited } from '../io.js';
 import { navigate, onCleanup, setBusy } from '../router.js';
 import { notFoundPanel, toastSaved } from './shared.js';
 import { addImage, cardImage } from '../images.js';
-import { typeset } from '../text.js';
+import { typeset, hasMath } from '../text.js';
+import { richText } from '../math.js';
 
 const LANG_CODES = [
   'fr', 'en', 'es', 'de', 'it', 'pt', 'nl', 'ca', 'pl', 'ru', 'uk', 'ar', 'tr',
@@ -118,6 +119,15 @@ export function editorView(id) {
     return { root: holder, attach };
   }
 
+  /* What the LaTeX of a field looks like, under it, while it is typed. */
+  function preview(field) {
+    const box = el('div', { class: 'math-preview', 'aria-hidden': 'true' });
+    const show = () => mount(box, hasMath(field.value) ? richText(field.value) : null);
+    field.addEventListener('input', show);
+    show();
+    return box;
+  }
+
   /* A picture pasted in a side's field, or dropped on the side, goes there. */
   function takesPictures(field, side, picker) {
     const picture = (files) => [...(files || [])].find((one) => /^image\//.test(one.type));
@@ -169,8 +179,9 @@ export function editorView(id) {
 
     const termPicker = imagePicker(card, 'termImage', t('editor.addTermImage'));
     const defPicker = imagePicker(card, 'defImage', t('editor.addDefImage'));
-    const termSide = el('div', { class: 'editor-fields' }, term, hint, termPicker.root);
-    const defSide = el('div', { class: 'editor-fields' }, def, defPicker.root);
+    const termSide = el('div', { class: 'editor-fields' },
+      term, preview(term), hint, preview(hint), termPicker.root);
+    const defSide = el('div', { class: 'editor-fields' }, def, preview(def), defPicker.root);
     takesPictures(term, termSide, termPicker);
     takesPictures(def, defSide, defPicker);
 

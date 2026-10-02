@@ -7,8 +7,9 @@ The interface is **French by default**. English and Dutch are one click away
 in the top bar. Adding another language means writing one catalogue file and
 registering it (see [Adding a language](#adding-a-language)).
 
-No build step, no dependencies, no accounts, no server-side storage. Plain
-HTML, CSS and ES modules.
+No build step, no package manager, no accounts, no server-side storage.
+Plain HTML, CSS and ES modules. The one outside piece, KaTeX for LaTeX, is
+copied under `vendor/katex` and only fetched by a page that shows some.
 
 ## Running it
 
@@ -207,6 +208,29 @@ such as q, and of signs such as `/`: those stay as typed, `x^q` or
 `x^(1/2)`, which the grading reads just as well. The title and the
 description are never changed.
 
+### LaTeX
+
+LaTeX between dollars is typeset wherever the card is shown: `$\frac{1}{2}$`,
+`$\sqrt{b^2-4ac}$`, `$\int_0^1 x^2\,dx$`, `$x \in \mathbb{R}$`. A side may
+mix text and LaTeX, as in `aire du disque : $\pi r^2$`, and double dollars
+set a formula apart, larger. Chemistry is written as mhchem writes it, in
+`\ce{}`: `$\ce{SO4^2-}$`, `$\ce{CuSO4.5H2O}$` and
+`$\ce{N2 + 3H2 <=> 2NH3}$`. In the editor a preview of each field holding
+LaTeX shows under it as it is typed, and the keyboard notation above leaves
+what sits between dollars alone.
+
+As in Pandoc, an opening dollar has no space after it and a closing dollar
+no space before it nor a digit after it, so `5 $ et 10 $` and `$5 et $10`
+stay text. `\$` is a dollar sign.
+
+The drawing is done by KaTeX 0.19.0 with its mhchem extension, MIT
+licensed, which lives in `vendor/katex` with its fonts. The site fetches it
+from there the first time a card holds LaTeX, and never from anywhere else.
+Until it has arrived, or if it cannot be loaded, each formula shows written
+on one line. A mistake in the LaTeX shows in red rather than breaking the
+card. Commands that could reach a link, a picture or the page, such as
+`\href` or `\includegraphics`, are refused.
+
 ### Pictures
 
 A card side can hold a picture, with or without text. The "Image" button
@@ -283,6 +307,19 @@ for `Fe³⁺`. Arrows and the signs of sets and logic, such as `∈` or `∪`,
 make a formula only when no word sits in the answer, so `x → 0` is a
 formula and `cheval → chevaux` is text.
 
+LaTeX is graded as it reads on one line, so the answer is typed the way the
+rest of a formula is. `\frac{a}{b}` reads `a/b`, with brackets around a
+side that holds more than one term, so `(x+1)/2` is right for
+`$\frac{x+1}{2}$` and `x+1/2` is not. `\sqrt{x}` reads `√x`, which `sqrt x`
+matches, and a root of another index, as in `\sqrt[3]{x}`, reads
+`x^(1/3)`. Exponents and indices read as above, `$u_{n+1}$` as `uₙ₊₁`, and
+the commands as the signs they stand for, `\alpha` as `α`, `\leq` as `≤`,
+`\mathbb{R}` as `ℝ` and `^\circ` as `°`. In `\ce{}` the digits after an
+element or a bracket are its index and a final sign is the charge, as
+mhchem draws them: `$\ce{Fe3+}$` reads `Fe₃⁺`, so write `$\ce{Fe^3+}$` for
+the iron ion. An answer may also be typed in LaTeX, with or without its
+dollars: `\frac{1}{2}` is right for `1/2`.
+
 Two tolerances are on by default and can be turned off in the settings:
 
 - **Accents.** `ecole` is accepted for `école`, and the verdict then shows
@@ -326,7 +363,9 @@ counts the card twice.
       study.js            widgets shared by the six modes
       question.js         questions shared by quiz and learn
       chart.js            stat tiles, mastery bar, activity columns
-      text.js             answer comparison, hint masking, formula notation
+      text.js             answer comparison, hint masking, formula notation,
+                          LaTeX read on one line
+      math.js             LaTeX drawn by KaTeX, loaded on first use
       io.js               delimited text, downloads, share links
       images.js           card pictures, kept in IndexedDB
       util.js             identifiers, shuffling, dates
@@ -339,6 +378,7 @@ counts the card twice.
       i18n/nl.js          Dutch catalogue
       views/              home, set, editor, stats, settings, transfer, samples
       modes/              flashcards, learn, review, quiz, write, match
+    vendor/katex/         KaTeX 0.19.0 and mhchem, with their fonts and licence
     tests/harness.html    smoke test, open it in a browser
     tests/harness.js      the checks it runs
 
@@ -346,13 +386,14 @@ counts the card twice.
 
 Serve the directory and open <http://localhost:8080/tests/harness.html>. It
 exercises the store, the Leitner ladder, answer grading, the formula notation
-the editor writes, the CSV and share link round trips, and reading CSV files
-in UTF-8, UTF-16 and Windows-1252. It renders all fifteen views in every
-interface language, failing on any key that no catalogue holds and on any
-`{placeholder}` left unfilled. It checks that
-each catalogue has exactly the French keys, with the same `{placeholders}` in
-every string, and that the French text built into `index.html` matches the
-French catalogue and its attribute keys exist. On the home page it checks that
+the editor writes, LaTeX read on one line and drawn by KaTeX, the CSV and
+share link round trips, and reading CSV files in UTF-8, UTF-16 and
+Windows-1252. It renders all fifteen views in every interface language,
+failing on any key that no catalogue holds and on any `{placeholder}` left
+unfilled. It checks that each catalogue has exactly the French keys, with
+the same `{placeholders}` in every string, and that the French text built
+into `index.html` matches the French catalogue and its attribute keys
+exist. On the home page it checks that
 the daily goal figure stops at the goal, that the goal tile opens its setting
 with the field focused, and that percentages follow the interface language. It
 checks that every sample set belongs to a group. It restores a full backup into

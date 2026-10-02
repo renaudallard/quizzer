@@ -7,6 +7,7 @@ import { t } from './i18n/index.js';
 import { getSettings } from './store.js';
 import { shuffle, sample } from './util.js';
 import { gradeAny, textKey } from './text.js';
+import { richText } from './math.js';
 import {
   answerField, answerFeedback, typedAnswer, bindKeys, speakButton, cardText, cardSide, sideKey,
 } from './study.js';
@@ -143,7 +144,7 @@ export function questionAsker(stage, { onAnswer, onContinue }) {
           ? el('span', { class: 'hint' }, '→ ', cardText(question.shown, question.answerLang))
           : null,
         question.hint && question.kind !== 'truefalse'
-          ? el('span', { class: 'hint' }, question.hint)
+          ? el('span', { class: 'hint' }, richText(question.hint))
           : null));
   }
 

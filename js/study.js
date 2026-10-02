@@ -8,10 +8,11 @@ import { onCleanup, setBusy } from './router.js';
 import { cardRow } from './views/shared.js';
 import { pct } from './util.js';
 import { cardImage } from './images.js';
-import { textKey } from './text.js';
+import { textKey, plain } from './text.js';
+import { richText } from './math.js';
 
 export function cardText(text, lang) {
-  return el('span', lang ? { lang } : {}, text);
+  return el('span', lang ? { lang } : {}, richText(text));
 }
 
 /* What tells one side of a card from another: its text, or its picture when
@@ -92,7 +93,7 @@ export function speakButton(text, lang) {
 export function speak(text, lang) {
   if (typeof speechSynthesis === 'undefined' || !getSettings().speech) return;
   speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(String(text));
+  const utterance = new SpeechSynthesisUtterance(plain(text));
   utterance.lang = lang || getLocale();
   speechSynthesis.speak(utterance);
 }
@@ -119,7 +120,7 @@ export function flipCard({ onFlip } = {}) {
     mount(node,
       el('span', { class: 'side' }, label),
       el('span', { class: 'content' }, cardSide(text, image, lang)),
-      hint ? el('span', { class: 'hint' }, hint) : null);
+      hint ? el('span', { class: 'hint' }, richText(hint)) : null);
   }
 
   function show(flipped) {

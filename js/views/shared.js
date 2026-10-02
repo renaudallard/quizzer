@@ -5,6 +5,7 @@ import { t } from '../i18n/index.js';
 import * as store from '../store.js';
 import { shareUrl, copyText } from '../io.js';
 import { cardImage } from '../images.js';
+import { richText } from '../math.js';
 
 /* Some messaging apps cut links around this length. */
 const LONG_LINK = 8000;
@@ -70,11 +71,11 @@ export function cardRow(card, { termLang, defLang } = {}, tools) {
   return el('div', { class: 'card-row' },
     el('div', { class: 'term' },
       thumbnail(card.termImage, card.term),
-      card.term ? el('span', { lang: termLang || null }, card.term) : null,
-      card.hint ? el('span', { class: 'hint' }, card.hint) : null),
+      card.term ? el('span', { lang: termLang || null }, richText(card.term)) : null,
+      card.hint ? el('span', { class: 'hint' }, richText(card.hint)) : null),
     el('div', { class: 'def' },
       thumbnail(card.defImage, card.def),
-      card.def ? el('span', { lang: defLang || null }, card.def) : null),
+      card.def ? el('span', { lang: defLang || null }, richText(card.def)) : null),
     tools === undefined ? null : el('div', { class: 'card-row-tools' }, tools));
 }
 

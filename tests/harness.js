@@ -24,6 +24,8 @@ import { learnView } from '../js/modes/learn.js';
 import { quizView } from '../js/modes/quiz.js';
 import { writeView } from '../js/modes/write.js';
 import { matchView } from '../js/modes/match.js';
+import { mathReady } from '../js/math.js';
+import { cardText } from '../js/study.js';
 
 /* Both keys the app writes, its state and the copy of a payload it could not
    read, are set aside for the run. */
@@ -192,6 +194,33 @@ async function run() {
     assert(text.grade('2^n', '2ⁿ').verdict === 'correct', 'puissance d’un nombre');
     assert(text.grade('e^(it)', 'eⁱᵗ').verdict === 'correct', 'exposant de deux lettres');
     return 'ok';
+  });
+
+  check('LaTeX lu sur une ligne', () => {
+    const cases = [
+      ['$\\frac{x+1}{2}$', '(x+1)/2'], ['$\\sqrt{b^2-4ac}$', '√(b²-4ac)'], ['$u_{n+1}$', 'uₙ₊₁'],
+      ['$x \\in \\mathbb{R}$', 'x ∈ ℝ'], ['$90^\\circ$', '90°'], ['$\\ce{SO4^2-}$', 'SO₄²⁻'], ['$\\ce{Fe3+}$', 'Fe₃⁺'],
+      ['$\\ce{CuSO4.5H2O}$', 'CuSO₄·5H₂O'], ['$\\ce{N2 + 3H2 <=> 2NH3}$', 'N₂ + 3H₂ ⇌ 2NH₃'],
+      ['aire : $\\pi r^2$', 'aire : π r²'], ['5 $ et 10 $', '5 $ et 10 $'], ['$5 et $10', '$5 et $10'], ['\\$5', '$5'],
+    ];
+    for (const [source, line] of cases) assert(text.plain(source) === line, source + ' donne ' + text.plain(source));
+    assert(text.grade('(x+1)/2', '$\\frac{x+1}{2}$').verdict === 'correct', 'fraction tapée au clavier');
+    assert(text.grade('x+1/2', '$\\frac{x+1}{2}$').verdict === 'wrong', 'fraction sans parenthèses');
+    assert(text.grade('\\frac{1}{2}', '1/2').verdict === 'correct', 'réponse tapée en LaTeX');
+    assert(text.grade('SO4^2-', '$\\ce{SO4^2-}$').verdict === 'correct', 'ion écrit avec mhchem');
+    assert(text.textKey('$\\frac{1}{2}$') === text.textKey('½'), 'même invite');
+    assert(text.typeset('x^2 et $x^2$') === 'x² et $x^2$', 'le LaTeX ne doit pas changer');
+    return cases.length + ' cas';
+  });
+
+  const katex = await mathReady();
+  check('KaTeX dessine le LaTeX des cartes', () => {
+    assert(katex, 'KaTeX ne se charge pas');
+    assert(cardText('$\\frac{1}{2}$').querySelector('.katex'), 'formule non dessinée');
+    assert(cardText('$\\ce{H2O}$').querySelector('.katex'), 'chimie non dessinée');
+    assert(!cardText('5 $ et 10 $').querySelector('.math'), 'des prix pris pour du LaTeX');
+    assert(cardText('$\\frac{1}{$').querySelector('.katex-error'), 'erreur non signalée');
+    return 'KaTeX ' + katex.version;
   });
 
   check('notation des formules', () => {

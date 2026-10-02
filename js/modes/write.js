@@ -7,6 +7,7 @@ import { t, tn } from '../i18n/index.js';
 import * as store from '../store.js';
 import { shuffle } from '../util.js';
 import { gradeAny, maskAnswer } from '../text.js';
+import { richText } from '../math.js';
 import {
   studyShell, answerField, answerFeedback, typedAnswer, summaryPanel,
   saveSession, bindKeys, speakButton, cardSide, sideKey, askable,
@@ -130,7 +131,7 @@ export function writeView(id) {
     const line = el('div', { class: 'question-prompt' },
       cardSide(side.text, side.image, side.lang),
       side.text ? speakButton(side.text, side.lang) : null,
-      card.hint ? el('span', { class: 'hint' }, card.hint) : null,
+      card.hint ? el('span', { class: 'hint' }, richText(card.hint)) : null,
       run.hinted ? el('span', { class: 'hint' }, maskAnswer(side.answer)) : null);
     const prompt = el('div', { class: 'question' },
       el('p', { class: 'question-kind' }, t('write.prompt')),

@@ -141,22 +141,222 @@ const SCRIPT = new RegExp('([\\^_])(?:\\(([^()]+)\\)|\\{([^{}]+)\\}|((?:[+\\-−
 const invert = (table) => Object.fromEntries(Object.entries(table).map(([sign, plain]) => [plain, sign]));
 const SCRIPTS = { '^': invert(SUPERSCRIPTS), '_': invert(SUBSCRIPTS) };
 
+/* The superscripts or subscripts of text, or nothing when Unicode lacks
+   one of them. */
+function raise(mark, text) {
+  const signs = [...text.replace(/\s+/g, '')].map((char) => SCRIPTS[mark][char === '−' ? '-' : char]);
+  return !signs.length || signs.includes(undefined) ? null : signs.join('');
+}
+
+function notation(text) {
+  return text.replace(TYPED_SIGN, (found) => TYPED[found])
+    .replace(SCRIPT, (found, mark, bracketed, braced, bare) => raise(mark, bracketed || braced || bare) || found);
+}
+
+/* LaTeX is left as it was written. */
 export function typeset(text) {
-  return String(text).replace(TYPED_SIGN, (found) => TYPED[found])
-    .replace(SCRIPT, (found, mark, bracketed, braced, bare) => {
-      const signs = [...(bracketed || braced || bare).replace(/\s+/g, '')]
-        .map((char) => SCRIPTS[mark][char === '−' ? '-' : char]);
-      return !signs.length || signs.includes(undefined) ? found : signs.join('');
-    });
+  return segments(text).map((part) => (part.tex === undefined ? notation(part.raw) : part.raw)).join('');
+}
+
+/* LaTeX sits between dollars, as in "$\frac{1}{2}$", or between double
+   dollars for a formula set apart. As in Pandoc, an opening dollar has no
+   space after it, and a closing one no space before it nor a digit after
+   it, so "5 $ et 10 $" stays text; \$ is a dollar sign. Each part keeps
+   its source in raw. */
+export function segments(text) {
+  const source = String(text);
+  const parts = [];
+  const plainPart = (raw) => ({ text: raw.replace(/\\\$/g, '$'), raw });
+  let start = 0;
+  let at = 0;
+  while (at < source.length) {
+    if (source[at] === '\\' && source[at + 1] === '$') {
+      at += 2;
+      continue;
+    }
+    if (source[at] === '$') {
+      const fence = source[at + 1] === '$' ? '$$' : '$';
+      const end = closingDollar(source, at + fence.length, fence);
+      if (end > 0) {
+        if (at > start) parts.push(plainPart(source.slice(start, at)));
+        parts.push({
+          tex: source.slice(at + fence.length, end), display: fence === '$$', raw: source.slice(at, end + fence.length),
+        });
+        at = start = end + fence.length;
+        continue;
+      }
+    }
+    at++;
+  }
+  if (start < source.length) parts.push(plainPart(source.slice(start)));
+  return parts;
+}
+
+function closingDollar(source, from, fence) {
+  if (from >= source.length || /\s/.test(source[from])) return -1;
+  for (let at = from + 1; at < source.length; at++) {
+    if (source[at] === '\\') at++;
+    else if (source.startsWith(fence, at) && !/\s/.test(source[at - 1])
+      && !/\d/.test(source[at + fence.length] || '')) return at;
+  }
+  return -1;
+}
+
+export function hasMath(text) {
+  return segments(text).some((part) => part.tex !== undefined);
+}
+
+/* LaTeX commands and the signs they stand for. A command missing here
+   reads as its name, so \sin is sin and \lim is lim. */
+const LATEX = {
+  alpha: 'α', beta: 'β', gamma: 'γ', delta: 'δ', epsilon: 'ε', varepsilon: 'ε', zeta: 'ζ', eta: 'η',
+  theta: 'θ', vartheta: 'θ', iota: 'ι', kappa: 'κ', lambda: 'λ', mu: 'μ', nu: 'ν', xi: 'ξ', omicron: 'ο',
+  pi: 'π', varpi: 'π', rho: 'ρ', varrho: 'ρ', sigma: 'σ', varsigma: 'ς', tau: 'τ', upsilon: 'υ',
+  phi: 'φ', varphi: 'φ', chi: 'χ', psi: 'ψ', omega: 'ω', Gamma: 'Γ', Delta: 'Δ', Theta: 'Θ',
+  Lambda: 'Λ', Xi: 'Ξ', Pi: 'Π', Sigma: 'Σ', Upsilon: 'Υ', Phi: 'Φ', Psi: 'Ψ', Omega: 'Ω',
+  times: '×', cdot: '·', ast: '*', div: '÷', pm: '±', mp: '∓', le: '≤', leq: '≤', ge: '≥', geq: '≥',
+  ne: '≠', neq: '≠', approx: '≈', equiv: '≡', propto: '∝', sim: '~', infty: '∞', sum: '∑', prod: '∏',
+  int: '∫', iint: '∬', oint: '∮', partial: '∂', nabla: '∇', in: '∈', notin: '∉', subset: '⊂',
+  subseteq: '⊆', supset: '⊃', supseteq: '⊇', cup: '∪', cap: '∩', setminus: '∖', emptyset: '∅',
+  varnothing: '∅', forall: '∀', exists: '∃', neg: '¬', lnot: '¬', land: '∧', wedge: '∧', lor: '∨',
+  vee: '∨', Rightarrow: '⇒', implies: '⇒', Leftarrow: '⇐', Leftrightarrow: '⇔', iff: '⇔', to: '→',
+  rightarrow: '→', gets: '←', leftarrow: '←', leftrightarrow: '↔', mapsto: '↦', rightleftharpoons: '⇌',
+  uparrow: '↑', downarrow: '↓', circ: '∘', degree: '°', prime: '′', ldots: '…', dots: '…', cdots: '⋯',
+  angle: '∠', perp: '⊥', parallel: '∥', mid: '|', vert: '|', lvert: '|', rvert: '|', langle: '⟨',
+  rangle: '⟩', lbrace: '{', rbrace: '}', hbar: 'ℏ', ell: 'ℓ',
+};
+const LATEX_SPACE = new Set(['quad', 'qquad', ',', ';', ':', ' ', '\\']);
+const LATEX_DROP = new Set(['big', 'Big', 'bigg', 'Bigg', 'bigl', 'bigr', 'Bigl', 'Bigr', 'displaystyle',
+  'textstyle', 'limits', 'nolimits', '!']);
+const LATEX_CONTENT = new Set(['text', 'textrm', 'textit', 'textbf', 'textnormal', 'mathrm', 'mathit',
+  'mathbf', 'mathsf', 'mathtt', 'mathcal', 'boldsymbol', 'operatorname', 'mbox', 'vec', 'overline',
+  'underline', 'hat', 'bar', 'tilde', 'dot', 'ddot', 'widehat', 'overrightarrow', 'pu']);
+const LATEX_FRACTIONS = new Set(['frac', 'dfrac', 'tfrac', 'cfrac']);
+const DOUBLE_STRUCK = { N: 'ℕ', Z: 'ℤ', Q: 'ℚ', R: 'ℝ', C: 'ℂ' };
+
+/* LaTeX written on one line, the way the rest of a card is: \frac{a+b}{2}
+   is (a+b)/2, \sqrt{x} is √x and x^{n-1} is xⁿ⁻¹. */
+function latex(tex) {
+  let at = 0;
+  const wrap = (part) => (/^[\p{L}\p{N}.]*$/u.test(part) ? part : '(' + part + ')');
+  /* The source of the next argument: a group in braces or one character. */
+  function raw() {
+    while (/\s/.test(tex[at] || '')) at++;
+    if (tex[at] !== '{') return tex[at++] || '';
+    const begin = at + 1;
+    for (let depth = 0; at < tex.length; at++) {
+      if (tex[at] === '\\') at++;
+      else if (tex[at] === '{') depth++;
+      else if (tex[at] === '}' && --depth === 0) break;
+    }
+    return tex.slice(begin, at++);
+  }
+  function argument() {
+    while (/\s/.test(tex[at] || '')) at++;
+    return tex[at] === '\\' ? command() : latex(raw());
+  }
+  function command() {
+    at++;
+    const name = (tex.slice(at).match(/^[a-zA-Z]+/) || [tex[at] || ''])[0];
+    at += name.length;
+    if (Object.hasOwn(LATEX, name)) return LATEX[name];
+    if (LATEX_SPACE.has(name)) return ' ';
+    if (LATEX_DROP.has(name)) return '';
+    if (name === 'left' || name === 'right') {
+      if (tex[at] === '.') at++;
+      return '';
+    }
+    if (name === 'begin' || name === 'end') {
+      raw();
+      return ' ';
+    }
+    if (LATEX_CONTENT.has(name)) return argument();
+    if (LATEX_FRACTIONS.has(name)) {
+      const top = argument();
+      return wrap(top) + '/' + wrap(argument());
+    }
+    if (name === 'sqrt') {
+      let index = '';
+      if (tex[at] === '[') {
+        const end = tex.indexOf(']', at);
+        index = latex(tex.slice(at + 1, end < 0 ? tex.length : end));
+        at = end < 0 ? tex.length : end + 1;
+      }
+      const radicand = argument();
+      return index ? wrap(radicand) + '^(1/' + index + ')' : '√' + wrap(radicand);
+    }
+    if (name === 'mathbb') return [...argument()].map((char) => DOUBLE_STRUCK[char] || char).join('');
+    if (name === 'ce') return chemistry(raw());
+    return name;
+  }
+  let out = '';
+  while (at < tex.length) {
+    const char = tex[at];
+    if (char === '\\') out += command();
+    else if (char === '{') out += latex(raw());
+    else if (char === '^' || char === '_') {
+      at++;
+      const part = argument();
+      out += char === '^' && part === '∘' ? '°' : char + '(' + part + ')';
+    } else {
+      out += char === '~' || char === '&' ? ' ' : char === '}' ? '' : char;
+      at++;
+    }
+  }
+  return out;
+}
+
+/* Chemistry as mhchem writes it in \ce{}: the digits after an element or a
+   bracket are its index, a final sign or a caret starts the charge, as in
+   SO4^2- or NO3-, a point joins a hydrate, and ^ or v alone is a gas given
+   off or a precipitate. */
+const CHEMISTRY_SIGNS = { '->': '→', '<-': '←', '<->': '↔', '<=>': '⇌', '^': '↑', v: '↓' };
+
+function chemistry(source) {
+  return source.trim().split(/\s+/)
+    .map((part) => (Object.hasOwn(CHEMISTRY_SIGNS, part) ? CHEMISTRY_SIGNS[part] : part.split(/[.*]/).map(molecule).join('·')))
+    .join(' ');
+}
+
+function molecule(part) {
+  const [, count, rest] = part.match(/^(\d*(?:\/\d+)?)(.*)$/);
+  let body = rest;
+  let charge = '';
+  const explicit = body.match(/\^\{?([^{}]*)\}?$/);
+  const bare = body.match(/(?<=[\p{L})\]\d])[+-]$/u);
+  if (explicit) {
+    charge = explicit[1];
+    body = body.slice(0, explicit.index);
+  } else if (bare) {
+    charge = bare[0];
+    body = body.slice(0, -1);
+  }
+  body = body.replace(/(?<=[\p{L})\]])\d+/gu, (digits) => raise('_', digits));
+  return count + body + (charge ? raise('^', charge) || '^(' + charge + ')' : '');
+}
+
+/* Text with its LaTeX written on one line, for grading, reading aloud and
+   wherever it cannot be drawn. */
+export function plain(text) {
+  return segments(text).map((part) => (part.tex === undefined
+    ? part.text
+    : notation(latex(part.tex)).replace(/\s+/g, ' ').trim())).join('');
+}
+
+/* A typed answer may be LaTeX too, with or without its dollars. */
+function plainTyped(text) {
+  const value = String(text);
+  return !value.includes('$') && /\\[a-zA-Z]/.test(value) ? plain('$' + value.trim() + '$') : plain(value);
 }
 
 /* Two texts are the same prompt or the same answer when they differ only by
    case or punctuation. Accents count, since "ou" and "où" are different
    words, and text made only of punctuation is compared as written. A formula
-   is compared as a formula. */
+   is compared as a formula, LaTeX as it reads on one line. */
 export function textKey(text) {
-  if (isMath(text)) return formula(text);
-  return normalize(text, false) || String(text).trim();
+  const value = plain(text);
+  if (isMath(value)) return formula(value);
+  return normalize(value, false) || value.trim();
 }
 
 /* Spaces are ignored when grading, so a dropped apostrophe or hyphen is not a
@@ -193,7 +393,7 @@ function splitAlternatives(text) {
    definition is always accepted as well. A formula is taken whole, since
    its slashes divide and its brackets count. */
 export function acceptedAnswers(definition) {
-  const whole = String(definition).trim();
+  const whole = plain(definition).trim();
   if (isMath(whole)) return [whole];
   const variants = new Set();
   for (const part of [whole, ...splitAlternatives(whole)]) {
@@ -237,7 +437,7 @@ function typoBudget(length) {
    its diacritics, so the interface can point that out without failing anyone. */
 export function grade(input, expected, options = {}) {
   const { accents = true, typos = true } = options;
-  const typed = String(input).trim();
+  const typed = plainTyped(input).trim();
   if (!typed) return { verdict: 'wrong', accent: false };
   const given = compact(normalize(typed, false));
   const givenLoose = compact(normalize(typed, true));
@@ -298,7 +498,7 @@ export function gradeAny(input, answers, options = {}) {
 /* Progressive hint: keeps the first letter of every word and the
    punctuation. */
 export function maskAnswer(text) {
-  return String(text).replace(/\p{L}[\p{L}\p{M}'-]*/gu, (word) => {
+  return plain(text).replace(/\p{L}[\p{L}\p{M}'-]*/gu, (word) => {
     if (word.length <= 1) return word;
     return word[0] + '·'.repeat(Math.min(word.length - 1, 12));
   });

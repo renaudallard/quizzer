@@ -137,7 +137,7 @@ export default {
   "editor.discard": "De huidige wijzigingen verwerpen?",
   "editor.removeCard": "Deze kaart verwijderen",
   "editor.symbols": "Symbolen en formules",
-  "editor.symbolsHint": "Een klik voegt het symbool in waar de cursor stond. Op het toetsenbord wordt x^2 x², H_2O wordt H₂O, SO_4^(2-) wordt SO₄²⁻ en -> wordt → zodra je het veld verlaat.",
+  "editor.symbolsHint": "Een klik voegt het symbool in waar de cursor stond. Op het toetsenbord wordt x^2 x², H_2O wordt H₂O, SO_4^(2-) wordt SO₄²⁻ en -> wordt → zodra je het veld verlaat. LaTeX tussen dollars, zoals $\\pi r^2$, wordt opgemaakt.",
   "editor.symbolsNoField": "Zet eerst de cursor in een veld.",
   "editor.symbolsScripts": "Exponenten en indices",
   "editor.symbolsOperators": "Bewerkingen en relaties",
