@@ -18,6 +18,7 @@ import { statsView } from '../js/views/stats.js';
 import { settingsView, shortcutsView } from '../js/views/settings.js';
 import { transferView, sharedView } from '../js/views/transfer.js';
 import { samplesView } from '../js/views/samples.js';
+import { helpView, TYPED } from '../js/views/help.js';
 import { flashcardsView } from '../js/modes/flashcards.js';
 import { reviewView } from '../js/modes/review.js';
 import { learnView } from '../js/modes/learn.js';
@@ -83,7 +84,7 @@ const VIEWS = {
   home: homeView, set: setView, editor: editorView, stats: statsView,
   settings: settingsView, shortcuts: shortcutsView, transfer: transferView, samples: samplesView,
   shared: sharedView, flashcards: flashcardsView, learn: learnView, review: reviewView,
-  quiz: quizView, write: writeView, match: matchView,
+  quiz: quizView, write: writeView, match: matchView, help: helpView,
 };
 
 async function run() {
@@ -237,6 +238,12 @@ async function run() {
     return cases.length + ' cas';
   });
 
+  check('le manuel dit vrai sur les réponses tapées', () => {
+    const refused = TYPED.filter(([typed, expected]) => text.grade(typed, expected).verdict !== 'correct');
+    assert(!refused.length, 'refusées: ' + refused.map(([typed]) => typed).join(', '));
+    return TYPED.length + ' cas';
+  });
+
   check('lien de partage aller retour', () => {
     const payload = io.shareUrl(set).split('#/shared/')[1];
     const back = io.decodeShare(payload);
@@ -313,7 +320,10 @@ async function run() {
         const attrs = [...node.querySelectorAll('[placeholder],[aria-label],[title]')]
           .map((n) => [n.getAttribute('placeholder'), n.getAttribute('aria-label'), n.getAttribute('title')].join(' '))
           .join(' ');
-        const left = (node.textContent + attrs).match(/\{\w+\}/g);
+        /* LaTeX, shown as typed or drawn by KaTeX, has braces of its own. */
+        const shown = node.cloneNode(true);
+        for (const literal of shown.querySelectorAll('code, .math')) literal.remove();
+        const left = (shown.textContent + attrs).match(/\{\w+\}/g);
         assert(!left, 'variables non remplacées: ' + (left || []).join(', '));
         main.replaceChildren(node);
         return 'ok';

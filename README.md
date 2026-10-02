@@ -350,6 +350,17 @@ A wrong answer can still be claimed with the "Je l'avais" button. Nothing is
 written to the store until you move to the next card, so the override never
 counts the card twice.
 
+### Manual
+
+"Manuel" in the top bar opens a guide for learners, in the interface
+language: making a set, the study modes, the review schedule, writing cards,
+formulas on the keyboard, LaTeX, how answers are graded, import and export,
+and where the data lives. Each part has its own address, such as
+`#/help/latex`. The buttons it names are filled in from the interface's own
+labels, the keyboard notation and LaTeX tables are worked out by the same
+code the editor and the grading use, and the test page checks every typed
+answer its table calls right, so the manual cannot drift from the site.
+
 ## Layout
 
     index.html            page shell, written in French with data-i18n hooks
@@ -376,7 +387,8 @@ counts the card twice.
       i18n/fr.js          French catalogue, the reference
       i18n/en.js          English catalogue
       i18n/nl.js          Dutch catalogue
-      views/              home, set, editor, stats, settings, transfer, samples
+      views/              home, set, editor, stats, settings, transfer, samples,
+                          help
       modes/              flashcards, learn, review, quiz, write, match
     vendor/katex/         KaTeX 0.19.0 and mhchem, with their fonts and licence
     tests/harness.html    smoke test, open it in a browser
@@ -386,12 +398,13 @@ counts the card twice.
 
 Serve the directory and open <http://localhost:8080/tests/harness.html>. It
 exercises the store, the Leitner ladder, answer grading, the formula notation
-the editor writes, LaTeX read on one line and drawn by KaTeX, the CSV and
-share link round trips, and reading CSV files in UTF-8, UTF-16 and
-Windows-1252. It renders all fifteen views in every interface language,
-failing on any key that no catalogue holds and on any `{placeholder}` left
-unfilled. It checks that each catalogue has exactly the French keys, with
-the same `{placeholders}` in every string, and that the French text built
+the editor writes, LaTeX read on one line and drawn by KaTeX, the typed
+answers the manual calls right, the CSV and share link round trips, and
+reading CSV files in UTF-8, UTF-16 and Windows-1252. It renders all sixteen
+views in every interface language, failing on any key that no catalogue
+holds and on any `{placeholder}` left unfilled, LaTeX aside. It checks
+that each catalogue has exactly the French keys, with the same
+`{placeholders}` in every string, and that the French text built
 into `index.html` matches the French catalogue and its attribute keys
 exist. On the home page it checks that
 the daily goal figure stops at the goal, that the goal tile opens its setting

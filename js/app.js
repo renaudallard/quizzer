@@ -16,6 +16,7 @@ import { statsView } from './views/stats.js';
 import { settingsView, shortcutsView } from './views/settings.js';
 import { transferView, sharedView } from './views/transfer.js';
 import { samplesView } from './views/samples.js';
+import { helpView } from './views/help.js';
 import { notFoundPanel } from './views/shared.js';
 import { flashcardsView } from './modes/flashcards.js';
 import { reviewView } from './modes/review.js';
@@ -122,6 +123,7 @@ function setRoutes() {
   router.register(/^samples$/, () => samplesView());
   router.register(/^settings(?:\/(goal))?$/, (focus) => settingsView(focus));
   router.register(/^shortcuts$/, () => shortcutsView());
+  router.register(/^help(?:\/([a-z]+))?$/, (section) => helpView(section));
   router.register(/^shared\/(.+)$/, (payload) => sharedView(payload));
   /* Own keys only: a plain object also answers to "constructor". */
   router.register(/^set\/([^/]+)\/([a-z]+)$/, (id, mode) => (

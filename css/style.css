@@ -592,6 +592,20 @@ kbd {
   border: 1px solid var(--line-strong); color: var(--ink-2); white-space: nowrap;
 }
 
+/* Manual */
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.88em;
+  padding: 1px 5px; border-radius: 4px; background: var(--surface-2); overflow-wrap: anywhere;
+}
+/* Clear of the sticky top bar, two rows high on a phone. */
+.help h2 { scroll-margin-top: 8rem; }
+.help h2:focus { outline: none; }
+.help .table-wrap, .help-modes { margin: 0 0 0.9em; }
+.help-toc { margin: 0; padding-left: 1.4em; columns: 2 220px; }
+.help-modes dt { font-weight: 650; }
+.help-modes dd { margin: 0 0 0.7em; }
+
 /* Responsive */
 
 @media (max-width: 720px) {
