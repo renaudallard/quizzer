@@ -171,6 +171,7 @@ async function run() {
     assert(text.grade('x^n-1', 'xⁿ⁻¹').verdict === 'wrong', 'exposant sans parenthèses');
     assert(text.grade('e^x', 'eˣ').verdict === 'correct', 'exposant en lettre');
     assert(!text.isMath('XIXᵉ siècle'), 'ordinal en exposant');
+    assert(text.grade('sin(2*x)', 'sin(2x)').verdict === 'correct', 'étoile entre les parenthèses d’une fonction');
     return 'ok';
   });
 

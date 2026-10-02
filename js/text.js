@@ -82,9 +82,9 @@ function formula(text) {
     .replace(/[₀-₉]/g, (char) => String(char.charCodeAt(0) - 0x2080))
     .replace(/[×·÷⁄−–≤≥≠√′½¼¾⅓⅔αβγδεθλμπρστφω]/g, (char) => SPELLED[char])
     .replace(/(\d),(?=\d)/g, '$1.')
-    .replace(/\s+/g, '')
+    .replace(/\s+/g, '');
+  return out.replace(/\*/g, (star, at) => (/\d/.test(out[at - 1] || '') && /\d/.test(out[at + 1] || '') ? star : ''))
     .replace(FUNCTION_CALL, '$1$2$3');
-  return out.replace(/\*/g, (star, at) => (/\d/.test(out[at - 1] || '') && /\d/.test(out[at + 1] || '') ? star : ''));
 }
 
 /* Two texts are the same prompt or the same answer when they differ only by
