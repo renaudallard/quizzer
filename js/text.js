@@ -295,7 +295,8 @@ export function gradeAny(input, answers, options = {}) {
   return best || { verdict: 'wrong', accent: false, answer: '' };
 }
 
-/* Progressive hint: keeps the first letter of every word and the punctuation. */
+/* Progressive hint: keeps the first letter of every word and the
+   punctuation. */
 export function maskAnswer(text) {
   return String(text).replace(/\p{L}[\p{L}\p{M}'-]*/gu, (word) => {
     if (word.length <= 1) return word;
