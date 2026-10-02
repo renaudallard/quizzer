@@ -36,9 +36,9 @@ export function normalize(text, stripAccents = true) {
    function name such as sin or ln counts as a single letter. Superscript
    letters are exponents, as in "eˣ", unless a word sits next to them, as
    in "XIXᵉ siècle", or they end an abbreviation: two or more of them, or
-   a lone ᵉ, after a digit or a capital, as in "1ᵉʳ", "2ᵉ" or "Mᵐᵉ". Arrows and the
-   signs of sets and logic only make a formula without words, so
-   "cheval → chevaux" stays text while "x → 0" does not. */
+   a lone ᵉ, after a digit or a capital, as in "1ᵉʳ", "2ᵉ" or "Mᵐᵉ".
+   Arrows and the signs of sets and logic only make a formula without
+   words, so "cheval → chevaux" stays text while "x → 0" does not. */
 const MATH_SIGN = /[+=<>×÷*^√∑∏∫∬∮±∓≤≥≠≈≡∝∞∂∇⇌⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿ₀₁₂₃₄₅₆₇₈₉₊₋₌ₐₑₕᵢⱼₖₗₘₙₒₚᵣₛₜᵤᵥₓ½¼¾⅓⅔]|\d!|(^|[^\p{Script=Greek}])π(?!\p{Script=Greek})|\p{Script=Greek}[a-z\d]|[a-z\d]\p{Script=Greek}/iu;
 const FORMULA = /^[\s\p{L}\d.,()[\]{}+\-−*/^_=<>!|'′→⇒⇔↔∈∉⊂⊆∪∩∀∃¬∧∨]*$/u;
 const OPERATOR = /[-−*/^_=<>()[\]{}!|→⇒⇔↔∈∉⊂⊆∪∩∀∃¬∧∨]/u;
