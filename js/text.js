@@ -32,9 +32,12 @@ export function normalize(text, stripAccents = true) {
    single letters, digits, operators and primes, as "x-y" or "u'/u". A
    function name such as sin or ln counts as a single letter. Superscript
    letters are exponents, as in "eˣ", unless a word sits next to them:
-   French writes ordinals that way, as in "XIXᵉ siècle". */
-const MATH_SIGN = /[+=<>×÷*^√∑∏∫±≤≥≠≈∞∂⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿ₀₁₂₃₄₅₆₇₈₉½¼¾⅓⅔]|\d!|(^|[^\p{Script=Greek}])π(?!\p{Script=Greek})|\p{Script=Greek}[a-z\d]|[a-z\d]\p{Script=Greek}/iu;
-const FORMULA = /^[\s\p{L}\d.,()[\]{}+\-−*/^=<>!|'′]*$/u;
+   French writes ordinals that way, as in "XIXᵉ siècle". Arrows and the
+   signs of sets and logic only make a formula without words, so
+   "cheval → chevaux" stays text while "x → 0" does not. */
+const MATH_SIGN = /[+=<>×÷*^√∑∏∫∬∮±∓≤≥≠≈≡∝∞∂∇⇌⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿ₀₁₂₃₄₅₆₇₈₉₊₋₌ₐₑₕᵢⱼₖₗₘₙₒₚᵣₛₜᵤᵥₓ½¼¾⅓⅔]|\d!|(^|[^\p{Script=Greek}])π(?!\p{Script=Greek})|\p{Script=Greek}[a-z\d]|[a-z\d]\p{Script=Greek}/iu;
+const FORMULA = /^[\s\p{L}\d.,()[\]{}+\-−*/^_=<>!|'′→⇒⇔↔∈∉⊂⊆∪∩∀∃¬∧∨]*$/u;
+const OPERATOR = /[-−*/^_=<>()[\]{}!|→⇒⇔↔∈∉⊂⊆∪∩∀∃¬∧∨]/u;
 const FUNCTIONS = 'arcsin|arccos|arctan|sinh|cosh|tanh|sin|cos|tan|cot|ln|log|exp|sqrt';
 const FUNCTION_NAME = new RegExp('\\b(?:' + FUNCTIONS + ')\\b', 'gi');
 const FUNCTION_CALL = new RegExp('(' + FUNCTIONS + ')(\\^[\\p{L}\\d]+)?\\(([\\p{L}\\d.]+)\\)', 'gu');
@@ -47,43 +50,76 @@ export function isMath(text) {
   const chars = [...bare];
   if (chars.some((char) => LETTER_EXPONENTS.includes(char))
     && !/\p{L}{2}/u.test(chars.filter((char) => !LETTER_EXPONENTS.includes(char)).join(''))) return true;
-  return FORMULA.test(bare) && /\p{L}/u.test(bare) && !/\p{L}{2}/u.test(bare)
-    && /[-−*/^=<>()[\]{}!|]/.test(bare);
+  return FORMULA.test(bare) && /\p{L}/u.test(bare) && !/\p{L}{2}/u.test(bare) && OPERATOR.test(bare);
 }
 
 /* Signs a keyboard lacks, as they are typed instead: x^2 for x², H2O for
-   H₂O, sqrt for √, <= for ≤, pi or alpha for the Greek letters. An exponent
-   with a sign inside holds together, as it is typed: xⁿ⁻¹ is x^(n-1). */
+   H₂O, x_n for xₙ, sqrt for √, <= for ≤, -> for →, pi or alpha for the
+   Greek letters. An exponent or an index with a sign inside holds
+   together, as it is typed: xⁿ⁻¹ is x^(n-1) and uₙ₊₁ is u_(n+1). */
 const SUPERSCRIPTS = {
   '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4', '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9',
   '⁺': '+', '⁻': '-', '⁼': '=', '⁽': '(', '⁾': ')',
   'ᵃ': 'a', 'ᵇ': 'b', 'ᶜ': 'c', 'ᵈ': 'd', 'ᵉ': 'e', 'ⁱ': 'i', 'ᵏ': 'k', 'ᵐ': 'm', 'ⁿ': 'n', 'ᵖ': 'p',
   'ᵗ': 't', 'ᵘ': 'u', 'ᵛ': 'v', 'ˣ': 'x', 'ʸ': 'y', 'ᶻ': 'z',
 };
-const SUPERSCRIPT_RUN = new RegExp('[' + Object.keys(SUPERSCRIPTS).join('') + ']+', 'g');
+const SUBSCRIPTS = {
+  '₀': '0', '₁': '1', '₂': '2', '₃': '3', '₄': '4', '₅': '5', '₆': '6', '₇': '7', '₈': '8', '₉': '9',
+  '₊': '+', '₋': '-', '₌': '=', '₍': '(', '₎': ')',
+  'ₐ': 'a', 'ₑ': 'e', 'ₕ': 'h', 'ᵢ': 'i', 'ⱼ': 'j', 'ₖ': 'k', 'ₗ': 'l', 'ₘ': 'm', 'ₙ': 'n', 'ₒ': 'o',
+  'ₚ': 'p', 'ᵣ': 'r', 'ₛ': 's', 'ₜ': 't', 'ᵤ': 'u', 'ᵥ': 'v', 'ₓ': 'x',
+};
+const run = (table) => new RegExp('[' + Object.keys(table).join('') + ']+', 'g');
+const SUPERSCRIPT_RUN = run(SUPERSCRIPTS);
+const SUBSCRIPT_RUN = run(SUBSCRIPTS);
 const SPELLED = {
   '×': '*', '·': '*', '÷': '/', '⁄': '/', '−': '-', '–': '-', '≤': '<=', '≥': '>=', '≠': '!=', '√': 'sqrt', '′': "'",
+  '±': '+-', '≈': '~=', '→': '->', '⇒': '=>', '⇌': '<=>', '⇔': '<=>', '↔': '<->',
+  '∞': 'inf', '∫': 'int', '∑': 'sum', '∏': 'prod', '∂': 'partial', '∇': 'nabla', '∈': 'in', 'ℕ': 'n', 'ℤ': 'z', 'ℚ': 'q', 'ℝ': 'r', 'ℂ': 'c',
   '½': '1/2', '¼': '1/4', '¾': '3/4', '⅓': '1/3', '⅔': '2/3',
-  'α': 'alpha', 'β': 'beta', 'γ': 'gamma', 'δ': 'delta', 'ε': 'epsilon', 'θ': 'theta', 'λ': 'lambda',
-  'μ': 'mu', 'π': 'pi', 'ρ': 'rho', 'σ': 'sigma', 'τ': 'tau', 'φ': 'phi', 'ω': 'omega',
+  'α': 'alpha', 'β': 'beta', 'γ': 'gamma', 'δ': 'delta', 'ε': 'epsilon', 'ζ': 'zeta', 'η': 'eta',
+  'θ': 'theta', 'ι': 'iota', 'κ': 'kappa', 'λ': 'lambda', 'μ': 'mu', 'ν': 'nu', 'ξ': 'xi', 'ο': 'omicron',
+  'π': 'pi', 'ρ': 'rho', 'σ': 'sigma', 'ς': 'sigma', 'τ': 'tau', 'υ': 'upsilon', 'φ': 'phi', 'χ': 'chi',
+  'ψ': 'psi', 'ω': 'omega',
 };
+const SPELLED_SIGN = new RegExp('[' + Object.keys(SPELLED).join('') + ']', 'g');
+/* A sign that ends an exponent or a chemical formula is a charge, as in
+   SO4^2- or Na+ + Cl-, when nothing or another operator follows it. */
+const CHARGE = '[+\\-−](?!>)(?=\\s*(?:$|[+\\-−=<>→⇌⇔↔]))';
+const EXPONENT_CHARGE = new RegExp('\\^(\\d*)(' + CHARGE + ')', 'gu');
+const BARE_CHARGE = new RegExp('([\\p{L}\\d)\\]])(' + CHARGE + ')', 'gu');
+
+/* A run of superscripts or subscripts as it is typed after its caret or
+   underscore, in brackets when it holds a sign after its first character. */
+function script(mark, plain) {
+  return mark + (/.[-+=]/.test(plain) && !plain.startsWith('(') ? '(' + plain + ')' : plain);
+}
 
 /* A formula is compared as written, apart from case, spaces, a decimal
    comma and the signs spelled as they are typed. Brackets around a single
-   term after a function name may go, so sin(x) is sin x. A star between
-   anything but two digits is a product that may as well be left out: 2*x is
-   2x. */
+   term after a function name, a caret or an underscore may go, so sin(x)
+   is sin x and x^(2) is x². An index made of digits needs no underscore,
+   as in H2O. A star or a point between letters, and a star between
+   anything but two digits, is a product that may as well be left out: 2*x
+   is 2x and mol.L is mol·L. */
 function formula(text) {
   const out = String(text).normalize('NFC').toLowerCase()
-    .replace(SUPERSCRIPT_RUN, (run) => {
-      const plain = [...run].map((char) => SUPERSCRIPTS[char]).join('');
-      return '^' + (/.[-+=]/.test(plain) && !plain.startsWith('(') ? '(' + plain + ')' : plain);
+    .replace(SUPERSCRIPT_RUN, (found) => script('^', [...found].map((char) => SUPERSCRIPTS[char]).join('')))
+    .replace(SUBSCRIPT_RUN, (found) => {
+      const plain = [...found].map((char) => SUBSCRIPTS[char]).join('');
+      return /^\d+$/.test(plain) ? plain : script('_', plain);
     })
-    .replace(/[₀-₉]/g, (char) => String(char.charCodeAt(0) - 0x2080))
-    .replace(/[×·÷⁄−–≤≥≠√′½¼¾⅓⅔αβγδεθλμπρστφω]/g, (char) => SPELLED[char])
+    .replace(SPELLED_SIGN, (char) => SPELLED[char])
+    .replace(/infinity/g, 'inf')
+    .replace(/([\^_])\{([^{}]*)\}/g, '$1($2)')
+    .replace(EXPONENT_CHARGE, (found, digits, sign) => (digits ? '^(' + digits + sign + ')' : '^' + sign))
+    .replace(BARE_CHARGE, '$1^$2')
     .replace(/(\d),(?=\d)/g, '$1.')
+    .replace(/(\p{L})\.(?=\p{L})/gu, '$1*')
     .replace(/\s+/g, '');
   return out.replace(/\*/g, (star, at) => (/\d/.test(out[at - 1] || '') && /\d/.test(out[at + 1] || '') ? star : ''))
+    .replace(/([\^_])\(([\p{L}\d]+)\)/gu, '$1$2')
+    .replace(/_(?=\d)/g, '')
     .replace(FUNCTION_CALL, '$1$2$3');
 }
 

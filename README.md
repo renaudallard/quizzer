@@ -233,15 +233,29 @@ less makes another formula. Superscript letters such as `ˣ` or `ᵐ` count as
 maths signs too, as in `eˣ`, unless a word sits beside them, since French
 writes `XIXᵉ siècle` and `1ᵉʳ janvier` that way.
 
-Signs a keyboard lacks are typed the usual way: `x^2` for `x²`, `H2O` for
-`H₂O`, `*` for `×` or `·`, `/` for `÷`, `<=`, `>=` and `!=` for `≤`, `≥` and
-`≠`, `sqrt2` or `sqrt(2)` for `√2`, `1/2` for `½`, and `pi`, `alpha`,
-`theta` and the other Greek letters by name. A star between anything but two
-digits may be left out, so `2*x` is `2x`. After a function name the brackets
-around a single term may be left out too, so `sin x` is `sin(x)`, and a
-straight quote `'` stands for the prime `′`. An exponent is typed after a
-caret, letters included, `e^x` for `eˣ`, and one with a sign inside goes in
-brackets: `x^(n-1)` is right for `xⁿ⁻¹`, `x^n-1` is not.
+Signs a keyboard lacks are typed the usual way: `x^2` for `x²`, `H2O` or
+`H_2O` for `H₂O`, `x_n` for `xₙ`, `*` for `×` or `·`, `/` for `÷`, `<=`, `>=`
+and `!=` for `≤`, `≥` and `≠`, `+-` for `±`, `~=` for `≈`, `->`, `=>`,
+`<->` and `<=>` for `→`, `⇒`, `↔` and `⇌` or `⇔`, `sqrt2` or `sqrt(2)` for
+`√2`, `1/2` for `½`, `inf` or `infinity` for `∞`, `int`, `sum`, `prod`,
+`partial` and `nabla` for `∫`, `∑`, `∏`, `∂` and `∇`, `in` for `∈`, `R` for
+`ℝ` and the like, and `pi`, `alpha`, `theta` and the other Greek letters by
+name. A star between anything but two digits may be left out, so `2*x` is
+`2x`, and so may a point between two letters, so `mol.L^-1` is
+`mol·L⁻¹`. After a function name the brackets around a single term may be
+left out too, so `sin x` is `sin(x)`, and a straight quote `'` stands for
+the prime `′`. An exponent is typed after a caret, letters included, `e^x`
+for `eˣ`, and an index after an underscore, `x_1` or `x1` for `x₁`. One
+with a sign inside goes in brackets: `x^(n-1)` is right for `xⁿ⁻¹`, `x^n-1`
+is not, and `u_(n+1)` is right for `uₙ₊₁`.
+
+A sign at the end of a chemical formula is its charge when nothing or
+another operator follows it: `Na+ + Cl- -> NaCl` is right for
+`Na⁺ + Cl⁻ → NaCl`, and `SO4^2-` for `SO₄²⁻`. A charge of more than one
+needs its caret, since `Fe3+` could be read as an index: `Fe^3+` is right
+for `Fe³⁺`. Arrows and the signs of sets and logic, such as `∈` or `∪`,
+make a formula only when no word sits in the answer, so `x → 0` is a
+formula and `cheval → chevaux` is text.
 
 Two tolerances are on by default and can be turned off in the settings:
 

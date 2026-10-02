@@ -172,6 +172,17 @@ async function run() {
     assert(text.grade('e^x', 'eˣ').verdict === 'correct', 'exposant en lettre');
     assert(!text.isMath('XIXᵉ siècle'), 'ordinal en exposant');
     assert(text.grade('sin(2*x)', 'sin(2x)').verdict === 'correct', 'étoile entre les parenthèses d’une fonction');
+    assert(text.grade('x^(2)', 'x²').verdict === 'correct', 'exposant seul entre parenthèses');
+    assert(text.grade('x_1', 'x₁').verdict === 'correct', 'indice tapé avec un tiret bas');
+    assert(text.grade('u_(n+1)', 'uₙ₊₁').verdict === 'correct', 'indice entre parenthèses');
+    assert(text.grade('SO4^2-', 'SO₄²⁻').verdict === 'correct', 'charge d’un ion');
+    assert(text.grade('SO4^2', 'SO₄²⁻').verdict === 'wrong', 'charge sans son signe');
+    assert(text.grade('Na+ + Cl- -> NaCl', 'Na⁺ + Cl⁻ → NaCl').verdict === 'correct', 'équation chimique');
+    assert(text.grade('H2+O2->H2O', 'H₂ + O₂ → H₂O').verdict === 'correct', 'flèche collée');
+    assert(text.grade('2x+ 1', '2x + 2').verdict === 'wrong', 'plus suivi d’une espace');
+    assert(text.grade('x in R', 'x ∈ ℝ').verdict === 'correct', 'appartenance tapée au clavier');
+    assert(text.grade('mol.L^-1', 'mol·L⁻¹').verdict === 'correct', 'point entre deux unités');
+    assert(!text.isMath('cheval → chevaux'), 'flèche entre deux mots');
     return 'ok';
   });
 
