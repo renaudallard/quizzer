@@ -183,6 +183,14 @@ async function run() {
     assert(text.grade('x in R', 'x ∈ ℝ').verdict === 'correct', 'appartenance tapée au clavier');
     assert(text.grade('mol.L^-1', 'mol·L⁻¹').verdict === 'correct', 'point entre deux unités');
     assert(!text.isMath('cheval → chevaux'), 'flèche entre deux mots');
+    assert(text.grade('1er', '1ᵉʳ').verdict === 'correct', 'ordinal en exposant seul');
+    assert(text.grade('2e', '2ᵉ').verdict === 'correct', 'ordinal d’une lettre');
+    assert(text.grade('Mme', 'Mᵐᵉ').verdict === 'correct', 'abréviation en exposant');
+    assert(text.grade('Mlle', 'Mˡˡᵉ').verdict === 'correct', 'lettres en exposant d’une abréviation');
+    assert(text.grade('le 1er mai', 'le 1ᵉʳ mai').verdict === 'correct', 'ordinal dans une phrase');
+    assert(text.grade('1re', '1ᵉʳ').verdict === 'wrong', 'mauvais ordinal');
+    assert(text.grade('2^n', '2ⁿ').verdict === 'correct', 'puissance d’un nombre');
+    assert(text.grade('e^(it)', 'eⁱᵗ').verdict === 'correct', 'exposant de deux lettres');
     return 'ok';
   });
 

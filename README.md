@@ -253,8 +253,11 @@ or `exp` counting as one letter, keeps its brackets, minus signs and primes:
 `-sin(x)` and `u/u` is wrong for `u'/u`. Only case, spaces and a decimal
 comma are overlooked, and there is no typo allowance, since one sign more or
 less makes another formula. Superscript letters such as `ˣ` or `ᵐ` count as
-maths signs too, as in `eˣ`, unless a word sits beside them, since French
-writes `XIXᵉ siècle` and `1ᵉʳ janvier` that way.
+maths signs too, as in `eˣ`, `2ⁿ` or `eⁱᵗ`, unless a word sits beside them,
+as in `XIXᵉ siècle`, or they end an abbreviation: two or more of them, or a
+lone `ᵉ`, after a digit or a capital, as in `1ᵉʳ`, `2ᵉ`, `2ⁿᵈ` or `Mᵐᵉ`. In
+text they count as their plain letters, so `1er` is right for `1ᵉʳ` and
+`Mlle` for `Mˡˡᵉ`.
 
 Signs a keyboard lacks are typed the usual way: `x^2` for `x²`, `H2O` or
 `H_2O` for `H₂O`, `x_n` for `xₙ`, `*` for `×` or `·`, `/` for `÷`, `<=`, `>=`

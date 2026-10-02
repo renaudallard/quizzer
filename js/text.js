@@ -16,8 +16,11 @@ const SIGN = /(^|[^\p{L}\d])[-–](?=\d)/gu;
    goes before the punctuation strip turns a point, comma or colon into one. */
 const DIGIT_GROUP = /(\d)\s+(?=\d{3}(?!\d))/g;
 
+/* Superscript letters are the plain letters of an abbreviation, as in
+   "1ᵉʳ" or "Mˡˡᵉ", so they fold to them. */
 export function normalize(text, stripAccents = true) {
   let out = String(text).normalize('NFC').toLowerCase().trim();
+  out = out.replace(/\p{Lm}/gu, (char) => char.normalize('NFKC'));
   out = out.replace(/[œæß]/g, (char) => LIGATURES[char]);
   if (stripAccents) out = out.normalize('NFD').replace(DIACRITICS, '').replace(/[øłđı]/g, (char) => STROKES[char]);
   out = out.replace(SIGN, '$1−').replace(DIGIT_GROUP, '$1').replace(PUNCT, ' ').replace(/\s+/g, ' ').trim();
@@ -31,8 +34,9 @@ export function normalize(text, stripAccents = true) {
    against a Latin letter or a digit, as "Δx", or when it is built only from
    single letters, digits, operators and primes, as "x-y" or "u'/u". A
    function name such as sin or ln counts as a single letter. Superscript
-   letters are exponents, as in "eˣ", unless a word sits next to them:
-   French writes ordinals that way, as in "XIXᵉ siècle". Arrows and the
+   letters are exponents, as in "eˣ", unless a word sits next to them, as
+   in "XIXᵉ siècle", or they end an abbreviation: two or more of them, or
+   a lone ᵉ, after a digit or a capital, as in "1ᵉʳ", "2ᵉ" or "Mᵐᵉ". Arrows and the
    signs of sets and logic only make a formula without words, so
    "cheval → chevaux" stays text while "x → 0" does not. */
 const MATH_SIGN = /[+=<>×÷*^√∑∏∫∬∮±∓≤≥≠≈≡∝∞∂∇⇌⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿ₀₁₂₃₄₅₆₇₈₉₊₋₌ₐₑₕᵢⱼₖₗₘₙₒₚᵣₛₜᵤᵥₓ½¼¾⅓⅔]|\d!|(^|[^\p{Script=Greek}])π(?!\p{Script=Greek})|\p{Script=Greek}[a-z\d]|[a-z\d]\p{Script=Greek}/iu;
@@ -42,9 +46,10 @@ const FUNCTIONS = 'arcsin|arccos|arctan|sinh|cosh|tanh|sin|cos|tan|cot|ln|log|ex
 const FUNCTION_NAME = new RegExp('\\b(?:' + FUNCTIONS + ')\\b', 'gi');
 const FUNCTION_CALL = new RegExp('(' + FUNCTIONS + ')(\\^[\\p{L}\\d]+)?\\(([\\p{L}\\d.]+)\\)', 'gu');
 const LETTER_EXPONENTS = 'ᵃᵇᶜᵈᵉⁱᵏᵐᵖᵗᵘᵛˣʸᶻ⁼⁽⁾';
+const ABBREVIATION = /(?<=[\d\p{Lu}])(?:\p{Lm}{2,}|ᵉ)(?!\p{Lm})/gu;
 
 export function isMath(text) {
-  const value = String(text);
+  const value = String(text).replace(ABBREVIATION, '');
   if (MATH_SIGN.test(value)) return true;
   const bare = value.replace(FUNCTION_NAME, 'f');
   const chars = [...bare];
