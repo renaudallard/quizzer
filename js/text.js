@@ -123,6 +123,28 @@ function formula(text) {
     .replace(FUNCTION_CALL, '$1$2$3');
 }
 
+/* Writes the notation typed on a keyboard with the signs it stands for, as
+   the editor does when a field is left: x^2 is x², H_2O is H₂O,
+   SO_4^(2-) is SO₄²⁻ and -> is →. A caret or an underscore takes a group
+   in brackets or braces, or else a number, a single letter that no letter
+   or digit follows, and a closing charge. Unicode lacks some superscript
+   and subscript letters, such as q: what has no such sign is left alone. */
+const TYPED = { '<=>': '⇌', '<->': '↔', '->': '→', '=>': '⇒', '<=': '≤', '>=': '≥', '!=': '≠' };
+const TYPED_SIGN = /<=>|<->|->|=>|<=|>=|!=/g;
+const SCRIPT = new RegExp('([\\^_])(?:\\(([^()]+)\\)|\\{([^{}]+)\\}|((?:[+\\-−]?(?:\\d+|\\p{L}(?![\\p{L}\\d])))(?:'
+  + CHARGE + ')?|' + CHARGE + '))', 'gu');
+const invert = (table) => Object.fromEntries(Object.entries(table).map(([sign, plain]) => [plain, sign]));
+const SCRIPTS = { '^': invert(SUPERSCRIPTS), '_': invert(SUBSCRIPTS) };
+
+export function typeset(text) {
+  return String(text).replace(TYPED_SIGN, (found) => TYPED[found])
+    .replace(SCRIPT, (found, mark, bracketed, braced, bare) => {
+      const signs = [...(bracketed || braced || bare).replace(/\s+/g, '')]
+        .map((char) => SCRIPTS[mark][char === '−' ? '-' : char]);
+      return !signs.length || signs.includes(undefined) ? found : signs.join('');
+    });
+}
+
 /* Two texts are the same prompt or the same answer when they differ only by
    case or punctuation. Accents count, since "ou" and "où" are different
    words, and text made only of punctuation is compared as written. A formula

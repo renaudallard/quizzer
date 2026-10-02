@@ -137,7 +137,7 @@ export default {
   "editor.discard": "De huidige wijzigingen verwerpen?",
   "editor.removeCard": "Deze kaart verwijderen",
   "editor.symbols": "Wiskundige symbolen",
-  "editor.symbolsHint": "Een klik voegt het symbool in waar de cursor stond.",
+  "editor.symbolsHint": "Een klik voegt het symbool in waar de cursor stond. Op het toetsenbord wordt x^2 x², H_2O wordt H₂O, SO_4^(2-) wordt SO₄²⁻ en -> wordt → zodra je het veld verlaat.",
   "editor.symbolsNoField": "Zet eerst de cursor in een veld.",
   "editor.image": "Afbeelding",
   "editor.addTermImage": "Afbeelding bij de term toevoegen",

@@ -186,6 +186,20 @@ async function run() {
     return 'ok';
   });
 
+  check('notation des formules', () => {
+    const cases = [
+      ['x^10', 'x¹⁰'], ['x^(n-1)', 'xⁿ⁻¹'], ['e^x', 'eˣ'], ['e^xy', 'e^xy'], ['x^q', 'x^q'],
+      ['C_6H_12O_6', 'C₆H₁₂O₆'], ['SO_4^(2-)', 'SO₄²⁻'], ['Fe^3+ + 3OH^-', 'Fe³⁺ + 3OH⁻'],
+      ['N_2 + 3H_2 <=> 2NH_3', 'N₂ + 3H₂ ⇌ 2NH₃'], ['u_(n+1)', 'uₙ₊₁'], ['is_set', 'is_set'],
+      ['x^2-1', 'x²-1'], ['a <= b', 'a ≤ b'], ['x -> 0', 'x → 0'], ['x^( )', 'x^( )'],
+    ];
+    for (const [typed, written] of cases) {
+      assert(text.typeset(typed) === written, typed + ' donne ' + text.typeset(typed));
+      if (text.isMath(written)) assert(text.grade(typed, written).verdict === 'correct', typed + ' refusé pour ' + written);
+    }
+    return cases.length + ' cas';
+  });
+
   check('lien de partage aller retour', () => {
     const payload = io.shareUrl(set).split('#/shared/')[1];
     const back = io.decodeShare(payload);
@@ -270,6 +284,22 @@ async function run() {
     }
   }
   i18n.setLocale('fr');
+
+  check('l’éditeur écrit les formules en quittant un champ', () => {
+    main.replaceChildren(editorView(null));
+    const leave = (field, value) => {
+      field.value = value;
+      field.dispatchEvent(new Event('change', { bubbles: true }));
+      return field.value;
+    };
+    const def = main.querySelector('input[data-role="def"]');
+    assert(leave(def, 'SO_4^(2-)') === 'SO₄²⁻', 'définition: ' + def.value);
+    const bulk = main.querySelector('textarea');
+    assert(leave(bulk, 'eau; H_2O') === 'eau; H₂O', 'ajout groupé: ' + bulk.value);
+    const title = main.querySelector('input:not([data-role])');
+    assert(leave(title, 'x^2') === 'x^2', 'le titre ne doit pas changer');
+    return 'ok';
+  });
 
   check('le quiz va jusqu’au résultat', () => {
     main.replaceChildren(quizView(set.id));

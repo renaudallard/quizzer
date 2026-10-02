@@ -184,6 +184,28 @@ clears away the blank rows nobody used, and nothing else.
 lacks: powers, roots, π, comparison signs, Greek letters and the like. A
 click puts the sign where the cursor was in the last field used.
 
+Formulas can also be typed in a card's fields, or in the lines added in
+bulk, the way a keyboard allows. Once the field is left, a caret makes an
+exponent and an underscore an index, and the arrows and comparison signs
+take their real shape:
+
+| Typed | Written |
+|-------|---------|
+| `x^2`, `10^-19`, `e^x` | x², 10⁻¹⁹, eˣ |
+| `x^(n-1)` or `x^{n-1}` | xⁿ⁻¹ |
+| `H_2O`, `C_6H_12O_6`, `u_(n+1)` | H₂O, C₆H₁₂O₆, uₙ₊₁ |
+| `SO_4^(2-)`, `Fe^3+ + 3OH^-` | SO₄²⁻, Fe³⁺ + 3OH⁻ |
+| `->`, `<=>`, `<->`, `=>` | →, ⇌, ↔, ⇒ |
+| `<=`, `>=`, `!=` | ≤, ≥, ≠ |
+
+A caret or an underscore takes a group in brackets or braces, or else a
+number, a single letter with no letter or digit after it, and a closing
+charge sign, so `is_set` and `e^xy` stay as they are, while `e^(xy)`
+gives eˣʸ. Unicode has no superscript or subscript form of some letters,
+such as q, and of signs such as `/`: those stay as typed, `x^q` or
+`x^(1/2)`, which the grading reads just as well. The title and the
+description are never changed.
+
 ### Pictures
 
 A card side can hold a picture, with or without text. The "Image" button
@@ -300,7 +322,7 @@ counts the card twice.
       study.js            widgets shared by the six modes
       question.js         questions shared by quiz and learn
       chart.js            stat tiles, mastery bar, activity columns
-      text.js             answer comparison and hint masking
+      text.js             answer comparison, hint masking, formula notation
       io.js               delimited text, downloads, share links
       images.js           card pictures, kept in IndexedDB
       util.js             identifiers, shuffling, dates
@@ -319,10 +341,11 @@ counts the card twice.
 ## Checking it still works
 
 Serve the directory and open <http://localhost:8080/tests/harness.html>. It
-exercises the store, the Leitner ladder, answer grading, the CSV and share link
-round trips, and reading CSV files in UTF-8, UTF-16 and Windows-1252. It
-renders all fifteen views in every interface language, failing on any key that
-no catalogue holds and on any `{placeholder}` left unfilled. It checks that
+exercises the store, the Leitner ladder, answer grading, the formula notation
+the editor writes, the CSV and share link round trips, and reading CSV files
+in UTF-8, UTF-16 and Windows-1252. It renders all fifteen views in every
+interface language, failing on any key that no catalogue holds and on any
+`{placeholder}` left unfilled. It checks that
 each catalogue has exactly the French keys, with the same `{placeholders}` in
 every string, and that the French text built into `index.html` matches the
 French catalogue and its attribute keys exist. On the home page it checks that

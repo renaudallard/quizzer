@@ -137,7 +137,7 @@ export default {
   "editor.discard": "Discard the changes in progress?",
   "editor.removeCard": "Delete this card",
   "editor.symbols": "Maths symbols",
-  "editor.symbolsHint": "A click inserts the symbol where the cursor was.",
+  "editor.symbolsHint": "A click inserts the symbol where the cursor was. On the keyboard, x^2 gives x², H_2O gives H₂O, SO_4^(2-) gives SO₄²⁻ and -> gives → as soon as you leave the field.",
   "editor.symbolsNoField": "Put the cursor in a field first.",
   "editor.image": "Image",
   "editor.addTermImage": "Add an image to the term",

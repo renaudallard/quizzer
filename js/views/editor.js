@@ -8,6 +8,7 @@ import { parseDelimited } from '../io.js';
 import { navigate, onCleanup, setBusy } from '../router.js';
 import { notFoundPanel, toastSaved } from './shared.js';
 import { addImage, cardImage } from '../images.js';
+import { typeset } from '../text.js';
 
 const LANG_CODES = [
   'fr', 'en', 'es', 'de', 'it', 'pt', 'nl', 'ca', 'pl', 'ru', 'uk', 'ar', 'tr',
@@ -342,6 +343,16 @@ export function editorView(id) {
       cancel));
   root.addEventListener('focusin', (event) => {
     if (event.target.matches('input[type="text"], textarea')) lastField = event.target;
+  });
+  /* The keyboard notation of a card or of the bulk lines is written with
+     its signs once the field is left, so x^2 becomes x². */
+  root.addEventListener('change', (event) => {
+    const field = event.target;
+    if (!field.matches('input[data-role], textarea')) return;
+    const value = typeset(field.value);
+    if (value === field.value) return;
+    field.value = value;
+    field.dispatchEvent(new Event('input', { bubbles: true }));
   });
   return root;
 }

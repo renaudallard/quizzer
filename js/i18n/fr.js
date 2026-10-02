@@ -137,7 +137,7 @@ export default {
   "editor.discard": "Abandonner les modifications en cours ?",
   "editor.removeCard": "Supprimer cette carte",
   "editor.symbols": "Symboles mathématiques",
-  "editor.symbolsHint": "Un clic insère le symbole là où se trouvait le curseur.",
+  "editor.symbolsHint": "Un clic insère le symbole là où se trouvait le curseur. Au clavier, x^2 donne x², H_2O donne H₂O, SO_4^(2-) donne SO₄²⁻ et -> donne → dès que vous quittez le champ.",
   "editor.symbolsNoField": "Placez d’abord le curseur dans un champ.",
   "editor.image": "Image",
   "editor.addTermImage": "Ajouter une image au terme",
