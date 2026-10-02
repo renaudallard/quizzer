@@ -414,7 +414,8 @@ a.stat-tile:hover { border-color: var(--accent); transform: translateY(-2px); co
 .editor-fields { display: flex; flex-direction: column; gap: 6px; }
 .symbol-palette { margin-bottom: 12px; }
 .symbol-palette summary { cursor: pointer; font-size: 0.86rem; color: var(--ink-2); font-weight: 600; }
-.symbols { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.symbol-group h3 { margin: 12px 0 0; font-size: 0.8rem; font-weight: 600; color: var(--ink-muted); }
+.symbols { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .btn-symbol { min-width: 40px; padding: 6px 10px; font-weight: 500; }
 .editor-image { display: flex; align-items: center; gap: 6px; }
 .editor-image .card-image { margin: 0; }

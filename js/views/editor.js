@@ -15,10 +15,14 @@ const LANG_CODES = [
   'zh', 'ja', 'ko', 'la', 'el', 'sv', 'da', 'nb', 'fi', 'cs', 'he', 'hi', 'ro', 'hu', 'vi', 'id',
 ];
 
-/* Signs a keyboard lacks, for maths and science cards. */
+/* Signs a keyboard lacks, for maths and science cards, by group. */
 const SYMBOLS = [
-  '²', '³', 'ⁿ', '√', 'π', '±', '×', '÷', '·', '≤', '≥', '≠', '≈', '∞', '∑', '∫', '∂',
-  'Δ', 'α', 'β', 'θ', 'λ', 'μ', 'σ', 'φ', 'ω', '°', '½', '→', '∈',
+  ['editor.symbolsScripts', '⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿ₀₁₂₃₄₅₆₇₈₉₊₋ₙ'],
+  ['editor.symbolsOperators', '±×÷·√≤≥≠≈≡∝°′½'],
+  ['editor.symbolsAnalysis', '∑∏∫∬∮∂∇∞'],
+  ['editor.symbolsSets', '∈∉⊂⊆∪∩∅ℕℤℚℝℂ∀∃¬∧∨⇒⇔'],
+  ['editor.symbolsArrows', '→⇌↔↑↓'],
+  ['editor.symbolsGreek', 'αβγδεζηθικλμνξπρστυφχψωΓΔΘΛΞΠΣΦΨΩ'],
 ];
 
 /* Why a picture could not be kept, as addImage() reports it. */
@@ -296,11 +300,13 @@ export function editorView(id) {
   const palette = el('details', { class: 'symbol-palette' },
     el('summary', {}, t('editor.symbols')),
     el('p', { class: 'field-hint' }, t('editor.symbolsHint')),
-    el('div', { class: 'symbols' }, SYMBOLS.map((symbol) => el('button', {
-      type: 'button', class: 'btn btn-symbol',
-      onmousedown: (event) => event.preventDefault(),
-      onclick: () => insertSymbol(symbol),
-    }, symbol))));
+    SYMBOLS.map(([label, symbols]) => el('div', { class: 'symbol-group' },
+      el('h3', {}, t(label)),
+      el('div', { class: 'symbols' }, [...symbols].map((symbol) => el('button', {
+        type: 'button', class: 'btn btn-symbol',
+        onmousedown: (event) => event.preventDefault(),
+        onclick: () => insertSymbol(symbol),
+      }, symbol))))));
 
   const addCard = el('button', { type: 'button', class: 'btn' }, icon('plus'), t('editor.addCard'));
   addCard.addEventListener('click', () => {

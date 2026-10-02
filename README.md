@@ -180,9 +180,10 @@ naming it, so no card and none of its progress disappears by accident; the
 bin button next to a card is the way to delete it. Adding lines in bulk
 clears away the blank rows nobody used, and nothing else.
 
-"Symboles mathématiques", above the cards, opens a row of signs a keyboard
-lacks: powers, roots, π, comparison signs, Greek letters and the like. A
-click puts the sign where the cursor was in the last field used.
+"Symboles et formules", above the cards, opens the signs a keyboard lacks,
+in groups: superscripts and subscripts, operations and relations, calculus,
+sets and logic, arrows for chemistry, and the Greek letters. A click puts
+the sign where the cursor was in the last field used.
 
 Formulas can also be typed in a card's fields, or in the lines added in
 bulk, the way a keyboard allows. Once the field is left, a caret makes an
