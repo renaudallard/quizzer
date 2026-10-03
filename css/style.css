@@ -536,6 +536,48 @@ a.stat-tile:hover { border-color: var(--accent); transform: translateY(-2px); co
 .banner-bad .banner-title { color: var(--critical-ink); }
 .banner-title { font-weight: 650; }
 
+/* Test */
+
+.test-list { display: flex; flex-direction: column; }
+.test-question { padding: 22px 0; border-bottom: 1px solid var(--line); }
+.test-question:first-child { padding-top: 0; }
+.test-question > .chip { margin-bottom: 10px; }
+.test-question > .field-hint { margin: 10px 0 0; }
+.test-review-title { margin: 8px 0 0; }
+.test-dont-know { text-align: center; margin-top: 10px; }
+/* The clock and the hand in button stay in view while the page scrolls. */
+.test-foot { justify-content: flex-end; }
+.test-foot .quiz-timer { margin: 0; }
+.option[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); box-shadow: inset 0 0 0 1px var(--accent); }
+.btn-ghost[aria-pressed="true"] { color: var(--accent); background: var(--accent-soft); }
+.chip[data-state="correct"] { color: var(--good-ink); background: color-mix(in srgb, var(--good) 14%, var(--surface)); }
+.chip[data-state="wrong"] { color: var(--critical-ink); background: color-mix(in srgb, var(--critical) 12%, var(--surface)); }
+.chip[data-state] svg { width: 14px; height: 14px; }
+
+.match-rows { display: grid; gap: 12px; margin-top: 12px; }
+.match-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; align-items: center; }
+.match-prompt { font-size: 1.05rem; font-weight: 600; }
+.match-prompt .hint { display: block; font-size: 0.88rem; font-weight: 400; color: var(--ink-2); margin-top: 4px; }
+.match-prompt .card-image { max-height: 90px; }
+.match-slot {
+  display: flex; align-items: center; width: 100%; min-height: 52px; padding: 10px 14px;
+  font: inherit; text-align: left; color: var(--ink); cursor: pointer;
+  background: var(--surface-2); border: 1px dashed var(--line-strong); border-radius: var(--radius-sm);
+}
+div.match-slot { cursor: default; }
+.match-slot[data-filled="1"] { background: var(--surface); border-style: solid; }
+.match-slot[aria-pressed="true"] { border: 2px solid var(--accent); color: var(--accent); font-style: italic; }
+.match-slot[data-state="correct"] { border-color: var(--good); background: color-mix(in srgb, var(--good) 12%, var(--surface)); }
+.match-slot[data-state="wrong"] { border-color: var(--critical); background: color-mix(in srgb, var(--critical) 12%, var(--surface)); }
+.match-row .field-hint { margin: 4px 0 0; }
+.match-pool { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--line); }
+.match-pool:empty { display: none; }
+.match-chip {
+  padding: 9px 14px; font: inherit; color: var(--ink); cursor: pointer;
+  background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+}
+.match-chip:hover { border-color: var(--accent); background: var(--accent-soft); }
+
 /* Match game */
 
 .match-grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
@@ -616,6 +658,7 @@ code {
   .editor-row { grid-template-columns: 1fr auto; }
   .editor-row .idx { display: none; }
   .hero { gap: 18px; }
+  .match-row { grid-template-columns: 1fr; gap: 6px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

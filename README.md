@@ -1,6 +1,6 @@
 # Quizzer
 
-A study site in the spirit of Quizlet: card sets you own, six ways to drill
+A study site in the spirit of Quizlet: card sets you own, seven ways to drill
 them, and a spaced repetition schedule that decides what to show you today.
 
 The interface is **French by default**. English and Dutch are one click away
@@ -34,6 +34,7 @@ compile and nothing to configure.
 | **Apprendre** | Every card is first picked out in multiple choice, then typed from memory; the cards you know least come first, seven at a time, a miss sends a card back to multiple choice, and the score counts the cards never missed | yes |
 | **Révision espacée** | Only the cards that are due, graded by you as "à revoir" or "je savais" | yes |
 | **Quiz** | Multiple choice, true or false and written answers, in either direction, with an optional time limit | yes |
+| **Test** | Every question on one page, true or false, multiple choice, matching and written, graded once handed in, with an optional time limit | yes |
 | **Écrire** | Type every answer; a card you miss returns later in the round, and the score counts the cards right the first time | yes |
 | **Associer** | Pair six terms with their definitions against the clock | best time only |
 
@@ -50,6 +51,22 @@ time, a minute at most. When it runs out the quiz ends: an answer already
 given counts, and the questions not reached count as missed in the result and
 in the replay of the misses, but leave the schedule alone since they were not
 tried.
+
+The test puts every question on one page, as Quizlet does. Its setup asks how
+many questions, up to the number of cards, which kinds, which direction and
+whether to set a time limit, the same as the quiz's. The questions are shared
+out evenly between the kinds ticked, in this order: true or false, multiple
+choice, matching, then written. Matching comes in groups of up to five
+prompts sharing one list of answers, split as evenly as that allows, seven
+making four and three: pick a slot, then an answer from the list below it, and
+pick a filled slot to put its answer back. A single matching question would
+be a free point, so it goes to another kind instead. Nothing is graded until
+the test is handed in, so any answer can change until then, and handing it in
+with questions left blank asks first. Every question is then recorded: a blank
+one or "Je ne sais pas" counts as missed, in the schedule too. The result
+shows each question again with its correction, and the misses can be tested
+again on their own. When the time runs out the test is handed in as it
+stands.
 
 ### Spaced repetition
 
@@ -241,8 +258,8 @@ They live in the browser's IndexedDB, apart from the cards, so they leave the
 room localStorage has for the rest.
 
 A side may be a picture alone, such as a photo of a dog with `de hond` as the
-answer. Answers are always typed or picked as text, so a quiz, Apprendre or
-Écrire question asks toward the side that has text, whatever direction was
+answer. Answers are always typed or picked as text, so a quiz, test, Apprendre
+or Écrire question asks toward the side that has text, whatever direction was
 chosen, and a card with pictures on both sides and no text only appears in
 flashcards, review and Associer. Read aloud skips a side that is only a
 picture, and screen readers announce it as an image: put a few words next to
@@ -339,16 +356,17 @@ right and must be typed whole. In `collègue (m/f)` the slash stays inside the
 optional precision: `collègue` is right, `m` alone is not.
 
 When several cards share a prompt, such as `hola` and `buenos días` which both
-mean `bonjour`, each of their answers is right: the quiz and Apprendre never
-offer one as a wrong option, and a typed answer may be any of them. Prompts
-are shared when they differ only by case or punctuation; accents count, so
-`ou` and `où` stay two different prompts. In Associer, tiles that read exactly
-the same are interchangeable, and whichever of them is used, the rest of the
-board can still be paired.
+mean `bonjour`, each of their answers is right: the quiz, the test and
+Apprendre never offer one as a wrong option, and a typed or matched answer may
+be any of them. Prompts are shared when they differ only by case or
+punctuation; accents count, so `ou` and `où` stay two different prompts. In
+Associer, tiles that read exactly the same are interchangeable, and whichever
+of them is used, the rest of the board can still be paired.
 
 A wrong answer can still be claimed with the "Je l'avais" button. Nothing is
 written to the store until you move to the next card, so the override never
-counts the card twice.
+counts the card twice. The test has no such button: it records every answer
+the moment it is handed in.
 
 ### Manual
 
@@ -371,8 +389,8 @@ answer its table calls right, so the manual cannot drift from the site.
       router.js           hash router with per route cleanup
       store.js            localStorage state, import and export
       srs.js              Leitner boxes and mastery levels
-      study.js            widgets shared by the six modes
-      question.js         questions shared by quiz and learn
+      study.js            widgets shared by the seven modes, time limit
+      question.js         questions shared by quiz, test and learn
       chart.js            stat tiles, mastery bar, activity columns
       text.js             answer comparison, hint masking, formula notation,
                           LaTeX read on one line
@@ -389,7 +407,7 @@ answer its table calls right, so the manual cannot drift from the site.
       i18n/nl.js          Dutch catalogue
       views/              home, set, editor, stats, settings, transfer, samples,
                           help
-      modes/              flashcards, learn, review, quiz, write, match
+      modes/              flashcards, learn, review, quiz, test, write, match
     vendor/katex/         KaTeX 0.19.0 and mhchem, with their fonts and licence
     tests/harness.html    smoke test, open it in a browser
     tests/harness.js      the checks it runs
@@ -400,7 +418,7 @@ Serve the directory and open <http://localhost:8080/tests/harness.html>. It
 exercises the store, the Leitner ladder, answer grading, the formula notation
 the editor writes, LaTeX read on one line and drawn by KaTeX, the typed
 answers the manual calls right, the CSV and share link round trips, and
-reading CSV files in UTF-8, UTF-16 and Windows-1252. It renders all sixteen
+reading CSV files in UTF-8, UTF-16 and Windows-1252. It renders all seventeen
 views in every interface language, failing on any key that no catalogue
 holds and on any `{placeholder}` left unfilled, LaTeX aside. It checks
 that each catalogue has exactly the French keys, with the same
@@ -414,7 +432,10 @@ an emptied store and compares every part, imports it a second time to show that
 nothing doubles, and feeds in a damaged backup that must change nothing. It
 also plays a full quiz, a timed one, a learn round, a full write round, a match
 round, a review session, a flashcard pass and a sorted one to their summary
-screens, the sorted pass leaving the schedule alone.
+screens, the sorted pass leaving the schedule alone. It hands in a test of
+twelve questions answered right from the cards, which must come in the order
+of their kinds and score twelve out of twelve, and a blank one, which must ask
+first and count every question as missed.
 
 Your own data, including any unreadable copy set aside, is read out of
 `localStorage` before the run and put back after it, or as the page closes if

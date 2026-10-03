@@ -101,6 +101,8 @@ export default {
   "mode.review.desc": "Revoyez chaque carte juste avant de l’oublier.",
   "mode.quiz": "Quiz",
   "mode.quiz.desc": "QCM, vrai ou faux et réponses écrites.",
+  "mode.test": "Test",
+  "mode.test.desc": "Toutes les questions sur une page, corrigées quand vous rendez le test.",
   "mode.write": "Écrire",
   "mode.write.desc": "Tapez la réponse jusqu’à ce que tout soit acquis.",
   "mode.match": "Associer",
@@ -234,6 +236,21 @@ export default {
   "quiz.unanswered.other": "{n} questions sont restées sans réponse.",
   "quiz.missed": "À retravailler",
   "quiz.retryMissed": "Rejouer les erreurs",
+
+  /* Test */
+  "test.setupTitle": "Préparer le test",
+  "test.count": "Nombre de questions (au plus {max})",
+  "test.typeMatching": "Association",
+  "test.askMatching": "Associez chacun à sa réponse",
+  "test.positionRange": "{first}–{last} sur {total}",
+  "test.dontKnow": "Je ne sais pas",
+  "test.slotPick": "Choisissez dans la liste ci-dessous",
+  "test.slotEmpty": "Pas encore de réponse",
+  "test.submit": "Rendre le test",
+  "test.confirmBlank.one": "{n} question est sans réponse et comptera comme ratée. Rendre le test quand même ?",
+  "test.confirmBlank.other": "{n} questions sont sans réponse et compteront comme ratées. Rendre le test quand même ?",
+  "test.noAnswer": "Pas de réponse",
+  "test.review": "Vos réponses",
 
   /* Écrire */
   "write.prompt": "Tapez la réponse",
@@ -375,11 +392,12 @@ export default {
   "help.start.p5": "Pour voir Quizzer à l’œuvre sans rien écrire, « {samples} » sur l’accueil propose des jeux prêts à l’emploi: langues, français, mathématiques, sciences, histoire, géographie et quelques curiosités.",
 
   "help.modes.title": "Les modes d’étude",
-  "help.modes.p1": "La page d’un jeu propose six façons de l’étudier, plus ses statistiques. Sauf mention contraire, vos réponses font avancer la révision espacée.",
+  "help.modes.p1": "La page d’un jeu propose sept façons de l’étudier, plus ses statistiques. Sauf mention contraire, vos réponses font avancer la révision espacée.",
   "help.modes.flashcards": "Feuilletez les cartes et retournez-les. « {reverse} » montre la définition en premier, « {starred} » ne garde que les cartes marquées comme difficiles, et « {sort} » vous fait ranger chaque carte en « {know} » ou « {learning} » pour reprendre ensuite les secondes. Feuilleter n’est pas se tester: ce mode ne change rien au calendrier de révision.",
   "help.modes.learn": "Chaque carte se reconnaît d’abord parmi plusieurs réponses, puis s’écrit de mémoire, sept à la fois, celles que vous connaissez le moins en premier. Une erreur renvoie la carte aux choix.",
   "help.modes.review": "Seulement les cartes à réviser aujourd’hui. Retournez la carte et dites vous-même si vous la saviez: « {again} » ou « {good} ».",
   "help.modes.quiz": "Choix multiple, vrai ou faux et réponses écrites, dans un sens, dans l’autre ou les deux, avec un minuteur facultatif d’une à trente minutes. À la fin, « {retryMissed} » reprend les questions ratées.",
+  "help.modes.test": "Toutes les questions sur une page: vrai ou faux, choix multiple, association par groupes de cinq au plus et réponses écrites, dans un sens, dans l’autre ou les deux, avec le même minuteur facultatif que le quiz. Les réponses peuvent changer jusqu’à « {submit} », et le test n’est corrigé qu’à ce moment, chaque question montrée avec sa correction. Une question laissée vide ou répondue par « {dontKnow} » compte comme ratée, et quand le temps est écoulé le test est rendu tel quel.",
   "help.modes.write": "Tapez chaque réponse. Une carte ratée revient plus tard dans la série, jusqu’à ce que toutes soient validées.",
   "help.modes.match": "Reliez six termes à leurs définitions contre la montre. Seul votre meilleur temps est gardé, le calendrier de révision n’est pas touché.",
   "help.modes.stats": "Le niveau de maîtrise du jeu, les cartes révisées ces 14 derniers jours, les cartes les plus souvent oubliées et vos dernières séances.",
@@ -414,7 +432,7 @@ export default {
   "help.grading.p3": "Les nombres gardent leur sens et n’ont droit à aucune faute: `3.14` vaut `3,14` mais `314` non, `1000` vaut `1 000`, et `5` ne vaut pas `-5`.",
   "help.grading.p4": "Une formule se corrige comme une formule: parenthèses, signes moins et primes comptent, si bien que `2x+1` ne vaut pas `2(x+1)`. Les majuscules, les espaces et la virgule décimale sont pardonnés, jamais une faute de frappe. Les signes absents du clavier se tapent ainsi:",
   "help.grading.p5": "Une puissance ou un indice qui contient un signe va entre parenthèses: `x^(n-1)` vaut xⁿ⁻¹, `x^n-1` non. Une charge de plus de un demande son `^`, car `Fe3+` se lirait comme un indice. Le LaTeX se corrige sous sa forme d’une ligne, montrée plus haut, et une réponse peut elle-même se taper en LaTeX.",
-  "help.grading.p6": "Si la correction s’est trompée, « {override} » compte la réponse comme juste. Rien n’est enregistré avant de passer à la carte suivante, la carte ne compte donc pas deux fois.",
+  "help.grading.p6": "Si la correction s’est trompée, « {override} » compte la réponse comme juste. Rien n’est enregistré avant de passer à la carte suivante, la carte ne compte donc pas deux fois. Le test ne le propose pas: tout y est enregistré dès qu’il est rendu.",
 
   "help.transfer.title": "Importer, exporter, partager",
   "help.transfer.p1": "« {transfer} », dans la barre du haut, rassemble les échanges. « {exportAll} » télécharge une sauvegarde JSON complète: jeux, progression, images, historique et réglages. La restaurer fusionne au lieu d’écraser, et la restaurer deux fois ne change rien.",

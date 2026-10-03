@@ -101,6 +101,8 @@ export default {
   "mode.review.desc": "Zie elke kaart terug vlak voordat je die zou vergeten.",
   "mode.quiz": "Quiz",
   "mode.quiz.desc": "Meerkeuze, waar of niet waar en geschreven antwoorden.",
+  "mode.test": "Toets",
+  "mode.test.desc": "Alle vragen op één pagina, nagekeken als je de toets inlevert.",
   "mode.write": "Schrijven",
   "mode.write.desc": "Typ het antwoord tot elke kaart erin zit.",
   "mode.match": "Koppelen",
@@ -234,6 +236,21 @@ export default {
   "quiz.unanswered.other": "{n} vragen bleven onbeantwoord.",
   "quiz.missed": "Nog eens bekijken",
   "quiz.retryMissed": "Fouten opnieuw oefenen",
+
+  /* Toets */
+  "test.setupTitle": "Stel je toets samen",
+  "test.count": "Aantal vragen (hoogstens {max})",
+  "test.typeMatching": "Koppelvragen",
+  "test.askMatching": "Koppel elk aan het juiste antwoord",
+  "test.positionRange": "{first}–{last} van {total}",
+  "test.dontKnow": "Weet ik niet",
+  "test.slotPick": "Kies uit de lijst hieronder",
+  "test.slotEmpty": "Nog geen antwoord",
+  "test.submit": "Toets inleveren",
+  "test.confirmBlank.one": "{n} vraag heeft geen antwoord en telt als fout. Toch inleveren?",
+  "test.confirmBlank.other": "{n} vragen hebben geen antwoord en tellen als fout. Toch inleveren?",
+  "test.noAnswer": "Geen antwoord",
+  "test.review": "Je antwoorden",
 
   /* Schrijven */
   "write.prompt": "Typ het antwoord",
@@ -375,11 +392,12 @@ export default {
   "help.start.p5": "Om Quizzer aan het werk te zien zonder iets te schrijven, biedt “{samples}” op de startpagina kant-en-klare sets: talen, Frans, wiskunde, wetenschappen, geschiedenis, aardrijkskunde en wat curiosa.",
 
   "help.modes.title": "Oefenvormen",
-  "help.modes.p1": "De pagina van een set biedt zes manieren om hem te oefenen, plus de statistieken. Tenzij anders vermeld, laten je antwoorden het gespreid herhalen vooruitgaan.",
+  "help.modes.p1": "De pagina van een set biedt zeven manieren om hem te oefenen, plus de statistieken. Tenzij anders vermeld, laten je antwoorden het gespreid herhalen vooruitgaan.",
   "help.modes.flashcards": "Blader door de kaarten en draai ze om. “{reverse}” toont eerst de definitie, “{starred}” houdt alleen de kaarten over die als moeilijk gemarkeerd zijn, en met “{sort}” leg je elke kaart bij “{know}” of “{learning}” om daarna de tweede stapel door te nemen. Bladeren is jezelf niet overhoren: deze vorm laat het herhaalschema met rust.",
   "help.modes.learn": "Elke kaart kies je eerst uit een paar antwoorden en schrijf je daarna uit je hoofd, zeven tegelijk, de kaarten die je het minst kent eerst. Na een fout gaat de kaart terug naar de keuzes.",
   "help.modes.review": "Alleen de kaarten die vandaag aan de beurt zijn. Draai de kaart om en zeg zelf of je het wist: “{again}” of “{good}”.",
   "help.modes.quiz": "Meerkeuze, waar of niet waar en geschreven antwoorden, in de ene richting, de andere of beide, met een tijdslimiet naar keuze van één tot dertig minuten. Aan het eind neemt “{retryMissed}” de gemiste vragen opnieuw door.",
+  "help.modes.test": "Alle vragen op één pagina: waar of niet waar, meerkeuze, koppelvragen in groepjes van hoogstens vijf en geschreven antwoorden, in de ene richting, de andere of beide, met dezelfde tijdslimiet naar keuze als de quiz. Je kunt je antwoorden wijzigen tot “{submit}”, en pas dan wordt de toets nagekeken, elke vraag met de verbetering erbij. Een vraag die je leeg laat of met “{dontKnow}” beantwoordt, telt als fout, en als de tijd om is, wordt de toets ingeleverd zoals hij is.",
   "help.modes.write": "Typ elk antwoord. Een gemiste kaart komt later in de ronde terug, tot ze allemaal goed zijn.",
   "help.modes.match": "Koppel zes termen aan hun definities tegen de klok. Alleen je beste tijd wordt bewaard, en het herhaalschema blijft ongemoeid.",
   "help.modes.stats": "Hoe goed de set beheerst wordt, de kaarten die je de afgelopen 14 dagen herhaald hebt, de kaarten die je het vaakst vergeet en je laatste sessies.",
@@ -414,7 +432,7 @@ export default {
   "help.grading.p3": "Getallen behouden hun betekenis en krijgen geen tikfouttolerantie: `3.14` komt overeen met `3,14` maar `314` niet, `1000` met `1 000`, en `5` niet met `-5`.",
   "help.grading.p4": "Een formule wordt als formule nagekeken: haakjes, mintekens en accenten zoals in `u'` tellen, dus `2x+1` komt niet overeen met `2(x+1)`. Hoofdletters, spaties en een decimale komma worden door de vingers gezien, nooit een tikfout. Tekens die een toetsenbord mist, typ je zo:",
   "help.grading.p5": "Een exponent of index met een teken erin gaat tussen haakjes: `x^(n-1)` komt overeen met xⁿ⁻¹, `x^n-1` niet. Een lading groter dan één heeft zijn `^` nodig, want `Fe3+` zou als index gelezen worden. LaTeX wordt nagekeken in zijn vorm op één regel, hierboven getoond, en een antwoord mag zelf in LaTeX getypt worden.",
-  "help.grading.p6": "Als het nakijken zich vergist, telt “{override}” het antwoord als goed. Er wordt niets vastgelegd voordat je naar de volgende kaart gaat, dus de kaart telt niet twee keer.",
+  "help.grading.p6": "Als het nakijken zich vergist, telt “{override}” het antwoord als goed. Er wordt niets vastgelegd voordat je naar de volgende kaart gaat, dus de kaart telt niet twee keer. De toets biedt dat niet: alles wordt vastgelegd zodra je hem inlevert.",
 
   "help.transfer.title": "Importeren, exporteren, delen",
   "help.transfer.p1": "“{transfer}”, in de bovenbalk, brengt samen wat in- en uitgaat. “{exportAll}” downloadt een volledige JSON-back-up: sets, voortgang, afbeeldingen, geschiedenis en instellingen. Terugzetten voegt samen in plaats van te overschrijven, en twee keer terugzetten verandert niets.",

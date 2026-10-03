@@ -23,6 +23,7 @@ import { flashcardsView } from '../js/modes/flashcards.js';
 import { reviewView } from '../js/modes/review.js';
 import { learnView } from '../js/modes/learn.js';
 import { quizView } from '../js/modes/quiz.js';
+import { testView } from '../js/modes/test.js';
 import { writeView } from '../js/modes/write.js';
 import { matchView } from '../js/modes/match.js';
 import { mathReady } from '../js/math.js';
@@ -84,7 +85,7 @@ const VIEWS = {
   home: homeView, set: setView, editor: editorView, stats: statsView,
   settings: settingsView, shortcuts: shortcutsView, transfer: transferView, samples: samplesView,
   shared: sharedView, flashcards: flashcardsView, learn: learnView, review: reviewView,
-  quiz: quizView, write: writeView, match: matchView, help: helpView,
+  quiz: quizView, test: testView, write: writeView, match: matchView, help: helpView,
 };
 
 async function run() {
@@ -388,6 +389,88 @@ async function run() {
     assert(main.querySelector('.summary h2').textContent === i18n.t('quiz.resultTitle'), 'fini avant la limite');
     assert(!main.querySelector('.quiz-timer'), 'le décompte reste affiché');
     return steps + ' questions';
+  });
+
+  /* Every question answered right from the cards themselves: the first
+     line of a prompt is its text, and true or false shows its pairing as a
+     hint. Twelve questions over four kinds make three of each, in order. */
+  check('le test se rend et se corrige', () => {
+    const answers = new Map(set.cards.map((card) => [card.term, card.def]));
+    const before = store.getSessions(set.id).length;
+    main.replaceChildren(testView(set.id));
+    main.querySelector('.panel input[type="number"]').value = '12';
+    main.querySelector('.panel .btn-primary').click();
+    const counter = () => main.querySelector('.study-head .count').textContent;
+    assert(counter() === i18n.t('progress.position', { current: 0, total: 12 }), 'départ: ' + counter());
+
+    const blocks = [...main.querySelectorAll('.test-question')];
+    const kinds = [];
+    blocks.forEach((block, i) => {
+      if (block.querySelector('.match-rows')) {
+        kinds.push('matching');
+        for (const row of [...block.querySelectorAll('.match-row')]) {
+          row.querySelector('.match-slot').click();
+          const want = answers.get(row.querySelector('.match-prompt').firstElementChild.textContent);
+          const chip = [...main.querySelectorAll('.test-question')[i].querySelectorAll('.match-chip')]
+            .find((candidate) => candidate.textContent === want);
+          assert(chip, 'pas de réponse ' + want);
+          chip.click();
+        }
+        return;
+      }
+      const prompt = block.querySelector('.question-prompt');
+      const want = answers.get(prompt.firstElementChild.textContent);
+      const input = block.querySelector('.answer-form input');
+      if (input) {
+        kinds.push('written');
+        input.value = want;
+        input.dispatchEvent(new Event('input'));
+        return;
+      }
+      const options = [...block.querySelectorAll('.option')];
+      if (options.length === 2) {
+        kinds.push('truefalse');
+        const shown = prompt.querySelector('.hint span').textContent;
+        options[shown === want ? 0 : 1].click();
+      } else {
+        kinds.push('choice');
+        options.find((option) => option.textContent === want).click();
+      }
+    });
+    assert(kinds.join() === 'truefalse,truefalse,truefalse,choice,choice,choice,matching,written,written,written',
+      'ordre: ' + kinds.join());
+    const range = main.querySelectorAll('.test-question')[6].querySelector('.count').textContent;
+    assert(range === i18n.t('test.positionRange', { first: 7, last: 9, total: 12 }), 'groupe: ' + range);
+    assert(counter() === i18n.t('progress.position', { current: 12, total: 12 }), 'avancement: ' + counter());
+
+    main.querySelector('.test-submit').click();
+    assert(main.querySelector('.summary'), 'pas de résultat');
+    const [session] = store.getSessions(set.id);
+    assert(store.getSessions(set.id).length === before + 1 && session.mode === 'test', 'séance absente');
+    assert(session.total === 12 && session.correct === 12, 'score: ' + session.correct + '/' + session.total);
+    assert(main.querySelectorAll('.test-question').length === blocks.length, 'correction incomplète');
+    assert(!main.querySelector('.test-question .banner-bad'), 'réponse juste corrigée comme fausse');
+    return kinds.length + ' blocs, 12/12';
+  });
+
+  /* A question left blank counts as missed once the learner confirms. */
+  check('un test rendu vide compte tout comme raté', () => {
+    main.replaceChildren(testView(set.id));
+    main.querySelector('.panel input[type="number"]').value = '5';
+    main.querySelector('.panel .btn-primary').click();
+    const asked = [];
+    const confirm = window.confirm;
+    window.confirm = (message) => { asked.push(message); return true; };
+    try {
+      main.querySelector('.test-submit').click();
+    } finally {
+      window.confirm = confirm;
+    }
+    assert(asked.length === 1 && asked[0] === i18n.tn('test.confirmBlank', 5), 'confirmation: ' + asked.join());
+    const [session] = store.getSessions(set.id);
+    assert(session.mode === 'test' && session.total === 5 && session.correct === 0, 'score: ' + session.correct);
+    assert(main.querySelectorAll('.summary-actions .btn').length === 3, 'rejouer les erreurs absent');
+    return 'ok';
   });
 
   check('apprendre mène chaque carte jusqu’à l’écrit', () => {

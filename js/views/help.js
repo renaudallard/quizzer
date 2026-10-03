@@ -34,7 +34,7 @@ export const TYPED = [
   ['(x+1)/2', '$\\frac{x+1}{2}$'], ['\\frac{1}{2}', '1/2'],
 ];
 
-const MODES = ['flashcards', 'learn', 'review', 'quiz', 'write', 'match', 'stats'];
+const MODES = ['flashcards', 'learn', 'review', 'quiz', 'test', 'write', 'match', 'stats'];
 
 /* Interface labels the text names, filled in so it always says what the
    buttons say. */
@@ -48,7 +48,7 @@ function labels() {
     know: 'flashcards.know', learning: 'flashcards.learning',
     again: 'review.again', good: 'review.good', anyway: 'review.anyway',
     retryMissed: 'quiz.retryMissed', almost: 'quiz.almost', wrong: 'quiz.wrong',
-    override: 'quiz.override',
+    override: 'quiz.override', submit: 'test.submit', dontKnow: 'test.dontKnow',
     tierNew: 'stats.tier.new', tierLearning: 'stats.tier.learning',
     tierFamiliar: 'stats.tier.familiar', tierMastered: 'stats.tier.mastered',
     accents: 'settings.accents', typos: 'settings.typos', reset: 'settings.reset',

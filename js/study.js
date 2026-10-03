@@ -1,12 +1,12 @@
-/* Pieces every study mode needs. Keeping them here is what stops the six modes
-   from growing six copies of the same card, banner and summary. */
+/* Pieces every study mode needs. Keeping them here is what stops the seven
+   modes from growing seven copies of the same card, banner and summary. */
 
 import { el, icon, mount } from './dom.js';
-import { t, getLocale } from './i18n/index.js';
+import { t, tn, getLocale } from './i18n/index.js';
 import { getSettings, recordSession } from './store.js';
 import { onCleanup, setBusy } from './router.js';
 import { cardRow } from './views/shared.js';
-import { pct } from './util.js';
+import { pct, formatDuration } from './util.js';
 import { cardImage } from './images.js';
 import { textKey, plain } from './text.js';
 import { richText } from './math.js';
@@ -38,7 +38,7 @@ export function cardSide(text, image, lang) {
 
 /* Drops a node into a translated sentence where its placeholder sits, so the
    answer keeps its own lang attribute and the translator keeps the wording. */
-function interpolateNode(key, name, node) {
+export function interpolateNode(key, name, node) {
   const [before, after] = t(key, { [name]: '\u0000' }).split('\u0000');
   return el('span', {}, before, node, after || null);
 }
@@ -184,7 +184,7 @@ const BANNERS = {
 
 /* An answer accepted despite missing accents still shows its exact spelling,
    which is what the accent flag from grade() is for. */
-function feedbackBanner(verdict, { expected, accent, lang } = {}) {
+export function feedbackBanner(verdict, { expected, accent, lang } = {}) {
   const spec = BANNERS[verdict] || BANNERS.wrong;
   const answerKey = verdict === 'correct' ? 'quiz.spelling' : 'quiz.expected';
   return el('div', { class: 'banner ' + spec.class, role: 'status', 'aria-live': 'polite' },
@@ -247,6 +247,50 @@ export function summaryPanel({ score, scoreLabel, title, body, actions, missed, 
 export function saveSession(setId, { mode, total, correct, ms }) {
   if (!total) return;
   recordSession(setId, { mode, total, correct, ms });
+}
+
+/* Time limits in minutes; 0 is none. */
+const LIMITS = [0, 1, 2, 5, 10, 15, 30];
+/* The countdown turns red for the last fifth of the time, a minute at most. */
+const LOW_SHARE = 0.2;
+const LOW_MAX_MS = 60 * 1000;
+
+/* The time limit choice of a setup panel. */
+export function timerField(minutes) {
+  const select = el('select', { class: 'select' },
+    LIMITS.map((value) => el('option', { value: String(value) },
+      value ? tn('quiz.minutes', value) : t('quiz.noTimer'))));
+  select.value = String(minutes);
+  return {
+    root: el('label', { class: 'field' }, el('span', {}, t('quiz.timer')), select),
+    get value() { return Number(select.value); },
+  };
+}
+
+/* A countdown from minutes, drawn in node, that calls onEnd once when the
+   time is out. Leaving the page stops it too. */
+export function countdown(minutes, onEnd) {
+  const limit = minutes * 60 * 1000;
+  const deadline = Date.now() + limit;
+  const node = el('p', { class: 'quiz-timer', role: 'timer' });
+  const ticker = setInterval(tick, 250);
+  const stop = () => clearInterval(ticker);
+  onCleanup(stop);
+
+  function tick() {
+    const left = deadline - Date.now();
+    if (left <= 0) {
+      stop();
+      onEnd();
+      return;
+    }
+    /* Whole seconds rounded up, so the clock never reads 0:00 with time left. */
+    node.textContent = t('quiz.timeLeft', { time: formatDuration(Math.ceil(left / 1000) * 1000) });
+    node.dataset.low = left <= Math.min(LOW_MAX_MS, limit * LOW_SHARE) ? '1' : '0';
+  }
+
+  tick();
+  return { node, stop };
 }
 
 const ACTIVATABLE = 'button, a[href]';

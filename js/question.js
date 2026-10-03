@@ -1,6 +1,7 @@
-/* Questions as the quiz and learn modes ask them: one card as multiple
-   choice, true or false or a written answer, and the widget that puts one on
-   screen and collects the verdict. */
+/* Questions as the quiz, test and learn modes ask them: one card as
+   multiple choice, true or false, matching or a written answer, the pieces
+   that draw one, and the widget that puts one on screen at a time and
+   collects the verdict. */
 
 import { el, mount } from './dom.js';
 import { t } from './i18n/index.js';
@@ -12,7 +13,14 @@ import {
   answerField, answerFeedback, typedAnswer, bindKeys, speakButton, cardText, cardSide, sideKey,
 } from './study.js';
 
-const ASK_KEYS = { choice: 'quiz.askChoice', truefalse: 'quiz.askTrueFalse', written: 'quiz.askWritten' };
+const ASK_KEYS = {
+  choice: 'quiz.askChoice', truefalse: 'quiz.askTrueFalse',
+  matching: 'test.askMatching', written: 'quiz.askWritten',
+};
+const TYPE_KEYS = {
+  choice: 'quiz.typeChoice', truefalse: 'quiz.typeTrueFalse',
+  matching: 'test.typeMatching', written: 'quiz.typeWritten',
+};
 const DIRECTIONS = [
   { id: 'forward', label: 'quiz.dirForward' },
   { id: 'backward', label: 'quiz.dirBackward' },
@@ -27,6 +35,24 @@ export function directionField(value) {
   return {
     root: el('label', { class: 'field' }, el('span', {}, t('quiz.direction')), select),
     get value() { return select.value; },
+  };
+}
+
+/* The question types of a setup panel, as checkboxes, those in chosen
+   ticked. */
+export function typesField(types, chosen) {
+  const boxes = types.map((type) => {
+    const box = el('input', { type: 'checkbox', checked: chosen.includes(type) });
+    box.dataset.id = type;
+    return box;
+  });
+  return {
+    root: el('fieldset', { class: 'field', style: { border: 'none', padding: '0', margin: '0' } },
+      el('legend', { class: 'field-label' }, t('quiz.types')),
+      el('div', { class: 'stack', style: { gap: '8px', marginTop: '6px' } },
+        boxes.map((box) => el('label', { class: 'checkbox' },
+          box, el('span', { class: 'checkbox-text' }, t(TYPE_KEYS[box.dataset.id])))))),
+    get value() { return boxes.filter((box) => box.checked).map((box) => box.dataset.id); },
   };
 }
 
@@ -53,9 +79,10 @@ function sidesOf(entry, forward) {
     : { prompt: entry.def, key: entry.term, text: entry.card.term };
 }
 
-/* One card asked as kind, "choice", "truefalse" or "written". index is what
-   indexCards() made of the whole set, whose other cards give the wrong
-   options and the answers that share the prompt. */
+/* One card asked as kind, "choice", "truefalse", "matching" or "written".
+   index is what indexCards() made of the whole set, whose other cards give
+   the wrong options and the answers that share the prompt. A matching
+   question takes its options from the other questions of its group. */
 export function buildQuestion(set, index, card, kind, forward) {
   /* A side that is only a picture cannot be typed or listed as an option:
      the question then goes the other way. */
@@ -84,7 +111,7 @@ export function buildQuestion(set, index, card, kind, forward) {
       taken.add(sides.key);
     }
   }
-  if (kind !== 'written') {
+  if (kind === 'choice' || kind === 'truefalse') {
     for (const entry of index) {
       const sides = sidesOf(entry, forward);
       if (!sides.text || taken.has(sides.key)) continue;
@@ -101,6 +128,54 @@ export function buildQuestion(set, index, card, kind, forward) {
     question.truth = truthful;
   }
   return question;
+}
+
+/* The prompt of a question, with its kind above it and position, when
+   given, across from the kind. */
+export function questionPrompt(question, position) {
+  const kind = el('p', { class: 'question-kind' }, t(ASK_KEYS[question.kind]));
+  return el('div', { class: 'question' },
+    position ? el('div', { class: 'row-between' }, kind, el('span', { class: 'count' }, position)) : kind,
+    el('div', { class: 'question-prompt' },
+      cardSide(question.prompt, question.promptImage, question.promptLang),
+      question.prompt ? speakButton(question.prompt, question.promptLang) : null,
+      question.kind === 'truefalse'
+        ? el('span', { class: 'hint' }, '→ ', cardText(question.shown, question.answerLang))
+        : null,
+      question.hint && question.kind !== 'truefalse'
+        ? el('span', { class: 'hint' }, richText(question.hint))
+        : null));
+}
+
+/* Whether option is the right one for a choice or true or false question. */
+export function rightOption(question, option) {
+  return question.kind === 'truefalse'
+    ? option === question.truth
+    : textKey(option) === textKey(question.answer);
+}
+
+/* The options of a choice or true or false question. Once graded, the right
+   one and a wrong pick are marked and none can be clicked. With select, the
+   pick is a choice that can still change: it shows as pressed, and the
+   options carry no shortcut keys, since a page of questions has no single
+   one for the keys to answer. */
+export function optionButtons(question, { picked, graded = false, select = false, onPick }) {
+  const options = question.kind === 'truefalse'
+    ? [[true, t('quiz.true')], [false, t('quiz.false')]]
+    : question.options.map((option) => [option, cardText(option, question.answerLang)]);
+  return el('div', { class: 'options' }, options.map(([value, label], i) => {
+    let state = null;
+    if (graded) {
+      if (rightOption(question, value)) state = 'correct';
+      else if (picked === value) state = 'wrong';
+    }
+    return el('button', {
+      type: 'button', class: 'option', disabled: graded,
+      'aria-pressed': select && !graded ? String(picked === value) : null,
+      dataset: state ? { state } : {},
+      onclick: () => onPick(value),
+    }, select ? null : el('span', { class: 'key' }, String(i + 1)), label);
+  }));
 }
 
 /* Puts one question at a time on stage. The verdict is held until the
@@ -134,54 +209,12 @@ export function questionAsker(stage, { onAnswer, onContinue }) {
     onContinue(done, correct);
   }
 
-  function promptPanel() {
-    return el('div', { class: 'question' },
-      el('p', { class: 'question-kind' }, t(ASK_KEYS[question.kind])),
-      el('div', { class: 'question-prompt' },
-        cardSide(question.prompt, question.promptImage, question.promptLang),
-        question.prompt ? speakButton(question.prompt, question.promptLang) : null,
-        question.kind === 'truefalse'
-          ? el('span', { class: 'hint' }, '→ ', cardText(question.shown, question.answerLang))
-          : null,
-        question.hint && question.kind !== 'truefalse'
-          ? el('span', { class: 'hint' }, richText(question.hint))
-          : null));
-  }
-
-  function choiceBody() {
-    const buttons = question.options.map((option, i) => {
-      const isAnswer = textKey(option) === textKey(question.answer);
-      let state = null;
-      if (pending) {
-        if (isAnswer) state = 'correct';
-        else if (pending.detail.picked === option) state = 'wrong';
-      }
-      return el('button', {
-        type: 'button', class: 'option', disabled: Boolean(pending),
-        dataset: state ? { state } : {},
-        onclick: () => answer(isAnswer, { picked: option }),
-      }, el('span', { class: 'key' }, String(i + 1)), cardText(option, question.answerLang));
+  function optionsBody() {
+    return optionButtons(question, {
+      picked: pending ? pending.detail.picked : undefined,
+      graded: Boolean(pending),
+      onPick: (value) => answer(rightOption(question, value), { picked: value }),
     });
-    return el('div', { class: 'options' }, buttons);
-  }
-
-  function trueFalseBody() {
-    const make = (value, label, key) => {
-      const isRight = value === question.truth;
-      let state = null;
-      if (pending) {
-        if (isRight) state = 'correct';
-        else if (pending.detail.picked === value) state = 'wrong';
-      }
-      return el('button', {
-        type: 'button', class: 'option', disabled: Boolean(pending),
-        dataset: state ? { state } : {},
-        onclick: () => answer(isRight, { picked: value }),
-      }, el('span', { class: 'key' }, key), label);
-    };
-    return el('div', { class: 'options' },
-      make(true, t('quiz.true'), '1'),
-      make(false, t('quiz.false'), '2'));
   }
 
   function writtenBody() {
@@ -199,9 +232,7 @@ export function questionAsker(stage, { onAnswer, onContinue }) {
   }
 
   function paint() {
-    const body = question.kind === 'choice' ? choiceBody()
-      : question.kind === 'truefalse' ? trueFalseBody()
-        : writtenBody();
+    const body = question.kind === 'written' ? writtenBody() : optionsBody();
 
     const feedback = pending
       ? answerFeedback({
@@ -214,7 +245,7 @@ export function questionAsker(stage, { onAnswer, onContinue }) {
         })
       : null;
 
-    mount(stage, around.before, promptPanel(), body, feedback, around.after);
+    mount(stage, around.before, questionPrompt(question), body, feedback, around.after);
   }
 
   bindKeys((event) => {

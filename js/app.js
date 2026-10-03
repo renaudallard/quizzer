@@ -22,6 +22,7 @@ import { flashcardsView } from './modes/flashcards.js';
 import { reviewView } from './modes/review.js';
 import { learnView } from './modes/learn.js';
 import { quizView } from './modes/quiz.js';
+import { testView } from './modes/test.js';
 import { writeView } from './modes/write.js';
 import { matchView } from './modes/match.js';
 
@@ -111,6 +112,7 @@ function setRoutes() {
     review: reviewView,
     learn: learnView,
     quiz: quizView,
+    test: testView,
     write: writeView,
     match: matchView,
     stats: statsView,

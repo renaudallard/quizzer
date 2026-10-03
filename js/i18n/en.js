@@ -101,6 +101,8 @@ export default {
   "mode.review.desc": "See each card just before you would forget it.",
   "mode.quiz": "Quiz",
   "mode.quiz.desc": "Multiple choice, true or false and written answers.",
+  "mode.test": "Test",
+  "mode.test.desc": "Every question on one page, graded when you hand it in.",
   "mode.write": "Write",
   "mode.write.desc": "Type the answer until every card sticks.",
   "mode.match": "Match",
@@ -234,6 +236,21 @@ export default {
   "quiz.unanswered.other": "{n} questions were left unanswered.",
   "quiz.missed": "Worth another look",
   "quiz.retryMissed": "Replay the misses",
+
+  /* Test */
+  "test.setupTitle": "Set up your test",
+  "test.count": "Number of questions (at most {max})",
+  "test.typeMatching": "Matching",
+  "test.askMatching": "Match each one with its answer",
+  "test.positionRange": "{first}–{last} of {total}",
+  "test.dontKnow": "I don’t know",
+  "test.slotPick": "Pick from the list below",
+  "test.slotEmpty": "No answer yet",
+  "test.submit": "Hand in the test",
+  "test.confirmBlank.one": "{n} question has no answer and will count as missed. Hand in anyway?",
+  "test.confirmBlank.other": "{n} questions have no answer and will count as missed. Hand in anyway?",
+  "test.noAnswer": "No answer",
+  "test.review": "Your answers",
 
   /* Write */
   "write.prompt": "Type the answer",
@@ -375,11 +392,12 @@ export default {
   "help.start.p5": "To see Quizzer at work without writing anything, “{samples}” on the home page offers ready made sets: languages, French, mathematics, sciences, history, geography and a few curiosities.",
 
   "help.modes.title": "Study modes",
-  "help.modes.p1": "A set’s page offers six ways to study it, plus its statistics. Unless said otherwise, your answers move the spaced review along.",
+  "help.modes.p1": "A set’s page offers seven ways to study it, plus its statistics. Unless said otherwise, your answers move the spaced review along.",
   "help.modes.flashcards": "Flip through the cards and turn them over. “{reverse}” shows the definition first, “{starred}” keeps only the cards marked as hard, and “{sort}” has you put each card under “{know}” or “{learning}” so you can go over the second pile afterwards. Browsing is not testing yourself: this mode leaves the review schedule alone.",
   "help.modes.learn": "Each card is first picked out among several answers, then written from memory, seven at a time, the ones you know least first. A mistake sends the card back to the choices.",
   "help.modes.review": "Only the cards due today. Turn the card over and say yourself whether you knew it: “{again}” or “{good}”.",
   "help.modes.quiz": "Multiple choice, true or false and written answers, in one direction, the other or both, with an optional timer from one to thirty minutes. At the end, “{retryMissed}” goes over the questions you missed.",
+  "help.modes.test": "Every question on one page: true or false, multiple choice, matching in groups of up to five, and written answers, in one direction, the other or both, with the same optional timer as the quiz. Answers can change until “{submit}”, and only then is the test graded, each question shown with its correction. A question left blank or answered “{dontKnow}” counts as missed, and when the time runs out the test is handed in as it stands.",
   "help.modes.write": "Type every answer. A missed card comes back later in the round, until all of them are cleared.",
   "help.modes.match": "Pair six terms with their definitions against the clock. Only your best time is kept, and the review schedule is left alone.",
   "help.modes.stats": "How well the set is mastered, the cards reviewed over the last 14 days, the cards forgotten most often and your latest sessions.",
@@ -414,7 +432,7 @@ export default {
   "help.grading.p3": "Numbers keep their meaning and get no typo allowance: `3,14` matches `3.14` but `314` does not, `1000` matches `1 000`, and `5` does not match `-5`.",
   "help.grading.p4": "A formula is graded as a formula: brackets, minus signs and primes count, so `2x+1` does not match `2(x+1)`. Case, spaces and a decimal comma are overlooked, never a typo. Signs a keyboard lacks are typed like this:",
   "help.grading.p5": "An exponent or an index holding a sign goes in brackets: `x^(n-1)` matches xⁿ⁻¹, `x^n-1` does not. A charge above one needs its `^`, since `Fe3+` would read as an index. LaTeX is graded in its one line form, shown above, and an answer may itself be typed in LaTeX.",
-  "help.grading.p6": "If the grading got it wrong, “{override}” counts the answer as right. Nothing is recorded before you move to the next card, so the card does not count twice.",
+  "help.grading.p6": "If the grading got it wrong, “{override}” counts the answer as right. Nothing is recorded before you move to the next card, so the card does not count twice. The test does not offer it: everything is recorded the moment it is handed in.",
 
   "help.transfer.title": "Import, export, share",
   "help.transfer.p1": "“{transfer}”, in the top bar, gathers the ways in and out. “{exportAll}” downloads a full JSON backup: sets, progress, pictures, history and settings. Restoring it merges rather than overwrites, and restoring it twice changes nothing.",
