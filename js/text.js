@@ -447,6 +447,25 @@ function typoBudget(length) {
   return 2;
 }
 
+/* The definite articles that may be left out of an answer, by its
+   language: "Maroc" is right for "Le Maroc". Only French and English, since
+   the Dutch and Italian courses drill their articles, and only the definite
+   one, since "a few" is not "few". A set with no language takes both. */
+const ARTICLES = {
+  fr: /^(?:(?:le|la|les)\s+|l['’]\s*)(?=\p{L})/iu,
+  en: /^the\s+(?=\p{L})/iu,
+};
+
+/* The text without its leading article, or null when it has none. */
+function withoutArticle(text, lang) {
+  const patterns = lang ? (Object.hasOwn(ARTICLES, lang) ? [ARTICLES[lang]] : []) : Object.values(ARTICLES);
+  for (const pattern of patterns) {
+    const found = text.match(pattern);
+    if (found) return text.slice(found[0].length);
+  }
+  return null;
+}
+
 const WRONG = Object.freeze({ verdict: 'wrong', accent: false });
 
 /* Grades a typed answer against one text, taken whole. */
@@ -469,6 +488,19 @@ function compare(typed, expected, options) {
   return WRONG;
 }
 
+/* A missing article is forgiven, on either side. When both sides have
+   one, they are compared as they are, so a wrong article counts like any
+   other wrong letter. */
+function compareText(typed, expected, options) {
+  const whole = compare(typed, expected, options);
+  if (isMath(expected)) return whole;
+  const typedBare = withoutArticle(typed, options.lang);
+  const expectedBare = withoutArticle(expected, options.lang);
+  if ((typedBare === null) === (expectedBare === null)) return whole;
+  const bare = compare(typedBare ?? typed, expectedBare ?? expected, options);
+  return rank(bare) > rank(whole) ? bare : whole;
+}
+
 /* A definition may list several answers separated by commas, as in
    "heureux, heureusement". All of them, in any order, are right, and
    only some of them is almost right. */
@@ -483,7 +515,7 @@ function compareList(typed, expected, options) {
     let best = WRONG;
     let at = -1;
     items.forEach((item, i) => {
-      const result = compare(part, item, options);
+      const result = compareText(part, item, options);
       if (rank(result) > rank(best)) {
         best = result;
         at = i;
@@ -499,13 +531,14 @@ function compareList(typed, expected, options) {
 }
 
 /* Returns { verdict, accent } where accent flags an answer that only differs by
-   its diacritics, so the interface can point that out without failing anyone. */
+   its diacritics, so the interface can point that out without failing anyone.
+   options.lang is the language of the answer, for its articles. */
 export function grade(input, expected, options = {}) {
   const typed = plainTyped(input).trim();
   let best = WRONG;
   if (!typed) return { ...best };
   for (const variant of acceptedAnswers(expected)) {
-    for (const result of [compare(typed, variant, options), compareList(typed, variant, options)]) {
+    for (const result of [compareText(typed, variant, options), compareList(typed, variant, options)]) {
       if (rank(result) > rank(best)) best = result;
     }
     if (rank(best) === 4) break;

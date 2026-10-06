@@ -120,7 +120,7 @@ export default {
   "editor.termLang": "Taal van de termen",
   "editor.defLang": "Taal van de definities",
   "editor.langNone": "Niet opgegeven",
-  "editor.langHint": "Wordt gebruikt om kaarten voor te lezen.",
+  "editor.langHint": "Wordt gebruikt om kaarten voor te lezen, en bepaalt of het lidwoord van een antwoord mag wegvallen.",
   "editor.cards": "Kaarten",
   "editor.addCard": "Kaart toevoegen",
   "editor.termPlaceholder": "Term",
@@ -386,7 +386,7 @@ export default {
 
   "help.start.title": "Een set maken",
   "help.start.p1": "“{create}” opent een lege set. Geef hem een titel, eventueel een beschrijving, en vul dan de kaarten in: de term aan de ene kant, de definitie aan de andere. “{addCard}” voegt een kaart toe, en de prullenbak naast een kaart verwijdert hem.",
-  "help.start.p2": "“{termLang}” en “{defLang}” dienen voor het voorlezen: een Spaanse kaart wordt door een Spaanse stem voorgelezen.",
+  "help.start.p2": "“{termLang}” en “{defLang}” dienen voor het voorlezen: een Spaanse kaart wordt door een Spaanse stem voorgelezen. Ze bepalen ook of het lidwoord van een antwoord mag wegvallen.",
   "help.start.p3": "“{bulk}” maakt meerdere kaarten tegelijk: één kaart per regel, eerst de term en dan de definitie, gescheiden door een tab, een puntkomma of een komma. Cellen gekopieerd uit een rekenblad komen met tabs gescheiden binnen, klaar voor gebruik.",
   "help.start.p4": "Lege regels vallen weg bij het opslaan. Een half ingevulde kaart houdt het opslaan tegen met een bericht dat hem aanwijst, zodat geen kaart en geen voortgang per ongeluk verloren gaat.",
   "help.start.p5": "Om Quizzer aan het werk te zien zonder iets te schrijven, biedt “{samples}” op de startpagina kant-en-klare sets: talen, Frans, wiskunde, wetenschappen, geschiedenis, aardrijkskunde en wat curiosa.",
@@ -410,7 +410,7 @@ export default {
 
   "help.cards.title": "Kaarten schrijven",
   "help.cards.p1": "Een definitie kan meerdere antwoorden geven, gescheiden door ` / ` of door een puntkomma: `auto / wagen` aanvaardt allebei. Een schuine streep scheidt alleen als er een spatie naast staat, dus `km/h` blijft één antwoord, dat je helemaal typt. Een komma scheidt de delen van een lijst: `blij, gelukkig` vraagt ze allebei, in eender welke volgorde, en één ervan alleen geeft “{almost}”. Een komma tussen twee cijfers blijft een decimale komma.",
-  "help.cards.p2": "Wat tussen haakjes staat, is optioneel: `(Victor) Hugo` aanvaardt zowel `Hugo` als `Victor Hugo`. Laat het lidwoord weg, tenzij het deel is van wat je leert: met `het dijbeen` als antwoord zou `dijbeen` fout zijn.",
+  "help.cards.p2": "Wat tussen haakjes staat, is optioneel: `(Victor) Hugo` aanvaardt zowel `Hugo` als `Victor Hugo`. In het Frans en het Engels mag het bepaald lidwoord wegvallen: `Maroc` komt overeen met `le Maroc` en `moon` met `the moon`. Andere talen houden het, zodat je het met het woord leert: in een Nederlandse set is `dijbeen` fout voor `het dijbeen`. De taal is die van “{termLang}” of “{defLang}”, en zonder gekozen taal gelden Frans en Engels.",
   "help.cards.p3": "Als meerdere kaarten dezelfde vraag stellen, zoals `hola` en `buenos días` die allebei `goedendag` betekenen, is elk van hun antwoorden goed, en geen ervan wordt bij meerkeuze als fout antwoord aangeboden.",
   "help.cards.p4": "Het veld “{hint}” staat naast de vraag, in welke richting ook: het mag het antwoord dus nooit bevatten. Het onderscheidt twee kaarten met hetzelfde antwoord, zoals `el coche` en `el carro` voor `de auto`.",
   "help.cards.p5": "De knop “{image}” onder elke kant zet er een afbeelding op, net als een afbeelding die je in het veld plakt of op de kant neerzet. Ze wordt verkleind tot 800 pixels aan de langste kant, en geweigerd als ze dan nog groter is dan 2 MB. Een kant mag alleen een afbeelding zijn, zoals een foto van een hond met `le chien` als antwoord: er wordt dan altijd naar de geschreven kant gevraagd.",

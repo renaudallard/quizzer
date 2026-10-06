@@ -363,6 +363,16 @@ decimal comma and separates nothing. In the samples this also applies to
 the irregular verbs, where `was` alone is "presque" for `was, been`, and to
 phrases such as `bien, merci`.
 
+The definite article may be left out, or added, in French and English:
+`Maroc` is right for `Le Maroc`, `eau` for `l'eau` and `moon` for
+`the moon`. Only le, la, les, l' and the count, since an indefinite article
+changes the meaning, as in `un peu` or `a few`. The language is the one the
+set gives to the side being typed, and a set with none takes both. Other
+languages keep their articles, so the Dutch and Italian courses still drill
+de and het, il and la. When both the typed answer and the expected one
+start with an article, they are compared as written, so a wrong article
+counts like any other wrong letter.
+
 When several cards share a prompt, such as `hola` and `buenos días` which both
 mean `bonjour`, each of their answers is right: the quiz, the test and
 Apprendre never offer one as a wrong option, and a typed or matched answer may
@@ -549,7 +559,8 @@ speaks whichever side is showing.
 
 Term and definition text carries its own `lang` attribute when the set
 declares one, which is what makes read aloud pronounce a Spanish card in
-Spanish. The announcement of a turned card carries it too.
+Spanish. The announcement of a turned card carries it too. The same
+language decides whether a typed answer may leave its article out.
 
 Moving to another page puts the focus on the page and scrolls to the top.
 Rebuilding the same page, after a language change or another tab's save,

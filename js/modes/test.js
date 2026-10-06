@@ -112,7 +112,7 @@ function answered(question) {
 function grade(question, settings) {
   if (!answered(question) || question.given === DONT_KNOW) return { correct: false };
   if (question.kind === 'written') {
-    const result = gradeAny(question.given, question.accepted, settings);
+    const result = gradeAny(question.given, question.accepted, { ...settings, lang: question.answerLang });
     return { correct: result.verdict !== 'wrong', result };
   }
   if (question.kind === 'matching') {

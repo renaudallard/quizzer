@@ -120,7 +120,7 @@ export default {
   "editor.termLang": "Langue des termes",
   "editor.defLang": "Langue des définitions",
   "editor.langNone": "Non précisée",
-  "editor.langHint": "Sert à la lecture à voix haute.",
+  "editor.langHint": "Sert à la lecture à voix haute, et dit si l’article d’une réponse peut s’oublier.",
   "editor.cards": "Cartes",
   "editor.addCard": "Ajouter une carte",
   "editor.termPlaceholder": "Terme",
@@ -386,7 +386,7 @@ export default {
 
   "help.start.title": "Créer un jeu",
   "help.start.p1": "« {create} » ouvre un jeu vide. Donnez-lui un titre, une description si vous le souhaitez, puis remplissez les cartes: le terme d’un côté, la définition de l’autre. « {addCard} » ajoute une carte, et la corbeille à côté d’une carte la supprime.",
-  "help.start.p2": "« {termLang} » et « {defLang} » servent à la lecture à voix haute: une carte d’espagnol est lue par une voix espagnole.",
+  "help.start.p2": "« {termLang} » et « {defLang} » servent à la lecture à voix haute: une carte d’espagnol est lue par une voix espagnole. Elles disent aussi si l’article d’une réponse peut s’oublier.",
   "help.start.p3": "« {bulk} » crée plusieurs cartes d’un coup: une carte par ligne, le terme puis la définition, séparés par une tabulation, un point-virgule ou une virgule. Des cellules copiées depuis un tableur arrivent séparées par des tabulations, prêtes à l’emploi.",
   "help.start.p4": "Les lignes laissées vides disparaissent à l’enregistrement. Une carte à moitié remplie bloque l’enregistrement avec un message qui la désigne, pour qu’aucune carte ni sa progression ne se perde par mégarde.",
   "help.start.p5": "Pour voir Quizzer à l’œuvre sans rien écrire, « {samples} » sur l’accueil propose des jeux prêts à l’emploi: langues, français, mathématiques, sciences, histoire, géographie et quelques curiosités.",
@@ -410,7 +410,7 @@ export default {
 
   "help.cards.title": "Rédiger les cartes",
   "help.cards.p1": "Une définition peut proposer plusieurs réponses, séparées par ` / ` ou par un point-virgule: `voiture / auto` accepte l’une comme l’autre. La barre oblique ne sépare que si elle touche un espace, si bien que `km/h` reste une seule réponse, à taper en entier. Une virgule sépare les éléments d’une liste: `heureux, heureusement` demande les deux, dans n’importe quel ordre, et un seul donne « {almost} ». Une virgule entre deux chiffres reste une virgule décimale.",
-  "help.cards.p2": "Ce qui est entre parenthèses est facultatif: `(Victor) Hugo` accepte `Hugo` comme `Victor Hugo`. Laissez l’article de côté, sauf s’il fait partie de ce qu’on apprend: avec `le fémur` en réponse, `fémur` serait faux.",
+  "help.cards.p2": "Ce qui est entre parenthèses est facultatif: `(Victor) Hugo` accepte `Hugo` comme `Victor Hugo`. En français et en anglais, l’article défini peut s’oublier: `Maroc` vaut `le Maroc` et `moon` vaut `the moon`. Les autres langues le gardent, pour qu’il s’apprenne avec le mot: dans un jeu en néerlandais, `dijbeen` est faux pour `het dijbeen`. La langue est celle choisie sous « {termLang} » ou « {defLang} », et sans langue choisie le français et l’anglais s’appliquent.",
   "help.cards.p3": "Quand plusieurs cartes posent la même question, comme `hola` et `buenos días` qui veulent dire tous deux `bonjour`, chacune de leurs réponses est juste, et aucune n’est proposée comme mauvaise réponse dans un choix multiple.",
   "help.cards.p4": "Le champ « {hint} » s’affiche à côté de la question, dans un sens comme dans l’autre: il ne doit jamais contenir la réponse. C’est lui qui départage deux cartes de même réponse, comme `dank je` et `dank u` pour `merci`.",
   "help.cards.p5": "Le bouton « {image} » sous chaque côté y met une image, tout comme une image collée dans le champ ou déposée sur le côté. Elle est réduite à 800 pixels sur son plus grand côté, et refusée si elle dépasse encore 2 Mo. Un côté peut n’être qu’une image, comme la photo d’un chien avec `de hond` en réponse: les questions demandent alors toujours le côté écrit.",

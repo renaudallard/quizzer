@@ -60,7 +60,7 @@ export function writeView(id) {
       .map(asked)
       .filter((other) => sideKey(other.text, other.image) === prompt)
       .map((other) => other.answer)];
-    const verdict = gradeAny(value, accepted, store.getSettings());
+    const verdict = gradeAny(value, accepted, { ...store.getSettings(), lang: side.answerLang });
     run.pending = { verdict, typed: value, correct: verdict.verdict !== 'wrong' };
     paint();
   }

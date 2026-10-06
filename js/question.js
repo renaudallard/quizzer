@@ -224,7 +224,7 @@ export function questionAsker(stage, { onAnswer, onContinue }) {
       placeholder: t('write.answerPlaceholder'),
       submitLabel: t('quiz.check'),
       onSubmit: (value) => {
-        const verdict = gradeAny(value, question.accepted, settings);
+        const verdict = gradeAny(value, question.accepted, { ...settings, lang: question.answerLang });
         answer(verdict.verdict !== 'wrong', { typed: value, verdict });
       },
     });
