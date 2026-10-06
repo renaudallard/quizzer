@@ -409,7 +409,7 @@ export default {
   "help.schedule.p4": "L’accueil compte vos réponses du jour face à un objectif de 20 cartes. Un clic sur la tuile « {goal} » permet de le changer, entre 5 et 200.",
 
   "help.cards.title": "Rédiger les cartes",
-  "help.cards.p1": "Une définition peut proposer plusieurs réponses, séparées par ` / ` ou par un point-virgule: `voiture / auto` accepte l’une comme l’autre. La barre oblique ne sépare que si elle touche un espace, si bien que `km/h` reste une seule réponse, à taper en entier.",
+  "help.cards.p1": "Une définition peut proposer plusieurs réponses, séparées par ` / ` ou par un point-virgule: `voiture / auto` accepte l’une comme l’autre. La barre oblique ne sépare que si elle touche un espace, si bien que `km/h` reste une seule réponse, à taper en entier. Une virgule sépare les éléments d’une liste: `heureux, heureusement` demande les deux, dans n’importe quel ordre, et un seul donne « {almost} ». Une virgule entre deux chiffres reste une virgule décimale.",
   "help.cards.p2": "Ce qui est entre parenthèses est facultatif: `(Victor) Hugo` accepte `Hugo` comme `Victor Hugo`. Laissez l’article de côté, sauf s’il fait partie de ce qu’on apprend: avec `le fémur` en réponse, `fémur` serait faux.",
   "help.cards.p3": "Quand plusieurs cartes posent la même question, comme `hola` et `buenos días` qui veulent dire tous deux `bonjour`, chacune de leurs réponses est juste, et aucune n’est proposée comme mauvaise réponse dans un choix multiple.",
   "help.cards.p4": "Le champ « {hint} » s’affiche à côté de la question, dans un sens comme dans l’autre: il ne doit jamais contenir la réponse. C’est lui qui départage deux cartes de même réponse, comme `dank je` et `dank u` pour `merci`.",

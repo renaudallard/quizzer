@@ -149,6 +149,9 @@ async function run() {
     assert(text.grade('km/h', 'km/h').verdict === 'correct', 'réponse entière avec une barre');
     assert(text.grade('h', 'km/h').verdict === 'wrong', 'morceau de réponse');
     assert(text.grade('collègue', 'collègue (m/f)').verdict === 'correct', 'précision entre parenthèses');
+    assert(text.grade('heureux', 'heureux, heureusement').verdict === 'almost', 'une réponse sur deux');
+    assert(text.grade('heureusement, heureux', 'heureux, heureusement').verdict === 'correct', 'liste dans le désordre');
+    assert(text.grade('heureux, triste', 'heureux, heureusement').verdict === 'wrong', 'liste avec une erreur');
     assert(text.grade('coeur', 'cœur').verdict === 'correct', 'ligature');
     assert(text.grade('leau', 'l’eau').verdict === 'correct', 'apostrophe omise');
     assert(text.grade('bonjour', '« bonjour »').verdict === 'correct', 'guillemets');

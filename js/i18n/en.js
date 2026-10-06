@@ -409,7 +409,7 @@ export default {
   "help.schedule.p4": "The home page counts today’s answers against a goal of 20 cards. Clicking the “{goal}” tile lets you change it, from 5 to 200.",
 
   "help.cards.title": "Writing cards",
-  "help.cards.p1": "A definition may offer several answers, separated by ` / ` or by a semicolon: `car / automobile` accepts either. A slash only separates when a space sits next to it, so `km/h` stays one answer, to be typed whole.",
+  "help.cards.p1": "A definition may offer several answers, separated by ` / ` or by a semicolon: `car / automobile` accepts either. A slash only separates when a space sits next to it, so `km/h` stays one answer, to be typed whole. A comma separates the items of a list: `happy, happily` asks for both, in any order, and one of them alone gives “{almost}”. A comma between two digits stays a decimal comma.",
   "help.cards.p2": "What is in brackets is optional: `(Victor) Hugo` accepts `Hugo` as well as `Victor Hugo`. Leave the article out unless it is part of what is learned: with `the femur` as the answer, `femur` would be wrong.",
   "help.cards.p3": "When several cards ask the same question, such as `hola` and `buenos días` which both mean `hello`, each of their answers is right, and none is offered as a wrong option in multiple choice.",
   "help.cards.p4": "The “{hint}” field shows next to the question, whichever way round: it must never hold the answer. It is what tells apart two cards with the same answer, such as `dank je` and `dank u` for `thank you`.",

@@ -409,7 +409,7 @@ export default {
   "help.schedule.p4": "De startpagina telt je antwoorden van vandaag tegen een doel van 20 kaarten. Met een klik op de tegel “{goal}” pas je het aan, van 5 tot 200.",
 
   "help.cards.title": "Kaarten schrijven",
-  "help.cards.p1": "Een definitie kan meerdere antwoorden geven, gescheiden door ` / ` of door een puntkomma: `auto / wagen` aanvaardt allebei. Een schuine streep scheidt alleen als er een spatie naast staat, dus `km/h` blijft één antwoord, dat je helemaal typt.",
+  "help.cards.p1": "Een definitie kan meerdere antwoorden geven, gescheiden door ` / ` of door een puntkomma: `auto / wagen` aanvaardt allebei. Een schuine streep scheidt alleen als er een spatie naast staat, dus `km/h` blijft één antwoord, dat je helemaal typt. Een komma scheidt de delen van een lijst: `blij, gelukkig` vraagt ze allebei, in eender welke volgorde, en één ervan alleen geeft “{almost}”. Een komma tussen twee cijfers blijft een decimale komma.",
   "help.cards.p2": "Wat tussen haakjes staat, is optioneel: `(Victor) Hugo` aanvaardt zowel `Hugo` als `Victor Hugo`. Laat het lidwoord weg, tenzij het deel is van wat je leert: met `het dijbeen` als antwoord zou `dijbeen` fout zijn.",
   "help.cards.p3": "Als meerdere kaarten dezelfde vraag stellen, zoals `hola` en `buenos días` die allebei `goedendag` betekenen, is elk van hun antwoorden goed, en geen ervan wordt bij meerkeuze als fout antwoord aangeboden.",
   "help.cards.p4": "Het veld “{hint}” staat naast de vraag, in welke richting ook: het mag het antwoord dus nooit bevatten. Het onderscheidt twee kaarten met hetzelfde antwoord, zoals `el coche` en `el carro` voor `de auto`.",

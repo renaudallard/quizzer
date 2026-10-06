@@ -355,6 +355,14 @@ when a space sits next to it, so `km/h` and `24/7` are answers in their own
 right and must be typed whole. In `collègue (m/f)` the slash stays inside the
 optional precision: `collègue` is right, `m` alone is not.
 
+A comma separates the items of a list, which all belong in the answer:
+`heureux, heureusement` is right with both items, in either order, and one
+item alone gives "presque", which counts as right just as a typo does. Each
+item gets its own accent and typo allowance. A comma between two digits is a
+decimal comma and separates nothing. In the samples this also applies to
+the irregular verbs, where `was` alone is "presque" for `was, been`, and to
+phrases such as `bien, merci`.
+
 When several cards share a prompt, such as `hola` and `buenos días` which both
 mean `bonjour`, each of their answers is right: the quiz, the test and
 Apprendre never offer one as a wrong option, and a typed or matched answer may

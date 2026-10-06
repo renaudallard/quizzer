@@ -367,10 +367,9 @@ function compact(text) {
   return text.replace(/(\d) (?=\d)| /g, (match, digit) => (digit ? match : ''));
 }
 
-/* Splits on the separators that sit outside brackets: a semicolon, or a slash
-   with a space beside it. A bare slash belongs to the answer, as in "km/h",
-   "24/7" or "collègue (m/f)". */
-function splitAlternatives(text) {
+/* Splits on the separators that sit outside brackets, as told by
+   separates(text, i). */
+function splitOutside(text, separates) {
   const parts = [];
   let depth = 0;
   let start = 0;
@@ -378,14 +377,29 @@ function splitAlternatives(text) {
     const char = text[i];
     if (char === '(') depth++;
     else if (char === ')') depth = Math.max(0, depth - 1);
-    else if (depth === 0 && (char === ';'
-      || (char === '/' && (/\s/.test(text[i - 1] || '') || /\s/.test(text[i + 1] || ''))))) {
+    else if (depth === 0 && separates(text, i)) {
       parts.push(text.slice(start, i));
       start = i + 1;
     }
   }
   parts.push(text.slice(start));
   return parts;
+}
+
+/* Alternatives are split on a semicolon, or a slash with a space beside it.
+   A bare slash belongs to the answer, as in "km/h", "24/7" or
+   "collègue (m/f)". */
+function splitAlternatives(text) {
+  return splitOutside(text, (source, i) => source[i] === ';'
+    || (source[i] === '/' && (/\s/.test(source[i - 1] || '') || /\s/.test(source[i + 1] || ''))));
+}
+
+/* The items of a list are split on a comma, unless digits stand on both
+   sides of it, as in "3,14". */
+function listItems(text) {
+  return splitOutside(text, (source, i) => source[i] === ','
+    && !(/\d/.test(source[i - 1] || '') && /\d/.test(source[i + 1] || '')))
+    .map((item) => item.trim()).filter(Boolean);
 }
 
 /* A definition may list alternatives with " / " or ";", and may put an
@@ -433,52 +447,79 @@ function typoBudget(length) {
   return 2;
 }
 
+const WRONG = Object.freeze({ verdict: 'wrong', accent: false });
+
+/* Grades a typed answer against one text, taken whole. */
+function compare(typed, expected, options) {
+  const { accents = true, typos = true } = options;
+  /* A formula is right or wrong: one sign more or less is another one. */
+  if (isMath(expected)) return formula(typed) === formula(expected) ? { verdict: 'correct', accent: false } : WRONG;
+  const strict = compact(normalize(expected, false));
+  const loose = compact(normalize(expected, true));
+  /* An answer made only of punctuation, such as "?", is compared as typed. */
+  if (!strict) return typed === expected ? { verdict: 'correct', accent: false } : WRONG;
+  const givenLoose = compact(normalize(typed, true));
+  if (compact(normalize(typed, false)) === strict) return { verdict: 'correct', accent: false };
+  if (givenLoose === loose) return { verdict: accents ? 'correct' : 'almost', accent: true };
+  /* The allowance follows the expected answer, so padding a short answer
+     cannot buy a typo and a long answer keeps its slack. */
+  if (typos && !NUMBER.test(loose) && levenshtein(givenLoose, loose) <= typoBudget(loose.length)) {
+    return { verdict: 'almost', accent: false };
+  }
+  return WRONG;
+}
+
+/* A definition may list several answers separated by commas, as in
+   "heureux, heureusement". All of them, in any order, are right, and
+   only some of them is almost right. */
+function compareList(typed, expected, options) {
+  const items = listItems(expected);
+  const parts = listItems(typed);
+  if (items.length < 2 || !parts.length || isMath(expected)) return WRONG;
+  const found = new Set();
+  let exact = true;
+  let accent = false;
+  for (const part of parts) {
+    let best = WRONG;
+    let at = -1;
+    items.forEach((item, i) => {
+      const result = compare(part, item, options);
+      if (rank(result) > rank(best)) {
+        best = result;
+        at = i;
+      }
+    });
+    if (at < 0) return WRONG;
+    found.add(at);
+    if (best.verdict !== 'correct') exact = false;
+    if (best.accent) accent = true;
+  }
+  if (found.size < items.length) return { verdict: 'almost', accent: false };
+  return { verdict: exact ? 'correct' : 'almost', accent };
+}
+
 /* Returns { verdict, accent } where accent flags an answer that only differs by
    its diacritics, so the interface can point that out without failing anyone. */
 export function grade(input, expected, options = {}) {
-  const { accents = true, typos = true } = options;
   const typed = plainTyped(input).trim();
-  if (!typed) return { verdict: 'wrong', accent: false };
-  const given = compact(normalize(typed, false));
-  const givenLoose = compact(normalize(typed, true));
-
-  let accentOnly = false;
-  let near = false;
-
+  let best = WRONG;
+  if (!typed) return { ...best };
   for (const variant of acceptedAnswers(expected)) {
-    /* A formula is right or wrong: one sign more or less is another one. */
-    if (isMath(variant)) {
-      if (formula(typed) === formula(variant)) return { verdict: 'correct', accent: false };
-      continue;
+    for (const result of [compare(typed, variant, options), compareList(typed, variant, options)]) {
+      if (rank(result) > rank(best)) best = result;
     }
-    const strict = compact(normalize(variant, false));
-    const loose = compact(normalize(variant, true));
-    /* An answer made only of punctuation, such as "?", is compared as typed. */
-    if (!strict) {
-      if (typed === variant.trim()) return { verdict: 'correct', accent: false };
-      continue;
-    }
-    if (given === strict) return { verdict: 'correct', accent: false };
-    if (givenLoose === loose) {
-      if (accents) return { verdict: 'correct', accent: true };
-      accentOnly = true;
-      continue;
-    }
-    /* The allowance follows the expected answer, so padding a short answer
-       cannot buy a typo and a long answer keeps its slack. */
-    if (typos && !NUMBER.test(loose) && levenshtein(givenLoose, loose) <= typoBudget(loose.length)) near = true;
+    if (rank(best) === 4) break;
   }
-
-  if (accentOnly) return { verdict: 'almost', accent: true };
-  if (near) return { verdict: 'almost', accent: false };
-  return { verdict: 'wrong', accent: false };
+  return { ...best };
 }
 
 /* An exact answer ranks above one that is only right once accents are
-   forgiven, which ranks above a near miss. */
+   forgiven, which ranks above a near miss on the accents alone, then any
+   other near miss. */
 function rank({ verdict, accent }) {
   if (verdict === 'correct') return accent ? 3 : 4;
-  return verdict === 'almost' ? 1 : 0;
+  if (verdict === 'almost') return accent ? 2 : 1;
+  return 0;
 }
 
 /* Grades against several answers that are all right, such as the terms of
