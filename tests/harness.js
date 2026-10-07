@@ -379,6 +379,32 @@ async function run() {
     return steps + ' questions';
   });
 
+  /* True or false only, every answer right: a pairing that was wrong adds
+     the correct one under the verdict, a right one adds nothing. */
+  check('le vrai ou faux du quiz donne l’association juste', () => {
+    const answers = new Map(set.cards.map((card) => [card.term, card.def]));
+    main.replaceChildren(quizView(set.id));
+    const boxes = main.querySelectorAll('.panel input[type="checkbox"]');
+    boxes[0].checked = false;
+    boxes[2].checked = false;
+    main.querySelector('.panel .btn-primary').click();
+    let wrong = 0;
+    let steps = 0;
+    while (!main.querySelector('.summary') && steps++ < 200) {
+      const prompt = main.querySelector('.question-prompt');
+      const want = answers.get(prompt.firstElementChild.textContent);
+      const shown = prompt.querySelector('.hint span').textContent;
+      main.querySelectorAll('.option')[shown === want ? 0 : 1].click();
+      const notes = [...main.querySelectorAll('.field-hint')].map((note) => note.textContent).join();
+      const expected = shown === want ? '' : i18n.t('quiz.rightPair', { answer: want });
+      assert(notes === expected, 'association juste: ' + notes);
+      if (shown !== want) wrong += 1;
+      main.querySelector('.study-nav .btn-primary').click();
+    }
+    assert(main.querySelector('.summary'), 'pas de résultat');
+    return steps + ' questions, ' + wrong + ' associations fausses';
+  });
+
   check('le quiz minuté affiche son décompte', () => {
     main.replaceChildren(quizView(set.id));
     main.querySelectorAll('select')[2].value = '1';

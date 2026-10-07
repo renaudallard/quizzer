@@ -243,12 +243,15 @@ export function questionAsker(stage, { onAnswer, onContinue }) {
   function paint() {
     const body = question.kind === 'written' ? writtenBody() : optionsBody();
 
+    /* A miss already shows the expected answer, so the correct pairing is
+       only added to a right "false". */
     const feedback = pending
       ? answerFeedback({
           correct: pending.correct,
           result: pending.detail.verdict,
           expected: question.answer,
           lang: question.answerLang,
+          note: pending.correct ? rightPair(question) : null,
           onOverride: question.kind === 'written' ? override : null,
           onContinue: advance,
         })

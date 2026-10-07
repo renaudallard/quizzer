@@ -45,6 +45,10 @@ piles last for the pass. At its end the score counts the cards you knew, the
 others are listed, and one button goes through just those; turning sorting
 off brings the whole set back.
 
+A true or false question in the quiz that showed a wrong pairing gives the
+correct pairing once answered: a miss shows it as the expected answer, and a
+correct "false" adds it below.
+
 The quiz can run against a time limit, from one to thirty minutes. The
 countdown sits above the question and turns red for the last fifth of the
 time, a minute at most. When it runs out the quiz ends: an answer already
