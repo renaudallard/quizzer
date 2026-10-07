@@ -11,6 +11,7 @@ import { gradeAny, textKey } from './text.js';
 import { richText } from './math.js';
 import {
   answerField, answerFeedback, typedAnswer, bindKeys, speakButton, cardText, cardSide, sideKey,
+  interpolateNode,
 } from './study.js';
 
 const ASK_KEYS = {
@@ -152,6 +153,14 @@ export function rightOption(question, option) {
   return question.kind === 'truefalse'
     ? option === question.truth
     : textKey(option) === textKey(question.answer);
+}
+
+/* The answer that really goes with the prompt of a true or false question
+   whose pairing was a wrong one, since "false" says only that the pairing
+   is wrong. Null for a pairing that was right, or for another kind. */
+export function rightPair(question) {
+  if (question.kind !== 'truefalse' || question.truth) return null;
+  return interpolateNode('quiz.rightPair', 'answer', cardText(question.answer, question.answerLang));
 }
 
 /* The options of a choice or true or false question. Once graded, the right

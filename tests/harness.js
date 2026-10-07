@@ -460,6 +460,17 @@ async function run() {
     assert(session.total === 12 && session.correct === 12, 'score: ' + session.correct + '/' + session.total);
     assert(main.querySelectorAll('.test-question').length === blocks.length, 'correction incomplète');
     assert(!main.querySelector('.test-question .banner-bad'), 'réponse juste corrigée comme fausse');
+    /* A true or false question that showed a wrong pairing gives the
+       correct one, one that showed the right pairing nothing more. */
+    for (const block of main.querySelectorAll('.test-question')) {
+      if (block.querySelectorAll('.option').length !== 2) continue;
+      const prompt = block.querySelector('.question-prompt');
+      const want = answers.get(prompt.firstElementChild.textContent);
+      const shown = prompt.querySelector('.hint span').textContent;
+      const notes = [...block.querySelectorAll('.field-hint')].map((note) => note.textContent).join();
+      const expected = shown === want ? '' : i18n.t('quiz.rightPair', { answer: want });
+      assert(notes === expected, 'association juste: ' + notes);
+    }
     return kinds.length + ' blocs, 12/12';
   });
 

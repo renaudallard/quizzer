@@ -64,9 +64,10 @@ be a free point, so it goes to another kind instead. Nothing is graded until
 the test is handed in, so any answer can change until then, and handing it in
 with questions left blank asks first. Every question is then recorded: a blank
 one or "Je ne sais pas" counts as missed, in the schedule too. The result
-shows each question again with its correction, and the misses can be tested
-again on their own. When the time runs out the test is handed in as it
-stands.
+shows each question again with its correction. A true or false question that
+showed a wrong pairing also gives the correct pairing, which "false" alone
+does not tell. The misses can be tested again on their own. When the time runs
+out the test is handed in as it stands.
 
 ### Spaced repetition
 

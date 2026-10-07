@@ -15,7 +15,7 @@ import {
 } from '../study.js';
 import {
   indexCards, buildQuestion, directionField, goesForward, typesField,
-  questionPrompt, optionButtons, rightOption,
+  questionPrompt, optionButtons, rightOption, rightPair,
 } from '../question.js';
 import { notFoundPanel } from '../views/shared.js';
 
@@ -374,13 +374,15 @@ export function testView(id) {
     } else {
       body = optionButtons(question, { picked: question.given, graded: true, onPick: () => {} });
     }
+    const right = rightPair(question);
     return el('section', { class: 'test-question' },
       verdictChip(verdict),
       questionPrompt(question, place),
       body,
       answered(question) && question.given !== DONT_KNOW
         ? null
-        : el('p', { class: 'field-hint' }, t('test.noAnswer')));
+        : el('p', { class: 'field-hint' }, t('test.noAnswer')),
+      right ? el('p', { class: 'field-hint' }, right) : null);
   }
 
   function showResult({ blocks, questions, verdicts, correct, total, blank, timedOut }) {
