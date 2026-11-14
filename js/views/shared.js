@@ -1,7 +1,7 @@
 /* Panels reused by several views. */
 
 import { el, icon, toast } from '../dom.js';
-import { t } from '../i18n/index.js';
+import { t, getLocale } from '../i18n/index.js';
 import * as store from '../store.js';
 import { shareUrl, copyText } from '../io.js';
 import { cardImage } from '../images.js';
@@ -77,6 +77,12 @@ export function cardRow(card, { termLang, defLang } = {}, tools) {
       thumbnail(card.defImage, card.def),
       card.def ? el('span', { lang: defLang || null }, richText(card.def)) : null),
     tools === undefined ? null : el('div', { class: 'card-row-tools' }, tools));
+}
+
+/* The folders in the order of their names, for the home page and the
+   editor alike. */
+export function foldersByName() {
+  return store.getFolders().slice().sort((a, b) => a.name.localeCompare(b.name, getLocale()));
 }
 
 export function notFoundPanel(message) {

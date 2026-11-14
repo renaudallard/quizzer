@@ -23,7 +23,7 @@ export const DEFAULT_SETTINGS = {
 };
 
 function emptyState() {
-  return { version: 1, settings: { ...DEFAULT_SETTINGS }, sets: [], activity: {}, sessions: [] };
+  return { version: 1, settings: { ...DEFAULT_SETTINGS }, folders: [], sets: [], activity: {}, sessions: [] };
 }
 
 function str(value, fallback = '') {
@@ -67,11 +67,26 @@ export function normalizeSet(raw) {
     description: str(raw && raw.description).trim(),
     termLang: str(raw && raw.termLang),
     defLang: str(raw && raw.defLang),
+    /* The id of the folder holding the set, or nothing. */
+    folder: str(raw && raw.folder),
     bestMatchMs: raw && Number.isFinite(raw.bestMatchMs) ? raw.bestMatchMs : null,
     created: num(raw && raw.created, now),
     updated: num(raw && raw.updated, now),
     cards: cards.filter((card) => card.term || card.def || card.termImage || card.defImage),
   };
+}
+
+/* A folder groups sets on the home page. open says whether it shows its
+   sets there. A folder with no name is dropped, and so is a second one
+   with the same id. */
+function normalizeFolders(raw) {
+  const folders = new Map();
+  for (const entry of Array.isArray(raw) ? raw : []) {
+    const id = str(entry && entry.id);
+    const name = str(entry && entry.name).trim();
+    if (id && name && !folders.has(id)) folders.set(id, { id, name, open: entry.open !== false });
+  }
+  return [...folders.values()];
 }
 
 /* Known keys only, laid over base, each only with the type of its default:
@@ -117,10 +132,15 @@ function normalizeActivity(raw) {
 function normalizeState(raw) {
   const base = emptyState();
   if (!raw || typeof raw !== 'object') return base;
+  const folders = normalizeFolders(raw.folders);
+  const known = new Set(folders.map((folder) => folder.id));
+  const sets = Array.isArray(raw.sets) ? raw.sets.map(normalizeSet) : [];
+  for (const set of sets) if (!known.has(set.folder)) set.folder = '';
   return {
     version: 1,
     settings: normalizeSettings(raw.settings),
-    sets: Array.isArray(raw.sets) ? raw.sets.map(normalizeSet) : [],
+    folders,
+    sets,
     activity: normalizeActivity(raw.activity),
     sessions: Array.isArray(raw.sessions)
       ? raw.sessions.map(normalizeSession).filter(Boolean).slice(-MAX_SESSIONS)
@@ -230,8 +250,15 @@ export function getSet(id) {
   return state.sets.find((set) => set.id === id) || null;
 }
 
+/* A set never points at a folder that is gone, as it would if the folder
+   was deleted in another tab while the set was being edited. */
+function fileSet(set) {
+  if (set.folder && !getFolder(set.folder)) set.folder = '';
+  return set;
+}
+
 export function createSet(data) {
-  const set = normalizeSet({ ...data, id: uid(), created: Date.now(), updated: Date.now() });
+  const set = fileSet(normalizeSet({ ...data, id: uid(), created: Date.now(), updated: Date.now() }));
   state.sets.unshift(set);
   save();
   return set;
@@ -242,7 +269,7 @@ export function createSet(data) {
 export function updateSet(id, patch) {
   const set = getSet(id);
   if (!set) return null;
-  Object.assign(set, normalizeSet({ ...set, ...patch, id: set.id, updated: Date.now() }));
+  Object.assign(set, fileSet(normalizeSet({ ...set, ...patch, id: set.id, updated: Date.now() })));
   save();
   return set;
 }
@@ -252,6 +279,49 @@ export function deleteSet(id) {
   if (index < 0) return false;
   state.sets.splice(index, 1);
   state.sessions = state.sessions.filter((entry) => entry.setId !== id);
+  save();
+  return true;
+}
+
+export function getFolders() {
+  return state.folders;
+}
+
+export function getFolder(id) {
+  return state.folders.find((folder) => folder.id === id) || null;
+}
+
+/* Returns the new folder, or null for a name with nothing in it. */
+export function createFolder(name) {
+  const [folder] = normalizeFolders([{ id: uid(), name }]);
+  if (!folder) return null;
+  state.folders.push(folder);
+  save();
+  return folder;
+}
+
+export function renameFolder(id, name) {
+  const folder = getFolder(id);
+  const trimmed = str(name).trim();
+  if (!folder || !trimmed) return null;
+  folder.name = trimmed;
+  save();
+  return folder;
+}
+
+export function setFolderOpen(id, open) {
+  const folder = getFolder(id);
+  if (!folder || folder.open === Boolean(open)) return;
+  folder.open = Boolean(open);
+  save();
+}
+
+/* The sets of a deleted folder stay, outside any folder. */
+export function deleteFolder(id) {
+  const index = state.folders.findIndex((folder) => folder.id === id);
+  if (index < 0) return false;
+  state.folders.splice(index, 1);
+  for (const set of state.sets) if (set.folder === id) set.folder = '';
   save();
   return true;
 }
@@ -382,12 +452,12 @@ export function summary(now = Date.now()) {
   };
 }
 
-/* A full backup: the sets with each card's progress, the session history,
-   the daily activity and the settings. */
+/* A full backup: the folders, the sets with each card's progress, the
+   session history, the daily activity and the settings. */
 export function exportAll() {
   return JSON.stringify({
     app: 'quizzer', version: 1, exported: Date.now(),
-    sets: state.sets, sessions: state.sessions, activity: state.activity, settings: state.settings,
+    folders: state.folders, sets: state.sets, sessions: state.sessions, activity: state.activity, settings: state.settings,
   }, null, 2);
 }
 
@@ -395,19 +465,31 @@ export function exportAll() {
    A set already known by id is replaced and new ones go on top in file order.
    Sessions are matched by id and only kept for sets that exist. Each day keeps
    the higher of the two counts, since the same answers may be counted on both
-   sides. Settings found in the file win. */
+   sides. Settings found in the file win, and so do folders, matched by id.
+   A set the file places in no folder, as in a backup older than folders or
+   a sample set, keeps the folder it already had here. */
 export function importPayload(payload) {
   const incoming = Array.isArray(payload && payload.sets) ? payload.sets
     : Array.isArray(payload) ? payload : null;
   if (!incoming) throw new Error('shape');
+  if (!Array.isArray(payload)) {
+    for (const folder of normalizeFolders(payload.folders)) {
+      const index = state.folders.findIndex((existing) => existing.id === folder.id);
+      if (index >= 0) state.folders[index] = folder;
+      else state.folders.push(folder);
+    }
+  }
   let count = 0;
   const added = [];
   for (const raw of incoming) {
     const set = normalizeSet(raw);
     if (!set.cards.length) continue;
     const index = state.sets.findIndex((existing) => existing.id === set.id);
-    if (index >= 0) state.sets[index] = set;
-    else added.push(set);
+    if (index >= 0) {
+      if (!(raw && typeof raw.folder === 'string')) set.folder = state.sets[index].folder;
+      state.sets[index] = set;
+    } else added.push(set);
+    fileSet(set);
     count += 1;
   }
   state.sets.unshift(...added);

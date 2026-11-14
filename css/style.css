@@ -368,6 +368,14 @@ a.stat-tile:hover { border-color: var(--accent); transform: translateY(-2px); co
 .search-bar { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
 .search-bar .input { max-width: 320px; }
 
+.folder { margin-bottom: 16px; padding: 10px 14px; border: 1px solid var(--line); border-radius: var(--radius); }
+.folder > summary { cursor: pointer; font-weight: 650; padding: 4px 0; }
+.folder > summary svg { width: 18px; height: 18px; margin: 0 7px 0 4px; vertical-align: -3px; color: var(--accent); }
+.folder > summary .chip { margin-left: 10px; font-weight: 500; }
+.folder-tools { margin: 6px 0 12px; }
+.folder-loose { margin: 22px 0 12px; font-size: 1rem; }
+.chip-folder svg { width: 13px; height: 13px; }
+
 /* Set detail */
 
 .set-head { margin-bottom: 22px; }

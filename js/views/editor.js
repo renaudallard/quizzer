@@ -6,7 +6,7 @@ import { t, tn, getLocale } from '../i18n/index.js';
 import * as store from '../store.js';
 import { parseDelimited } from '../io.js';
 import { navigate, onCleanup, setBusy } from '../router.js';
-import { notFoundPanel, toastSaved } from './shared.js';
+import { notFoundPanel, toastSaved, foldersByName } from './shared.js';
 import { addImage, cardImage } from '../images.js';
 import { typeset, hasMath, hasTable } from '../text.js';
 import { clamp } from '../util.js';
@@ -66,13 +66,45 @@ function languageSelect(value, onChange) {
   return select;
 }
 
-export function editorView(id) {
+/* The folder of the set: none, one of the folders, or a new one, made at
+   once with the name asked for. Giving no name keeps the choice as it was. */
+const NEW_FOLDER = 'new';
+
+function folderSelect(value, onChange) {
+  const select = el('select', { class: 'select' });
+  const fill = (chosen) => {
+    mount(select,
+      el('option', { value: '' }, t('editor.folderNone')),
+      foldersByName().map((folder) => el('option', { value: folder.id }, folder.name)),
+      el('option', { value: NEW_FOLDER }, t('editor.folderNew')));
+    select.value = chosen;
+  };
+  let current = value;
+  select.addEventListener('change', () => {
+    if (select.value === NEW_FOLDER) {
+      const name = prompt(t('folder.namePrompt'), '');
+      const folder = name === null ? null : store.createFolder(name);
+      if (folder) current = folder.id;
+      fill(current);
+    } else current = select.value;
+    onChange(current);
+  });
+  fill(current);
+  return select;
+}
+
+/* folder is the folder a new set starts in. */
+export function editorView(id, folder = '') {
   const existing = id ? store.getSet(id) : null;
   if (id && !existing) return notFoundPanel(t('set.notFound'));
 
   const draft = existing
     ? { ...existing, cards: existing.cards.map((card) => ({ ...card })) }
-    : { title: '', description: '', termLang: '', defLang: '', cards: [blankCard(), blankCard(), blankCard()] };
+    : {
+        title: '', description: '', termLang: '', defLang: '',
+        folder: store.getFolder(folder) ? folder : '',
+        cards: [blankCard(), blankCard(), blankCard()],
+      };
 
   let dirty = false;
   const markDirty = () => { dirty = true; };
@@ -296,6 +328,7 @@ export function editorView(id) {
       description: draft.description.trim(),
       termLang: draft.termLang,
       defLang: draft.defLang,
+      folder: draft.folder,
       cards,
     };
     /* The set may have been deleted in another tab meanwhile: keep the draft. */
@@ -387,6 +420,12 @@ export function editorView(id) {
     el('section', { class: 'panel stack', style: { marginBottom: '20px' } },
       el('label', { class: 'field' }, el('span', {}, t('editor.name')), title),
       el('label', { class: 'field' }, el('span', {}, t('editor.description')), description),
+      el('label', { class: 'field' },
+        el('span', {}, t('editor.folder')),
+        folderSelect(draft.folder, (value) => {
+          if (value !== draft.folder) markDirty();
+          draft.folder = value;
+        })),
       el('div', { class: 'row' },
         el('label', { class: 'field', style: { flex: '1 1 200px' } },
           el('span', {}, t('editor.termLang')),

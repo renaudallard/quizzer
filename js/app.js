@@ -120,7 +120,7 @@ function setRoutes() {
   };
 
   router.register(/^$/, () => homeView());
-  router.register(/^new$/, () => editorView(null));
+  router.register(/^new(?:\/([^/]+))?$/, (folder) => editorView(null, folder));
   router.register(/^transfer$/, () => transferView());
   router.register(/^samples$/, () => samplesView());
   router.register(/^settings(?:\/(goal))?$/, (focus) => settingsView(focus));

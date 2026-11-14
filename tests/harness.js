@@ -727,6 +727,29 @@ async function run() {
     }
   });
 
+  check('les dossiers rangent les jeux', () => {
+    assert(store.createFolder('   ') === null, 'dossier sans nom');
+    const folder = store.createFolder(' Langues ');
+    assert(folder && folder.name === 'Langues', 'nom: ' + (folder && folder.name));
+    store.updateSet(set.id, { folder: folder.id });
+    const shown = homeView().querySelector('details.folder');
+    assert(shown && shown.querySelector('a[href="#/set/' + set.id + '"]'), 'jeu absent de son dossier');
+    assert(shown.querySelector('a[href="#/new/' + folder.id + '"]'), 'pas de création dans le dossier');
+    assert(editorView(null, folder.id).querySelector('select').value === folder.id, 'dossier non choisi dans l’éditeur');
+    const older = JSON.parse(store.exportAll());
+    delete older.folders;
+    for (const entry of older.sets) delete entry.folder;
+    store.importPayload(older);
+    assert(store.getSet(set.id).folder === folder.id, 'une sauvegarde sans dossiers sort le jeu du sien');
+    const spare = store.createFolder('Autre');
+    store.updateSet(set.id, { folder: spare.id });
+    store.deleteFolder(spare.id);
+    assert(store.getSet(set.id) && store.getSet(set.id).folder === '', 'jeu perdu avec son dossier');
+    assert(store.updateSet(set.id, { folder: spare.id }).folder === '', 'dossier supprimé encore utilisé');
+    store.updateSet(set.id, { folder: folder.id });
+    return 'ok';
+  });
+
   check('une sauvegarde complète se restaure à l’identique', () => {
     const goal = store.getSettings().goal;
     store.setSetting('goal', 35);
@@ -737,7 +760,8 @@ async function run() {
       store.importPayload(backup);
       store.importPayload(backup);
       const restored = JSON.parse(store.exportAll());
-      for (const part of ['sets', 'sessions', 'activity', 'settings']) {
+      assert(backup.folders.length, 'dossiers absents de la sauvegarde');
+      for (const part of ['folders', 'sets', 'sessions', 'activity', 'settings']) {
         assert(JSON.stringify(restored[part]) === JSON.stringify(backup[part]), part + ' différents après restauration');
       }
       return 'jeux: ' + backup.sets.length + ', séances: ' + backup.sessions.length;

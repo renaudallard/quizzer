@@ -44,7 +44,7 @@ function labels() {
     samples: 'home.cta.samples', goal: 'stat.goal',
     termLang: 'editor.termLang', defLang: 'editor.defLang', addCard: 'editor.addCard',
     bulk: 'editor.bulk', hint: 'common.hint', image: 'editor.image', symbols: 'editor.symbols',
-    table: 'editor.table',
+    table: 'editor.table', newFolder: 'home.newFolder', folder: 'editor.folder',
     reverse: 'flashcards.reverse', starred: 'flashcards.starredOnly', sort: 'flashcards.sort',
     know: 'flashcards.know', learning: 'flashcards.learning',
     again: 'review.again', good: 'review.good', anyway: 'review.anyway',
@@ -87,7 +87,7 @@ const TABLES = {
 /* Each section is its paragraphs in order, a table standing in for one
    where its name is in TABLES. */
 const SECTIONS = [
-  ['start', ['p1', 'p2', 'p3', 'p4', 'p5']],
+  ['start', ['p1', 'p2', 'p3', 'p4', 'p5', 'p6']],
   ['modes', ['p1', 'modes']],
   ['schedule', ['p1', 'p2', 'p3', 'p4']],
   ['cards', ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8']],

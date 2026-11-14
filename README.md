@@ -195,6 +195,18 @@ sets added to the site later can be loaded too, and one you deleted comes
 back. The list is asked of the server each time the page opens, so a copy the
 browser kept cannot hide new sets.
 
+### Folders
+
+"Nouveau dossier", on the home page, makes a folder to group sets, and the
+"Dossier" field of the editor puts a set in one, or makes a new one there
+and then. The home page shows each folder with its sets, then the sets in
+none. A folder folds away with a click and stays as it was left, and
+offers to create a set inside it, to rename it and to delete it; deleting
+a folder keeps its sets, which move out of it. A search looks through every
+set and lists what it finds without the folders. Folders travel in the JSON
+backup, but not in share links or CSV, since they belong to whoever files
+the sets.
+
 ### Editing sets
 
 Blank rows are left out when a set is saved. A card with only one side filled
@@ -480,7 +492,9 @@ into `index.html` matches the French catalogue and its attribute keys
 exist. On the home page it checks that
 the daily goal figure stops at the goal, that the goal tile opens its setting
 with the field focused, and that percentages follow the interface language. It
-checks that every sample set belongs to a group. It restores a full backup into
+checks that every sample set belongs to a group, and that folders hold
+their sets on the home page, survive an older backup and let their sets go
+when deleted. It restores a full backup into
 an emptied store and compares every part, imports it a second time to show that
 nothing doubles, and feeds in a damaged backup that must change nothing. It
 also plays a full quiz, a timed one, a learn round, a full write round, a match
@@ -519,17 +533,18 @@ the storage figure in the settings counts it.
 
 ### Import and export
 
-- **JSON** is a full backup: the sets with each card's progress, the pictures
-  the cards use, the session history, the daily activity behind the streak
-  and the activity chart, and the settings. Restoring it merges rather than
-  overwrites: a set already known by its id is replaced and new ones are
-  added in file order, pictures come back with their cards, sessions are
-  matched by id, each day keeps the higher of the two counts, and the
-  settings in the file are applied at once. Importing the same backup twice
-  changes nothing. Sessions whose set is missing, entries that are not
-  valid, pictures that are not images or are over 2 MB, and settings of the
-  wrong type, such as `"false"` for a switch, are skipped. Older exports
-  that only hold sets still import.
+- **JSON** is a full backup: the folders, the sets with each card's
+  progress, the pictures the cards use, the session history, the daily
+  activity behind the streak and the activity chart, and the settings.
+  Restoring it merges rather than overwrites: a set already known by its id
+  is replaced and new ones are added in file order, folders are matched by
+  id, pictures come back with their cards, sessions are matched by id, each
+  day keeps the higher of the two counts, and the settings in the file are
+  applied at once. Importing the same backup twice changes nothing.
+  Sessions whose set is missing, entries that are not valid, pictures that
+  are not images or are over 2 MB, and settings of the wrong type, such as
+  `"false"` for a switch, are skipped. Older exports that only hold sets
+  still import, and a set they replace keeps the folder it was in.
 - **CSV** is quote aware on both sides, so a definition may contain a comma,
   a semicolon or a line break. A header row is recognised and skipped, in
   French, English or Dutch. It holds text only: pictures stay behind, a card

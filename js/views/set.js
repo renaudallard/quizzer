@@ -38,6 +38,7 @@ export function setView(id) {
 
   const due = dueCards(set.cards).length;
   const mastery = masteryPct(set.cards);
+  const folder = store.getFolder(set.folder);
   const share = shareControls(() => store.getSet(set.id), { label: t('set.share') });
 
   const remove = el('button', { type: 'button', class: 'btn btn-danger' }, icon('trash'), t('common.delete'));
@@ -59,6 +60,7 @@ export function setView(id) {
       el('h1', {}, set.title),
       set.description ? el('p', { class: 'lede' }, set.description) : null,
       el('div', { class: 'row', style: { marginBottom: '12px' } },
+        folder ? el('span', { class: 'chip chip-folder' }, icon('folder'), folder.name) : null,
         el('span', { class: 'chip' }, tn('count.cards', set.cards.length)),
         due ? el('span', { class: 'chip chip-due' }, tn('set.dueNow', due)) : el('span', { class: 'chip' }, t('set.upToDate')),
         el('span', { class: 'chip chip-accent' }, t('set.progress', { p: formatPercent(mastery) }))),

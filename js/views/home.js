@@ -7,6 +7,7 @@ import * as store from '../store.js';
 import { dueCards, masteryPct } from '../srs.js';
 import { statTile, meter, activityChart, figure } from '../chart.js';
 import { truncate } from '../text.js';
+import { foldersByName, toastSaved } from './shared.js';
 
 function setCard(set) {
   const due = dueCards(set.cards).length;
@@ -21,22 +22,70 @@ function setCard(set) {
       el('span', { class: 'chip' }, t('set.progress', { p: formatPercent(mastery) }))));
 }
 
-function setsSection(sets) {
-  const grid = el('div', { class: 'set-grid' }, sets.map(setCard));
+/* A folder and its sets, folded away or not as the learner left it, with
+   ways to add a set to it, rename it and delete it. */
+function folderSection(folder, sets, repaint) {
+  const rename = () => {
+    const name = prompt(t('folder.namePrompt'), folder.name);
+    if (name !== null && store.renameFolder(folder.id, name)) repaint();
+  };
+  const remove = () => {
+    if (!confirm(t('folder.deleteConfirm', { name: folder.name }))) return;
+    store.deleteFolder(folder.id);
+    toastSaved(t('folder.deleted'));
+    repaint();
+  };
+  const node = el('details', {
+    class: 'folder', open: folder.open,
+    ontoggle: () => store.setFolderOpen(folder.id, node.open),
+  },
+  el('summary', {}, icon('folder'), folder.name, el('span', { class: 'chip' }, tn('count.sets', sets.length))),
+  el('div', { class: 'row folder-tools' },
+    el('a', { class: 'btn btn-ghost', href: '#/new/' + folder.id }, icon('plus'), t('folder.newSet')),
+    el('button', { type: 'button', class: 'btn btn-ghost', onclick: rename }, icon('edit'), t('folder.rename')),
+    el('button', { type: 'button', class: 'btn btn-ghost', onclick: remove }, icon('trash'), t('folder.delete'))),
+  sets.length
+    ? el('div', { class: 'set-grid' }, sets.map(setCard))
+    : el('p', { class: 'chart-sub' }, t('folder.empty', { folder: t('editor.folder') })));
+  return node;
+}
+
+/* The folders by name, then the sets in none. A search looks through all
+   the sets and shows what it finds without the folders. */
+function setsSection() {
+  const body = el('div');
   const notice = el('p', { class: 'chart-sub', hidden: true }, t('home.noMatch'));
+
+  function paint() {
+    const sets = store.getSets();
+    const needle = search.value.trim().toLowerCase();
+    if (needle) {
+      const matches = sets.filter((set) => (set.title + ' ' + set.description).toLowerCase().includes(needle));
+      mount(body, el('div', { class: 'set-grid' }, matches.map(setCard)));
+      notice.hidden = matches.length > 0;
+      return;
+    }
+    notice.hidden = true;
+    const folders = foldersByName();
+    const loose = sets.filter((set) => !set.folder);
+    mount(body,
+      folders.map((folder) => folderSection(folder, sets.filter((set) => set.folder === folder.id), paint)),
+      folders.length && loose.length ? el('h3', { class: 'folder-loose' }, t('home.unfiled')) : null,
+      el('div', { class: 'set-grid' }, loose.map(setCard)));
+  }
 
   const search = el('input', {
     type: 'search', class: 'input', placeholder: t('home.searchPlaceholder'),
-    'aria-label': t('home.searchPlaceholder'),
-    oninput: () => {
-      const needle = search.value.trim().toLowerCase();
-      const matches = needle
-        ? sets.filter((set) => (set.title + ' ' + set.description).toLowerCase().includes(needle))
-        : sets;
-      mount(grid, matches.map(setCard));
-      notice.hidden = matches.length > 0;
-    },
+    'aria-label': t('home.searchPlaceholder'), oninput: paint,
   });
+  const newFolder = el('button', {
+    type: 'button', class: 'btn',
+    onclick: () => {
+      const name = prompt(t('folder.namePrompt'), '');
+      if (name !== null && store.createFolder(name)) paint();
+    },
+  }, icon('folder'), t('home.newFolder'));
+  paint();
 
   /* The samples stay on offer once sets exist: only the missing ones are
      added, so sample sets shipped later can still be loaded. */
@@ -45,10 +94,11 @@ function setsSection(sets) {
       el('h2', {}, t('home.sets')),
       el('div', { class: 'row' },
         samplesButton(),
+        newFolder,
         el('a', { class: 'btn', href: '#/new' }, icon('plus'), t('home.cta.create')))),
-    sets.length > 4 ? el('div', { class: 'search-bar' }, search) : null,
+    store.getSets().length > 4 ? el('div', { class: 'search-bar' }, search) : null,
     notice,
-    grid);
+    body);
 }
 
 function samplesButton() {
@@ -120,5 +170,5 @@ export function homeView() {
     hero,
     sets.length ? tiles : null,
     sets.length ? activity : null,
-    sets.length ? setsSection(sets) : emptyState());
+    sets.length || store.getFolders().length ? setsSection() : emptyState());
 }
