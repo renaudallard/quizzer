@@ -416,6 +416,7 @@ export default {
   "help.cards.p4": "The “{hint}” field shows next to the question, whichever way round: it must never hold the answer. It is what tells apart two cards with the same answer, such as `dank je` and `dank u` for `thank you`.",
   "help.cards.p5": "The “{image}” button under each side puts a picture there, and so does a picture pasted into the field or dropped on the side. It is shrunk to 800 pixels on its longest side, and refused if it is still over 2 MB. A side may be a picture alone, such as a photo of a dog with `de hond` as the answer: questions then always ask for the written side.",
   "help.cards.p6": "“{symbols}”, above the cards, opens the signs a keyboard lacks, from superscripts to Greek letters. A click puts the sign where the cursor was.",
+  "help.cards.p7": "A card’s fields wrap their text and grow with it. Their corner can be dragged to make them taller. Enter starts a new line, which the card keeps when shown; grading reads the text on one line.",
 
   "help.formulas.title": "Formulas on the keyboard",
   "help.formulas.p1": "A formula can also be typed on the keyboard, in a card’s fields or in “{bulk}”. As soon as you leave the field, `^` makes an exponent, `_` an index, and the arrows and comparison signs take their real shape:",

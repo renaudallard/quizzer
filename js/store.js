@@ -34,12 +34,18 @@ function num(value, fallback = 0) {
   return Number.isFinite(value) ? value : fallback;
 }
 
+/* The text of a card may hold line breaks, kept as a bare line feed
+   whatever system or file they came from. */
+function cardText(value) {
+  return str(value).replace(/\r\n?/g, '\n').trim();
+}
+
 export function normalizeCard(raw) {
   return {
     id: str(raw && raw.id) || uid(),
-    term: str(raw && raw.term).trim(),
-    def: str(raw && raw.def).trim(),
-    hint: str(raw && raw.hint).trim(),
+    term: cardText(raw && raw.term),
+    def: cardText(raw && raw.def),
+    hint: cardText(raw && raw.hint),
     /* Ids of pictures kept by images.js; a side may be a picture alone. */
     termImage: str(raw && raw.termImage),
     defImage: str(raw && raw.defImage),

@@ -416,6 +416,7 @@ export default {
   "help.cards.p4": "Het veld “{hint}” staat naast de vraag, in welke richting ook: het mag het antwoord dus nooit bevatten. Het onderscheidt twee kaarten met hetzelfde antwoord, zoals `el coche` en `el carro` voor `de auto`.",
   "help.cards.p5": "De knop “{image}” onder elke kant zet er een afbeelding op, net als een afbeelding die je in het veld plakt of op de kant neerzet. Ze wordt verkleind tot 800 pixels aan de langste kant, en geweigerd als ze dan nog groter is dan 2 MB. Een kant mag alleen een afbeelding zijn, zoals een foto van een hond met `le chien` als antwoord: er wordt dan altijd naar de geschreven kant gevraagd.",
   "help.cards.p6": "“{symbols}”, boven de kaarten, opent de tekens die een toetsenbord mist, van exponenten tot Griekse letters. Een klik zet het teken waar de cursor stond.",
+  "help.cards.p7": "De velden van een kaart lopen door op de volgende regel en groeien mee met hun tekst. Hun hoek kun je verslepen om ze groter te maken. Enter begint een nieuwe regel, die de kaart bij het tonen houdt; het nakijken leest de tekst op één regel.",
 
   "help.formulas.title": "Formules met het toetsenbord",
   "help.formulas.p1": "Een formule kun je ook met het toetsenbord typen, in de velden van een kaart of in “{bulk}”. Zodra je het veld verlaat, maakt `^` een exponent en `_` een index, en krijgen de pijlen en vergelijkingstekens hun echte vorm:",

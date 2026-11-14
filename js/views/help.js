@@ -89,7 +89,7 @@ const SECTIONS = [
   ['start', ['p1', 'p2', 'p3', 'p4', 'p5']],
   ['modes', ['p1', 'modes']],
   ['schedule', ['p1', 'p2', 'p3', 'p4']],
-  ['cards', ['p1', 'p2', 'p3', 'p4', 'p5', 'p6']],
+  ['cards', ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7']],
   ['formulas', ['p1', 'notation', 'p2']],
   ['latex', ['p1', 'latex', 'p2', 'p3', 'p4']],
   ['grading', ['p1', 'p2', 'p3', 'p4', 'typed', 'p5', 'p6']],

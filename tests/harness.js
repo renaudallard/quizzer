@@ -255,6 +255,16 @@ async function run() {
     return TYPED.length + ' cas';
   });
 
+  check('une carte garde ses retours à la ligne', () => {
+    const card = store.normalizeCard({ term: 'un\r\ndeux\rtrois', def: 'x' });
+    assert(card.term === 'un\ndeux\ntrois', 'terme: ' + JSON.stringify(card.term));
+    const shown = cardText(card.term);
+    assert(shown.querySelectorAll('br').length === 2, 'retours non affichés');
+    assert(shown.textContent === 'undeuxtrois', 'texte: ' + shown.textContent);
+    assert(text.grade('un deux trois', card.term).verdict === 'correct', 'réponse sur une ligne');
+    return 'ok';
+  });
+
   check('lien de partage aller retour', () => {
     const payload = io.shareUrl(set).split('#/shared/')[1];
     const back = io.decodeShare(payload);
@@ -350,9 +360,9 @@ async function run() {
       field.dispatchEvent(new Event('change', { bubbles: true }));
       return field.value;
     };
-    const def = main.querySelector('input[data-role="def"]');
+    const def = main.querySelector('textarea[data-role="def"]');
     assert(leave(def, 'SO_4^(2-)') === 'SO₄²⁻', 'définition: ' + def.value);
-    const bulk = main.querySelector('textarea');
+    const bulk = main.querySelector('textarea:not([data-role])');
     assert(leave(bulk, 'eau; H_2O') === 'eau; H₂O', 'ajout groupé: ' + bulk.value);
     const title = main.querySelector('input:not([data-role])');
     assert(leave(title, 'x^2') === 'x^2', 'le titre ne doit pas changer');

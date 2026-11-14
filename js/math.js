@@ -52,10 +52,15 @@ function draw({ node, tex, display, raw }) {
   }
 }
 
-/* Text with its LaTeX drawn, as nodes for el(). */
+/* Text with its line breaks. */
+function lines(text) {
+  return text.split('\n').flatMap((line, i) => (i ? [document.createElement('br'), line] : [line]));
+}
+
+/* Text with its line breaks and its LaTeX drawn, as nodes for el(). */
 export function richText(text) {
-  return segments(text).map((part) => {
-    if (part.tex === undefined) return part.text;
+  return segments(text).flatMap((part) => {
+    if (part.tex === undefined) return lines(part.text);
     const job = { node: document.createElement('span'), ...part };
     job.node.className = 'math';
     if (katex) draw(job);

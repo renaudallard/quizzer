@@ -416,6 +416,7 @@ export default {
   "help.cards.p4": "Le champ « {hint} » s’affiche à côté de la question, dans un sens comme dans l’autre: il ne doit jamais contenir la réponse. C’est lui qui départage deux cartes de même réponse, comme `dank je` et `dank u` pour `merci`.",
   "help.cards.p5": "Le bouton « {image} » sous chaque côté y met une image, tout comme une image collée dans le champ ou déposée sur le côté. Elle est réduite à 800 pixels sur son plus grand côté, et refusée si elle dépasse encore 2 Mo. Un côté peut n’être qu’une image, comme la photo d’un chien avec `de hond` en réponse: les questions demandent alors toujours le côté écrit.",
   "help.cards.p6": "« {symbols} », au-dessus des cartes, ouvre les signes absents du clavier, des exposants aux lettres grecques. Un clic insère le signe là où se trouvait le curseur.",
+  "help.cards.p7": "Les champs d’une carte passent à la ligne et grandissent avec leur texte. Leur coin se tire pour les agrandir. Entrée commence une nouvelle ligne, que la carte garde à l’affichage; la correction, elle, lit le texte sur une seule ligne.",
 
   "help.formulas.title": "Formules au clavier",
   "help.formulas.p1": "Une formule peut aussi se taper au clavier, dans les champs d’une carte ou dans « {bulk} ». Dès que vous quittez le champ, `^` fait un exposant, `_` un indice, et les flèches et signes de comparaison prennent leur vraie forme:",

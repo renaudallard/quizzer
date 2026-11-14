@@ -203,6 +203,12 @@ naming it, so no card and none of its progress disappears by accident; the
 bin button next to a card is the way to delete it. Adding lines in bulk
 clears away the blank rows nobody used, and nothing else.
 
+The term, the definition and the hint of a card wrap their text and grow
+with it, so a long side never needs a sideways scroll, and their corner can
+be dragged to make them taller. Enter starts a new line, which the card
+keeps wherever it is shown. Grading and read aloud take the text as one
+line.
+
 "Symboles et formules", above the cards, opens the signs a keyboard lacks,
 in groups: superscripts and subscripts, operations and relations, calculus,
 sets and logic, arrows for chemistry, and the Greek letters. A click puts
@@ -439,8 +445,9 @@ answer its table calls right, so the manual cannot drift from the site.
 
 Serve the directory and open <http://localhost:8080/tests/harness.html>. It
 exercises the store, the Leitner ladder, answer grading, the formula notation
-the editor writes, LaTeX read on one line and drawn by KaTeX, the typed
-answers the manual calls right, the CSV and share link round trips, and
+the editor writes, LaTeX read on one line and drawn by KaTeX, the line
+breaks a card keeps, the typed answers the manual calls right, the CSV and
+share link round trips, and
 reading CSV files in UTF-8, UTF-16 and Windows-1252. It renders all seventeen
 views in every interface language, failing on any key that no catalogue
 holds and on any `{placeholder}` left unfilled, LaTeX aside. It checks

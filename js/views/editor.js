@@ -33,6 +33,13 @@ const IMAGE_ERRORS = {
   unavailable: 'editor.imageFailed',
 };
 
+/* Grows a field until all of its text shows. It never shrinks one, so a
+   field made taller by hand stays that way. */
+function fit(field) {
+  if (field.scrollHeight <= field.clientHeight) return;
+  field.style.height = field.scrollHeight + field.offsetHeight - field.clientHeight + 'px';
+}
+
 function blankCard() {
   return store.normalizeCard({});
 }
@@ -82,7 +89,7 @@ export function editorView(id) {
   const list = el('div', { class: 'card-list' });
 
   function focusRow(index) {
-    const input = list.querySelectorAll('.editor-row input[data-role="term"]')[index];
+    const input = list.querySelectorAll('.editor-row [data-role="term"]')[index];
     if (input) input.focus();
   }
 
@@ -119,6 +126,19 @@ export function editorView(id) {
     return { root: holder, attach };
   }
 
+  /* A side of a card, or its hint, wraps its text and grows with it, so
+     nothing needs a sideways scroll, and its corner makes it taller. Enter
+     starts a new line, which the card keeps. */
+  function cardField(card, role, label, placeholder, lang) {
+    const field = el('textarea', {
+      class: 'input card-field', rows: '1', dataset: { role },
+      placeholder, 'aria-label': label, lang: lang || null,
+      oninput: () => { card[role] = field.value; markDirty(); fit(field); },
+    });
+    field.value = card[role];
+    return field;
+  }
+
   /* What the LaTeX of a field looks like, under it, while it is typed. */
   function preview(field) {
     const box = el('div', { class: 'math-preview', 'aria-hidden': 'true' });
@@ -149,23 +169,9 @@ export function editorView(id) {
   }
 
   function cardRow(card, index) {
-    const term = el('input', {
-      type: 'text', class: 'input', value: card.term, dataset: { role: 'term' },
-      placeholder: t('editor.termPlaceholder'), 'aria-label': t('common.term'),
-      lang: draft.termLang || null,
-      oninput: () => { card.term = term.value; markDirty(); },
-    });
-    const def = el('input', {
-      type: 'text', class: 'input', value: card.def, dataset: { role: 'def' },
-      placeholder: t('editor.defPlaceholder'), 'aria-label': t('common.definition'),
-      lang: draft.defLang || null,
-      oninput: () => { card.def = def.value; markDirty(); },
-    });
-    const hint = el('input', {
-      type: 'text', class: 'input', value: card.hint, dataset: { role: 'hint' },
-      placeholder: t('editor.hintPlaceholder'), 'aria-label': t('common.hint'),
-      oninput: () => { card.hint = hint.value; markDirty(); },
-    });
+    const term = cardField(card, 'term', t('common.term'), t('editor.termPlaceholder'), draft.termLang);
+    const def = cardField(card, 'def', t('common.definition'), t('editor.defPlaceholder'), draft.defLang);
+    const hint = cardField(card, 'hint', t('common.hint'), t('editor.hintPlaceholder'), '');
 
     const move = (delta) => {
       const target = index + delta;
@@ -209,8 +215,11 @@ export function editorView(id) {
         }, icon('trash'))));
   }
 
+  /* The fields can only be measured once they are on the page, which
+     happens after this when the editor is first built. */
   function paint() {
     mount(list, draft.cards.map(cardRow));
+    queueMicrotask(() => { for (const field of list.querySelectorAll('.card-field')) fit(field); });
   }
   paint();
 
@@ -260,7 +269,7 @@ export function editorView(id) {
       const row = list.querySelectorAll('.editor-row')[incomplete];
       const lacking = draft.cards[incomplete];
       const side = filled(lacking.term, lacking.termImage) ? 'def' : 'term';
-      if (row) row.querySelector('input[data-role="' + side + '"]').focus();
+      if (row) row.querySelector('[data-role="' + side + '"]').focus();
       return;
     }
     /* Text and pictures come from the draft, the progress and the star from
