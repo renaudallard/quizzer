@@ -1,7 +1,8 @@
 # Quizzer
 
 A study site in the spirit of Quizlet: card sets you own, seven ways to drill
-them, and a spaced repetition schedule that decides what to show you today.
+them, labelled pictures whose labels you type back in, and a spaced
+repetition schedule that decides what to show you today.
 
 The interface is **French by default**. English and Dutch are one click away
 in the top bar. Adding another language means writing one catalogue file and
@@ -37,6 +38,7 @@ compile and nothing to configure.
 | **Test** | Every question on one page, true or false, multiple choice, matching and written, graded once handed in, with an optional time limit | yes |
 | **Écrire** | Type every answer; a card you miss returns later in the round, and the score counts the cards right the first time | yes |
 | **Associer** | Pair six terms with their definitions against the clock | best time only |
+| **Légendes** | Each zone of a labelled picture is hidden under a field where you type its label; shown only for a set that has labelled pictures | no |
 
 Flashcards deliberately change nothing, sorting included: browsing a set is
 not self-testing, so it would be dishonest to let it move cards up the ladder,
@@ -309,9 +311,31 @@ flashcards, review and Associer. Read aloud skips a side that is only a
 picture, and screen readers announce it as an image: put a few words next to
 the picture when what it shows matters.
 
-Pictures no card uses any more are let go at start-up once they are a day
-old, so a draft still open elsewhere keeps its own. "Tout effacer" removes
-them all.
+Pictures no card or labelled picture uses any more are let go at start-up
+once they are a day old, so a draft still open elsewhere keeps its own.
+"Tout effacer" removes them all.
+
+### Labelled pictures
+
+A set can also hold pictures whose labels are to be found, such as a plant
+and its parts, with or without cards. "Ajouter une image légendée", under
+the cards in the editor, adds one; then a drag over each label draws a
+zone, and the text the zone hides is typed in the numbered list under the
+picture, where the bin deletes a zone. A click on a zone goes to its text.
+Nothing is read from the picture: the labels are the ones you type. A
+picture may have a title, and a set saves only once every zone has its text
+and every picture at least one zone. Zones are kept as fractions of the
+picture, so they stay in place at any size, and the picture follows the
+same rules as card pictures: shrunk to 800 pixels, kept in IndexedDB, in
+the JSON backup but not in share links or CSV.
+
+Légendes, on the set's page, covers each zone with a field. Enter moves to
+the next zone, and "Vérifier" grades every field as a written answer, with
+the same allowances for accents, typos and articles, then lists each zone
+with what was expected where it was not exactly right. An almost right label
+counts as found. The round goes through every picture of the set and ends on
+the share of labels found. It is kept in the session history but leaves the
+review schedule alone, since labels have no boxes of their own.
 
 ### Grading written answers
 
@@ -451,7 +475,7 @@ answer its table calls right, so the manual cannot drift from the site.
       router.js           hash router with per route cleanup
       store.js            localStorage state, import and export
       srs.js              Leitner boxes and mastery levels
-      study.js            widgets shared by the seven modes, time limit
+      study.js            widgets shared by the study modes, time limit
       question.js         questions shared by quiz, test and learn
       chart.js            stat tiles, mastery bar, activity columns
       text.js             answer comparison, hint masking, formula notation,
@@ -460,6 +484,7 @@ answer its table calls right, so the manual cannot drift from the site.
                           by KaTeX, loaded on first use
       io.js               delimited text, downloads, share links
       images.js           card pictures, kept in IndexedDB
+      diagram.js          a labelled picture with its zones laid over it
       util.js             identifiers, shuffling, dates
       theme.js            light, dark and system
       language.js         language choice shared by top bar and settings
@@ -468,9 +493,10 @@ answer its table calls right, so the manual cannot drift from the site.
       i18n/fr.js          French catalogue, the reference
       i18n/en.js          English catalogue
       i18n/nl.js          Dutch catalogue
-      views/              home, set, editor, stats, settings, transfer, samples,
-                          help
-      modes/              flashcards, learn, review, quiz, test, write, match
+      views/              home, set, editor, labelled pictures in the editor,
+                          stats, settings, transfer, samples, help
+      modes/              flashcards, learn, review, quiz, test, write, match,
+                          labels
     vendor/katex/         KaTeX 0.19.0 and mhchem, with their fonts and licence
     tests/harness.html    smoke test, open it in a browser
     tests/harness.js      the checks it runs
@@ -483,7 +509,7 @@ the editor writes, LaTeX read on one line and drawn by KaTeX, the line
 breaks a card keeps, tables on cards and the empty one the editor inserts,
 the typed answers the manual calls right, the CSV and share link round
 trips, and
-reading CSV files in UTF-8, UTF-16 and Windows-1252. It renders all seventeen
+reading CSV files in UTF-8, UTF-16 and Windows-1252. It renders all eighteen
 views in every interface language, failing on any key that no catalogue
 holds and on any `{placeholder}` left unfilled, LaTeX aside. It checks
 that each catalogue has exactly the French keys, with the same
@@ -492,17 +518,19 @@ into `index.html` matches the French catalogue and its attribute keys
 exist. On the home page it checks that
 the daily goal figure stops at the goal, that the goal tile opens its setting
 with the field focused, and that percentages follow the interface language. It
-checks that every sample set belongs to a group, and that folders hold
-their sets on the home page, survive an older backup and let their sets go
-when deleted. It restores a full backup into
-an emptied store and compares every part, imports it a second time to show that
-nothing doubles, and feeds in a damaged backup that must change nothing. It
-also plays a full quiz, a timed one, a learn round, a full write round, a match
-round, a review session, a flashcard pass and a sorted one to their summary
-screens, the sorted pass leaving the schedule alone. It hands in a test of
-twelve questions answered right from the cards, which must come in the order
-of their kinds and score twelve out of twelve, and a blank one, which must ask
-first and count every question as missed.
+checks that every sample set belongs to a group, and that folders hold their
+sets on the home page, survive an older backup and let their sets go when
+deleted. It restores a full backup into an emptied store and compares every
+part, imports it a second time to show that nothing doubles, and feeds in a
+damaged backup that must change nothing. It also plays a full quiz, a timed
+one, a learn round, a full write round, a match round, a Légendes round over a
+labelled picture, whose zones must each get their own verdict, a review
+session, a flashcard pass and a sorted one to their summary screens, the
+sorted pass leaving the schedule alone. It hands in a test of twelve questions
+answered right from the cards, which must come in the order of their kinds and
+score twelve out of twelve, and a blank one, which must ask first and count
+every question as missed. It checks too that the editor will not save a zone
+of a labelled picture without its text.
 
 Your own data, including any unreadable copy set aside, is read out of
 `localStorage` before the run and put back after it, or as the page closes if
@@ -564,7 +592,9 @@ the storage figure in the settings counts it.
   the recipient needs no account and the link never reaches a server.
   Progress is deliberately left behind, and so are pictures: a link carries
   text, leaves out the cards that are a picture alone on one side, and says
-  so when it is made. Very long sets make very long links.
+  so when it is made. Very long sets make very long links. A set with no
+  text card, such as one of labelled pictures alone, has no link to give,
+  and the button says so.
 
 ## Keyboard
 
@@ -624,6 +654,9 @@ with the arrow keys, and the page stays where it was scrolled.
 - Leaving the editor through the top bar without saving loses the draft. The
   save button is always visible in the sticky bar, and closing the tab warns.
 - Read aloud depends on the voices the browser and system provide.
+- The zones of a labelled picture are drawn with a mouse, a pen or a finger;
+  there is no way to draw one from the keyboard. Typing the labels back in
+  needs no pointer.
 - Switching language on a study page, or while a draft is in progress, does
   not rebuild that page, so no round, result or draft is lost. What is already
   on screen keeps its language and only what the page draws afterwards, such

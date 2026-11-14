@@ -8,7 +8,7 @@ export const STORAGE_KEY = 'quizzer.v1';
 export const SALVAGE_KEY = 'quizzer.v1.unreadable';
 const MAX_SESSIONS = 200;
 const ACTIVITY_DAYS = 400;
-const SESSION_MODES = ['quiz', 'test', 'learn', 'write', 'match', 'review'];
+const SESSION_MODES = ['quiz', 'test', 'learn', 'write', 'match', 'review', 'labels'];
 const DAY_KEY = /^\d{4}-\d{2}-\d{2}$/;
 
 export const GOAL_RANGE = { min: 5, max: 200 };
@@ -58,9 +58,38 @@ export function normalizeCard(raw) {
   };
 }
 
+/* A zone of a labelled picture: where its label sits, as fractions of the
+   picture's width and height so it stays in place at any size, and the
+   text it hides. */
+function normalizeZone(raw) {
+  const x = clamp(num(raw && raw.x), 0, 1);
+  const y = clamp(num(raw && raw.y), 0, 1);
+  return {
+    id: str(raw && raw.id) || uid(),
+    x, y,
+    w: clamp(num(raw && raw.w), 0, 1 - x),
+    h: clamp(num(raw && raw.h), 0, 1 - y),
+    text: str(raw && raw.text).trim(),
+  };
+}
+
+/* A labelled picture: the id of a picture kept by images.js, an optional
+   caption and the zones whose labels are to be found. One with no picture
+   or no zone left is dropped. */
+function normalizeDiagram(raw) {
+  const zones = Array.isArray(raw && raw.zones) ? raw.zones.map(normalizeZone) : [];
+  return {
+    id: str(raw && raw.id) || uid(),
+    image: str(raw && raw.image),
+    caption: str(raw && raw.caption).trim(),
+    zones: zones.filter((zone) => zone.text && zone.w > 0 && zone.h > 0),
+  };
+}
+
 export function normalizeSet(raw) {
   const now = Date.now();
   const cards = Array.isArray(raw && raw.cards) ? raw.cards.map(normalizeCard) : [];
+  const diagrams = Array.isArray(raw && raw.diagrams) ? raw.diagrams.map(normalizeDiagram) : [];
   return {
     id: str(raw && raw.id) || uid(),
     title: str(raw && raw.title).trim() || 'Sans titre',
@@ -73,6 +102,7 @@ export function normalizeSet(raw) {
     created: num(raw && raw.created, now),
     updated: num(raw && raw.updated, now),
     cards: cards.filter((card) => card.term || card.def || card.termImage || card.defImage),
+    diagrams: diagrams.filter((diagram) => diagram.image && diagram.zones.length),
   };
 }
 
@@ -326,7 +356,8 @@ export function deleteFolder(id) {
   return true;
 }
 
-/* Every picture a card uses, so the others can be let go. */
+/* Every picture a card or a labelled picture uses, so the others can be
+   let go. */
 export function imageIds() {
   const ids = new Set();
   for (const set of state.sets) {
@@ -334,6 +365,7 @@ export function imageIds() {
       if (card.termImage) ids.add(card.termImage);
       if (card.defImage) ids.add(card.defImage);
     }
+    for (const diagram of set.diagrams) ids.add(diagram.image);
   }
   return ids;
 }
@@ -483,7 +515,7 @@ export function importPayload(payload) {
   const added = [];
   for (const raw of incoming) {
     const set = normalizeSet(raw);
-    if (!set.cards.length) continue;
+    if (!set.cards.length && !set.diagrams.length) continue;
     const index = state.sets.findIndex((existing) => existing.id === set.id);
     if (index >= 0) {
       if (!(raw && typeof raw.folder === 'string')) set.folder = state.sets[index].folder;

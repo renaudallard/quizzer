@@ -25,6 +25,7 @@ import { quizView } from './modes/quiz.js';
 import { testView } from './modes/test.js';
 import { writeView } from './modes/write.js';
 import { matchView } from './modes/match.js';
+import { labelsView } from './modes/labels.js';
 
 const THEME_ICONS = { system: 'monitor', light: 'sun', dark: 'moon' };
 
@@ -115,6 +116,7 @@ function setRoutes() {
     test: testView,
     write: writeView,
     match: matchView,
+    labels: labelsView,
     stats: statsView,
     edit: editorView,
   };

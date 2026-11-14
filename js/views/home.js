@@ -18,6 +18,7 @@ function setCard(set) {
     meter(mastery),
     el('div', { class: 'set-card-meta' },
       el('span', { class: 'chip' }, tn('count.cards', set.cards.length)),
+      set.diagrams.length ? el('span', { class: 'chip' }, tn('count.diagrams', set.diagrams.length)) : null,
       due ? el('span', { class: 'chip chip-due' }, tn('set.dueNow', due)) : null,
       el('span', { class: 'chip' }, t('set.progress', { p: formatPercent(mastery) }))));
 }

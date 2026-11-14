@@ -1,4 +1,4 @@
-/* One set: how far along it is, the seven ways to study it, and its cards. */
+/* One set: how far along it is, the ways to study it, and its cards. */
 
 import { el, icon, toast } from '../dom.js';
 import { t, tn, formatPercent } from '../i18n/index.js';
@@ -7,7 +7,7 @@ import { dueCards, masteryPct } from '../srs.js';
 import { meter } from '../chart.js';
 import { download, slugify, toCSV } from '../io.js';
 import { navigate } from '../router.js';
-import { notFoundPanel, shareControls, cardRow, toastSaved } from './shared.js';
+import { notFoundPanel, shareControls, cardRow, toastSaved, hasPictures } from './shared.js';
 
 const MODES = [
   { path: 'cards', key: 'mode.flashcards', glyph: 'cards', min: 1 },
@@ -17,11 +17,14 @@ const MODES = [
   { path: 'test', key: 'mode.test', glyph: 'test', min: 2 },
   { path: 'write', key: 'mode.write', glyph: 'keyboard', min: 1 },
   { path: 'match', key: 'mode.match', glyph: 'grid', min: 4 },
-  { path: 'stats', key: 'mode.stats', glyph: 'chart', min: 1 },
+  { path: 'labels', key: 'mode.labels', glyph: 'image', pictures: true },
+  { path: 'stats', key: 'mode.stats', glyph: 'chart', min: 0 },
 ];
 
+/* Labels needs labelled pictures rather than cards, and only shows when
+   the set has some. */
 function modeCard(set, mode) {
-  const available = set.cards.length >= mode.min;
+  const available = mode.pictures || set.cards.length >= mode.min;
   const props = available
     ? { class: 'mode-card', href: '#/set/' + set.id + '/' + mode.path }
     : { class: 'mode-card', 'aria-disabled': 'true', role: 'link' };
@@ -52,7 +55,7 @@ export function setView(id) {
   const exportCsv = el('button', { type: 'button', class: 'btn' }, icon('download'), t('transfer.exportSetCsv'));
   exportCsv.addEventListener('click', () => {
     download(slugify(set.title) + '.csv', toCSV(set), 'text/csv');
-    if (set.cards.some((card) => card.termImage || card.defImage)) toast(t('transfer.csvNoImages'));
+    if (hasPictures(set)) toast(t('transfer.csvNoImages'));
   });
 
   return el('div', { class: 'container' },
@@ -62,6 +65,7 @@ export function setView(id) {
       el('div', { class: 'row', style: { marginBottom: '12px' } },
         folder ? el('span', { class: 'chip chip-folder' }, icon('folder'), folder.name) : null,
         el('span', { class: 'chip' }, tn('count.cards', set.cards.length)),
+        set.diagrams.length ? el('span', { class: 'chip' }, tn('count.diagrams', set.diagrams.length)) : null,
         due ? el('span', { class: 'chip chip-due' }, tn('set.dueNow', due)) : el('span', { class: 'chip' }, t('set.upToDate')),
         el('span', { class: 'chip chip-accent' }, t('set.progress', { p: formatPercent(mastery) }))),
       meter(mastery),
@@ -74,7 +78,8 @@ export function setView(id) {
       share.notice,
       share.field),
 
-    el('section', { class: 'mode-grid' }, MODES.map((mode) => modeCard(set, mode))),
+    el('section', { class: 'mode-grid' },
+      MODES.filter((mode) => !mode.pictures || set.diagrams.length).map((mode) => modeCard(set, mode))),
 
     el('section', {},
       el('div', { class: 'row-between', style: { marginBottom: '12px' } },

@@ -69,6 +69,13 @@ async function shrink(file) {
   return blob && blob.size < file.size ? blob : file;
 }
 
+/* What each error addImage() throws means, as a catalogue key. */
+export const IMAGE_ERRORS = {
+  type: 'editor.imageNotImage',
+  size: 'editor.imageTooBig',
+  unavailable: 'editor.imageFailed',
+};
+
 /* Keeps a picture and returns its id. Fails with "type" for a file that is
    not a picture, "size" for one still too large once shrunk, and
    "unavailable" where the browser keeps no IndexedDB. */

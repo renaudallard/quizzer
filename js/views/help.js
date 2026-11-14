@@ -34,7 +34,7 @@ export const TYPED = [
   ['(x+1)/2', '$\\frac{x+1}{2}$'], ['\\frac{1}{2}', '1/2'],
 ];
 
-const MODES = ['flashcards', 'learn', 'review', 'quiz', 'test', 'write', 'match', 'stats'];
+const MODES = ['flashcards', 'learn', 'review', 'quiz', 'test', 'write', 'match', 'labels', 'stats'];
 
 /* Interface labels the text names, filled in so it always says what the
    buttons say. */
@@ -45,6 +45,7 @@ function labels() {
     termLang: 'editor.termLang', defLang: 'editor.defLang', addCard: 'editor.addCard',
     bulk: 'editor.bulk', hint: 'common.hint', image: 'editor.image', symbols: 'editor.symbols',
     table: 'editor.table', newFolder: 'home.newFolder', folder: 'editor.folder',
+    diagrams: 'diagram.section', check: 'quiz.check',
     reverse: 'flashcards.reverse', starred: 'flashcards.starredOnly', sort: 'flashcards.sort',
     know: 'flashcards.know', learning: 'flashcards.learning',
     again: 'review.again', good: 'review.good', anyway: 'review.anyway',
@@ -90,7 +91,7 @@ const SECTIONS = [
   ['start', ['p1', 'p2', 'p3', 'p4', 'p5', 'p6']],
   ['modes', ['p1', 'modes']],
   ['schedule', ['p1', 'p2', 'p3', 'p4']],
-  ['cards', ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8']],
+  ['cards', ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8', 'p9']],
   ['formulas', ['p1', 'notation', 'p2']],
   ['latex', ['p1', 'latex', 'p2', 'p3', 'p4']],
   ['grading', ['p1', 'p2', 'p3', 'p4', 'typed', 'p5', 'p6']],

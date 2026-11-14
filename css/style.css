@@ -446,6 +446,40 @@ a.stat-tile:hover { border-color: var(--accent); transform: translateY(-2px); co
 .card-table th { background: var(--surface-2); font-weight: 650; }
 .card-row .card-table-wrap, .math-preview .card-table-wrap { margin-left: 0; }
 
+/* Labelled pictures: the stage wraps the picture tightly, so a zone held
+   in fractions of it lands where it was drawn. */
+.diagram-wrap { text-align: center; }
+.diagram-stage { position: relative; display: inline-block; max-width: 100%; line-height: 0; }
+.diagram-edit .diagram-stage { user-select: none; touch-action: none; cursor: crosshair; }
+.card-image.diagram-image { max-width: 100%; max-height: none; margin: 0; border-radius: var(--radius-sm); }
+.diagram-zone {
+  position: absolute; display: grid; place-items: center; min-width: 1.4em; min-height: 1.4em;
+  border: 2px solid var(--accent); border-radius: 4px; background: color-mix(in srgb, var(--accent) 22%, transparent);
+  color: var(--ink); font-size: 0.8rem; font-weight: 700; line-height: 1; cursor: pointer;
+}
+.diagram-zone[data-active] { background: color-mix(in srgb, var(--accent) 45%, transparent); }
+.diagram-ghost { border-style: dashed; pointer-events: none; }
+.zone-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.zone-list li { display: flex; align-items: center; gap: 8px; }
+.zone-list .idx { min-width: 1.6em; color: var(--ink-muted); font-size: 0.85rem; text-align: right; font-variant-numeric: tabular-nums; }
+.diagram-answer {
+  position: absolute; min-width: 3em; min-height: 1.6em; padding: 2px 4px;
+  font: inherit; font-size: 0.85rem; line-height: 1.2; text-align: center; color: var(--ink);
+  background: var(--surface); border: 2px solid var(--line-strong); border-radius: 4px;
+}
+.diagram-answer:focus { border-color: var(--accent); outline: none; box-shadow: var(--focus); z-index: 1; }
+.diagram-answer[data-state="correct"] { border-color: var(--good); background: color-mix(in srgb, var(--good) 14%, var(--surface)); }
+.diagram-answer[data-state="almost"] { border-color: var(--warning); background: color-mix(in srgb, var(--warning) 18%, var(--surface)); }
+.diagram-answer[data-state="wrong"] { border-color: var(--critical); background: color-mix(in srgb, var(--critical) 14%, var(--surface)); }
+.labels-caption { margin: 0 0 10px; font-size: 1.1rem; }
+.labels-score { margin: 14px 0 6px; font-weight: 650; text-align: center; }
+.labels-results { margin: 0 0 16px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.labels-result { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.labels-result svg { width: 17px; height: 17px; flex: 0 0 auto; }
+.labels-result[data-state="correct"] svg { color: var(--good-ink); }
+.labels-result[data-state="almost"] svg { color: var(--warning); }
+.labels-result[data-state="wrong"] svg { color: var(--critical-ink); }
+
 /* Card pictures: whole, never cropped, within the space of the card. */
 .card-image { display: block; max-width: 100%; max-height: 220px; margin: 0 auto 10px; border-radius: var(--radius-sm); object-fit: contain; }
 .card-image.thumb { max-width: 96px; max-height: 64px; margin: 0 0 6px; }

@@ -1,5 +1,5 @@
-/* Pieces every study mode needs. Keeping them here is what stops the seven
-   modes from growing seven copies of the same card, banner and summary. */
+/* Pieces every study mode needs. Keeping them here is what stops the modes
+   from each growing a copy of the same card, banner and summary. */
 
 import { el, icon, mount } from './dom.js';
 import { t, tn, getLocale } from './i18n/index.js';

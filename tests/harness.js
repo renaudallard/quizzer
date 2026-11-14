@@ -26,6 +26,7 @@ import { quizView } from '../js/modes/quiz.js';
 import { testView } from '../js/modes/test.js';
 import { writeView } from '../js/modes/write.js';
 import { matchView } from '../js/modes/match.js';
+import { labelsView } from '../js/modes/labels.js';
 import { mathReady } from '../js/math.js';
 import { cardText } from '../js/study.js';
 
@@ -85,7 +86,7 @@ const VIEWS = {
   home: homeView, set: setView, editor: editorView, stats: statsView,
   settings: settingsView, shortcuts: shortcutsView, transfer: transferView, samples: samplesView,
   shared: sharedView, flashcards: flashcardsView, learn: learnView, review: reviewView,
-  quiz: quizView, test: testView, write: writeView, match: matchView, help: helpView,
+  quiz: quizView, test: testView, write: writeView, match: matchView, labels: labelsView, help: helpView,
 };
 
 async function run() {
@@ -407,6 +408,80 @@ async function run() {
     insert.click();
     assert(title.value === '', 'tableau dans le titre');
     return 'ok';
+  });
+
+  /* A labelled picture needs no stored picture to be played: a missing one
+     only shows as an empty frame. */
+  const plant = {
+    image: 'plante', caption: 'Une fleur', zones: [
+      { x: 0.1, y: 0.1, w: 0.2, h: 0.1, text: 'pétale' },
+      { x: 0.5, y: 0.6, w: 0.3, h: 0.1, text: 'tige' },
+      { x: 0.5, y: 0.8, w: 0.3, h: 0.1, text: 'racine' },
+      { x: 0.8, y: 0.2, w: 0.5, h: 0.1, text: 'feuille' },
+      { x: 0.2, y: 0.4, w: 0.1, h: 0.1, text: '  ' },
+    ],
+  };
+
+  check('une image légendée garde ses zones', () => {
+    const labelled = store.createSet({ title: 'Plante', diagrams: [plant, { image: '', zones: plant.zones }] });
+    try {
+      assert(labelled.diagrams.length === 1, 'image sans fichier gardée');
+      const zones = labelled.diagrams[0].zones;
+      assert(zones.length === 4, 'zone sans texte gardée: ' + zones.length);
+      assert(Math.abs(zones[3].w - 0.2) < 1e-9, 'zone qui déborde: ' + zones[3].w);
+      assert(store.imageIds().has('plante'), 'image oubliée par le ménage');
+      assert(setView(labelled.id).querySelector('a[href="#/set/' + labelled.id + '/labels"]'), 'pas de mode Légendes');
+      assert(!setView(set.id).querySelector('a[href$="/labels"]'), 'mode Légendes sans image');
+      return 'ok';
+    } finally {
+      store.deleteSet(labelled.id);
+    }
+  });
+
+  check('l’éditeur demande le texte de chaque zone', () => {
+    const labelled = store.createSet({ title: 'Plante', diagrams: [plant] });
+    try {
+      main.replaceChildren(editorView(labelled.id));
+      const field = main.querySelector('.zone-list input');
+      assert(field && field.value === 'pétale', 'zone absente');
+      const type = (value) => {
+        field.value = value;
+        field.dispatchEvent(new Event('input', { bubbles: true }));
+        main.querySelector('.sticky-actions .btn-primary').click();
+      };
+      type(' ');
+      assert(store.getSet(labelled.id).diagrams[0].zones[0].text === 'pétale', 'enregistré sans texte');
+      assert(document.activeElement === field, 'la zone vide n’a pas le focus');
+      type('sépale');
+      assert(store.getSet(labelled.id).diagrams[0].zones[0].text === 'sépale', 'texte non enregistré');
+      return 'ok';
+    } finally {
+      store.deleteSet(labelled.id);
+    }
+  });
+
+  check('le mode Légendes corrige chaque zone', () => {
+    const labelled = store.createSet({ title: 'Plante', diagrams: [plant] });
+    try {
+      main.replaceChildren(labelsView(labelled.id));
+      const fields = [...main.querySelectorAll('.diagram-answer')];
+      assert(fields.length === 4, fields.length + ' champs');
+      ['petale', 'tige', 'racin', ''].forEach((value, i) => { fields[i].value = value; });
+      main.querySelector('.study-nav .btn-primary').click();
+      const states = fields.map((field) => field.dataset.state).join(',');
+      assert(states === 'correct,correct,almost,wrong', 'verdicts: ' + states);
+      const score = main.querySelector('.labels-score').textContent;
+      assert(score === i18n.t('labels.found', { n: 3, total: 4 }), 'score: ' + score);
+      assert(main.querySelectorAll('.labels-result .hint').length === 3, 'réponses attendues');
+      main.querySelector('.study-nav .btn-primary').click();
+      const total = main.querySelector('.summary-score');
+      assert(total && total.textContent === '3/4', 'résultat: ' + (total && total.textContent));
+      const [session] = store.getSessions(labelled.id);
+      assert(session && session.mode === 'labels' && session.correct === 3, 'séance non enregistrée');
+      return 'ok';
+    } finally {
+      store.deleteSet(labelled.id);
+    }
   });
 
   check('le quiz va jusqu’au résultat', () => {

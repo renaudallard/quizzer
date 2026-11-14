@@ -7,6 +7,12 @@ import { shareUrl, copyText } from '../io.js';
 import { cardImage } from '../images.js';
 import { richText } from '../math.js';
 
+/* True when the set holds a picture, which a link or a CSV file leaves
+   behind. */
+export function hasPictures(set) {
+  return set.diagrams.length > 0 || set.cards.some((card) => card.termImage || card.defImage);
+}
+
 /* Some messaging apps cut links around this length. */
 const LONG_LINK = 8000;
 
@@ -26,9 +32,14 @@ export function shareControls(getSet, { label, primary = false }) {
   button.addEventListener('click', async () => {
     const set = getSet();
     if (!set) return;
+    /* A link of no card would open on nothing. */
+    if (!set.cards.some((card) => card.term && card.def)) {
+      toast(t('transfer.shareNoText'));
+      return;
+    }
     const url = shareUrl(set);
     long.hidden = url.length <= LONG_LINK;
-    pictures.hidden = !set.cards.some((card) => card.termImage || card.defImage);
+    pictures.hidden = !hasPictures(set);
     field.value = url;
     if (await copyText(url)) {
       toast(t('transfer.shareCopied'));

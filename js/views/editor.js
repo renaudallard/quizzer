@@ -7,9 +7,10 @@ import * as store from '../store.js';
 import { parseDelimited } from '../io.js';
 import { navigate, onCleanup, setBusy } from '../router.js';
 import { notFoundPanel, toastSaved, foldersByName } from './shared.js';
-import { addImage, cardImage } from '../images.js';
+import { addImage, cardImage, IMAGE_ERRORS } from '../images.js';
 import { typeset, hasMath, hasTable } from '../text.js';
 import { clamp } from '../util.js';
+import { diagramsEditor } from './diagrams.js';
 import { richText } from '../math.js';
 
 const LANG_CODES = [
@@ -30,13 +31,6 @@ const SYMBOLS = [
 /* The most columns, and rows under the header, an inserted table starts
    with. More can be typed. */
 const TABLE_MAX = 10;
-
-/* Why a picture could not be kept, as addImage() reports it. */
-const IMAGE_ERRORS = {
-  type: 'editor.imageNotImage',
-  size: 'editor.imageTooBig',
-  unavailable: 'editor.imageFailed',
-};
 
 /* Grows a field until all of its text shows. It never shrinks one, so a
    field made taller by hand stays that way. */
@@ -99,11 +93,16 @@ export function editorView(id, folder = '') {
   if (id && !existing) return notFoundPanel(t('set.notFound'));
 
   const draft = existing
-    ? { ...existing, cards: existing.cards.map((card) => ({ ...card })) }
+    ? {
+        ...existing,
+        cards: existing.cards.map((card) => ({ ...card })),
+        diagrams: existing.diagrams.map((diagram) => ({ ...diagram, zones: diagram.zones.map((zone) => ({ ...zone })) })),
+      }
     : {
         title: '', description: '', termLang: '', defLang: '',
         folder: store.getFolder(folder) ? folder : '',
         cards: [blankCard(), blankCard(), blankCard()],
+        diagrams: [],
       };
 
   let dirty = false;
@@ -310,6 +309,7 @@ export function editorView(id, folder = '') {
       if (row) row.querySelector('[data-role="' + side + '"]').focus();
       return;
     }
+    if (!pictures.check()) return;
     /* Text and pictures come from the draft, the progress and the star from
        the store as it is now, since another tab may have moved them on. */
     const current = existing && store.getSet(existing.id);
@@ -318,7 +318,7 @@ export function editorView(id, folder = '') {
       ...card, ...live.get(card.id),
       term: card.term, def: card.def, hint: card.hint, termImage: card.termImage, defImage: card.defImage,
     }));
-    if (!cards.length) {
+    if (!cards.length && !draft.diagrams.length) {
       toast(t('editor.needCard'));
       return;
     }
@@ -330,6 +330,7 @@ export function editorView(id, folder = '') {
       defLang: draft.defLang,
       folder: draft.folder,
       cards,
+      diagrams: draft.diagrams,
     };
     /* The set may have been deleted in another tab meanwhile: keep the draft. */
     const saved = (existing && store.updateSet(existing.id, payload)) || store.createSet(payload);
@@ -406,6 +407,8 @@ export function editorView(id, folder = '') {
         onclick: insertTable,
       }, icon('table'), t('editor.tableInsert'))));
 
+  const pictures = diagramsEditor(draft.diagrams, markDirty);
+
   const addCard = el('button', { type: 'button', class: 'btn' }, icon('plus'), t('editor.addCard'));
   addCard.addEventListener('click', () => {
     draft.cards.push(blankCard());
@@ -442,6 +445,8 @@ export function editorView(id, folder = '') {
       palette,
       tablePanel,
       list),
+
+    pictures.root,
 
     el('section', { class: 'panel stack', style: { marginBottom: '20px' } },
       el('h2', {}, t('editor.bulk')),
