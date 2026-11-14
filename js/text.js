@@ -335,12 +335,82 @@ function molecule(part) {
   return count + body + (charge ? raise('^', charge) || '^(' + charge + ')' : '');
 }
 
-/* Text with its LaTeX written on one line, for grading, reading aloud and
-   wherever it cannot be drawn. */
-export function plain(text) {
+/* A table is written as in Markdown, a row on each line between pipes,
+   and under the first row a rule of dashes that sets it apart as the
+   header. A colon at the start, at both ends or at the end of the dashes
+   aligns the column to the left, the centre or the right:
+
+     | mot  | sens |
+     | ---- | :--: |
+     | chat | cat  |
+
+   A pipe inside a cell is written \|. A row with too few cells is filled
+   with empty ones and one with too many loses the extra ones, as in
+   GitHub's Markdown. */
+const TABLE_ROW = /^\s*\|/;
+const TABLE_RULE = /^:?-+:?$/;
+
+function tableCells(line) {
+  const cells = line.trim().slice(1).split(/(?<!\\)\|/);
+  if (cells.length > 1 && !cells[cells.length - 1].trim()) cells.pop();
+  return cells.map((cell) => cell.trim().replace(/\\\|/g, '|'));
+}
+
+function alignment(rule) {
+  if (rule.endsWith(':')) return rule.startsWith(':') ? 'center' : 'right';
+  return rule.startsWith(':') ? 'left' : '';
+}
+
+/* Text cut into its tables, as { table: { head, align, rows } }, and the
+   text around them, as { text }. The line breaks next to a table only
+   set it apart, so they belong to neither. */
+export function blocks(text) {
+  const lines = String(text).split('\n');
+  const out = [];
+  let prose = [];
+  const flush = () => {
+    if (prose.length) out.push({ text: prose.join('\n') });
+    prose = [];
+  };
+  for (let i = 0; i < lines.length; i++) {
+    const head = TABLE_ROW.test(lines[i]) && TABLE_ROW.test(lines[i + 1] || '') ? tableCells(lines[i]) : null;
+    const rule = head && tableCells(lines[i + 1]);
+    if (!rule || rule.length !== head.length || !rule.every((cell) => TABLE_RULE.test(cell))) {
+      prose.push(lines[i]);
+      continue;
+    }
+    flush();
+    const rows = [];
+    for (i += 2; i < lines.length && TABLE_ROW.test(lines[i]); i++) {
+      const cells = tableCells(lines[i]).slice(0, head.length);
+      rows.push(cells.concat(Array(head.length - cells.length).fill('')));
+    }
+    i--;
+    out.push({ table: { head, align: rule.map(alignment), rows } });
+  }
+  flush();
+  return out;
+}
+
+export function hasTable(text) {
+  return blocks(text).some((block) => block.table);
+}
+
+function plainLine(text) {
   return segments(text).map((part) => (part.tex === undefined
     ? part.text
     : notation(latex(part.tex)).replace(/\s+/g, ' ').trim())).join('');
+}
+
+/* Text with its LaTeX written on one line, for grading, reading aloud and
+   wherever it cannot be drawn. A table reads as its cells one after the
+   other, a row on each line, the empty ones left out. */
+export function plain(text) {
+  return blocks(text).map((block) => (block.table
+    ? [block.table.head, ...block.table.rows]
+      .map((row) => row.map(plainLine).filter((cell) => cell.trim()).join(' '))
+      .filter(Boolean).join('\n')
+    : plainLine(block.text))).join('\n');
 }
 
 /* A typed answer may be LaTeX too, with or without its dollars. */

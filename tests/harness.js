@@ -265,6 +265,22 @@ async function run() {
     return 'ok';
   });
 
+  check('les tableaux des cartes', () => {
+    const source = '| mot | sens |\n| :-- | :-: |\n| chat | cat |\n| a \\| b |';
+    const table = cardText(source).querySelector('table.card-table');
+    assert(table, 'pas de tableau');
+    assert(table.querySelectorAll('thead th').length === 2, 'en-tête');
+    const cells = [...table.querySelectorAll('td')].map((cell) => cell.textContent);
+    assert(cells.join(',') === 'chat,cat,a | b,', 'cases: ' + cells.join(','));
+    assert(table.querySelectorAll('td')[1].style.textAlign === 'center', 'alignement');
+    assert(!cardText('|  |  |\n| --- | --- |\n| a | b |').querySelector('thead'), 'en-tête vide affiché');
+    assert(!text.hasTable('|a|'), 'valeur absolue prise pour un tableau');
+    assert(!text.hasTable('| a | b |\n| --- |'), 'règle de la mauvaise largeur');
+    assert(text.plain(source) === 'mot sens\nchat cat\na | b', 'lu: ' + JSON.stringify(text.plain(source)));
+    assert(text.grade('chat cat', '| chat | cat |\n| --- | --- |').verdict === 'correct', 'réponse');
+    return 'ok';
+  });
+
   check('lien de partage aller retour', () => {
     const payload = io.shareUrl(set).split('#/shared/')[1];
     const back = io.decodeShare(payload);
@@ -366,6 +382,30 @@ async function run() {
     assert(leave(bulk, 'eau; H_2O') === 'eau; H₂O', 'ajout groupé: ' + bulk.value);
     const title = main.querySelector('input:not([data-role])');
     assert(leave(title, 'x^2') === 'x^2', 'le titre ne doit pas changer');
+    return 'ok';
+  });
+
+  /* A window without the focus, such as a background tab, gets no focus
+     events, so the check sends the one a click in the field would. */
+  check('l’éditeur insère un tableau dans une carte', () => {
+    main.replaceChildren(editorView(null));
+    const insert = main.querySelector('.table-tools button');
+    const def = main.querySelector('textarea[data-role="def"]');
+    const enter = (field) => {
+      field.focus();
+      field.dispatchEvent(new Event('focusin', { bubbles: true }));
+    };
+    def.value = 'avant';
+    enter(def);
+    def.setSelectionRange(5, 5);
+    insert.click();
+    assert(def.value === 'avant\n|  |  |\n| --- | --- |\n|  |  |\n|  |  |', 'texte: ' + JSON.stringify(def.value));
+    assert(def.selectionStart === 8, 'curseur: ' + def.selectionStart);
+    assert(def.closest('.editor-fields').querySelector('.math-preview .card-table'), 'pas d’aperçu');
+    const title = main.querySelector('input:not([data-role])');
+    enter(title);
+    insert.click();
+    assert(title.value === '', 'tableau dans le titre');
     return 'ok';
   });
 

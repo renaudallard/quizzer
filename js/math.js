@@ -1,8 +1,10 @@
-/* LaTeX on cards, drawn by KaTeX. KaTeX is fetched from vendor/katex the
-   first time a card holds some, and until it is there, or if it cannot be
-   loaded, each formula shows written on one line. */
+/* Card text as it is shown: its tables, its line breaks and its LaTeX,
+   drawn by KaTeX. KaTeX is fetched from vendor/katex the first time a
+   card holds some, and until it is there, or if it cannot be loaded, each
+   formula shows written on one line. */
 
-import { segments, plain } from './text.js';
+import { el } from './dom.js';
+import { segments, plain, blocks } from './text.js';
 
 const BASE = new URL('../vendor/katex/', import.meta.url);
 let katex = null;
@@ -57,8 +59,8 @@ function lines(text) {
   return text.split('\n').flatMap((line, i) => (i ? [document.createElement('br'), line] : [line]));
 }
 
-/* Text with its line breaks and its LaTeX drawn, as nodes for el(). */
-export function richText(text) {
+/* Text with its line breaks and its LaTeX drawn. */
+function inline(text) {
   return segments(text).flatMap((part) => {
     if (part.tex === undefined) return lines(part.text);
     const job = { node: document.createElement('span'), ...part };
@@ -71,4 +73,19 @@ export function richText(text) {
     }
     return job.node;
   });
+}
+
+/* A table written on a card. A header left empty is no header at all. */
+function table({ head, align, rows }) {
+  const cell = (tag, text, i) => el(tag, { style: align[i] ? { textAlign: align[i] } : null }, inline(text));
+  return el('span', { class: 'card-table-wrap' },
+    el('table', { class: 'card-table' },
+      head.some(Boolean) ? el('thead', {}, el('tr', {}, head.map((text, i) => cell('th', text, i)))) : null,
+      el('tbody', {}, rows.map((row) => el('tr', {}, row.map((text, i) => cell('td', text, i)))))));
+}
+
+/* Text with its tables, its line breaks and its LaTeX drawn, as nodes for
+   el(). */
+export function richText(text) {
+  return blocks(text).flatMap((block) => (block.table ? table(block.table) : inline(block.text)));
 }

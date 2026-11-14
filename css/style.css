@@ -419,10 +419,24 @@ a.stat-tile:hover { border-color: var(--accent); transform: translateY(-2px); co
 .symbols { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .btn-symbol { min-width: 40px; padding: 6px 10px; font-weight: 500; }
 .math-preview { padding: 2px 4px; color: var(--ink-2); overflow-x: auto; }
+.table-tools { align-items: flex-end; margin-top: 10px; }
+.table-size { width: 7rem; }
 .math-preview:empty { display: none; }
 .editor-image { display: flex; align-items: center; gap: 6px; }
 .editor-image .card-image { margin: 0; }
 .btn-image { align-self: flex-start; padding: 5px 10px; font-size: 0.86rem; }
+
+/* Tables written on cards: centred on a card, at the start of a list. */
+/* Only a table too wide scrolls, sideways: KaTeX glyphs reaching a pixel
+   below the table would otherwise add a vertical scrollbar, which takes
+   its width out of the table. */
+.card-table-wrap { display: block; width: max-content; max-width: 100%; overflow: auto hidden; margin: 6px auto; }
+.card-table { border-collapse: collapse; font-size: 0.92em; }
+/* A flashcard lets words break anywhere, which would let a table shrink
+   until its words split: in a cell they only break when they must. */
+.card-table th, .card-table td { padding: 4px 10px; border: 1px solid var(--line-strong); overflow-wrap: break-word; }
+.card-table th { background: var(--surface-2); font-weight: 650; }
+.card-row .card-table-wrap, .math-preview .card-table-wrap { margin-left: 0; }
 
 /* Card pictures: whole, never cropped, within the space of the card. */
 .card-image { display: block; max-width: 100%; max-height: 220px; margin: 0 auto 10px; border-radius: var(--radius-sm); object-fit: contain; }

@@ -8,7 +8,8 @@ import { parseDelimited } from '../io.js';
 import { navigate, onCleanup, setBusy } from '../router.js';
 import { notFoundPanel, toastSaved } from './shared.js';
 import { addImage, cardImage } from '../images.js';
-import { typeset, hasMath } from '../text.js';
+import { typeset, hasMath, hasTable } from '../text.js';
+import { clamp } from '../util.js';
 import { richText } from '../math.js';
 
 const LANG_CODES = [
@@ -25,6 +26,10 @@ const SYMBOLS = [
   ['editor.symbolsArrows', '→⇌↔↑↓'],
   ['editor.symbolsGreek', 'αβγδεζηθικλμνξπρστυφχψωΓΔΘΛΞΠΣΦΨΩ'],
 ];
+
+/* The most columns, and rows under the header, an inserted table starts
+   with. More can be typed. */
+const TABLE_MAX = 10;
 
 /* Why a picture could not be kept, as addImage() reports it. */
 const IMAGE_ERRORS = {
@@ -139,10 +144,11 @@ export function editorView(id) {
     return field;
   }
 
-  /* What the LaTeX of a field looks like, under it, while it is typed. */
+  /* What the LaTeX and the tables of a field look like, under it, while
+     it is typed. */
   function preview(field) {
     const box = el('div', { class: 'math-preview', 'aria-hidden': 'true' });
-    const show = () => mount(box, hasMath(field.value) ? richText(field.value) : null);
+    const show = () => mount(box, hasMath(field.value) || hasTable(field.value) ? richText(field.value) : null);
     field.addEventListener('input', show);
     show();
     return box;
@@ -305,17 +311,24 @@ export function editorView(id) {
     navigate(existing ? 'set/' + existing.id : '');
   });
 
-  /* A click puts the sign where the cursor was in the last field used; the
-     button never takes the focus, so the caret stays where it was. */
+  /* A click puts its text where the cursor was in the last field used,
+     the cursor then caret characters into it. The buttons never take the
+     focus, so the caret stays where it was. */
   let lastField = null;
+  function insertText(text, caret = text.length) {
+    const field = lastField;
+    const at = field.selectionStart;
+    field.setRangeText(text, at, field.selectionEnd);
+    field.setSelectionRange(at + caret, at + caret);
+    field.dispatchEvent(new Event('input', { bubbles: true }));
+    field.focus();
+  }
   function insertSymbol(symbol) {
     if (!lastField || !lastField.isConnected) {
       toast(t('editor.symbolsNoField'));
       return;
     }
-    lastField.setRangeText(symbol, lastField.selectionStart, lastField.selectionEnd, 'end');
-    lastField.dispatchEvent(new Event('input', { bubbles: true }));
-    lastField.focus();
+    insertText(symbol);
   }
   const palette = el('details', { class: 'symbol-palette' },
     el('summary', {}, t('editor.symbols')),
@@ -327,6 +340,38 @@ export function editorView(id) {
         onmousedown: (event) => event.preventDefault(),
         onclick: () => insertSymbol(symbol),
       }, symbol))))));
+
+  /* An empty table goes on lines of its own, and only in a card's fields,
+     since the title and the description hold a single line and the bulk
+     lines would read it as cards. The cursor lands in its first cell. */
+  const tableSize = () => el('input', { type: 'number', class: 'input', min: '1', max: String(TABLE_MAX), value: '2' });
+  const tableColumns = tableSize();
+  const tableRows = tableSize();
+  function insertTable() {
+    if (!lastField || !lastField.isConnected || !lastField.dataset.role) {
+      toast(t('editor.tableNoField'));
+      return;
+    }
+    const size = (input) => clamp(Math.round(Number(input.value)) || 1, 1, TABLE_MAX);
+    const row = (cell) => '|' + (' ' + cell + ' |').repeat(size(tableColumns));
+    const { value, selectionStart: start, selectionEnd: end } = lastField;
+    const before = start > 0 && value[start - 1] !== '\n' ? '\n' : '';
+    const after = end < value.length && value[end] !== '\n' ? '\n' : '';
+    const lines = [row(''), row('---'), ...Array.from({ length: size(tableRows) }, () => row(''))];
+    insertText(before + lines.join('\n') + after, before.length + 2);
+  }
+  const sizeField = (label, input) => el('label', { class: 'field table-size' }, el('span', {}, t(label)), input);
+  const tablePanel = el('details', { class: 'symbol-palette' },
+    el('summary', {}, t('editor.table')),
+    el('p', { class: 'field-hint' }, t('editor.tableHint')),
+    el('div', { class: 'row table-tools' },
+      sizeField('editor.tableColumns', tableColumns),
+      sizeField('editor.tableRows', tableRows),
+      el('button', {
+        type: 'button', class: 'btn',
+        onmousedown: (event) => event.preventDefault(),
+        onclick: insertTable,
+      }, icon('table'), t('editor.tableInsert'))));
 
   const addCard = el('button', { type: 'button', class: 'btn' }, icon('plus'), t('editor.addCard'));
   addCard.addEventListener('click', () => {
@@ -356,6 +401,7 @@ export function editorView(id) {
         el('h2', {}, t('editor.cards')),
         addCard),
       palette,
+      tablePanel,
       list),
 
     el('section', { class: 'panel stack', style: { marginBottom: '20px' } },

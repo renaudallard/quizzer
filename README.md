@@ -259,6 +259,27 @@ on one line. A mistake in the LaTeX shows in red rather than breaking the
 card. Commands that could reach a link, a picture or the page, such as
 `\href` or `\includegraphics`, are refused.
 
+### Tables
+
+A side of a card, or its hint, may hold a table, written as in Markdown:
+one row per line between pipes, and under the first row a line of dashes
+that makes it the header.
+
+    | Singulier | Pluriel  |
+    | :-------- | :------: |
+    | cheval    | chevaux  |
+    | travail   | travaux  |
+
+Colons in the dashes align a column, `:--` to the left, `:-:` in the centre
+and `--:` to the right. Cells may hold LaTeX, and `\|` writes a pipe inside
+a cell, in its LaTeX too, as in `$\|x\|$` for an absolute value. A row
+with too few cells gets empty ones and one with too many loses the extra
+ones, as on GitHub, and a header left empty does not show. "Insérer un
+tableau", above the cards, writes an empty table of the chosen number of
+columns and rows where the cursor was in a card's field, with the cursor in
+its first cell, and the preview under the field shows it as it is typed.
+Grading and read aloud take a table cell after cell, row by row.
+
 ### Pictures
 
 A card side can hold a picture, with or without text. The "Image" button
@@ -422,8 +443,9 @@ answer its table calls right, so the manual cannot drift from the site.
       question.js         questions shared by quiz, test and learn
       chart.js            stat tiles, mastery bar, activity columns
       text.js             answer comparison, hint masking, formula notation,
-                          LaTeX read on one line
-      math.js             LaTeX drawn by KaTeX, loaded on first use
+                          tables and LaTeX read on one line
+      math.js             card text drawn: tables, line breaks, and LaTeX
+                          by KaTeX, loaded on first use
       io.js               delimited text, downloads, share links
       images.js           card pictures, kept in IndexedDB
       util.js             identifiers, shuffling, dates
@@ -446,8 +468,9 @@ answer its table calls right, so the manual cannot drift from the site.
 Serve the directory and open <http://localhost:8080/tests/harness.html>. It
 exercises the store, the Leitner ladder, answer grading, the formula notation
 the editor writes, LaTeX read on one line and drawn by KaTeX, the line
-breaks a card keeps, the typed answers the manual calls right, the CSV and
-share link round trips, and
+breaks a card keeps, tables on cards and the empty one the editor inserts,
+the typed answers the manual calls right, the CSV and share link round
+trips, and
 reading CSV files in UTF-8, UTF-16 and Windows-1252. It renders all seventeen
 views in every interface language, failing on any key that no catalogue
 holds and on any `{placeholder}` left unfilled, LaTeX aside. It checks
