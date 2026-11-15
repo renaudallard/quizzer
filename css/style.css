@@ -350,7 +350,8 @@ a.stat-tile {
 a.stat-tile:hover { border-color: var(--accent); transform: translateY(-2px); color: inherit; }
 .stat-label svg { width: 13px; height: 13px; margin-left: 5px; vertical-align: -1px; color: var(--ink-muted); }
 
-.set-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); }
+/* A grid in a folder deep in others may be narrower than a card likes. */
+.set-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(268px, 100%), 1fr)); }
 .set-card {
   display: flex; flex-direction: column; gap: 10px;
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
@@ -372,15 +373,27 @@ a.stat-tile:hover { border-color: var(--accent); transform: translateY(-2px); co
 .folder > summary { cursor: pointer; font-weight: 650; padding: 4px 0; }
 .folder > summary svg { width: 18px; height: 18px; margin: 0 7px 0 4px; vertical-align: -3px; color: var(--accent); }
 .folder > summary .chip { margin-left: 10px; font-weight: 500; }
-.folder-tools { margin: 6px 0 12px; }
+.folder .folder { margin-bottom: 12px; padding: 6px 10px; }
+/* Folders sit one in the other, each with its tools, so these are kept
+   small. */
+.folder-tools { margin: 4px 0 10px; gap: 2px 4px; }
+.folder-tools .btn { padding: 6px 10px; font-size: 0.88rem; }
+.folder-parent {
+  display: inline-flex; align-items: center; gap: 6px; max-width: 100%;
+  font-size: 0.88rem; color: var(--ink-2); white-space: nowrap;
+}
+.folder-parent select { min-width: 0; }
 .folder-loose { margin: 22px 0 12px; font-size: 1rem; }
-/* While a set is dragged, the places to drop it are outlined, and the one
-   under the pointer is filled. */
+/* While a set or a folder is dragged, the places to drop it are outlined,
+   and the one under the pointer is filled. A dragged folder and those it
+   holds are no such place. */
 .folder-out { border-radius: var(--radius); }
 .drop-hint { display: none; margin: 0; padding: 14px; }
 [data-dragging] .drop-hint { display: block; }
 [data-dragging] .folder, [data-dragging] .folder-out { outline: 2px dashed var(--line-strong); outline-offset: 2px; }
 [data-dragging] [data-drop] { outline: 2px solid var(--accent); background: var(--accent-soft); }
+[data-dragging] .folder[data-dragged], [data-dragging] [data-dragged] .folder { outline: none; }
+.folder[data-dragged] > summary { color: var(--ink-muted); }
 .chip-folder svg { width: 13px; height: 13px; }
 
 /* Set detail */

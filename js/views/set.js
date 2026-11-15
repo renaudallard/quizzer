@@ -7,7 +7,7 @@ import { dueCards, masteryPct } from '../srs.js';
 import { meter } from '../chart.js';
 import { download, slugify, toCSV } from '../io.js';
 import { navigate } from '../router.js';
-import { notFoundPanel, shareControls, cardRow, toastSaved, hasPictures } from './shared.js';
+import { notFoundPanel, shareControls, cardRow, toastSaved, hasPictures, folderPath } from './shared.js';
 import { askable } from '../study.js';
 
 const MODES = [
@@ -46,7 +46,7 @@ export function setView(id) {
 
   const due = dueCards(set.cards).length;
   const mastery = masteryPct(set.cards);
-  const folder = store.getFolder(set.folder);
+  const folder = folderPath(set.folder);
   const share = shareControls(() => store.getSet(set.id), { label: t('set.share') });
 
   const remove = el('button', { type: 'button', class: 'btn btn-danger' }, icon('trash'), t('common.delete'));
@@ -68,7 +68,7 @@ export function setView(id) {
       el('h1', {}, set.title),
       set.description ? el('p', { class: 'lede set-description' }, set.description) : null,
       el('div', { class: 'row', style: { marginBottom: '12px' } },
-        folder ? el('span', { class: 'chip chip-folder' }, icon('folder'), folder.name) : null,
+        folder ? el('span', { class: 'chip chip-folder' }, icon('folder'), folder) : null,
         el('span', { class: 'chip' }, tn('count.cards', set.cards.length)),
         set.diagrams.length ? el('span', { class: 'chip' }, tn('count.diagrams', set.diagrams.length)) : null,
         due ? el('span', { class: 'chip chip-due' }, tn('set.dueNow', due)) : el('span', { class: 'chip' }, t('set.upToDate')),

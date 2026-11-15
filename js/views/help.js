@@ -7,6 +7,7 @@ import { el } from '../dom.js';
 import { t } from '../i18n/index.js';
 import { typeset, plain } from '../text.js';
 import { richText } from '../math.js';
+import { FOLDER_LEVELS } from '../store.js';
 
 /* What the editor writes once a field is left. */
 const NOTATION = [
@@ -44,7 +45,7 @@ function labels() {
     samples: 'home.cta.samples', goal: 'stat.goal',
     termLang: 'editor.termLang', defLang: 'editor.defLang', addCard: 'editor.addCard',
     bulk: 'editor.bulk', hint: 'common.hint', image: 'editor.image', symbols: 'editor.symbols',
-    table: 'editor.table', newFolder: 'home.newFolder', folder: 'editor.folder',
+    table: 'editor.table', newFolder: 'home.newFolder', folder: 'editor.folder', parent: 'folder.parent',
     bold: 'editor.bold', italic: 'editor.italic',
     diagrams: 'diagram.section', check: 'quiz.check',
     reverse: 'flashcards.reverse', starred: 'flashcards.starredOnly', sort: 'flashcards.sort',
@@ -102,7 +103,7 @@ const SECTIONS = [
 
 /* section names a part to open on, as #/help/latex does. */
 export function helpView(section) {
-  const vars = labels();
+  const vars = { ...labels(), levels: FOLDER_LEVELS };
   const headingId = (id) => 'help-' + id;
 
   /* The router focuses the page once it is mounted, so wait for that, and

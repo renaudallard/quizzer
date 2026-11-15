@@ -210,13 +210,20 @@ dragging it to the sets in no folder; while a set is dragged the places to
 drop it are outlined, and when every set is in a folder a place to drop one
 out of them shows for the time of the drag. The "Dossier" field of the
 editor does the same without a pointer, and makes a new folder there and
-then. The home page shows each folder with its sets, then the sets in
-none. A folder folds away with a click and stays as it was left, and
-offers to create a set inside it, to rename it and to delete it; deleting
-a folder keeps its sets, which move out of it. A search looks through every
-set and lists what it finds without the folders. Folders travel in the JSON
-backup, but not in share links or CSV, since they belong to whoever files
-the sets.
+then. A folder goes into another the same way: dragged by its name onto
+the other, or out to the sets in no folder, or with its "Rangé dans" list,
+which names every folder that can take it; "Nouveau dossier" inside a
+folder makes one there. Folders nest six levels deep at most, and one that
+would end up deeper is refused with a message. The home page shows each
+folder with the folders and the sets it holds, then the sets in none, and
+counts next to its name the sets in it and under it. A folder folds away
+with a click and stays as it was left, and offers to create a set inside
+it, to rename it and to delete it; deleting a folder keeps its sets and its
+folders, which move up one level. The editor and the page of a set name a
+folder with those it sits in, as in "Langues / Anglais". A search looks
+through every set and lists what it finds without the folders. Folders
+travel in the JSON backup, but not in share links or CSV, since they
+belong to whoever files the sets.
 
 ### Editing sets
 
@@ -580,7 +587,10 @@ with the field focused, and that percentages follow the interface language. It
 checks that every sample set belongs to a group, and that folders hold their
 sets on the home page, take a set dragged onto them and let it go when it
 is dragged out, survive an older backup and let their sets go when
-deleted. It restores a full backup into an emptied store and compares every
+deleted. Folders must go one into the other by the list and by a drag,
+refuse to go into themselves, into a folder they hold or deeper than six
+levels, hand what they hold to the folder above when deleted, and come
+out of a backup that nests them in a circle as a tree. It restores a full backup into an emptied store and compares every
 part, imports it a second time to show that nothing doubles, and feeds in a
 damaged backup that must change nothing. It also plays a full quiz, a timed
 one, a learn round, a full write round, a match round, a Légendes round over a
@@ -636,7 +646,11 @@ the storage figure in the settings counts it.
   `"false"` for a switch, are skipped. So is a second set with the id of an
   earlier one in the file, and a card that repeats the id of another card
   of its set gets a new one. Older exports that only hold sets
-  still import, and a set they replace keeps the folder it was in.
+  still import, and a set they replace keeps the folder it was in, as a
+  folder keeps the one it sits in when the file was made before folders
+  went into folders. A folder the file puts inside itself, in a folder
+  that is not there or more than six levels deep is taken out of the
+  folder it names.
 - **CSV** is quote aware on both sides, so a definition may contain a comma,
   a semicolon or a line break. A header row is recognised and skipped, in
   French, English or Dutch. It holds text only: pictures stay behind, a card

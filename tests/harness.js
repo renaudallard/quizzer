@@ -1001,27 +1001,28 @@ async function run() {
     return 'ok';
   });
 
-  /* A drag as the browser reports it: the card says which set it is, the
-     place it is dropped on files it. Something else dropped there is
-     left alone. */
+  /* A drag as the browser reports it: an event with the data it carries. */
+  const drag = (node, type, data) => {
+    const event = new Event(type, { bubbles: true, cancelable: true });
+    Object.defineProperty(event, 'dataTransfer', { value: data });
+    node.dispatchEvent(event);
+    return event;
+  };
+  const carried = () => {
+    const held = new Map();
+    return {
+      get types() { return [...held.keys()]; },
+      clearData: () => held.clear(),
+      setData: (type, value) => held.set(type, value),
+      getData: (type) => held.get(type) || '',
+    };
+  };
+
+  /* The card says which set it is, the place it is dropped on files it.
+     Something else dropped there is left alone. */
   check('un jeu se range en le faisant glisser', () => {
     const folder = store.createFolder('Glisser');
     const moved = store.createSet({ title: 'À ranger', cards: [{ term: 'a', def: 'b' }] });
-    const drag = (node, type, data) => {
-      const event = new Event(type, { bubbles: true, cancelable: true });
-      Object.defineProperty(event, 'dataTransfer', { value: data });
-      node.dispatchEvent(event);
-      return event;
-    };
-    const carried = () => {
-      const held = new Map();
-      return {
-        get types() { return [...held.keys()]; },
-        clearData: () => held.clear(),
-        setData: (type, value) => held.set(type, value),
-        getData: (type) => held.get(type) || '',
-      };
-    };
     const card = (home) => home.querySelector('a.set-card[href="#/set/' + moved.id + '"]');
     const zone = (home, selector) => [...home.querySelectorAll(selector)].find((node) => (
       selector !== 'details.folder' || node.querySelector('summary').textContent.startsWith('Glisser')));
@@ -1046,6 +1047,124 @@ async function run() {
     } finally {
       store.deleteSet(moved.id);
       store.deleteFolder(folder.id);
+    }
+  });
+
+  /* Folders in folders: by the store, by the list of a folder and by a
+     drag of its name. Nothing goes into itself or deeper than the limit,
+     and a file cannot say otherwise. */
+  check('un dossier se range dans un autre', () => {
+    const made = [];
+    const make = (name, parent) => {
+      const folder = store.createFolder(name, parent);
+      if (folder) made.push(folder);
+      return folder;
+    };
+    const filed = store.createSet({ title: 'Tout au fond', cards: [{ term: 'a', def: 'b' }] });
+    const shown = (home, folder) => home.querySelector('a[href="#/new/' + folder.id + '"]').closest('details');
+    const rooted = (folder) => {
+      let above = 0;
+      for (let up = folder; up && up.parent; up = store.getFolder(up.parent)) {
+        above += 1;
+        if (above >= store.FOLDER_LEVELS) return false;
+      }
+      return true;
+    };
+    try {
+      const outer = make('Emboîter');
+      const inner = make('Dedans', outer.id);
+      const other = make('Voisin');
+      assert(inner && inner.parent === outer.id, 'dossier non créé dans un autre');
+      assert(make('Nulle part', 'absent') === null, 'dossier créé dans un dossier absent');
+      store.updateSet(filed.id, { folder: inner.id });
+
+      let home = homeView();
+      assert(shown(home, inner).parentNode === shown(home, outer), 'dossier non dessiné dans le sien');
+      assert(shown(home, outer).querySelector('summary .chip').textContent === '1 jeu', 'jeux non comptés sous le dossier');
+      assert(setView(filed.id).querySelector('.chip-folder').textContent === 'Emboîter / Dedans', 'chemin du dossier');
+      const options = (folder) => [...shown(home, folder).querySelector('.folder-parent select').options]
+        .map((option) => option.value);
+      assert(!options(outer).includes(outer.id) && !options(outer).includes(inner.id), 'dossier offert à lui-même');
+      assert(options(inner).includes(other.id), 'dossier voisin non offert');
+
+      assert(store.moveFolder(outer.id, inner.id) === null && store.moveFolder(outer.id, outer.id) === null,
+        'dossier rangé en lui-même');
+
+      const select = shown(home, inner).querySelector('.folder-parent select');
+      select.value = other.id;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+      assert(store.getFolder(inner.id).parent === other.id, 'liste sans effet');
+      assert(shown(home, inner).parentNode === shown(home, other), 'page non redessinée');
+
+      const data = carried();
+      const handle = shown(home, inner).querySelector('summary');
+      assert(handle.getAttribute('draggable') === 'true', 'dossier non déplaçable');
+      drag(handle, 'dragstart', data);
+      assert(!drag(shown(home, inner), 'dragover', data).defaultPrevented, 'dossier déposé sur lui-même');
+      const over = drag(shown(home, outer), 'dragover', data);
+      assert(over.defaultPrevented, 'dossier qui refuse un dossier');
+      drag(shown(home, outer), 'drop', data);
+      assert(store.getFolder(inner.id).parent === outer.id, 'dossier non rangé par glisser');
+      home = homeView();
+      drag(shown(home, inner).querySelector('summary'), 'dragstart', data);
+      drag(home.querySelector('.folder-out'), 'drop', data);
+      assert(store.getFolder(inner.id).parent === '', 'dossier resté dans le sien');
+      store.moveFolder(inner.id, outer.id);
+
+      /* A set dropped on the inner folder is not also taken by the outer. */
+      const loose = store.createSet({ title: 'Au plus près', cards: [{ term: 'a', def: 'b' }] });
+      try {
+        home = homeView();
+        const sets = carried();
+        drag(home.querySelector('a.set-card[href="#/set/' + loose.id + '"]'), 'dragstart', sets);
+        drag(shown(home, inner), 'dragover', sets);
+        assert(shown(home, inner).dataset.drop === '1' && !shown(home, outer).dataset.drop, 'deux dossiers visés');
+        drag(shown(home, inner), 'drop', sets);
+        assert(store.getSet(loose.id).folder === inner.id, 'jeu pris par le dossier du dessus');
+      } finally {
+        store.deleteSet(loose.id);
+      }
+
+      const levels = [outer, inner];
+      while (levels.length < store.FOLDER_LEVELS) {
+        levels.push(make('Niveau ' + (levels.length + 1), levels[levels.length - 1].id));
+      }
+      const [last, beforeLast] = levels.slice().reverse();
+      assert(last, 'niveaux permis refusés');
+      assert(make('Trop bas', last.id) === null, 'niveau de trop créé');
+      assert(store.moveFolder(other.id, last.id) === null, 'niveau de trop par déplacement');
+      const held = make('Sous le voisin', other.id);
+      assert(store.moveFolder(other.id, beforeLast.id) === null, 'dossier trop haut rangé');
+      assert(store.moveFolder(held.id, beforeLast.id), 'dossier qui tenait refusé');
+      home = homeView();
+      assert(shown(home, beforeLast).querySelector('.folder-tools').querySelectorAll('button').length
+        === shown(home, last).querySelector('.folder-tools').querySelectorAll('button').length + 1,
+      'dossier offert au dernier niveau');
+
+      store.deleteFolder(inner.id);
+      assert(store.getSet(filed.id).folder === outer.id, 'jeu non remonté');
+      assert(store.getFolders().every((folder) => folder.parent !== inner.id), 'dossier resté sous un dossier supprimé');
+
+      const before = store.exportAll();
+      const twisted = JSON.parse(before);
+      const [first, second] = twisted.folders;
+      first.parent = second.id;
+      second.parent = first.id;
+      twisted.folders.push({ id: 'orphelin', name: 'Orphelin', parent: 'absent' });
+      made.push({ id: 'orphelin' });
+      store.importPayload(twisted);
+      assert(store.getFolders().every(rooted), 'dossiers en rond');
+      assert(store.getFolder('orphelin').parent === '', 'parent absent gardé');
+      const older = JSON.parse(before);
+      for (const entry of older.folders) delete entry.parent;
+      store.importPayload(JSON.parse(before));
+      store.importPayload(older);
+      assert(JSON.stringify(JSON.parse(store.exportAll()).folders.filter((entry) => entry.id !== 'orphelin'))
+        === JSON.stringify(JSON.parse(before).folders), 'une sauvegarde plus ancienne déplace les dossiers');
+      return 'ok';
+    } finally {
+      store.deleteSet(filed.id);
+      for (const folder of made) store.deleteFolder(folder.id);
     }
   });
 

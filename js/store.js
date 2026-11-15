@@ -123,17 +123,45 @@ export function normalizeSet(raw) {
   };
 }
 
-/* A folder groups sets on the home page. open says whether it shows its
-   sets there. A folder with no name is dropped, and so is a second one
-   with the same id. */
-function normalizeFolders(raw) {
+/* How many folders can sit one in the other. The home page draws them
+   one inside the other, so a file cannot be let to stack them without end. */
+export const FOLDER_LEVELS = 6;
+
+/* A folder groups sets on the home page. open says whether it shows what
+   it holds there, parent is the id of the folder it sits in, or nothing.
+   A folder with no name is dropped, and so is a second one with the same
+   id. An entry that names no parent, as in a backup older than folders in
+   folders, gets the one kept(id) gives. */
+function normalizeFolders(raw, kept = () => '') {
   const folders = new Map();
   for (const entry of Array.isArray(raw) ? raw : []) {
     const id = str(entry && entry.id);
     const name = str(entry && entry.name).trim();
-    if (id && name && !folders.has(id)) folders.set(id, { id, name, open: entry.open !== false });
+    if (!id || !name || folders.has(id)) continue;
+    const parent = typeof entry.parent === 'string' ? entry.parent : kept(id);
+    folders.set(id, { id, name, open: entry.open !== false, parent });
   }
   return [...folders.values()];
+}
+
+/* Makes a tree of folders: a parent that is not among them is forgotten,
+   and so is the parent of a folder with more than FOLDER_LEVELS - 1
+   folders above it, which also undoes a folder put inside itself. */
+function plantFolders(folders) {
+  const byId = new Map(folders.map((folder) => [folder.id, folder]));
+  for (const folder of folders) {
+    for (let up = folder, above = 1; up.parent; up = byId.get(up.parent), above += 1) {
+      if (!byId.has(up.parent)) {
+        up.parent = '';
+        break;
+      }
+      if (above === FOLDER_LEVELS) {
+        folder.parent = '';
+        break;
+      }
+    }
+  }
+  return folders;
 }
 
 /* Known keys only, laid over base, each only with the type of its default:
@@ -181,7 +209,7 @@ function normalizeActivity(raw) {
 function normalizeState(raw) {
   const base = emptyState();
   if (!raw || typeof raw !== 'object') return base;
-  const folders = normalizeFolders(raw.folders);
+  const folders = plantFolders(normalizeFolders(raw.folders));
   const known = new Set(folders.map((folder) => folder.id));
   const ids = new Set();
   const sets = (Array.isArray(raw.sets) ? raw.sets.map(normalizeSet) : [])
@@ -342,10 +370,36 @@ export function getFolder(id) {
   return state.folders.find((folder) => folder.id === id) || null;
 }
 
-/* Returns the new folder, or null for a name with nothing in it. */
-export function createFolder(name) {
-  const [folder] = normalizeFolders([{ id: uid(), name }]);
-  if (!folder) return null;
+/* The folder of that id, then the folders it sits in, nearest first. */
+export function folderLineage(id) {
+  const chain = [];
+  for (let folder = getFolder(id); folder; folder = getFolder(folder.parent)) chain.push(folder);
+  return chain;
+}
+
+/* How many levels the folder of that id takes with the folders it holds. */
+function folderHeight(id) {
+  const held = state.folders.filter((folder) => folder.parent === id);
+  return 1 + Math.max(0, ...held.map((folder) => folderHeight(folder.id)));
+}
+
+/* The folders the folder of that id can be put in with all it holds:
+   not itself, not one it holds, and none that would leave a folder deeper
+   than FOLDER_LEVELS. */
+export function folderHomes(id) {
+  const height = folderHeight(id);
+  return state.folders.filter((folder) => {
+    const chain = folderLineage(folder.id);
+    return chain.length + height <= FOLDER_LEVELS && !chain.some((above) => above.id === id);
+  });
+}
+
+/* Returns the new folder, put in the folder parent names if any, or null
+   for a name with nothing in it or a parent that cannot take a folder. */
+export function createFolder(name, parent = '') {
+  const [folder] = normalizeFolders([{ id: uid(), name, parent }]);
+  const above = folderLineage(parent).length;
+  if (!folder || (parent && !above) || above >= FOLDER_LEVELS) return null;
   state.folders.push(folder);
   save();
   return folder;
@@ -367,12 +421,23 @@ export function setFolderOpen(id, open) {
   save();
 }
 
-/* The sets of a deleted folder stay, outside any folder. */
+/* Puts a folder in another, or in none for no parent. Returns the folder,
+   or null when the other cannot take it. */
+export function moveFolder(id, parent) {
+  const folder = getFolder(id);
+  if (!folder || (parent && !folderHomes(id).some((home) => home.id === parent))) return null;
+  folder.parent = str(parent);
+  save();
+  return folder;
+}
+
+/* The sets and the folders of a deleted folder stay, and go where it was. */
 export function deleteFolder(id) {
   const index = state.folders.findIndex((folder) => folder.id === id);
   if (index < 0) return false;
-  state.folders.splice(index, 1);
-  for (const set of state.sets) if (set.folder === id) set.folder = '';
+  const [gone] = state.folders.splice(index, 1);
+  for (const folder of state.folders) if (folder.parent === id) folder.parent = gone.parent;
+  for (const set of state.sets) if (set.folder === id) set.folder = gone.parent;
   save();
   return true;
 }
@@ -541,17 +606,20 @@ export function exportAll() {
    the higher of the two counts, since the same answers may be counted on both
    sides. Settings found in the file win, and so do folders, matched by id.
    A set the file places in no folder, as in a backup older than folders or
-   a sample set, keeps the folder it already had here. */
+   a sample set, keeps the folder it already had here, and a folder the
+   file gives no parent keeps its own the same way. */
 export function importPayload(payload) {
   const incoming = Array.isArray(payload && payload.sets) ? payload.sets
     : Array.isArray(payload) ? payload : null;
   if (!incoming) throw new Error('shape');
   if (!Array.isArray(payload)) {
-    for (const folder of normalizeFolders(payload.folders)) {
+    const kept = (id) => (getFolder(id) || { parent: '' }).parent;
+    for (const folder of normalizeFolders(payload.folders, kept)) {
       const index = state.folders.findIndex((existing) => existing.id === folder.id);
       if (index >= 0) state.folders[index] = folder;
       else state.folders.push(folder);
     }
+    plantFolders(state.folders);
   }
   let count = 0;
   const added = [];

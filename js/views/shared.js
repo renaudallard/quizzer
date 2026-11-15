@@ -90,10 +90,21 @@ export function cardRow(card, { termLang, defLang } = {}, tools) {
     tools === undefined ? null : el('div', { class: 'card-row-tools' }, tools));
 }
 
-/* The folders in the order of their names, for the home page and the
-   editor alike. */
-export function foldersByName() {
-  return store.getFolders().slice().sort((a, b) => a.name.localeCompare(b.name, getLocale()));
+/* The folders held by the folder of that id, or those in no folder, in
+   the order of their names. */
+export function foldersIn(parent = '') {
+  return store.getFolders().filter((folder) => folder.parent === parent)
+    .sort((a, b) => a.name.localeCompare(b.name, getLocale()));
+}
+
+/* Every folder, each followed by those it holds. */
+export function folderTree(parent = '') {
+  return foldersIn(parent).flatMap((folder) => [folder, ...folderTree(folder.id)]);
+}
+
+/* The name of a folder after the names of those it sits in. */
+export function folderPath(id) {
+  return store.folderLineage(id).reverse().map((folder) => folder.name).join(' / ');
 }
 
 export function notFoundPanel(message) {

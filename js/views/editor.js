@@ -6,7 +6,7 @@ import { t, tn, getLocale } from '../i18n/index.js';
 import * as store from '../store.js';
 import { parseDelimited } from '../io.js';
 import { navigate, onCleanup, setBusy } from '../router.js';
-import { notFoundPanel, toastSaved, foldersByName } from './shared.js';
+import { notFoundPanel, toastSaved, folderTree, folderPath } from './shared.js';
 import { addImage, cardImage, IMAGE_ERRORS } from '../images.js';
 import { typeset, hasMath, hasEmphasis, tableSource, blocks } from '../text.js';
 import { clamp } from '../util.js';
@@ -70,7 +70,7 @@ function folderSelect(value, onChange) {
   const fill = (chosen) => {
     mount(select,
       el('option', { value: '' }, t('editor.folderNone')),
-      foldersByName().map((folder) => el('option', { value: folder.id }, folder.name)),
+      folderTree().map((folder) => el('option', { value: folder.id }, folderPath(folder.id))),
       el('option', { value: NEW_FOLDER }, t('editor.folderNew')));
     select.value = chosen;
   };
