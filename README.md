@@ -352,7 +352,9 @@ separates them, so `314` is wrong for `3,14` while `3.14` and `3 14` are
 right; a space before a group of three digits only groups them, so `1000`
 matches `1 000`; a minus sign in front of a number counts, so `5` is wrong
 for `-5`; and a number gets no typo allowance, since one digit more or less
-makes another number: `0,01` is wrong for `0,001`.
+makes another number: `0,01` is wrong for `0,001`. The same holds for the
+numbers of a longer answer: `14 juilet 1789` is "presque" for
+`14 juillet 1789`, `14 juillet 1790` is wrong.
 
 Formulas are graded as formulas. An answer that holds an operator or a maths
 sign, such as `+`, `=`, `×`, `^`, `√`, `≤` or `²`, a factorial such as `5!`,
@@ -414,7 +416,7 @@ Two tolerances are on by default and can be turned off in the settings:
   interface says accents count.
 - **Typos.** One wrong letter up to eight letters, two beyond that, gives
   "presque" rather than "raté". Under five letters nothing is forgiven,
-  and in a number nothing ever is.
+  and in a number nothing ever is, even inside a longer answer.
   The length that counts is the expected answer's, not what was typed.
 
 A definition may list alternatives with ` / ` or `;`, and a parenthesised

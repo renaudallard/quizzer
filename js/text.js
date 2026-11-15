@@ -511,6 +511,12 @@ export function levenshtein(a, b) {
 /* A number is right or wrong: one digit more or less is another number. */
 const NUMBER = /^−?\d+( \d+)*$/;
 
+/* The numbers of a text, in order. Those inside words hold as well, so a
+   slipped key is never a digit: "14 juillet 1790" is not "14 juillet 1789". */
+function numbers(text) {
+  return (text.match(/−?\d+/g) || []).join(' ');
+}
+
 function typoBudget(length) {
   if (length <= 4) return 0;
   if (length <= 8) return 1;
@@ -552,7 +558,8 @@ function compare(typed, expected, options) {
   if (givenLoose === loose) return { verdict: accents ? 'correct' : 'almost', accent: true };
   /* The allowance follows the expected answer, so padding a short answer
      cannot buy a typo and a long answer keeps its slack. */
-  if (typos && !NUMBER.test(loose) && levenshtein(givenLoose, loose) <= typoBudget(loose.length)) {
+  if (typos && !NUMBER.test(loose) && numbers(givenLoose) === numbers(loose)
+    && levenshtein(givenLoose, loose) <= typoBudget(loose.length)) {
     return { verdict: 'almost', accent: false };
   }
   return WRONG;

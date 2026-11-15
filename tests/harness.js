@@ -172,6 +172,8 @@ async function run() {
     assert(text.grade('100 000', '1 000 000').verdict === 'wrong', 'zéro en moins');
     assert(text.grade('1000000', '1 000 000').verdict === 'correct', 'grand nombre sans espaces');
     assert(text.grade('5', '-5').verdict === 'wrong', 'signe moins oublié');
+    assert(text.grade('14 juillet 1790', '14 juillet 1789').verdict === 'wrong', 'chiffre faux dans une phrase');
+    assert(text.grade('14 juilet 1789', '14 juillet 1789').verdict === 'almost', 'lettre oubliée à côté d’un nombre');
     assert(text.grade('2x+1', '2(x+1)').verdict === 'wrong', 'parenthèses d’une formule');
     assert(text.grade('xy', 'x-y').verdict === 'wrong', 'signe moins d’une formule');
     assert(text.grade('2 ( x + 1 )', '2(x+1)').verdict === 'correct', 'espaces dans une formule');
