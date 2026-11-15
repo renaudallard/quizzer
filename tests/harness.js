@@ -218,6 +218,15 @@ async function run() {
     return 'ok';
   });
 
+  check('l’indice et la coupe respectent les caractères', () => {
+    assert(text.maskAnswer('école primaire') === 'é···· p·······', 'indice: ' + text.maskAnswer('école primaire'));
+    assert(text.maskAnswer('e\u0301cole') === 'é····', 'accent décomposé: ' + text.maskAnswer('e\u0301cole'));
+    assert(text.maskAnswer('𝒳𝒴 a') === '𝒳· a', 'lettres hors du plan de base: ' + text.maskAnswer('𝒳𝒴 a'));
+    assert(text.truncate('ab😀cd', 4) === 'ab😀…', 'coupe: ' + text.truncate('ab😀cd', 4));
+    assert(text.truncate('abcd', 4) === 'abcd', 'texte court coupé');
+    return 'ok';
+  });
+
   check('LaTeX lu sur une ligne', () => {
     const cases = [
       ['$\\frac{x+1}{2}$', '(x+1)/2'], ['$\\sqrt{b^2-4ac}$', '√(b²-4ac)'], ['$u_{n+1}$', 'uₙ₊₁'],

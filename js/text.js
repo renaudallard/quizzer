@@ -656,15 +656,18 @@ export function gradeAny(input, answers, options = {}) {
 }
 
 /* Progressive hint: keeps the first letter of every word and the
-   punctuation. */
+   punctuation. Letters are counted as characters, not as the code units
+   some of them take two of, and an accent typed apart stays on its letter. */
 export function maskAnswer(text) {
-  return plain(text).replace(/\p{L}[\p{L}\p{M}'-]*/gu, (word) => {
-    if (word.length <= 1) return word;
-    return word[0] + '·'.repeat(Math.min(word.length - 1, 12));
+  return plain(text).normalize('NFC').replace(/\p{L}[\p{L}\p{M}'-]*/gu, (word) => {
+    const [first, ...rest] = word;
+    return rest.length ? first + '·'.repeat(Math.min(rest.length, 12)) : word;
   });
 }
 
+/* Cut between characters, never inside one that takes two code units, such
+   as an emoji. */
 export function truncate(text, max) {
-  const value = String(text);
-  return value.length > max ? value.slice(0, max - 1).trimEnd() + '…' : value;
+  const chars = [...String(text)];
+  return chars.length > max ? chars.slice(0, max - 1).join('').trimEnd() + '…' : chars.join('');
 }
