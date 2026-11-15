@@ -587,7 +587,9 @@ the storage figure in the settings counts it.
   applied at once. Importing the same backup twice changes nothing.
   Sessions whose set is missing, entries that are not valid, pictures that
   are not images or are over 2 MB, and settings of the wrong type, such as
-  `"false"` for a switch, are skipped. Older exports that only hold sets
+  `"false"` for a switch, are skipped. So is a second set with the id of an
+  earlier one in the file, and a card that repeats the id of another card
+  of its set gets a new one. Older exports that only hold sets
   still import, and a set they replace keeps the folder it was in.
 - **CSV** is quote aware on both sides, so a definition may contain a comma,
   a semicolon or a line break. A header row is recognised and skipped, in

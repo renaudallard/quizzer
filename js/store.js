@@ -86,9 +86,20 @@ function normalizeDiagram(raw) {
   };
 }
 
+/* A card is found by its id, so one that repeats the id of an earlier
+   card, as in a file put together by hand, takes a new one. */
+function distinct(cards) {
+  const ids = new Set();
+  for (const card of cards) {
+    if (ids.has(card.id)) card.id = uid();
+    ids.add(card.id);
+  }
+  return cards;
+}
+
 export function normalizeSet(raw) {
   const now = Date.now();
-  const cards = Array.isArray(raw && raw.cards) ? raw.cards.map(normalizeCard) : [];
+  const cards = distinct(Array.isArray(raw && raw.cards) ? raw.cards.map(normalizeCard) : []);
   const diagrams = Array.isArray(raw && raw.diagrams) ? raw.diagrams.map(normalizeDiagram) : [];
   return {
     id: str(raw && raw.id) || uid(),
@@ -159,12 +170,16 @@ function normalizeActivity(raw) {
   return activity;
 }
 
+/* A set is found by its id too: a second one with the same id could never
+   be opened, and is dropped as a second folder is. */
 function normalizeState(raw) {
   const base = emptyState();
   if (!raw || typeof raw !== 'object') return base;
   const folders = normalizeFolders(raw.folders);
   const known = new Set(folders.map((folder) => folder.id));
-  const sets = Array.isArray(raw.sets) ? raw.sets.map(normalizeSet) : [];
+  const ids = new Set();
+  const sets = (Array.isArray(raw.sets) ? raw.sets.map(normalizeSet) : [])
+    .filter((set) => !ids.has(set.id) && ids.add(set.id));
   for (const set of sets) if (!known.has(set.folder)) set.folder = '';
   return {
     version: 1,
@@ -494,7 +509,8 @@ export function exportAll() {
 }
 
 /* Merges an export back in, so importing the same file twice changes nothing.
-   A set already known by id is replaced and new ones go on top in file order.
+   A set already known by id is replaced and new ones go on top in file order;
+   of two sets of the file with the same id, the first is taken.
    Sessions are matched by id and only kept for sets that exist. Each day keeps
    the higher of the two counts, since the same answers may be counted on both
    sides. Settings found in the file win, and so do folders, matched by id.
@@ -513,9 +529,11 @@ export function importPayload(payload) {
   }
   let count = 0;
   const added = [];
+  const taken = new Set();
   for (const raw of incoming) {
     const set = normalizeSet(raw);
-    if (!set.cards.length && !set.diagrams.length) continue;
+    if ((!set.cards.length && !set.diagrams.length) || taken.has(set.id)) continue;
+    taken.add(set.id);
     const index = state.sets.findIndex((existing) => existing.id === set.id);
     if (index >= 0) {
       if (!(raw && typeof raw.folder === 'string')) set.folder = state.sets[index].folder;

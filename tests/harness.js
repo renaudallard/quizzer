@@ -898,6 +898,24 @@ async function run() {
     return 'ok';
   });
 
+  /* Sets and cards are found by their id, so a file must not bring two of
+     the same. */
+  check('une sauvegarde aux identifiants répétés', () => {
+    const twice = { id: 'double', title: 'Un', cards: [{ id: 'c', term: 'a', def: 'b' }, { id: 'c', term: 'x', def: 'y' }] };
+    try {
+      const count = store.importPayload({ sets: [twice, { ...twice, title: 'Deux' }] });
+      assert(count === 1, count + ' jeux importés');
+      assert(store.getSets().filter((entry) => entry.id === 'double').length === 1, 'jeu en double');
+      const [first, second] = store.getSet('double').cards;
+      assert(store.getSet('double').title === 'Un' && first.id === 'c' && second.id !== 'c', 'cartes: ' + first.id + ', ' + second.id);
+      store.recordAnswer('double', second.id, true);
+      assert(first.seen === 0 && second.seen === 1, 'réponse comptée sur une autre carte');
+      return 'ok';
+    } finally {
+      store.deleteSet('double');
+    }
+  });
+
   /* A placeholder lost or misspelled in a translation would reach the screen
      as raw {name} text, so each string must carry the same ones as French. */
   const placeholders = (value) => (value.match(/\{\w+\}/g) || []).sort().join(' ');
