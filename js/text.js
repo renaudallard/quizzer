@@ -38,7 +38,10 @@ export function normalize(text, stripAccents = true) {
    in "XIXᵉ siècle", or they end an abbreviation: two or more of them, or
    a lone ᵉ, after a digit or a capital, as in "1ᵉʳ", "2ᵉ" or "Mᵐᵉ".
    Arrows and the signs of sets and logic only make a formula without
-   words, so "cheval → chevaux" stays text while "x → 0" does not. */
+   words, so "cheval → chevaux" stays text while "x → 0" does not. A
+   slash with a space beside it and a bracket after a space are no
+   operators: they set alternatives and a precision apart, as in any text,
+   so "y / e" and "α (Α)" are no formulas, while "u/v" and "f(x)" are. */
 const MATH_SIGN = /[+=<>×÷*^√∑∏∫∬∮±∓≤≥≠≈≡∝∞∂∇⇌⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿ₀₁₂₃₄₅₆₇₈₉₊₋₌ₐₑₕᵢⱼₖₗₘₙₒₚᵣₛₜᵤᵥₓ½¼¾⅓⅔]|\d!|(^|[^\p{Script=Greek}])π(?!\p{Script=Greek})|\p{Script=Greek}[a-z\d]|[a-z\d]\p{Script=Greek}/iu;
 const FORMULA = /^[\s\p{L}\d.,()[\]{}+\-−*/^_=<>!|'′→⇒⇔↔∈∉⊂⊆∪∩∀∃¬∧∨]*$/u;
 const OPERATOR = /[-−*/^_=<>()[\]{}!|→⇒⇔↔∈∉⊂⊆∪∩∀∃¬∧∨]/u;
@@ -47,6 +50,7 @@ const FUNCTION_NAME = new RegExp('\\b(?:' + FUNCTIONS + ')\\b', 'gi');
 const FUNCTION_CALL = new RegExp('(' + FUNCTIONS + ')(\\^[\\p{L}\\d]+)?\\(([\\p{L}\\d.]+)\\)', 'gu');
 const LETTER_EXPONENTS = 'ᵃᵇᶜᵈᵉⁱᵏᵐᵖᵗᵘᵛˣʸᶻ⁼⁽⁾';
 const ABBREVIATION = /(?<=[\d\p{Lu}])(?:\p{Lm}{2,}|ᵉ)(?!\p{Lm})/gu;
+const SET_APART = /\s+\/\s*|\/\s+|\s+\([^()]*\)/g;
 
 export function isMath(text) {
   const value = String(text).replace(ABBREVIATION, '');
@@ -55,7 +59,8 @@ export function isMath(text) {
   const chars = [...bare];
   if (chars.some((char) => LETTER_EXPONENTS.includes(char))
     && !/\p{L}{2}/u.test(chars.filter((char) => !LETTER_EXPONENTS.includes(char)).join(''))) return true;
-  return FORMULA.test(bare) && /\p{L}/u.test(bare) && !/\p{L}{2}/u.test(bare) && OPERATOR.test(bare);
+  return FORMULA.test(bare) && /\p{L}/u.test(bare) && !/\p{L}{2}/u.test(bare)
+    && OPERATOR.test(bare.replace(SET_APART, ' '));
 }
 
 /* Signs a keyboard lacks, as they are typed instead: x^2 for x², H2O for

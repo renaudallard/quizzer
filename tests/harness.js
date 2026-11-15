@@ -184,6 +184,10 @@ async function run() {
     assert(text.grade('-sin x', '−sin(x)').verdict === 'correct', 'fonction sans parenthèses');
     assert(text.grade('u/u', "u'/u").verdict === 'wrong', 'prime oublié');
     assert(text.grade('u′/u', "u'/u").verdict === 'correct', 'prime tapé');
+    assert(text.grade('y', 'y / e').verdict === 'correct', 'variantes d’une seule lettre');
+    assert(text.grade('α', 'α (Α)').verdict === 'correct', 'précision après une seule lettre');
+    assert(text.grade('u', 'u/v').verdict === 'wrong', 'division prise pour des variantes');
+    assert(text.grade('ab/c', 'a - b / c').verdict === 'wrong', 'formule écrite avec des espaces');
     assert(text.grade('x^(n-1)', 'xⁿ⁻¹').verdict === 'correct', 'exposant entre parenthèses');
     assert(text.grade('x^n-1', 'xⁿ⁻¹').verdict === 'wrong', 'exposant sans parenthèses');
     assert(text.grade('e^x', 'eˣ').verdict === 'correct', 'exposant en lettre');

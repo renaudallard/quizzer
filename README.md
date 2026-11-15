@@ -395,6 +395,12 @@ for `Fe³⁺`. Arrows and the signs of sets and logic, such as `∈` or `∪`,
 make a formula only when no word sits in the answer, so `x → 0` is a
 formula and `cheval → chevaux` is text.
 
+Between single letters, a slash with a space beside it and a bracket after a
+space mean what they mean in text: `y / e` lists two answers and `α (Α)`
+ends on an optional precision, so `y` and `α` are right. `u/v` and `f(x)`
+are formulas, and so is anything that holds another operator, such as
+`a - b / c`: write a division of single letters without spaces.
+
 LaTeX is graded as it reads on one line, so the answer is typed the way the
 rest of a formula is. `\frac{a}{b}` reads `a/b`, with brackets around a
 side that holds more than one term, so `(x+1)/2` is right for
