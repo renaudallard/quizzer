@@ -356,6 +356,7 @@ export default {
   "transfer.exportBody": "Downloadt een volledige back-up als JSON-bestand: je sets met de voortgang van elke kaart, de sessiegeschiedenis, de dagelijkse activiteit en je instellingen.",
   "transfer.exportAll": "Alles opslaan (JSON)",
   "transfer.exportNothing": "Er is nog geen set om te back-uppen.",
+  "transfer.exportNoImages": "De afbeeldingen konden niet gelezen worden: deze back-up bevat ze niet.",
   "transfer.importTitle": "Back-up terugzetten",
   "transfer.importBody": "Leest een JSON-back-up van Quizzer in. Bestaande sets worden bijgewerkt en de rest toegevoegd, de geschiedenis wordt zonder duplicaten samengevoegd en de instellingen worden hersteld.",
   "transfer.importFile": "JSON-bestand kiezen",

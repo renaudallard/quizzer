@@ -584,7 +584,9 @@ the storage figure in the settings counts it.
   is replaced and new ones are added in file order, folders are matched by
   id, pictures come back with their cards, sessions are matched by id, each
   day keeps the higher of the two counts, and the settings in the file are
-  applied at once. Importing the same backup twice changes nothing.
+  applied at once. Importing the same backup twice changes nothing. If the
+  pictures cannot be read when a backup is made, it is saved without them
+  and a message says so.
   Sessions whose set is missing, entries that are not valid, pictures that
   are not images or are over 2 MB, and settings of the wrong type, such as
   `"false"` for a switch, are skipped. So is a second set with the id of an

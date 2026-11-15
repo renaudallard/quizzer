@@ -356,6 +356,7 @@ export default {
   "transfer.exportBody": "Downloads a full backup as a JSON file: your sets with each card’s progress, the session history, the daily activity and your settings.",
   "transfer.exportAll": "Save everything (JSON)",
   "transfer.exportNothing": "There is no set to back up yet.",
+  "transfer.exportNoImages": "The pictures could not be read: this backup does not hold them.",
   "transfer.importTitle": "Restore a backup",
   "transfer.importBody": "Reads a Quizzer JSON backup. Sets already present are updated and the rest added, the history is merged without duplicates and the settings are restored.",
   "transfer.importFile": "Choose a JSON file",

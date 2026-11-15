@@ -17,11 +17,18 @@ function exportPanel() {
   const button = el('button', {
     type: 'button', class: 'btn btn-primary',
     disabled: sets.length === 0,
-    /* The pictures the cards use travel in the file, as data URLs. The name
-       carries the local day, like the activity and the streak. */
+    /* The pictures the cards use travel in the file, as data URLs. When
+       they cannot be read the rest is still worth saving, but the learner
+       is told the pictures are not in it. The name carries the local day,
+       like the activity and the streak. */
     onclick: async () => {
       const backup = JSON.parse(store.exportAll());
-      backup.images = await exportImages(store.imageIds()).catch(() => ({}));
+      try {
+        backup.images = await exportImages(store.imageIds());
+      } catch {
+        backup.images = {};
+        toast(t('transfer.exportNoImages'));
+      }
       download('quizzer-' + dayKey() + '.json', JSON.stringify(backup, null, 2));
     },
   }, icon('download'), t('transfer.exportAll'));

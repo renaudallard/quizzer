@@ -356,6 +356,7 @@ export default {
   "transfer.exportBody": "Télécharge une sauvegarde complète dans un fichier JSON: vos jeux avec la progression de chaque carte, l’historique des séances, l’activité quotidienne et vos réglages.",
   "transfer.exportAll": "Tout sauvegarder (JSON)",
   "transfer.exportNothing": "Il n’y a encore aucun jeu à sauvegarder.",
+  "transfer.exportNoImages": "Les images n’ont pas pu être lues: cette sauvegarde ne les contient pas.",
   "transfer.importTitle": "Restaurer une sauvegarde",
   "transfer.importBody": "Reprend une sauvegarde JSON de Quizzer. Les jeux déjà présents sont mis à jour et les autres ajoutés, l’historique est fusionné sans doublons et les réglages sont rétablis.",
   "transfer.importFile": "Choisir un fichier JSON",
