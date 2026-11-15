@@ -3,6 +3,7 @@
 
 import { uid, dayKey, lastDayKeys, addDays, clamp, pct } from './util.js';
 import { schedule, isDue, MAX_BOX } from './srs.js';
+import { t } from './i18n/index.js';
 
 export const STORAGE_KEY = 'quizzer.v1';
 export const SALVAGE_KEY = 'quizzer.v1.unreadable';
@@ -103,7 +104,9 @@ export function normalizeSet(raw) {
   const diagrams = Array.isArray(raw && raw.diagrams) ? raw.diagrams.map(normalizeDiagram) : [];
   return {
     id: str(raw && raw.id) || uid(),
-    title: str(raw && raw.title).trim() || 'Sans titre',
+    /* A set that comes without a title, as a share link may bring, is
+       named in the language of the interface. */
+    title: str(raw && raw.title).trim() || t('set.untitled'),
     description: cardText(raw && raw.description),
     termLang: str(raw && raw.termLang),
     defLang: str(raw && raw.defLang),

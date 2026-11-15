@@ -102,6 +102,7 @@ export default {
   "set.needTextCards.one": "Il faut au moins {n} carte avec du texte pour ce mode.",
   "set.needTextCards.other": "Il faut au moins {n} cartes avec du texte pour ce mode.",
   "set.noText": "Aucune carte de ce jeu n’a de texte: ce mode n’a rien à demander.",
+  "set.untitled": "Sans titre",
   "set.dueNow.one": "{n} carte à réviser",
   "set.dueNow.other": "{n} cartes à réviser",
   "set.upToDate": "Révisions à jour",

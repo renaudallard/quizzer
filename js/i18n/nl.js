@@ -102,6 +102,7 @@ export default {
   "set.needTextCards.one": "Deze modus heeft minstens {n} kaart met tekst nodig.",
   "set.needTextCards.other": "Deze modus heeft minstens {n} kaarten met tekst nodig.",
   "set.noText": "Geen enkele kaart van deze set heeft tekst: deze modus heeft niets te vragen.",
+  "set.untitled": "Zonder titel",
   "set.dueNow.one": "{n} kaart te herhalen",
   "set.dueNow.other": "{n} kaarten te herhalen",
   "set.upToDate": "Alles herhaald",

@@ -102,6 +102,7 @@ export default {
   "set.needTextCards.one": "This mode needs at least {n} card with text.",
   "set.needTextCards.other": "This mode needs at least {n} cards with text.",
   "set.noText": "No card of this set has text, so this mode has nothing to ask.",
+  "set.untitled": "Untitled",
   "set.dueNow.one": "{n} card to review",
   "set.dueNow.other": "{n} cards to review",
   "set.upToDate": "Reviews up to date",

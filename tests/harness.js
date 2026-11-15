@@ -881,6 +881,7 @@ async function run() {
     try {
       const { value } = statTileIn(homeView(), i18n.t('stat.accuracy'));
       assert(/^\d+%$/.test(value), 'affiche ' + value);
+      assert(store.normalizeSet({ title: ' ' }).title === 'Untitled', 'jeu sans titre: ' + store.normalizeSet({}).title);
       return value;
     } finally {
       i18n.setLocale('fr');

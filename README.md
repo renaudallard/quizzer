@@ -624,7 +624,8 @@ the storage figure in the settings counts it.
   text, leaves out the cards that are a picture alone on one side, and says
   so when it is made. Very long sets make very long links. A set with no
   text card, such as one of labelled pictures alone, has no link to give,
-  and the button says so.
+  and the button says so. A set that arrives without a title, by a link or
+  a backup, is named "Sans titre", in the language of the interface.
 
 ## Keyboard
 
