@@ -49,7 +49,7 @@ function detectDelimiter(text) {
         continue;
       }
       if (char === '\n') { i++; break; }
-      if (comment || char === '\r') continue;
+      if (comment) continue;
       if (/\s/.test(char)) {
         if (char === '\t') { found.add(char); fieldStart = true; }
         continue;
@@ -93,7 +93,6 @@ function parseRows(text, delimiter) {
     }
     if (char === delimiter) { row.push(field); field = ''; continue; }
     if (char === '\n') { row.push(field); rows.push(row); row = []; field = ''; continue; }
-    if (char === '\r') continue;
     field += char;
   }
   row.push(field);
@@ -124,7 +123,10 @@ export async function readText(file) {
   }
 }
 
-export function parseDelimited(text) {
+/* Lines end on a line feed, a carriage return or both, as Unix, the old
+   Mac format Excel still offers and Windows write them. */
+export function parseDelimited(source) {
+  const text = source.replace(/\r\n?/g, '\n');
   const rows = parseRows(text, detectDelimiter(text));
   if (rows.length && looksLikeHeader(rows[0])) rows.shift();
   return rows

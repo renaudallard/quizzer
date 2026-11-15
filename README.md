@@ -607,7 +607,9 @@ the storage figure in the settings counts it.
   checked before the set is created. The file name becomes the title unless one
   was typed. UTF-16 files with a byte order mark, such as Excel's "Unicode
   Text" export, are read as such, and a file that is not UTF-8 is read as
-  Windows-1252, the encoding Excel on Windows still uses for CSV.
+  Windows-1252, the encoding Excel on Windows still uses for CSV. Lines may
+  end the Unix, the Windows or the old Mac way, which Excel's
+  "CSV (Macintosh)" still writes.
 - **Share links** carry the cards in the URL fragment, base64url encoded, so
   the recipient needs no account and the link never reaches a server.
   Progress is deliberately left behind, and so are pictures: a link carries

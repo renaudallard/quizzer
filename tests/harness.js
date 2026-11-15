@@ -311,6 +311,8 @@ async function run() {
     assert(io.parseDelimited('  # notes; x\nhola\tbonjour').length === 1, 'commentaire en retrait');
     assert(io.parseDelimited('\t\nhola;bonjour').length === 1, 'ligne de tabulations seules');
     assert(io.parseDelimited('être,to be; to exist\navoir,to have').length === 2, 'point-virgule dans une définition');
+    assert(io.parseDelimited('chat,cat\rchien,dog\r\nlapin,rabbit').length === 3, 'fins de ligne de Mac et de Windows');
+    assert(io.parseDelimited('chat,"a\r\nb"')[0]?.def === 'a\nb', 'retour à la ligne entre guillemets');
     const hashed = { cards: [{ term: '#include', def: 'directive', hint: '' }] };
     assert(io.parseDelimited(io.toCSV(hashed))[0]?.term === '#include', 'terme commençant par #');
     return 'ok';
