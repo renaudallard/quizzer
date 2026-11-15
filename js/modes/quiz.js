@@ -7,7 +7,9 @@ import { el, icon, mount } from '../dom.js';
 import { t, tn, formatPercent } from '../i18n/index.js';
 import * as store from '../store.js';
 import { shuffle, pct } from '../util.js';
-import { studyShell, summaryPanel, saveSession, askable, timerField, countdown } from '../study.js';
+import {
+  studyShell, summaryPanel, saveSession, askable, timerField, countdown, nothingToAsk,
+} from '../study.js';
 import {
   indexCards, buildQuestion, questionAsker, directionField, goesForward, typesField,
 } from '../question.js';
@@ -27,6 +29,8 @@ function buildQuestions(set, source, config) {
 export function quizView(id) {
   const set = store.getSet(id);
   if (!set) return notFoundPanel(t('set.notFound'));
+  const nothing = nothingToAsk(set, 'mode.quiz');
+  if (nothing) return nothing;
 
   const shell = studyShell({ set, modeKey: 'mode.quiz' });
   const stage = el('div');

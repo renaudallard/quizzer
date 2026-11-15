@@ -5,7 +5,7 @@ import { el, icon, mount } from './dom.js';
 import { t, tn, getLocale } from './i18n/index.js';
 import { getSettings, recordSession } from './store.js';
 import { onCleanup, setBusy } from './router.js';
-import { cardRow } from './views/shared.js';
+import { cardRow, messagePanel } from './views/shared.js';
 import { pct, formatDuration } from './util.js';
 import { cardImage } from './images.js';
 import { textKey, plain } from './text.js';
@@ -25,6 +25,13 @@ export function sideKey(text, image) {
    be asked at all. */
 export function askable(card) {
   return Boolean(card.term || card.def);
+}
+
+/* What a mode whose answers are typed or picked shows for a set with no
+   card to ask, such as one of pictures alone, or null when it has some. */
+export function nothingToAsk(set, modeKey) {
+  if (set.cards.some(askable)) return null;
+  return messagePanel(t(modeKey), t('set.noText'), { href: '#/set/' + set.id, label: t('common.back') });
 }
 
 /* One side of a card as it is shown: its picture, then its text. A picture

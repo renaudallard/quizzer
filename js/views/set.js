@@ -8,23 +8,28 @@ import { meter } from '../chart.js';
 import { download, slugify, toCSV } from '../io.js';
 import { navigate } from '../router.js';
 import { notFoundPanel, shareControls, cardRow, toastSaved, hasPictures } from './shared.js';
+import { askable } from '../study.js';
 
 const MODES = [
   { path: 'cards', key: 'mode.flashcards', glyph: 'cards', min: 1 },
-  { path: 'learn', key: 'mode.learn', glyph: 'target', min: 2 },
+  { path: 'learn', key: 'mode.learn', glyph: 'target', min: 2, typed: true },
   { path: 'review', key: 'mode.review', glyph: 'repeat', min: 1 },
-  { path: 'quiz', key: 'mode.quiz', glyph: 'quiz', min: 2 },
-  { path: 'test', key: 'mode.test', glyph: 'test', min: 2 },
-  { path: 'write', key: 'mode.write', glyph: 'keyboard', min: 1 },
+  { path: 'quiz', key: 'mode.quiz', glyph: 'quiz', min: 2, typed: true },
+  { path: 'test', key: 'mode.test', glyph: 'test', min: 2, typed: true },
+  { path: 'write', key: 'mode.write', glyph: 'keyboard', min: 1, typed: true },
   { path: 'match', key: 'mode.match', glyph: 'grid', min: 4 },
   { path: 'labels', key: 'mode.labels', glyph: 'image', pictures: true },
   { path: 'stats', key: 'mode.stats', glyph: 'chart', min: 0 },
 ];
 
 /* Labels needs labelled pictures rather than cards, and only shows when
-   the set has some. */
+   the set has some. A mode whose answers are typed or picked counts the
+   cards that have text, since a card of pictures alone cannot be asked,
+   and says so when those are what is missing. */
 function modeCard(set, mode) {
-  const available = mode.pictures || set.cards.length >= mode.min;
+  const cards = mode.typed ? set.cards.filter(askable).length : set.cards.length;
+  const available = mode.pictures || cards >= mode.min;
+  const need = mode.typed && set.cards.length >= mode.min ? 'set.needTextCards' : 'set.needCards';
   const props = available
     ? { class: 'mode-card', href: '#/set/' + set.id + '/' + mode.path }
     : { class: 'mode-card', 'aria-disabled': 'true', role: 'link' };
@@ -32,7 +37,7 @@ function modeCard(set, mode) {
     el('span', { class: 'mode-icon' }, icon(mode.glyph)),
     el('span', {},
       el('strong', {}, t(mode.key)),
-      el('small', {}, available ? t(mode.key + '.desc') : tn('set.needCards', mode.min))));
+      el('small', {}, available ? t(mode.key + '.desc') : tn(need, mode.min))));
 }
 
 export function setView(id) {

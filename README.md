@@ -309,7 +309,10 @@ A side may be a picture alone, such as a photo of a dog with `de hond` as the
 answer. Answers are always typed or picked as text, so a quiz, test, Apprendre
 or Écrire question asks toward the side that has text, whatever direction was
 chosen, and a card with pictures on both sides and no text only appears in
-flashcards, review and Associer. Read aloud skips a side that is only a
+flashcards, review and Associer. Quiz, Test, Apprendre and Écrire count the
+cards that have text: a set without enough of them shows the mode greyed
+out with the reason, and a set with none gets a message rather than an
+empty round. Read aloud skips a side that is only a
 picture, and screen readers announce it as an image: put a few words next to
 the picture when what it shows matters.
 

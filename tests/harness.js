@@ -453,6 +453,28 @@ async function run() {
     }
   });
 
+  /* Cards of pictures alone can be turned and paired, never typed. */
+  check('un jeu sans texte ne propose pas les modes écrits', () => {
+    const cards = ['a', 'b', 'c', 'd'].map((name) => ({ termImage: name, defImage: name + '2' }));
+    const mute = store.createSet({ title: 'Images', cards });
+    try {
+      const page = setView(mute.id);
+      const offered = (mode) => Boolean(page.querySelector('a[href="#/set/' + mute.id + '/' + mode + '"]'));
+      assert(offered('cards') && offered('review') && offered('match'), 'modes sans saisie absents');
+      for (const mode of ['learn', 'quiz', 'test', 'write']) assert(!offered(mode), 'mode proposé: ' + mode);
+      const reason = [...page.querySelectorAll('.mode-card[aria-disabled] small')].map((node) => node.textContent);
+      assert(reason.includes(i18n.tn('set.needTextCards', 2)), 'raison: ' + reason.join(' | '));
+      for (const view of [learnView, quizView, testView, writeView]) {
+        const node = view(mute.id);
+        assert(!node.querySelector('.study') && !node.classList.contains('study'), 'série vide ouverte');
+        assert(node.textContent.includes(i18n.t('set.noText')), 'message absent');
+      }
+      return 'ok';
+    } finally {
+      store.deleteSet(mute.id);
+    }
+  });
+
   check('l’éditeur demande le texte de chaque zone', () => {
     const labelled = store.createSet({ title: 'Plante', diagrams: [plant] });
     try {

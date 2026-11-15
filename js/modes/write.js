@@ -10,13 +10,15 @@ import { gradeAny, maskAnswer } from '../text.js';
 import { richText } from '../math.js';
 import {
   studyShell, answerField, answerFeedback, typedAnswer, summaryPanel,
-  saveSession, bindKeys, speakButton, cardSide, sideKey, askable,
+  saveSession, bindKeys, speakButton, cardSide, sideKey, askable, nothingToAsk,
 } from '../study.js';
 import { notFoundPanel } from '../views/shared.js';
 
 export function writeView(id) {
   const set = store.getSet(id);
   if (!set) return notFoundPanel(t('set.notFound'));
+  const nothing = nothingToAsk(set, 'mode.write');
+  if (nothing) return nothing;
 
   const shell = studyShell({ set, modeKey: 'mode.write' });
   const stage = el('div');

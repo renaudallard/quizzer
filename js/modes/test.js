@@ -11,7 +11,7 @@ import { gradeAny, textKey } from '../text.js';
 import { richText } from '../math.js';
 import {
   studyShell, summaryPanel, saveSession, askable, timerField, countdown,
-  cardSide, cardText, typedAnswer, feedbackBanner, interpolateNode,
+  cardSide, cardText, typedAnswer, feedbackBanner, interpolateNode, nothingToAsk,
 } from '../study.js';
 import {
   indexCards, buildQuestion, directionField, goesForward, typesField,
@@ -125,6 +125,8 @@ function grade(question, settings) {
 export function testView(id) {
   const set = store.getSet(id);
   if (!set) return notFoundPanel(t('set.notFound'));
+  const nothing = nothingToAsk(set, 'mode.test');
+  if (nothing) return nothing;
 
   const shell = studyShell({ set, modeKey: 'mode.test' });
   const stage = el('div');

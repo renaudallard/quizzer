@@ -7,7 +7,7 @@ import { el, icon, mount } from '../dom.js';
 import { t, tn } from '../i18n/index.js';
 import * as store from '../store.js';
 import { shuffle } from '../util.js';
-import { studyShell, summaryPanel, saveSession, askable } from '../study.js';
+import { studyShell, summaryPanel, saveSession, askable, nothingToAsk } from '../study.js';
 import { indexCards, buildQuestion, questionAsker, directionField, goesForward } from '../question.js';
 import { notFoundPanel } from '../views/shared.js';
 
@@ -29,6 +29,8 @@ function leastKnownFirst(cards) {
 export function learnView(id) {
   const set = store.getSet(id);
   if (!set) return notFoundPanel(t('set.notFound'));
+  const nothing = nothingToAsk(set, 'mode.learn');
+  if (nothing) return nothing;
 
   const shell = studyShell({ set, modeKey: 'mode.learn' });
   const stage = el('div');
