@@ -221,6 +221,7 @@ async function run() {
       ['$x \\in \\mathbb{R}$', 'x ∈ ℝ'], ['$90^\\circ$', '90°'], ['$\\ce{SO4^2-}$', 'SO₄²⁻'], ['$\\ce{Fe3+}$', 'Fe₃⁺'],
       ['$\\ce{CuSO4.5H2O}$', 'CuSO₄·5H₂O'], ['$\\ce{N2 + 3H2 <=> 2NH3}$', 'N₂ + 3H₂ ⇌ 2NH₃'],
       ['aire : $\\pi r^2$', 'aire : π r²'], ['5 $ et 10 $', '5 $ et 10 $'], ['$5 et $10', '$5 et $10'], ['\\$5', '$5'],
+      ['$\\$x$', '$x'], ['$\\$5$', '$5'], ['prix: $\\$x + y$', 'prix: $x + y'],
     ];
     for (const [source, line] of cases) assert(text.plain(source) === line, source + ' donne ' + text.plain(source));
     assert(text.grade('(x+1)/2', '$\\frac{x+1}{2}$').verdict === 'correct', 'fraction tapée au clavier');

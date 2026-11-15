@@ -197,11 +197,15 @@ export function segments(text) {
   return parts;
 }
 
+/* Where the fence that opened before from closes, or -1. A backslash
+   takes the character after it along, from the first one on, so the
+   dollar of "$\$x$" closes nothing. The formula holds a character at
+   least. */
 function closingDollar(source, from, fence) {
   if (from >= source.length || /\s/.test(source[from])) return -1;
-  for (let at = from + 1; at < source.length; at++) {
+  for (let at = from; at < source.length; at++) {
     if (source[at] === '\\') at++;
-    else if (source.startsWith(fence, at) && !/\s/.test(source[at - 1])
+    else if (at > from && source.startsWith(fence, at) && !/\s/.test(source[at - 1])
       && !/\d/.test(source[at + fence.length] || '')) return at;
   }
   return -1;

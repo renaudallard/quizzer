@@ -264,7 +264,8 @@ what sits between dollars alone.
 
 As in Pandoc, an opening dollar has no space after it and a closing dollar
 no space before it nor a digit after it, so `5 $ et 10 $` and `$5 et $10`
-stay text. `\$` is a dollar sign.
+stay text. `\$` is a dollar sign, at the start of a formula too: `$\$x$`
+is the formula `\$x`.
 
 The drawing is done by KaTeX 0.19.0 with its mhchem extension, MIT
 licensed, which lives in `vendor/katex` with its fonts. The site fetches it
