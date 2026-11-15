@@ -110,6 +110,9 @@ export function normalizeSet(raw) {
     /* The id of the folder holding the set, or nothing. */
     folder: str(raw && raw.folder),
     bestMatchMs: raw && Number.isFinite(raw.bestMatchMs) ? raw.bestMatchMs : null,
+    /* How many pairs the board of that time held, or nothing for a time
+       kept before boards were counted. */
+    bestMatchPairs: raw && Number.isInteger(raw.bestMatchPairs) && raw.bestMatchPairs > 0 ? raw.bestMatchPairs : null,
     created: num(raw && raw.created, now),
     updated: num(raw && raw.updated, now),
     cards: cards.filter((card) => card.term || card.def || card.termImage || card.defImage),
@@ -458,15 +461,22 @@ export function getSessions(setId) {
   return state.sessions.filter((entry) => entry.setId === setId).slice().reverse();
 }
 
-export function recordBestMatch(setId, ms) {
+/* The time to beat on a match board of that many pairs, or null. A time set
+   on a board of another size, before cards were added or removed, is not
+   one to beat; a time kept before boards were counted stands for any. */
+export function bestMatch(set, pairs) {
+  return set.bestMatchPairs === null || set.bestMatchPairs === pairs ? set.bestMatchMs : null;
+}
+
+export function recordBestMatch(setId, ms, pairs) {
   const set = getSet(setId);
   if (!set) return false;
-  if (set.bestMatchMs === null || ms < set.bestMatchMs) {
-    set.bestMatchMs = ms;
-    save();
-    return true;
-  }
-  return false;
+  const best = bestMatch(set, pairs);
+  if (best !== null && ms >= best) return false;
+  set.bestMatchMs = ms;
+  set.bestMatchPairs = pairs;
+  save();
+  return true;
 }
 
 export function activityFor(days) {

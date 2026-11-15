@@ -121,7 +121,7 @@ export function matchView(id) {
     tick();
     const ms = elapsed();
     const pairs = run.pairs.length;
-    const best = store.recordBestMatch(set.id, ms);
+    const best = store.recordBestMatch(set.id, ms, pairs);
     saveSession(set.id, { mode: 'match', total: pairs, correct: pairs, ms });
     run = null;
     if (best) toast(t('match.newBest'));
@@ -138,6 +138,7 @@ export function matchView(id) {
   }
 
   function paint() {
+    const best = store.bestMatch(set, run.pairs.length);
     shell.setProgress(0, run.pairs.length);
     const grid = el('div', { class: 'match-grid' });
     for (const tile of run.tiles) {
@@ -154,9 +155,7 @@ export function matchView(id) {
           timerLabel),
         el('div', { style: { textAlign: 'right' } },
           el('p', { class: 'chart-sub', style: { margin: '0' } }, tn('count.pairs', run.pairs.length)),
-          set.bestMatchMs !== null
-            ? el('span', { class: 'chip' }, t('match.best', { time: formatDuration(set.bestMatchMs) }))
-            : null)),
+          best !== null ? el('span', { class: 'chip' }, t('match.best', { time: formatDuration(best) })) : null)),
       grid,
       el('p', { class: 'flashcard-foot', style: { textAlign: 'center', marginTop: '16px' } }, t('match.intro')));
   }

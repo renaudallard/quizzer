@@ -769,6 +769,23 @@ async function run() {
     return '6 paires';
   });
 
+  /* A best time is one for the board it was set on. */
+  check('le meilleur temps d’Associer suit la taille du plateau', () => {
+    const small = store.createSet({ title: 'Petit', cards: ['a', 'b', 'c', 'd'].map((term) => ({ term, def: term + term })) });
+    try {
+      assert(store.recordBestMatch(small.id, 5000, 4), 'premier temps refusé');
+      assert(!store.recordBestMatch(small.id, 6000, 4), 'temps plus lent gardé');
+      assert(store.bestMatch(store.getSet(small.id), 6) === null, 'temps de 4 paires à battre sur 6');
+      assert(store.recordBestMatch(small.id, 9000, 6), 'plateau plus grand: temps refusé');
+      assert(store.getSet(small.id).bestMatchMs === 9000, 'temps: ' + store.getSet(small.id).bestMatchMs);
+      const older = store.normalizeSet({ title: 'Ancien', bestMatchMs: 4000, cards: small.cards });
+      assert(store.bestMatch(older, 6) === 4000, 'ancien temps perdu');
+      return 'ok';
+    } finally {
+      store.deleteSet(small.id);
+    }
+  });
+
   check('la révision note chaque carte due', () => {
     main.replaceChildren(reviewView(set.id));
     let steps = 0;

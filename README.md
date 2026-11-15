@@ -51,6 +51,11 @@ A true or false question in the quiz that showed a wrong pairing gives the
 correct pairing once answered: a miss shows it as the expected answer, and a
 correct "false" adds it below.
 
+Associer keeps the best time for the board it was set on: four or five
+pairs for a small set, six from six cards on. When cards are added or
+removed and the board changes size, the next round sets a new best time
+rather than chase one made with fewer pairs.
+
 The quiz can run against a time limit, from one to thirty minutes. The
 countdown sits above the question and turns red for the last fifth of the
 time, a minute at most. When it runs out the quiz ends: an answer already
