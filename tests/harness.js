@@ -426,11 +426,49 @@ async function run() {
     insert.click();
     assert(def.value === 'avant\n|  |  |\n| --- | --- |\n|  |  |\n|  |  |', 'texte: ' + JSON.stringify(def.value));
     assert(def.selectionStart === 8, 'curseur: ' + def.selectionStart);
-    assert(def.closest('.editor-fields').querySelector('.math-preview .card-table'), 'pas d’aperçu');
+    const grid = def.closest('.editor-fields').querySelector('.table-editors .table-grid');
+    assert(grid && grid.querySelectorAll('.table-cell').length === 6, 'pas de grille de 2 sur 3');
+    assert(document.activeElement === grid.querySelector('.table-cell'), 'le curseur n’est pas dans la première case');
     const title = main.querySelector('input:not([data-role])');
     enter(title);
     insert.click();
     assert(title.value === '', 'tableau dans le titre');
+    return 'ok';
+  });
+
+  /* The grid under a field is the table of the field: what is typed or
+     changed in it is written back as Markdown, around the text left alone. */
+  check('la grille d’un tableau écrit le champ', () => {
+    main.replaceChildren(editorView(null));
+    const def = main.querySelector('textarea[data-role="def"]');
+    const side = def.closest('.editor-fields');
+    const send = (field, value, kind = 'input') => {
+      field.value = value;
+      field.dispatchEvent(new Event(kind, { bubbles: true }));
+    };
+    const cells = () => [...side.querySelectorAll('.table-cell')];
+    const actions = () => [...side.querySelectorAll('.table-edit-actions button')];
+    const table = () => def.value.split('\n').slice(1, -1).join('\n');
+    send(def, 'avant\n|a|b|\n|-|-|\n|c|d|\naprès');
+    assert(cells().map((cell) => cell.value).join() === 'a,b,c,d', 'cases: ' + cells().map((cell) => cell.value).join());
+    send(cells()[3], 'x | y');
+    assert(table() === '| a | b |\n| --- | --- |\n| c | x \\| y |', 'case tapée: ' + table());
+    assert(cells()[3].value === 'x | y', 'la grille a été redessinée pendant la frappe');
+    send(cells()[2], 'x^2', 'change');
+    assert(table().endsWith('| x² | x \\| y |'), 'notation d’une case: ' + table());
+    actions()[0].click();
+    actions()[1].click();
+    assert(table() === '| a | b |  |\n| --- | --- | --- |\n| x² | x \\| y |  |\n|  |  |  |', 'ajouts: ' + table());
+    const align = side.querySelectorAll('.table-col-tools select')[1];
+    align.value = 'center';
+    align.dispatchEvent(new Event('change', { bubbles: true }));
+    assert(table().split('\n')[1] === '| --- | :-: | --- |', 'alignement: ' + table().split('\n')[1]);
+    side.querySelectorAll('.table-col-tools button')[0].click();
+    side.querySelector('tbody button').click();
+    assert(table() === '| b |  |\n| :-: | --- |\n|  |  |', 'retraits: ' + table());
+    actions()[2].click();
+    assert(def.value === 'avant\naprès', 'texte restant: ' + JSON.stringify(def.value));
+    assert(!side.querySelector('.table-grid'), 'grille restée');
     return 'ok';
   });
 

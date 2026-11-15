@@ -401,6 +401,15 @@ export function blocks(text) {
   return out;
 }
 
+const TABLE_RULES = { left: ':--', center: ':-:', right: '--:' };
+
+/* A table written back the way blocks() reads it, for the grid of the
+   editor. */
+export function tableSource({ head, align, rows }) {
+  const line = (cells) => '|' + cells.map((cell) => ' ' + cell.replace(/\|/g, '\\|') + ' |').join('');
+  return [line(head), line(align.map((side) => TABLE_RULES[side] || '---')), ...rows.map(line)].join('\n');
+}
+
 export function hasTable(text) {
   return blocks(text).some((block) => block.table);
 }

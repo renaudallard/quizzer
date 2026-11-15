@@ -431,6 +431,24 @@ a.stat-tile:hover { border-color: var(--accent); transform: translateY(-2px); co
 .table-tools { align-items: flex-end; margin-top: 10px; }
 .table-size { width: 7rem; }
 .math-preview:empty { display: none; }
+/* A table of a card as a grid to type in, under its field. Only a grid
+   too wide for the side scrolls, sideways. */
+.table-editors:empty { display: none; }
+.table-edit-scroll { overflow-x: auto; padding-bottom: 2px; }
+.table-grid { border-collapse: collapse; width: 100%; }
+.table-grid th, .table-grid td { padding: 2px; }
+.table-grid td:last-child { width: 1%; }
+.table-grid .table-cell { min-width: 5rem; padding: 6px 8px; font-size: 0.92rem; }
+.table-grid th .table-cell { background: var(--surface-2); font-weight: 650; }
+.table-col-tools { display: flex; align-items: center; justify-content: space-between; gap: 2px; }
+/* The alignment menu takes what the column leaves it, so that it never
+   makes a column wider than its cells. */
+.table-col-tools .select-compact { flex: 1 1 0; width: 3rem; min-width: 0; padding: 3px 5px; font-size: 0.8rem; }
+.table-grid .icon-btn { width: 30px; height: 30px; }
+.table-grid .icon-btn svg { width: 16px; height: 16px; }
+.table-grid .icon-btn:disabled { opacity: 0.35; cursor: default; }
+.table-edit-actions { gap: 2px; }
+.table-edit-actions .btn { gap: 5px; padding: 5px 8px; font-size: 0.86rem; }
 .editor-image { display: flex; align-items: center; gap: 6px; }
 .editor-image .card-image { margin: 0; }
 .btn-image { align-self: flex-start; padding: 5px 10px; font-size: 0.86rem; }

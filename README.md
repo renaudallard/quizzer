@@ -295,11 +295,19 @@ Colons in the dashes align a column, `:--` to the left, `:-:` in the centre
 and `--:` to the right. Cells may hold LaTeX, and `\|` writes a pipe inside
 a cell, in its LaTeX too, as in `$\|x\|$` for an absolute value. A row
 with too few cells gets empty ones and one with too many loses the extra
-ones, as on GitHub, and a header left empty does not show. "Insérer un
-tableau", above the cards, writes an empty table of the chosen number of
-columns and rows where the cursor was in a card's field, with the cursor in
-its first cell, and the preview under the field shows it as it is typed.
-Grading and read aloud take a table cell after cell, row by row.
+ones, as on GitHub, and a header left empty does not show. Grading and
+read aloud take a table cell after cell, row by row.
+
+Nobody has to type the pipes. In the editor every table of a field shows
+under it as a grid: type in its cells, where Enter goes down a row and adds
+one under the last, and use its buttons to add a row or a column, delete
+one, align a column or delete the table. The field keeps the Markdown,
+which the grid writes again at every change, and text typed in the field
+redraws the grid, so either can be used. Symbols and the keyboard notation
+work in a cell as in the field. "Insérer un tableau", above the cards,
+writes an empty table of the chosen number of columns and rows where the
+cursor was in a card's field and puts the cursor in the first cell of its
+grid.
 
 ### Pictures
 
@@ -517,8 +525,8 @@ answer its table calls right, so the manual cannot drift from the site.
       i18n/fr.js          French catalogue, the reference
       i18n/en.js          English catalogue
       i18n/nl.js          Dutch catalogue
-      views/              home, set, editor, labelled pictures in the editor,
-                          stats, settings, transfer, samples, help
+      views/              home, set, editor, tables and labelled pictures in
+                          the editor, stats, settings, transfer, samples, help
       modes/              flashcards, learn, review, quiz, test, write, match,
                           labels
     vendor/katex/         KaTeX 0.19.0 and mhchem, with their fonts and licence
@@ -530,7 +538,8 @@ answer its table calls right, so the manual cannot drift from the site.
 Serve the directory and open <http://localhost:8080/tests/harness.html>. It
 exercises the store, the Leitner ladder, answer grading, the formula notation
 the editor writes, LaTeX read on one line and drawn by KaTeX, the line
-breaks a card keeps, tables on cards and the empty one the editor inserts,
+breaks a card keeps, tables on cards, the empty one the editor inserts and
+the grid that edits one,
 the typed answers the manual calls right, the CSV and share link round
 trips, and
 reading CSV files in UTF-8, UTF-16 and Windows-1252. It renders all eighteen

@@ -8,9 +8,10 @@ import { parseDelimited } from '../io.js';
 import { navigate, onCleanup, setBusy } from '../router.js';
 import { notFoundPanel, toastSaved, foldersByName } from './shared.js';
 import { addImage, cardImage, IMAGE_ERRORS } from '../images.js';
-import { typeset, hasMath, hasTable } from '../text.js';
+import { typeset, hasMath, tableSource, blocks } from '../text.js';
 import { clamp } from '../util.js';
 import { diagramsEditor } from './diagrams.js';
+import { tableEditors, focusTable } from './tables.js';
 import { richText } from '../math.js';
 
 const LANG_CODES = [
@@ -175,14 +176,14 @@ export function editorView(id, folder = '') {
     return field;
   }
 
-  /* What the LaTeX and the tables of a field look like, under it, while
-     it is typed. */
+  /* Under a field: its tables as grids to type in, then what its LaTeX
+     looks like while it is typed. */
   function preview(field) {
     const box = el('div', { class: 'math-preview', 'aria-hidden': 'true' });
-    const show = () => mount(box, hasMath(field.value) || hasTable(field.value) ? richText(field.value) : null);
+    const show = () => mount(box, hasMath(field.value) ? richText(field.value) : null);
     field.addEventListener('input', show);
     show();
-    return box;
+    return [tableEditors(field), box];
   }
 
   /* A picture pasted in a side's field, or dropped on the side, goes there. */
@@ -380,7 +381,8 @@ export function editorView(id, folder = '') {
 
   /* An empty table goes on lines of its own, and only in a card's fields:
      the title and the description are never drawn as card text, and the
-     bulk lines would read it as cards. The cursor lands in its first cell. */
+     bulk lines would read it as cards. Its grid shows under the field,
+     and the cursor lands in the first cell of it. */
   const tableSize = () => el('input', { type: 'number', class: 'input', min: '1', max: String(TABLE_MAX), value: '2' });
   const tableColumns = tableSize();
   const tableRows = tableSize();
@@ -390,12 +392,14 @@ export function editorView(id, folder = '') {
       return;
     }
     const size = (input) => clamp(Math.round(Number(input.value)) || 1, 1, TABLE_MAX);
-    const row = (cell) => '|' + (' ' + cell + ' |').repeat(size(tableColumns));
-    const { value, selectionStart: start, selectionEnd: end } = lastField;
+    const empty = () => Array(size(tableColumns)).fill('');
+    const table = { head: empty(), align: empty(), rows: Array.from({ length: size(tableRows) }, empty) };
+    const field = lastField;
+    const { value, selectionStart: start, selectionEnd: end } = field;
     const before = start > 0 && value[start - 1] !== '\n' ? '\n' : '';
     const after = end < value.length && value[end] !== '\n' ? '\n' : '';
-    const lines = [row(''), row('---'), ...Array.from({ length: size(tableRows) }, () => row(''))];
-    insertText(before + lines.join('\n') + after, before.length + 2);
+    insertText(before + tableSource(table) + after, before.length + 2);
+    focusTable(field, blocks(value.slice(0, start)).filter((block) => block.table).length);
   }
   const sizeField = (label, input) => el('label', { class: 'field table-size' }, el('span', {}, t(label)), input);
   const tablePanel = el('details', { class: 'symbol-palette' },
@@ -463,11 +467,12 @@ export function editorView(id, folder = '') {
   root.addEventListener('focusin', (event) => {
     if (event.target.matches('input[type="text"], textarea')) lastField = event.target;
   });
-  /* The keyboard notation of a card or of the bulk lines is written with
-     its signs once the field is left, so x^2 becomes x². */
+  /* The keyboard notation of a card, of a cell of its tables or of the
+     bulk lines is written with its signs once the field is left, so x^2
+     becomes x². */
   root.addEventListener('change', (event) => {
     const field = event.target;
-    if (!field.matches('[data-role], .textarea')) return;
+    if (!field.matches('[data-role], .table-cell, .textarea')) return;
     const value = typeset(field.value);
     if (value === field.value) return;
     field.value = value;
