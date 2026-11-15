@@ -360,7 +360,14 @@ a.stat-tile:hover { border-color: var(--accent); transform: translateY(-2px); co
 }
 .set-card:hover { border-color: var(--accent); box-shadow: var(--shadow-2); transform: translateY(-2px); color: inherit; }
 .set-card h3 { margin: 0; font-size: 1.05rem; }
-.set-card p { margin: 0; color: var(--ink-2); font-size: 0.9rem; }
+/* The description takes two lines on every card, so the cards of a row
+   line up: a shorter one leaves the rest empty, a longer one is cut by
+   the browser at the end of the second line. */
+.set-card p {
+  margin: 0; color: var(--ink-2); font-size: 0.9rem; line-height: 1.5; min-height: 3em;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2;
+  overflow: hidden; overflow-wrap: anywhere;
+}
 .set-card-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 4px; }
 
 .meter { height: 8px; border-radius: 999px; background: var(--viz-empty); overflow: hidden; }

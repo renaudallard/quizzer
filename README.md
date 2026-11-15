@@ -238,7 +238,9 @@ with it, so a long side never needs a sideways scroll, and their corner can
 be dragged to make them taller. Enter starts a new line, which the card
 keeps wherever it is shown. Grading and read aloud take the text as one
 line. The description of the set wraps and grows the same way, and its
-line breaks show on the set's page.
+line breaks show on the set's page. On the home page each set shows the
+first two lines of its description, whatever the width of its card, and
+the set's page shows it whole.
 
 "Symboles et formules", above the cards, opens the signs a keyboard lacks,
 in groups: superscripts and subscripts, operations and relations, calculus,

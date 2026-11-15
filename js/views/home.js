@@ -6,7 +6,6 @@ import { t, tn, formatDayKey, formatPercent } from '../i18n/index.js';
 import * as store from '../store.js';
 import { dueCards, masteryPct } from '../srs.js';
 import { statTile, meter, activityChart, figure } from '../chart.js';
-import { truncate } from '../text.js';
 import { foldersIn, folderTree, folderPath, toastSaved } from './shared.js';
 
 function setCard(set) {
@@ -14,7 +13,7 @@ function setCard(set) {
   const mastery = masteryPct(set.cards);
   return el('a', { class: 'set-card', href: '#/set/' + set.id },
     el('h3', {}, set.title),
-    set.description ? el('p', {}, truncate(set.description, 90)) : null,
+    set.description ? el('p', {}, set.description) : null,
     meter(mastery),
     el('div', { class: 'set-card-meta' },
       el('span', { class: 'chip' }, tn('count.cards', set.cards.length)),
