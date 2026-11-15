@@ -301,6 +301,25 @@ async function run() {
     return 'ok';
   });
 
+  check('le gras et l’italique des cartes', () => {
+    const shown = cardText('**gras** et *italique*, ***les deux***');
+    const marks = (tag) => [...shown.querySelectorAll(tag)].map((node) => node.textContent).join();
+    assert(marks('strong') === 'gras,les deux' && marks('em') === 'italique,les deux', 'rendu: ' + marks('strong') + ' / ' + marks('em'));
+    assert(shown.textContent === 'gras et italique, les deux', 'texte: ' + shown.textContent);
+    for (const product of ['2*x*y', 'a * b * c', '(a)*(b)*(c)', '\\*non\\*']) {
+      assert(!text.hasEmphasis(product) && !cardText(product).querySelector('em, strong'), 'pris pour de l’italique: ' + product);
+    }
+    assert(text.plain('\\*non\\*') === '*non*', 'étoile échappée: ' + text.plain('\\*non\\*'));
+    assert(text.plain('l’*eau* **vive**') === 'l’eau vive', 'lu: ' + text.plain('l’*eau* **vive**'));
+    assert(text.grade('chat', '**chat**').verdict === 'correct', 'réponse en gras');
+    assert(text.grade('le chat noir', 'le *chat* noir').verdict === 'correct', 'mot en italique dans une réponse');
+    assert(text.textKey('**Chat**') === text.textKey('chat'), 'même invite');
+    assert(text.grade('2*x', '2*x').verdict === 'correct' && text.isMath('2*x*y'), 'produit');
+    const cell = cardText('| **a** |\n| --- |\n| *b* |');
+    assert(cell.querySelector('th strong') && cell.querySelector('td em'), 'dans un tableau');
+    return 'ok';
+  });
+
   check('lien de partage aller retour', () => {
     const payload = io.shareUrl(set).split('#/shared/')[1];
     const back = io.decodeShare(payload);
@@ -433,6 +452,39 @@ async function run() {
     enter(title);
     insert.click();
     assert(title.value === '', 'tableau dans le titre');
+    return 'ok';
+  });
+
+  /* The buttons mark what is selected, and take the marks off again. */
+  check('l’éditeur met en gras et en italique', () => {
+    main.replaceChildren(editorView(null));
+    const def = main.querySelector('textarea[data-role="def"]');
+    const [bold, italic] = main.querySelectorAll('.format-tools button');
+    const select = (from, to) => {
+      def.focus();
+      def.dispatchEvent(new Event('focusin', { bubbles: true }));
+      def.setSelectionRange(from, to);
+    };
+    def.value = 'un mot ici';
+    select(3, 6);
+    bold.click();
+    assert(def.value === 'un **mot** ici', 'gras: ' + def.value);
+    assert(def.selectionStart === 5 && def.selectionEnd === 8, 'sélection: ' + def.selectionStart + '-' + def.selectionEnd);
+    assert(def.closest('.editor-fields').querySelector('.math-preview strong'), 'pas d’aperçu');
+    italic.click();
+    assert(def.value === 'un ***mot*** ici', 'gras et italique: ' + def.value);
+    bold.click();
+    assert(def.value === 'un *mot* ici', 'gras retiré: ' + def.value);
+    const key = new Event('keydown', { bubbles: true, cancelable: true });
+    Object.assign(key, { key: 'i', ctrlKey: true });
+    def.dispatchEvent(key);
+    assert(def.value === 'un mot ici' && key.defaultPrevented, 'Ctrl+I: ' + def.value);
+    const title = main.querySelector('input:not([data-role])');
+    title.value = 'titre';
+    title.focus();
+    title.dispatchEvent(new Event('focusin', { bubbles: true }));
+    bold.click();
+    assert(title.value === 'titre', 'gras dans le titre');
     return 'ok';
   });
 

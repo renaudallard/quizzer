@@ -313,6 +313,28 @@ writes an empty table of the chosen number of columns and rows where the
 cursor was in a card's field and puts the cursor in the first cell of its
 grid.
 
+### Bold and italic
+
+A word or a passage of a card is set in bold between two stars and in italic
+between one, as in Markdown: `**gras**`, `*italique*`, and
+`**gras et *italique***` for italic inside bold. "Gras" and "Italique",
+above the cards in the editor, put the stars around what is selected in a
+card's field or in a cell of its tables, and take them off the same way;
+Ctrl+B and Ctrl+I do the same, and with nothing selected the cursor waits
+between the stars. The preview under the field shows the result. Where the
+text around is already heavy, as a term in a list, a prompt or the face of
+a flashcard, bold also takes the accent colour, since many fonts have no
+weight above bold to tell it apart.
+
+The stars hug the text they mark and stand apart from what is around: the
+opening ones come first or after a space, an opening bracket or quote or an
+apostrophe, the closing ones last or before a space or a closing sign. A
+star that multiplies is then never taken for one, as in `2*x*y`, `a * b` or
+`(a)*(b)*(c)`. `\*` writes a star, and what sits between dollars is left
+to LaTeX. Grading, read aloud and the comparison of prompts ignore bold and
+italic: `chat` is right for `**chat**`. The title and the description of a
+set are plain text.
+
 ### Pictures
 
 A card side can hold a picture, with or without text. The "Image" button
@@ -515,9 +537,9 @@ answer its table calls right, so the manual cannot drift from the site.
       question.js         questions shared by quiz, test and learn
       chart.js            stat tiles, mastery bar, activity columns
       text.js             answer comparison, hint masking, formula notation,
-                          tables and LaTeX read on one line
-      math.js             card text drawn: tables, line breaks, and LaTeX
-                          by KaTeX, loaded on first use
+                          tables, bold and italic, LaTeX read on one line
+      math.js             card text drawn: tables, line breaks, bold and
+                          italic, and LaTeX by KaTeX, loaded on first use
       io.js               delimited text, downloads, share links
       images.js           card pictures, kept in IndexedDB
       diagram.js          a labelled picture with its zones laid over it
@@ -543,7 +565,7 @@ Serve the directory and open <http://localhost:8080/tests/harness.html>. It
 exercises the store, the Leitner ladder, answer grading, the formula notation
 the editor writes, LaTeX read on one line and drawn by KaTeX, the line
 breaks a card keeps, tables on cards, the empty one the editor inserts and
-the grid that edits one,
+the grid that edits one, bold and italic and the buttons that set them,
 the typed answers the manual calls right, the CSV and share link round
 trips, and
 reading CSV files in UTF-8, UTF-16 and Windows-1252. It renders all eighteen

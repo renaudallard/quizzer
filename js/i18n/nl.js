@@ -171,6 +171,8 @@ export default {
   "editor.symbolsSets": "Verzamelingen en logica",
   "editor.symbolsArrows": "Pijlen en scheikunde",
   "editor.symbolsGreek": "Griekse letters",
+  "editor.bold": "Vet",
+  "editor.italic": "Cursief",
   "editor.table": "Tabel invoegen",
   "editor.tableHint": "De tabel komt waar de cursor stond, in de term, de definitie of de hint van een kaart, en verschijnt onder het veld als raster: typ in de cellen, Enter gaat een rij omlaag. De knoppen van het raster voegen rijen en kolommen toe of halen ze weg en lijnen een kolom uit. Het veld houdt de tekst van de tabel, die het raster opnieuw schrijft. Een lege kop wordt niet getoond.",
   "editor.tableColumns": "Kolommen",
@@ -489,6 +491,7 @@ export default {
   "help.cards.p7": "De velden van een kaart lopen door op de volgende regel en groeien mee met hun tekst. Hun hoek kun je verslepen om ze groter te maken. Enter begint een nieuwe regel, die de kaart bij het tonen houdt; het nakijken leest de tekst op één regel. De beschrijving van de set loopt ook door en groeit mee, en haar regeleinden zijn te zien op de pagina van de set.",
   "help.cards.p8": "Een kaart kan een tabel bevatten, geschreven zoals in Markdown: één rij per regel, de cellen tussen `|`, en onder de eerste een regel streepjes die er de kop van maakt, `| --- | --- |`. Dubbele punten lijnen een kolom uit, `:--` links, `:-:` in het midden, `--:` rechts, en `\\|` schrijft een | in een cel. “{table}”, boven de kaarten, schrijft een lege tabel van de gekozen grootte waar de cursor stond. Je hoeft de `|` niet met de hand te typen: elke tabel van een veld verschijnt eronder als raster, waar je in de cellen typt, rijen en kolommen toevoegt of weghaalt en de uitlijning kiest, en de tekst van het veld volgt. Een lege kop wordt niet getoond. Het nakijken en voorlezen nemen een tabel cel na cel, rij na rij.",
   "help.cards.p9": "“{diagrams}”, onder de kaarten, bevat afbeeldingen waarvan je de labels moet vinden, zoals een plant en haar delen. Voeg de afbeelding toe, sleep de aanwijzer over elk label om een vak te tekenen en typ dan de tekst die het vak verbergt; de prullenbak naast een vak verwijdert het. Een set mag alleen afbeeldingen met labels bevatten. Ze volgen de regels van kaartafbeeldingen, en gaan net als die mee in de back-up, maar niet in een deellink of een CSV.",
+  "help.cards.p10": "Een woord of een passage zet je vet tussen twee sterretjes en cursief tussen één: `**vet**`, `*cursief*`, en `**vet en *cursief***` voor allebei. “{bold}” en “{italic}”, boven de kaarten, of Ctrl+B en Ctrl+I, zetten ze rond de selectie en halen ze op dezelfde manier weg. De sterretjes sluiten aan op de tekst die ze markeren en staan los van de rest, zodat een maalteken zoals in `2*x*y` er nooit voor aangezien wordt, en `\\*` schrijft een sterretje. Het nakijken en voorlezen negeren ze: `chat` komt overeen met `**chat**`.",
 
   "help.formulas.title": "Formules met het toetsenbord",
   "help.formulas.p1": "Een formule kun je ook met het toetsenbord typen, in de velden van een kaart of in “{bulk}”. Zodra je het veld verlaat, maakt `^` een exponent en `_` een index, en krijgen de pijlen en vergelijkingstekens hun echte vorm:",

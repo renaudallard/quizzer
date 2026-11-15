@@ -1,10 +1,10 @@
-/* Card text as it is shown: its tables, its line breaks and its LaTeX,
-   drawn by KaTeX. KaTeX is fetched from vendor/katex the first time a
+/* Card text as it is shown: its tables, its line breaks, its bold and
+   italic and its LaTeX, drawn by KaTeX. KaTeX is fetched from vendor/katex the first time a
    card holds some, and until it is there, or if it cannot be loaded, each
    formula shows written on one line. */
 
 import { el } from './dom.js';
-import { segments, plain, blocks } from './text.js';
+import { segments, plain, blocks, runs } from './text.js';
 
 const BASE = new URL('../vendor/katex/', import.meta.url);
 let katex = null;
@@ -59,10 +59,18 @@ function lines(text) {
   return text.split('\n').flatMap((line, i) => (i ? [document.createElement('br'), line] : [line]));
 }
 
-/* Text with its line breaks and its LaTeX drawn. */
+/* Text with its line breaks, in bold or in italic where it is marked so. */
+function styled(text) {
+  return runs(text).flatMap((run) => {
+    const slanted = run.italic ? [el('em', {}, lines(run.text))] : lines(run.text);
+    return run.bold ? [el('strong', {}, slanted)] : slanted;
+  });
+}
+
+/* Text with its line breaks, its bold and italic and its LaTeX drawn. */
 function inline(text) {
   return segments(text).flatMap((part) => {
-    if (part.tex === undefined) return lines(part.text);
+    if (part.tex === undefined) return styled(part.text);
     const job = { node: document.createElement('span'), ...part };
     job.node.className = 'math';
     if (katex) draw(job);

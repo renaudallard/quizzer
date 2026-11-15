@@ -171,6 +171,8 @@ export default {
   "editor.symbolsSets": "Sets and logic",
   "editor.symbolsArrows": "Arrows and chemistry",
   "editor.symbolsGreek": "Greek letters",
+  "editor.bold": "Bold",
+  "editor.italic": "Italic",
   "editor.table": "Insert a table",
   "editor.tableHint": "The table goes where the cursor was, in the term, the definition or the hint of a card, and shows under the field as a grid: type in its cells, Enter goes down a row. The buttons of the grid add or remove rows and columns and align a column. The field keeps the text of the table, which the grid writes again. A header left empty does not show.",
   "editor.tableColumns": "Columns",
@@ -489,6 +491,7 @@ export default {
   "help.cards.p7": "A card’s fields wrap their text and grow with it. Their corner can be dragged to make them taller. Enter starts a new line, which the card keeps when shown; grading reads the text on one line. The set’s description wraps and grows the same way, and its line breaks show on the set’s page.",
   "help.cards.p8": "A card may hold a table, written as in Markdown: one row per line, its cells between `|`, and under the first one a line of dashes that makes it the header, `| --- | --- |`. Colons align a column, `:--` to the left, `:-:` in the centre, `--:` to the right, and `\\|` writes a | inside a cell. “{table}”, above the cards, writes an empty table of the chosen size where the cursor was. There is no need to type the `|` by hand: each table of a field shows under it as a grid, where you type in the cells, add or remove rows and columns and choose the alignment, and the text of the field follows. A header left empty does not show. Grading and read aloud take a table cell after cell, row by row.",
   "help.cards.p9": "“{diagrams}”, under the cards, holds pictures whose labels are to be found, such as a plant and its parts. Add the picture, drag the pointer over each label to draw a zone, then type the text the zone hides; the bin next to a zone deletes it. A set may hold labelled pictures alone. They follow the rules of card pictures, and like them travel in the backup but not in a share link or a CSV.",
+  "help.cards.p10": "A word or a passage is set in bold between two stars and in italic between one: `**bold**`, `*italic*`, and `**bold and *italic***` for both. “{bold}” and “{italic}”, above the cards, or Ctrl+B and Ctrl+I, put them around the selection and take them off the same way. The stars hug the text they mark and stand apart from the rest, so a star that multiplies, as in `2*x*y`, is never taken for them, and `\\*` writes a star. Grading and read aloud ignore them: `chat` matches `**chat**`.",
 
   "help.formulas.title": "Formulas on the keyboard",
   "help.formulas.p1": "A formula can also be typed on the keyboard, in a card’s fields or in “{bulk}”. As soon as you leave the field, `^` makes an exponent, `_` an index, and the arrows and comparison signs take their real shape:",

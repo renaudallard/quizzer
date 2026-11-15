@@ -171,6 +171,8 @@ export default {
   "editor.symbolsSets": "Ensembles et logique",
   "editor.symbolsArrows": "Flèches et chimie",
   "editor.symbolsGreek": "Lettres grecques",
+  "editor.bold": "Gras",
+  "editor.italic": "Italique",
   "editor.table": "Insérer un tableau",
   "editor.tableHint": "Le tableau se place là où se trouvait le curseur, dans le terme, la définition ou l’indice d’une carte, et s’affiche sous le champ en grille: tapez dans ses cases, Entrée descend d’une rangée. Les boutons de la grille ajoutent ou retirent rangées et colonnes et alignent une colonne. Le champ garde le texte du tableau, que la grille réécrit. Un en-tête laissé vide n’apparaît pas.",
   "editor.tableColumns": "Colonnes",
@@ -489,6 +491,7 @@ export default {
   "help.cards.p7": "Les champs d’une carte passent à la ligne et grandissent avec leur texte. Leur coin se tire pour les agrandir. Entrée commence une nouvelle ligne, que la carte garde à l’affichage; la correction, elle, lit le texte sur une seule ligne. La description du jeu passe aussi à la ligne et grandit avec son texte, et ses retours à la ligne se voient sur la page du jeu.",
   "help.cards.p8": "Une carte peut contenir un tableau, écrit comme en Markdown: une rangée par ligne, ses cases entre des `|`, et sous la première une ligne de tirets qui en fait l’en-tête, `| --- | --- |`. Des deux-points alignent une colonne, `:--` à gauche, `:-:` au centre, `--:` à droite, et `\\|` écrit un | dans une case. « {table} », au-dessus des cartes, écrit un tableau vide de la taille choisie là où se trouvait le curseur. Nul besoin de taper les `|` à la main: chaque tableau d’un champ s’affiche dessous en grille, où l’on tape dans les cases, ajoute ou retire rangées et colonnes et choisit l’alignement, et le texte du champ suit. Un en-tête laissé vide n’apparaît pas. La correction et la lecture à voix haute lisent un tableau case après case, rangée par rangée.",
   "help.cards.p9": "« {diagrams} », sous les cartes, accueille des images dont les légendes sont à retrouver, comme une plante et ses parties. Ajoutez l’image, faites glisser le pointeur sur chaque légende pour tracer une zone, puis tapez le texte que la zone cache; la corbeille à côté d’une zone la supprime. Un jeu peut ne contenir que des images légendées. Elles suivent les règles des images des cartes, et comme elles partent dans la sauvegarde mais pas dans un lien de partage ni dans un CSV.",
+  "help.cards.p10": "Un mot ou un passage se met en gras entre deux étoiles et en italique entre une: `**gras**`, `*italique*`, et `**gras et *italique***` pour les deux. « {bold} » et « {italic} », au-dessus des cartes, ou Ctrl+B et Ctrl+I, les posent autour de la sélection et les retirent de la même façon. Les étoiles collent au texte qu’elles marquent et s’écartent du reste, si bien qu’une étoile de multiplication comme dans `2*x*y` n’est jamais prise pour elles, et `\\*` écrit une étoile. La correction et la lecture à voix haute les ignorent: `chat` vaut `**chat**`.",
 
   "help.formulas.title": "Formules au clavier",
   "help.formulas.p1": "Une formule peut aussi se taper au clavier, dans les champs d’une carte ou dans « {bulk} ». Dès que vous quittez le champ, `^` fait un exposant, `_` un indice, et les flèches et signes de comparaison prennent leur vraie forme:",

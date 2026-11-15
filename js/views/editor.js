@@ -8,7 +8,7 @@ import { parseDelimited } from '../io.js';
 import { navigate, onCleanup, setBusy } from '../router.js';
 import { notFoundPanel, toastSaved, foldersByName } from './shared.js';
 import { addImage, cardImage, IMAGE_ERRORS } from '../images.js';
-import { typeset, hasMath, tableSource, blocks } from '../text.js';
+import { typeset, hasMath, hasEmphasis, tableSource, blocks } from '../text.js';
 import { clamp } from '../util.js';
 import { diagramsEditor } from './diagrams.js';
 import { tableEditors, focusTable } from './tables.js';
@@ -176,11 +176,11 @@ export function editorView(id, folder = '') {
     return field;
   }
 
-  /* Under a field: its tables as grids to type in, then what its LaTeX
-     looks like while it is typed. */
+  /* Under a field: its tables as grids to type in, then what its LaTeX,
+     its bold and its italic look like while they are typed. */
   function preview(field) {
     const box = el('div', { class: 'math-preview', 'aria-hidden': 'true' });
-    const show = () => mount(box, hasMath(field.value) ? richText(field.value) : null);
+    const show = () => mount(box, hasMath(field.value) || hasEmphasis(field.value) ? richText(field.value) : null);
     field.addEventListener('input', show);
     show();
     return [tableEditors(field), box];
@@ -368,6 +368,36 @@ export function editorView(id, folder = '') {
     }
     insertText(symbol);
   }
+  /* Bold and italic go around what is selected in a card's field or in a
+     cell of its tables, as two stars and as one, and come off the same
+     way when the selection already has them. With nothing selected the
+     cursor waits between the stars. */
+  function emphasize(marker) {
+    const field = lastField;
+    if (!field || !field.isConnected || !field.matches('[data-role], .table-cell')) {
+      toast(t('editor.tableNoField'));
+      return;
+    }
+    const { value, selectionStart: start, selectionEnd: end } = field;
+    const around = Math.min(value.slice(0, start).match(/\**$/)[0].length, value.slice(end).match(/^\**/)[0].length);
+    const marked = marker.length === 2 ? around >= 2 : around % 2 === 1;
+    const size = marker.length;
+    if (marked) field.setRangeText(value.slice(start, end), start - size, end + size);
+    else field.setRangeText(marker + value.slice(start, end) + marker, start, end);
+    const shift = marked ? -size : size;
+    field.setSelectionRange(start + shift, end + shift);
+    field.dispatchEvent(new Event('input', { bubbles: true }));
+    field.focus();
+  }
+  const formatButton = (marker, label, key, tag) => el('button', {
+    type: 'button', class: 'btn btn-symbol', title: label + ' (Ctrl+' + key + ')',
+    onmousedown: (event) => event.preventDefault(),
+    onclick: () => emphasize(marker),
+  }, el(tag, {}, label));
+  const formats = el('div', { class: 'row format-tools' },
+    formatButton('**', t('editor.bold'), 'B', 'strong'),
+    formatButton('*', t('editor.italic'), 'I', 'em'));
+
   const palette = el('details', { class: 'symbol-palette' },
     el('summary', {}, t('editor.symbols')),
     el('p', { class: 'field-hint' }, t('editor.symbolsHint')),
@@ -449,6 +479,7 @@ export function editorView(id, folder = '') {
       el('div', { class: 'row-between', style: { marginBottom: '12px' } },
         el('h2', {}, t('editor.cards')),
         addCard),
+      formats,
       palette,
       tablePanel,
       list),
@@ -466,6 +497,15 @@ export function editorView(id, folder = '') {
       cancel));
   root.addEventListener('focusin', (event) => {
     if (event.target.matches('input[type="text"], textarea')) lastField = event.target;
+  });
+  /* Ctrl or Cmd with B or I, in a card's field or a cell, as the buttons. */
+  root.addEventListener('keydown', (event) => {
+    const marker = { b: '**', i: '*' }[event.key.toLowerCase()];
+    if (!marker || !(event.ctrlKey || event.metaKey) || event.altKey || event.shiftKey) return;
+    if (!event.target.matches('[data-role], .table-cell')) return;
+    event.preventDefault();
+    lastField = event.target;
+    emphasize(marker);
   });
   /* The keyboard notation of a card, of a cell of its tables or of the
      bulk lines is written with its signs once the field is left, so x^2

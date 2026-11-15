@@ -414,9 +414,52 @@ export function hasTable(text) {
   return blocks(text).some((block) => block.table);
 }
 
+/* Bold and italic are written as in Markdown, between two stars and
+   between one: "**gras**" and "*italique*", and italic may sit inside bold.
+   The stars hug what they mark and stand apart from the text around: the
+   opening ones come first or after a space, an opening sign or an
+   apostrophe, the closing ones last or before a space or a closing sign. A star that multiplies,
+   as in "2*x*y", "a * b" or "(a)*(b)*(c)", is then never taken for one.
+   "\*" is a star. */
+const BEFORE = '(?<![^\\s([{«“‘’"\'|])';
+const AFTER = '(?![^\\s)\\]}»”’"\'|.,;:!?…])';
+const STRONG = new RegExp(BEFORE + '\\*\\*(?=\\S)([^\\n]*?[^\\s\\\\])\\*\\*' + AFTER, 'g');
+const EMPHASIS = new RegExp(BEFORE + '\\*(?=[^\\s*])([^*\\n]*?[^\\s*\\\\])\\*' + AFTER, 'g');
+
+/* Text cut where its weight or its slant changes, as { text, bold, italic }
+   with the stars gone. */
+export function runs(text) {
+  const out = [];
+  const push = (value, bold, italic) => {
+    if (value) out.push({ text: value.replace(/\\\*/g, '*'), bold, italic });
+  };
+  /* marks is the sign looked for in value, and found says what to do
+     with what it marks. */
+  const cut = (value, marks, found, rest) => {
+    let from = 0;
+    for (const match of value.matchAll(marks)) {
+      rest(value.slice(from, match.index));
+      found(match[1]);
+      from = match.index + match[0].length;
+    }
+    rest(value.slice(from));
+  };
+  const slanted = (value, bold) => cut(value, EMPHASIS,
+    (marked) => push(marked, bold, true), (plainText) => push(plainText, bold, false));
+  cut(String(text), STRONG, (marked) => slanted(marked, true), (plainText) => slanted(plainText, false));
+  return out;
+}
+
+export function hasEmphasis(text) {
+  return segments(text).some((part) => part.tex === undefined
+    && runs(part.text).some((run) => run.bold || run.italic));
+}
+
+/* One line of text as it reads: its LaTeX on one line, and its bold and
+   italic as plain words. */
 function plainLine(text) {
   return segments(text).map((part) => (part.tex === undefined
-    ? part.text
+    ? runs(part.text).map((run) => run.text).join('')
     : notation(latex(part.tex)).replace(/\s+/g, ' ').trim())).join('');
 }
 

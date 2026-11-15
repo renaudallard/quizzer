@@ -429,6 +429,7 @@ a.stat-tile:hover { border-color: var(--accent); transform: translateY(-2px); co
 .editor-row-tools { display: flex; gap: 2px; padding-top: 2px; }
 .editor-fields { display: flex; flex-direction: column; gap: 6px; }
 .card-field { display: block; resize: vertical; line-height: 1.4; }
+.format-tools { margin-bottom: 12px; gap: 6px; }
 .symbol-palette { margin-bottom: 12px; }
 .symbol-palette summary { cursor: pointer; font-size: 0.86rem; color: var(--ink-2); font-weight: 600; }
 .symbol-group h3 { margin: 12px 0 0; font-size: 0.8rem; font-weight: 600; color: var(--ink-muted); }
@@ -459,6 +460,13 @@ a.stat-tile:hover { border-color: var(--accent); transform: translateY(-2px); co
 .editor-image { display: flex; align-items: center; gap: 6px; }
 .editor-image .card-image { margin: 0; }
 .btn-image { align-self: flex-start; padding: 5px 10px; font-size: 0.86rem; }
+
+/* Bold on a card. Where the text around it is already heavy, as a term in
+   a list, a prompt or the face of a flashcard, many fonts have no heavier
+   weight to give, so the accent colour marks it there as well. */
+.card-row .term strong, .question-prompt strong, .match-prompt strong,
+.flashcard-face .content strong, .card-table th strong { color: var(--accent); }
+.card-row .hint strong, .question-prompt .hint strong, .match-prompt .hint strong { color: inherit; }
 
 /* Tables written on cards: centred on a card, at the start of a list. */
 /* Only a table too wide scrolls, sideways: KaTeX glyphs reaching a pixel
