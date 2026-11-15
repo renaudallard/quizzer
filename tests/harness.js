@@ -135,6 +135,9 @@ async function run() {
     assert(card.box === 1, 'une réussite avant l’échéance ne doit pas la faire monter');
     store.recordAnswer(set.id, card.id, false);
     assert(card.box === 0 && srs.isDue(card), 'un échec doit la ramener aujourd’hui');
+    const several = store.recordAnswers(set.id, [[card.id, false], ['absente', true], [card.id, true]]);
+    assert(several[0] === card && several[1] === null && several[2] === card, 'réponses groupées');
+    assert(card.seen === 5 && card.box === 1, 'réponses groupées: vues=' + card.seen + ' boîte=' + card.box);
     return 'vues=' + card.seen + ' oublis=' + card.lapses;
   });
 

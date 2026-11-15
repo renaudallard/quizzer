@@ -401,8 +401,25 @@ export function toggleStar(setId, cardId) {
 /* One graded answer: moves the card between boxes, keeps its counters and adds
    a tick to today's activity. */
 export function recordAnswer(setId, cardId, correct) {
+  return recordAnswers(setId, [[cardId, correct]])[0];
+}
+
+/* Several graded answers, each as [cardId, correct], written in one go: a
+   test handed in would otherwise write the whole state once per question.
+   Returns the card of each answer, or null for one that is gone. */
+export function recordAnswers(setId, answers) {
   const set = getSet(setId);
-  const card = set && set.cards.find((entry) => entry.id === cardId);
+  const cards = answers.map(([cardId, correct]) => (set ? answered(set, cardId, correct) : null));
+  if (cards.some(Boolean)) {
+    pruneActivity();
+    set.updated = Date.now();
+    save();
+  }
+  return cards;
+}
+
+function answered(set, cardId, correct) {
+  const card = set.cards.find((entry) => entry.id === cardId);
   if (!card) return null;
 
   /* Only a card that is due climbs: getting it right again before then is
@@ -419,10 +436,6 @@ export function recordAnswer(setId, cardId, correct) {
 
   const key = dayKey();
   state.activity[key] = (state.activity[key] || 0) + 1;
-  pruneActivity();
-
-  set.updated = Date.now();
-  save();
   return card;
 }
 

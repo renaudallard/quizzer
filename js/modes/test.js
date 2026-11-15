@@ -317,15 +317,10 @@ export function testView(id) {
     if (run.clock) run.clock.stop();
 
     const settings = store.getSettings();
-    const verdicts = new Map();
-    let correct = 0;
-    for (const question of run.questions) {
-      const verdict = grade(question, settings);
-      verdicts.set(question, verdict);
-      store.recordAnswer(set.id, question.card.id, verdict.correct);
-      if (verdict.correct) correct += 1;
-    }
     const { blocks, questions, startedAt } = run;
+    const verdicts = new Map(questions.map((question) => [question, grade(question, settings)]));
+    const correct = questions.filter((question) => verdicts.get(question).correct).length;
+    store.recordAnswers(set.id, questions.map((question) => [question.card.id, verdicts.get(question).correct]));
     const total = questions.length;
     run = null;
     saveSession(set.id, { mode: 'test', total, correct, ms: Date.now() - startedAt });
