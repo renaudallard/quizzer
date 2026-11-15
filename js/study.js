@@ -160,7 +160,9 @@ export function flipCard({ onFlip } = {}) {
   return api;
 }
 
-/* Text answer input plus its submit button, wired so Enter always works. */
+/* Text answer input plus its submit button, wired so Enter always works.
+   An empty field is no answer: nothing is submitted, so Enter pressed once
+   too often, or held down, cannot count a card as missed. */
 export function answerField({ placeholder, submitLabel, onSubmit, autoFocus = true }) {
   const input = el('input', {
     type: 'text', class: 'input', autocomplete: 'off', autocapitalize: 'off',
@@ -169,7 +171,10 @@ export function answerField({ placeholder, submitLabel, onSubmit, autoFocus = tr
   });
   const form = el('form', {
     class: 'answer-form',
-    onsubmit: (event) => { event.preventDefault(); onSubmit(input.value); },
+    onsubmit: (event) => {
+      event.preventDefault();
+      if (input.value.trim()) onSubmit(input.value);
+    },
   }, input, el('button', { type: 'submit', class: 'btn btn-primary' }, submitLabel));
 
   if (autoFocus) queueMicrotask(() => input.focus());

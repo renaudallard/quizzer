@@ -463,6 +463,12 @@ written to the store until you move to the next card, so the override never
 counts the card twice. The test has no such button: it records every answer
 the moment it is handed in.
 
+A field left empty is not an answer. Enter does nothing there, so pressing it
+once too often, or holding it down, cannot run through a round and count its
+cards as missed. Giving up on a card has its own button, "Je ne sais pas"
+under a written question of the quiz and of Apprendre and "Passer" in
+Écrire, and counts as a miss.
+
 ### Manual
 
 "Manuel" in the top bar opens a guide for learners, in the interface
@@ -613,7 +619,7 @@ the storage figure in the settings counts it.
 | `←` `→` | cards | previous, next; while sorting, à revoir and je sais |
 | `1` `2` | review | à revoir, je savais |
 | `1` to `4` | quiz, learn | pick an answer |
-| `Enter` | quiz, learn, write | check, then continue |
+| `Enter` | quiz, learn, write | check what was typed, then continue |
 | `S` | cards | mark as hard |
 | `A` | cards | read aloud the side in view |
 

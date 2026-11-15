@@ -561,6 +561,28 @@ async function run() {
     return steps + ' questions';
   });
 
+  /* Written questions only: Enter in an empty field leaves the question
+     as it is, and giving up is a miss with the answer shown. */
+  check('un champ vide n’est pas une réponse', () => {
+    const lapses = () => store.getSet(set.id).cards.reduce((sum, card) => sum + card.lapses, 0);
+    const before = lapses();
+    main.replaceChildren(quizView(set.id));
+    const boxes = main.querySelectorAll('.panel input[type="checkbox"]');
+    boxes[0].checked = false;
+    boxes[1].checked = false;
+    main.querySelector('.panel .btn-primary').click();
+    main.querySelector('.answer-form button').click();
+    assert(!main.querySelector('.banner') && main.querySelector('.answer-form input:not([readonly])'), 'champ vide corrigé');
+    const giveUp = [...main.querySelectorAll('.study-toolbar button')]
+      .find((button) => button.textContent === i18n.t('test.dontKnow'));
+    assert(giveUp, 'pas de bouton pour abandonner');
+    giveUp.click();
+    assert(main.querySelector('.banner-bad'), 'abandon non corrigé');
+    main.querySelector('.study-nav .btn-primary').click();
+    assert(lapses() === before + 1, 'oublis: ' + (lapses() - before));
+    return 'ok';
+  });
+
   /* Every question answered right from the cards themselves: the first
      line of a prompt is its text, and true or false shows its pairing as a
      hint. Twelve questions over four kinds make three of each, in order. */

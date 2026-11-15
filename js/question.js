@@ -226,6 +226,7 @@ export function questionAsker(stage, { onAnswer, onContinue }) {
     });
   }
 
+  /* An empty field is not submitted, so giving up has its own button. */
   function writtenBody() {
     if (pending) return typedAnswer(pending.detail.typed || '');
     const settings = getSettings();
@@ -237,7 +238,10 @@ export function questionAsker(stage, { onAnswer, onContinue }) {
         answer(verdict.verdict !== 'wrong', { typed: value, verdict });
       },
     });
-    return field.root;
+    return el('div', {},
+      field.root,
+      el('div', { class: 'study-toolbar', style: { marginTop: '12px' } },
+        el('button', { type: 'button', class: 'btn toggle-btn', onclick: () => answer(false) }, t('test.dontKnow'))));
   }
 
   function paint() {

@@ -50,7 +50,7 @@ function labels() {
     know: 'flashcards.know', learning: 'flashcards.learning',
     again: 'review.again', good: 'review.good', anyway: 'review.anyway',
     retryMissed: 'quiz.retryMissed', almost: 'quiz.almost', wrong: 'quiz.wrong',
-    override: 'quiz.override', submit: 'test.submit', dontKnow: 'test.dontKnow',
+    override: 'quiz.override', submit: 'test.submit', dontKnow: 'test.dontKnow', skip: 'write.skip',
     tierNew: 'stats.tier.new', tierLearning: 'stats.tier.learning',
     tierFamiliar: 'stats.tier.familiar', tierMastered: 'stats.tier.mastered',
     accents: 'settings.accents', typos: 'settings.typos', reset: 'settings.reset',
