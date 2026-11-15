@@ -61,7 +61,7 @@ export function setView(id) {
   return el('div', { class: 'container' },
     el('header', { class: 'set-head' },
       el('h1', {}, set.title),
-      set.description ? el('p', { class: 'lede' }, set.description) : null,
+      set.description ? el('p', { class: 'lede set-description' }, set.description) : null,
       el('div', { class: 'row', style: { marginBottom: '12px' } },
         folder ? el('span', { class: 'chip chip-folder' }, icon('folder'), folder.name) : null,
         el('span', { class: 'chip' }, tn('count.cards', set.cards.length)),

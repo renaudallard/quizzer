@@ -34,8 +34,8 @@ function num(value, fallback = 0) {
   return Number.isFinite(value) ? value : fallback;
 }
 
-/* The text of a card may hold line breaks, kept as a bare line feed
-   whatever system or file they came from. */
+/* The text of a card, or the description of a set, may hold line breaks,
+   kept as a bare line feed whatever system or file they came from. */
 function cardText(value) {
   return str(value).replace(/\r\n?/g, '\n').trim();
 }
@@ -93,7 +93,7 @@ export function normalizeSet(raw) {
   return {
     id: str(raw && raw.id) || uid(),
     title: str(raw && raw.title).trim() || 'Sans titre',
-    description: str(raw && raw.description).trim(),
+    description: cardText(raw && raw.description),
     termLang: str(raw && raw.termLang),
     defLang: str(raw && raw.defLang),
     /* The id of the folder holding the set, or nothing. */

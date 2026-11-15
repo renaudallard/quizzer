@@ -381,6 +381,7 @@ a.stat-tile:hover { border-color: var(--accent); transform: translateY(-2px); co
 .set-head { margin-bottom: 22px; }
 .set-head h1 { margin-bottom: 6px; }
 .set-head .lede { color: var(--ink-2); }
+.set-description { white-space: pre-line; }
 
 .mode-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-bottom: 26px; }
 .mode-card {

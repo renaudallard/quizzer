@@ -221,7 +221,8 @@ The term, the definition and the hint of a card wrap their text and grow
 with it, so a long side never needs a sideways scroll, and their corner can
 be dragged to make them taller. Enter starts a new line, which the card
 keeps wherever it is shown. Grading and read aloud take the text as one
-line.
+line. The description of the set wraps and grows the same way, and its
+line breaks show on the set's page.
 
 "Symboles et formules", above the cards, opens the signs a keyboard lacks,
 in groups: superscripts and subscripts, operations and relations, calculus,

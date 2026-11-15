@@ -284,11 +284,14 @@ export function editorView(id, folder = '') {
     placeholder: t('editor.namePlaceholder'),
     oninput: () => { draft.title = title.value; markDirty(); },
   });
-  const description = el('input', {
-    type: 'text', class: 'input', value: draft.description,
-    placeholder: t('editor.descriptionPlaceholder'),
-    oninput: () => { draft.description = description.value; markDirty(); },
+  /* The description wraps and grows like a card's fields. */
+  const description = el('textarea', {
+    class: 'input card-field', rows: '1',
+    placeholder: t('editor.descriptionPlaceholder'), 'aria-label': t('editor.description'),
+    oninput: () => { draft.description = description.value; markDirty(); fit(description); },
   });
+  description.value = draft.description;
+  queueMicrotask(() => fit(description));
 
   function save() {
     draft.title = draft.title.trim();
@@ -375,9 +378,9 @@ export function editorView(id, folder = '') {
         onclick: () => insertSymbol(symbol),
       }, symbol))))));
 
-  /* An empty table goes on lines of its own, and only in a card's fields,
-     since the title and the description hold a single line and the bulk
-     lines would read it as cards. The cursor lands in its first cell. */
+  /* An empty table goes on lines of its own, and only in a card's fields:
+     the title and the description are never drawn as card text, and the
+     bulk lines would read it as cards. The cursor lands in its first cell. */
   const tableSize = () => el('input', { type: 'number', class: 'input', min: '1', max: String(TABLE_MAX), value: '2' });
   const tableColumns = tableSize();
   const tableRows = tableSize();
@@ -464,7 +467,7 @@ export function editorView(id, folder = '') {
      its signs once the field is left, so x^2 becomes x². */
   root.addEventListener('change', (event) => {
     const field = event.target;
-    if (!field.matches('input[data-role], textarea')) return;
+    if (!field.matches('[data-role], .textarea')) return;
     const value = typeset(field.value);
     if (value === field.value) return;
     field.value = value;

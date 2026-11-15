@@ -379,10 +379,13 @@ async function run() {
     };
     const def = main.querySelector('textarea[data-role="def"]');
     assert(leave(def, 'SO_4^(2-)') === 'SO₄²⁻', 'définition: ' + def.value);
-    const bulk = main.querySelector('textarea:not([data-role])');
+    const bulk = main.querySelector('textarea.textarea');
     assert(leave(bulk, 'eau; H_2O') === 'eau; H₂O', 'ajout groupé: ' + bulk.value);
     const title = main.querySelector('input:not([data-role])');
     assert(leave(title, 'x^2') === 'x^2', 'le titre ne doit pas changer');
+    const description = main.querySelector('textarea:not([data-role]):not(.textarea)');
+    assert(description && leave(description, 'x^2\ny') === 'x^2\ny', 'la description ne doit pas changer');
+    assert(store.normalizeSet({ description: ' a\r\nb ' }).description === 'a\nb', 'retour de la description');
     return 'ok';
   });
 
