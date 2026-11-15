@@ -23,9 +23,56 @@ function setCard(set) {
       el('span', { class: 'chip' }, t('set.progress', { p: formatPercent(mastery) }))));
 }
 
+/* What a dragged set carries: its id, under a type of our own, so that
+   nothing else dropped on the page is taken for a set. */
+const DRAG_TYPE = 'application/x-quizzer-set';
+
+/* Lets card, the card of set, be dragged to a folder or out of one. While
+   it is, zone is marked, so the places to drop it show. The link the card
+   is does not travel: dropped elsewhere, it would open. */
+function movable(card, set, zone) {
+  card.setAttribute('draggable', 'true');
+  card.addEventListener('dragstart', (event) => {
+    event.dataTransfer.clearData();
+    event.dataTransfer.setData(DRAG_TYPE, set.id);
+    event.dataTransfer.effectAllowed = 'move';
+    zone.dataset.dragging = '1';
+  });
+  card.addEventListener('dragend', () => zone.removeAttribute('data-dragging'));
+  return card;
+}
+
+/* Makes node a place to drop a set, which then goes to the folder of
+   that id, or out of its folder for no id. */
+function takesSets(node, folderId, repaint) {
+  const carries = (event) => Boolean(event.dataTransfer) && [...event.dataTransfer.types].includes(DRAG_TYPE);
+  node.addEventListener('dragover', (event) => {
+    if (!carries(event)) return;
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+    node.dataset.drop = '1';
+  });
+  node.addEventListener('dragleave', (event) => {
+    if (!node.contains(event.relatedTarget)) node.removeAttribute('data-drop');
+  });
+  node.addEventListener('drop', (event) => {
+    if (!carries(event)) return;
+    event.preventDefault();
+    node.removeAttribute('data-drop');
+    const set = store.getSet(event.dataTransfer.getData(DRAG_TYPE));
+    if (!set || set.folder === folderId) return;
+    store.updateSet(set.id, { folder: folderId });
+    const folder = store.getFolder(folderId);
+    toastSaved(folder ? t('folder.moved', { folder: folder.name }) : t('folder.movedOut'));
+    repaint();
+  });
+  return node;
+}
+
 /* A folder and its sets, folded away or not as the learner left it, with
-   ways to add a set to it, rename it and delete it. */
-function folderSection(folder, sets, repaint) {
+   ways to add a set to it, rename it and delete it. A set dropped on it,
+   open or not, goes into it. */
+function folderSection(folder, sets, zone, repaint) {
   const rename = () => {
     const name = prompt(t('folder.namePrompt'), folder.name);
     if (name !== null && store.renameFolder(folder.id, name)) repaint();
@@ -46,18 +93,21 @@ function folderSection(folder, sets, repaint) {
     el('button', { type: 'button', class: 'btn btn-ghost', onclick: rename }, icon('edit'), t('folder.rename')),
     el('button', { type: 'button', class: 'btn btn-ghost', onclick: remove }, icon('trash'), t('folder.delete'))),
   sets.length
-    ? el('div', { class: 'set-grid' }, sets.map(setCard))
+    ? el('div', { class: 'set-grid' }, sets.map((set) => movable(setCard(set), set, zone)))
     : el('p', { class: 'chart-sub' }, t('folder.empty', { folder: t('editor.folder') })));
-  return node;
+  return takesSets(node, folder.id, repaint);
 }
 
-/* The folders by name, then the sets in none. A search looks through all
-   the sets and shows what it finds without the folders. */
+/* The folders by name, then the sets in none, which is also where a set
+   is dropped to leave its folder: with every set in a folder, that place
+   only shows while one is dragged. A search looks through all the sets
+   and shows what it finds without the folders. */
 function setsSection() {
   const body = el('div');
   const notice = el('p', { class: 'chart-sub', hidden: true }, t('home.noMatch'));
 
   function paint() {
+    body.removeAttribute('data-dragging');
     const sets = store.getSets();
     const needle = search.value.trim().toLowerCase();
     if (needle) {
@@ -69,10 +119,17 @@ function setsSection() {
     notice.hidden = true;
     const folders = foldersByName();
     const loose = sets.filter((set) => !set.folder);
+    const grid = el('div', { class: 'set-grid' }, loose.map((set) => (
+      folders.length ? movable(setCard(set), set, body) : setCard(set))));
     mount(body,
-      folders.map((folder) => folderSection(folder, sets.filter((set) => set.folder === folder.id), paint)),
-      folders.length && loose.length ? el('h3', { class: 'folder-loose' }, t('home.unfiled')) : null,
-      el('div', { class: 'set-grid' }, loose.map(setCard)));
+      folders.map((folder) => folderSection(folder, sets.filter((set) => set.folder === folder.id), body, paint)),
+      folders.length
+        ? takesSets(el('div', { class: 'folder-out' },
+            loose.length
+              ? el('h3', { class: 'folder-loose' }, t('home.unfiled'))
+              : el('p', { class: 'chart-sub drop-hint' }, t('folder.dropOut')),
+            grid), '', paint)
+        : grid);
   }
 
   const search = el('input', {

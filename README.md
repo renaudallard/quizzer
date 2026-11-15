@@ -204,9 +204,13 @@ browser kept cannot hide new sets.
 
 ### Folders
 
-"Nouveau dossier", on the home page, makes a folder to group sets, and the
-"Dossier" field of the editor puts a set in one, or makes a new one there
-and then. The home page shows each folder with its sets, then the sets in
+"Nouveau dossier", on the home page, makes a folder to group sets. A set is
+filed by dragging its card onto a folder, open or folded, and taken out by
+dragging it to the sets in no folder; while a set is dragged the places to
+drop it are outlined, and when every set is in a folder a place to drop one
+out of them shows for the time of the drag. The "Dossier" field of the
+editor does the same without a pointer, and makes a new folder there and
+then. The home page shows each folder with its sets, then the sets in
 none. A folder folds away with a click and stays as it was left, and
 offers to create a set inside it, to rename it and to delete it; deleting
 a folder keeps its sets, which move out of it. A search looks through every
@@ -552,7 +556,8 @@ exist. On the home page it checks that
 the daily goal figure stops at the goal, that the goal tile opens its setting
 with the field focused, and that percentages follow the interface language. It
 checks that every sample set belongs to a group, and that folders hold their
-sets on the home page, survive an older backup and let their sets go when
+sets on the home page, take a set dragged onto them and let it go when it
+is dragged out, survive an older backup and let their sets go when
 deleted. It restores a full backup into an emptied store and compares every
 part, imports it a second time to show that nothing doubles, and feeds in a
 damaged backup that must change nothing. It also plays a full quiz, a timed

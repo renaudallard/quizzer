@@ -374,6 +374,13 @@ a.stat-tile:hover { border-color: var(--accent); transform: translateY(-2px); co
 .folder > summary .chip { margin-left: 10px; font-weight: 500; }
 .folder-tools { margin: 6px 0 12px; }
 .folder-loose { margin: 22px 0 12px; font-size: 1rem; }
+/* While a set is dragged, the places to drop it are outlined, and the one
+   under the pointer is filled. */
+.folder-out { border-radius: var(--radius); }
+.drop-hint { display: none; margin: 0; padding: 14px; }
+[data-dragging] .drop-hint { display: block; }
+[data-dragging] .folder, [data-dragging] .folder-out { outline: 2px dashed var(--line-strong); outline-offset: 2px; }
+[data-dragging] [data-drop] { outline: 2px solid var(--accent); background: var(--accent-soft); }
 .chip-folder svg { width: 13px; height: 13px; }
 
 /* Set detail */

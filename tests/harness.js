@@ -949,6 +949,54 @@ async function run() {
     return 'ok';
   });
 
+  /* A drag as the browser reports it: the card says which set it is, the
+     place it is dropped on files it. Something else dropped there is
+     left alone. */
+  check('un jeu se range en le faisant glisser', () => {
+    const folder = store.createFolder('Glisser');
+    const moved = store.createSet({ title: 'À ranger', cards: [{ term: 'a', def: 'b' }] });
+    const drag = (node, type, data) => {
+      const event = new Event(type, { bubbles: true, cancelable: true });
+      Object.defineProperty(event, 'dataTransfer', { value: data });
+      node.dispatchEvent(event);
+      return event;
+    };
+    const carried = () => {
+      const held = new Map();
+      return {
+        get types() { return [...held.keys()]; },
+        clearData: () => held.clear(),
+        setData: (type, value) => held.set(type, value),
+        getData: (type) => held.get(type) || '',
+      };
+    };
+    const card = (home) => home.querySelector('a.set-card[href="#/set/' + moved.id + '"]');
+    const zone = (home, selector) => [...home.querySelectorAll(selector)].find((node) => (
+      selector !== 'details.folder' || node.querySelector('summary').textContent.startsWith('Glisser')));
+    try {
+      let home = homeView();
+      const data = carried();
+      assert(card(home).getAttribute('draggable') === 'true', 'carte non déplaçable');
+      drag(card(home), 'dragstart', data);
+      assert(data.types.length === 1 && data.getData(data.types[0]) === moved.id, 'données: ' + data.types.join());
+      assert(drag(zone(home, 'details.folder'), 'dragover', data).defaultPrevented, 'dossier qui refuse le jeu');
+      drag(zone(home, 'details.folder'), 'drop', data);
+      assert(store.getSet(moved.id).folder === folder.id, 'jeu non rangé');
+      assert(card(home).closest('details.folder') === zone(home, 'details.folder'), 'page non redessinée');
+      const other = carried();
+      other.setData('text/plain', moved.id);
+      assert(!drag(zone(home, '.folder-out'), 'dragover', other).defaultPrevented, 'texte pris pour un jeu');
+      home = homeView();
+      drag(card(home), 'dragstart', data);
+      drag(zone(home, '.folder-out'), 'drop', data);
+      assert(store.getSet(moved.id).folder === '', 'jeu resté dans son dossier');
+      return 'ok';
+    } finally {
+      store.deleteSet(moved.id);
+      store.deleteFolder(folder.id);
+    }
+  });
+
   check('une sauvegarde complète se restaure à l’identique', () => {
     const goal = store.getSettings().goal;
     store.setSetting('goal', 35);
